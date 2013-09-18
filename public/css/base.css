@@ -13,7 +13,7 @@
 
 .wrap_top_nav {
     background-color: #003a83;
-    box-shadow:0 1px 3px rgba(0, 0, 0, 0.25), 0 -3px 0 #d61027 inset;
+    box-shadow:0 0px 0px rgba(0, 0, 0, 0.25), 0 -3px 0 #d61027 inset;
     height: 40px;
     position: relative;
     /*opacity: 0.8;*/
@@ -38,14 +38,14 @@
     color: #fff6bf;
 }
 
-#top_nav li:nth-child(1) a {
-    background-image: url(../img/logo.png);
-    background-position: 0 -12px;
-    background-repeat: no-repeat;
-    background-size: 68px 60px;
-    padding-left: 74px;
-    overflow: hidden;
-}
+/*#top_nav li:nth-child(1) a {*/
+    /*background-image: url(../img/logo.png);*/
+    /*background-position: 0 -12px;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 68px 60px;*/
+    /*padding-left: 200px;*/
+    /*overflow: hidden;*/
+/*}*/
 
 #read {
     position: absolute;
