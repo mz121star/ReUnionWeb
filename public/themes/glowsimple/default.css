@@ -352,6 +352,8 @@ article.blogcontent {
     height: 500px;
 }
 .page{float: left;padding: 10px}
+#top_nav ul li a{padding:0px 2px 0px 2px}
+#top_nav ul li a:hover{background-color:white;color:black}
 
 /*** dashboard */
 .s-pk-mod {
