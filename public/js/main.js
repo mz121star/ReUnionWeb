@@ -30,10 +30,10 @@ require.config({
     },
     priority: [
         "angular"
-    ],/*,
+    ],
     i18n: {
-        locale: 'ja-jp'
-    },*/
+        locale: 'en-us'
+    },
     urlArgs: 'v=1.0.0.1'
 });
 

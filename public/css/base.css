@@ -12,15 +12,15 @@
 }
 
 .wrap_top_nav {
-    background-color: #0e188b;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    background-color: #003a83;
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.25), 0 -3px 0 #d61027 inset;
     height: 40px;
     position: relative;
-    opacity: 0.8;
+    /*opacity: 0.8;*/
 }
 
 #top_nav {
-    width: 1000px;
+    /*width: 1000px;*/
     margin: 0 auto;
     position: relative;
 }
@@ -30,12 +30,12 @@
     line-height: 40px;
     float: left;
     margin-right: 20px;
-    color: #999;
+    color: #ffffff;
     text-decoration: none;
 }
 
 #top_nav a:hover {
-    color: #fff;
+    color: #fff6bf;
 }
 
 #top_nav li:nth-child(1) a {
