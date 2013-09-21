@@ -13,6 +13,8 @@
 
 .wrap_top_nav {
     background-color: #003a83;
+    background: -webkit-gradient(linear, 40% 0, 80% 20%, from(#003a83), to(#2c91d2));
+    background:-moz-linear-gradient(top, from(#003a83), to(#2c91d2));
     box-shadow:0 0px 0px rgba(0, 0, 0, 0.25), 0 -3px 0 #d61027 inset;
     height: 40px;
     position: relative;

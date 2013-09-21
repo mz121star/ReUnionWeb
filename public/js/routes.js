@@ -9,9 +9,11 @@ define(['app',
     'controllers/dashboard',
     'controllers/feeds',
     'controllers/help',
-    'controllers/reports'
+    'controllers/reports' ,
+    'controllers/feeddetail'
+
 ],
-    function (app, index, login, logout, singnup, admin, alerts, analysis, dashboard, feeds, help, reports) {
+    function (app, index, login, logout, singnup, admin, alerts, analysis, dashboard, feeds, help, reports,feeddetail) {
         return app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $routeProvider.
                 when('/', {templateUrl: 'partials/index.html', controller: index}).
@@ -20,7 +22,8 @@ define(['app',
                 when('/signup', {templateUrl: 'partials/signup.html', controller: singnup}).
 
                 when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: dashboard}).
-                when('/feeds', {templateUrl: 'partials/feeds.html', controller: feeds}).
+                when('/feeds/', {templateUrl: 'partials/feeds.html', controller: feeds}).
+                when('/feeds/:feedId', {templateUrl: 'partials/feeds-detial.html', controller: feeddetail}).
                 when('/analysis', {templateUrl: 'partials/analysis.html', controller: analysis}).
                 when('/reports', {templateUrl: 'partials/reports.html', controller: reports}).
                 when('/alerts', {templateUrl: 'partials/alerts.html', controller: alerts}).

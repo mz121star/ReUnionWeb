@@ -1,6 +1,6 @@
 <div>
     <div class="feeds-search-tools">
-        <span>Search <input type="text"></span>
+        <span>Search <input type="text" ng-model="query"></span>
         <span>
             <select>
             <option>Last 7 Days</option>
@@ -10,13 +10,35 @@
         </span>
         <span>Or from <input type="date"> to <input type="date"> </span>
     </div>
-    <div class="feeds-seach-condition">
-        <div><h2>Feeds List:兰蔻品牌（关键词表达式）</h2></div>
+    <div class="feeds_search_condition">
+        <h2>Feeds List:{{source.brand}}（关键词表达式）</h2>
         <div class="conditions">
+                  Source Type:
+            <hr>
+            Professional Sites:
+            <hr>
+            Professional Sites:
+            <hr>
+            <div>
+                <input  class="btn btn-primary" type="button" value="Search">
+                <input  class="btn btn-primary" type="button" value="Search Current Set">
+                <input  class="btn btn-primary" type="button" value="Export Feed List">
+            </div>
 
         </div>
-    </div>
-    <div class="content">
 
     </div>
+
+    <div class="content">
+        <div>
+            <ul>
+                <li ng-repeat="phone in phones  | filter:query">
+                   Name: {{phone.name | highlightWords:query}}
+                   Description:{{phone.snippet}}
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
 </div>

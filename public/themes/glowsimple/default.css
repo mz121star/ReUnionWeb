@@ -367,7 +367,7 @@ article.blogcontent {
     position: relative;
     word-wrap: break-word;
     /*background-color: #F5F5F5;*/
-    color: #9DA0A4;
+    /*color: #9DA0A4;*/
     content: "Container";
     font-size: 12px;
     font-weight: bold;
@@ -380,16 +380,17 @@ article.blogcontent {
     width: 212px;
 }
 #top_nav ul li{
-margin-bottom: -1px;
+   margin-bottom: -1px;
+    margin-right: 35px;
 }
 #top_nav ul li a {
     padding-top: 8px;
     padding-bottom: 10px;
     line-height: 20px;
     border: 1px solid transparent;
-    -webkit-border-radius: 4px 4px 0 0;
-    -moz-border-radius: 4px 4px 0 0;
-    border-radius: 4px 4px 0 0;
+    /*-webkit-border-radius: 4px 4px 0 0;*/
+    /*-moz-border-radius: 4px 4px 0 0;*/
+    /*border-radius: 4px 4px 0 0;*/
     padding-right: 12px;
     padding-left: 12px;
     margin-right: 2px;
@@ -472,4 +473,13 @@ margin-bottom: -1px;
     width: 100%;
     _width: 398px;
     height: 29px;
+}
+
+/**组件 */
+.feeds_search_condition {
+    border: 1px solid #ccc;
+    height:auto;
+}
+.feeds_search_condition h2{
+    background-color: #ccc;
 }

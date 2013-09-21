@@ -11,7 +11,7 @@ define({
         "welcome": "欢迎",
         "login": "登录",
         "logout": "注销",
-        "title":"NJBlog基于nodejs",
+        "title":"锐优联",
         "signup":"注册"
     },
     "en-us":true,
