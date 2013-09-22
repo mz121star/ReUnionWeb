@@ -45,7 +45,7 @@ HEADER
 图标设置
 */
 [class^="icon-"] {
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .login-form .header {
@@ -466,12 +466,17 @@ article.blogcontent {
 #top_nav .right_nav {
     width: 200px;
     float: right;
-    margin-top: -35px;
-}
-#top_nav .right_nav i{
+    margin-top: -41px;
     color: white;
+
+}
+#top_nav .right_nav span{
+    font-size: 15px;
 }
 
+#top_nav .right_nav .add-on a{
+   margin-right: 5px;
+}
 .feeds .content {
     height: 200px;
     overflow-y: scroll;
