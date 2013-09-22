@@ -134,7 +134,7 @@ CONTENT
     padding-right: 2px;
     z-index: 3;
     border-radius: 5px 0 0 5px;
-    background: rgba(65, 72, 72, 0.75);
+     /*/background: rgba(65, 72, 72, 0.75);*/
 }
 
 .icon-user {

@@ -3,7 +3,7 @@
 define(['../app', 'i18n!resources/nls/res', '../../background/images'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
-    return app.controller('LayoutController', function ($scope, $http) {
+    return app.controller('LayoutController', function ($scope, $http,$location) {
         var i = 0,
             imgs = images.imageurls,
             randombg = function () {
@@ -24,12 +24,17 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
             admin: "Administration",
             help: "Help"
         };
+        $scope.navHash = function () {
 
+             console.log($location)
+            return $location
+        };
         $scope.resources = {
             theme: " <link href='themes/glow/default.css' rel='stylesheet' type='text/css'>",
             bg: imgs[randombg()] //Random generate background image
         };
         $scope.setActive = function (e) {
+           // console.log($location.$$path)
             var parent = e.target.parentElement.parentElement;
             if (parent) {
                 var cancelActives = parent.getElementsByClassName("active");
@@ -38,6 +43,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
                 }
                 e.target.parentElement.setAttribute("class", "active");
             }
+            //console.log($location.$$path)
         };
         $scope.resetLogin = function (user) {
             if (user.name) {

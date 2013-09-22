@@ -1,60 +1,38 @@
-html {
-    height: 100%;
+/*html {*/
+    /*height: 100%;*/
 
-}
+/*}*/
 
-body {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 300;
-    text-align: left;
-    text-decoration: none;
-    overflow: hidden;
+/*body {*/
+    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+    /*font-weight: 300;*/
+    /*text-align: left;*/
+    /*text-decoration: none;*/
+    /*overflow: hidden;*/
     /*background: none;*/
 
-    /* background-color: #252326;
-     background: url('img/dots.png') center center fixed, url('img/bg.jpg') center center no-repeat fixed;
-     background-size: auto, cover;*/
-}
+    /* background-color: #252326;*/
+     /*background: url('img/dots.png') center center fixed, url('img/bg.jpg') center center no-repeat fixed;*/
+     /*background-size: auto, cover;*/
+/*}*/
 
-@font-face {
-    font-family: 'Denk One';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Denk One'), local('DenkOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/denkone/v1/ahLepySZXU_KFQaVZ6XDvPesZW2xOQ-xsNqO47m55DA.woff) format('woff');
-}
+/*@font-face {*/
+    /*font-family: 'Denk One';*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: local('Denk One'), local('DenkOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/denkone/v1/ahLepySZXU_KFQaVZ6XDvPesZW2xOQ-xsNqO47m55DA.woff) format('woff');*/
+/*}*/
 
-@font-face {
-    font-family: 'broccolidry';
-    src: url('fonts/broccolidry.eot');
-    src: url('fonts/broccolidry.eot?#iefix') format('embedded-opentype'), url('fonts/broccolidry.svg#broccolidry') format('svg'), url('fonts/broccolidry.woff') format('woff'), url('fonts/broccolidry.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+/*@font-face {*/
+    /*font-family: 'broccolidry';*/
+    /*src: url('fonts/broccolidry.eot');*/
+    /*src: url('fonts/broccolidry.eot?#iefix') format('embedded-opentype'), url('fonts/broccolidry.svg#broccolidry') format('svg'), url('fonts/broccolidry.woff') format('woff'), url('fonts/broccolidry.ttf') format('truetype');*/
+    /*font-weight: normal;*/
+    /*font-style: normal;*/
+/*}*/
 
 /* Use the following CSS code if you want to have a class per icon */
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-    font-family: 'broccolidry';
-    font-style: normal;
-    speak: none;
-    font-weight: normal;
-    line-height: 1;
-    font-smoothing: antialiased;
-    color: white;
-    font-size: 20px;
-    display: block;
-    height: 47px;
-    line-height: 47px;
-    text-align: center;
-}
 
-.icon-pass:before {
-    content: "\e000";
-}
-
-.icon-user:before {
-    content: "\e001";
-}
 
 /*******************
 LOGIN FORM
@@ -64,6 +42,12 @@ LOGIN FORM
 HEADER
 *******************/
 
+/*
+图标设置
+*/
+[class^="icon-"]{
+    font-size: 25px;
+}
 .login-form .header {
     padding: 40px 30px 30px 50px;
 }
@@ -144,17 +128,7 @@ CONTENT
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-[class^="icon-"] {
-    width: 46px;
-    height: 47px;
-    display: block;
-    position: absolute;
-    left: 2000px;
-    padding-right: 2px;
-    z-index: 3;
-    border-radius: 5px 0 0 5px;
-    background: rgba(65, 72, 72, 0.75);
-}
+
 
 .icon-user {
     top: 147px;
