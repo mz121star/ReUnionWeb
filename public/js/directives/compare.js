@@ -27,4 +27,13 @@ app.directive('compare', function () {
             }
         };
     });
+    app.directive('modalbox', function () {
+        return {
+            link:function (scope, elm, attrs, ctrl) {
+                $(elm).on("click",function(){
+                    alert('ok')
+                })
+            }
+        };
+    });
 });
