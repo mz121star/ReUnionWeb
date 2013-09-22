@@ -7,9 +7,11 @@ define([ 'i18n!resources/nls/res'], function (res) {
         $scope.source = {
             brand: "兰蔻品牌"
         };
+        $scope.sourceType=['News','Forum','eCommerce','Weibo','sohu'];
 
-        $http.get('MockData/phones.json').success(function (data) {
-            $scope.phones = data;
+
+        $http.get('/kimiss').success(function (data) {
+            $scope.kimiss = data;
         });
 
     }];

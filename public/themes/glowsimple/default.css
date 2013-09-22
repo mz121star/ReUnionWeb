@@ -284,8 +284,8 @@ article.blogcontent {
 
 /*chrome scroll bar */
 
-::-webkit-scrollbar {
-    width: 3px;
+/*::-webkit-scrollbar {
+    width: 8px;
     height: 3px;
 }
 
@@ -304,7 +304,7 @@ article.blogcontent {
     width: 5px;
     background-color: #666;
     -webkit-border-radius: 3px;
-}
+}*/
 
 /*.scrollbar {
     background: gray;
@@ -483,3 +483,10 @@ article.blogcontent {
 .feeds_search_condition h2{
     background-color: #ccc;
 }
+
+/* 页面*/
+.feeds .content{
+height: 200px;
+overflow-y: scroll;
+}
+.feeds .conditions div ul li{float: left; margin-right: 20px;}

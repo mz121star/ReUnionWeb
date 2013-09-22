@@ -13,23 +13,23 @@ module.exports = function(grunt) {
                         angular: '../lib/angular/angular',
                         angularResource: '../lib/angular/angular-resource',
                         text: '../lib/require/text',
-                        i18n:'../lib/require/i18n',
-                        modernizr:'../lib/modernizr',
-                        html5shiv:'../lib/html5shiv',
-                        mcore:'../lib/mcore.min',
-                        fullscreen:'../lib/fullscreen',
-                        mcustomscrollbar:'../lib/jquery.mCustomScrollbar.concat.min',
-                        detectbrowser:'../lib/detectbrowser'
+                        i18n: '../lib/require/i18n',
+                        modernizr: '../lib/modernizr',
+                        html5shiv: '../lib/html5shiv',
+                        mcore: '../lib/mcore.min',
+                        fullscreen: '../lib/fullscreen',
+                        mcustomscrollbar: '../lib/jquery.mCustomScrollbar.concat.min',
+                        detectbrowser: '../lib/detectbrowser',
                         //res:'../resources/nls/res'
-
+                        ichart: '../lib/ichart.1.2.src'
                     },
                     shim: {
-                        'angular' : {'exports' : 'angular'},
-                        'angular-resource' : {deps:['angular']},
-                        'bootstrap': {deps:['jquery']},
-                        'mcustomscrollbar':{deps:['jquery']},
+                        'angular': {'exports': 'angular'},
+                        'angular-resource': {deps: ['angular']},
+                        'bootstrap': {deps: ['jquery']},
+                        'mcustomscrollbar': {deps: ['jquery']},
                         'underscore': {exports: '_'},
-                        'detectbrowser':{deps:['modernizr']}
+                        'detectbrowser': {deps: ['modernizr']}
                         /*,
                          'res':{exports:'res'}*/
 
@@ -49,14 +49,14 @@ module.exports = function(grunt) {
                     banner: '/* NJBLog minified css file */'
                 },
                 files: {
-                    'dest/njblog.css': ['public/css/base', 'public/themes/glowsimple/default.css']
+                    'dest/reunion.css': ['public/css/base', 'public/themes/glowsimple/default.css']
                 }
             }
         },
         concat : {
             domop : {
                 src: 'public/js/*.js',
-                dest: 'dest/njblog.js'
+                dest: 'dest/reunion.js'
             }
         },
         uglify : {
@@ -64,8 +64,8 @@ module.exports = function(grunt) {
                 banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build : {
-                src : 'dest/njblog.js',
-                dest : 'dest/njblog.min.js'
+                src : 'dest/reunion.js',
+                dest : 'dest/reunion.min.js'
             }
         }
     });

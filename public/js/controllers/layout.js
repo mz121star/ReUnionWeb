@@ -29,8 +29,15 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
             theme: " <link href='themes/glow/default.css' rel='stylesheet' type='text/css'>",
             bg: imgs[randombg()] //Random generate background image
         };
-        $scope.setActive = function () {
-            console.log($scope)
+        $scope.setActive = function (e) {
+            var parent = e.target.parentElement.parentElement;
+            if (parent) {
+                var cancelActives = parent.getElementsByClassName("active");
+                for (var i = 0, l = cancelActives.length; i < l; i++) {
+                    cancelActives[i].setAttribute("class", "");
+                }
+                e.target.parentElement.setAttribute("class", "active");
+            }
         };
         $scope.resetLogin = function (user) {
             if (user.name) {

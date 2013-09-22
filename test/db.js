@@ -8,7 +8,7 @@ exports.setupTests=function(models){
 describe('DateBase Connection test', function () {
 
     it('db connected', function(){
-        models.Blog.find({}, function(error,model){
+        models.Kimiss.find({}, function(error,model){
             model.should.equal(true);
         });
     })
