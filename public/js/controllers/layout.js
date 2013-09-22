@@ -41,6 +41,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
                 for (var i = 0, l = cancelActives.length; i < l; i++) {
                     cancelActives[i].setAttribute("class", "");
                 }
+
                 e.target.parentElement.setAttribute("class", "active");
             }
             //console.log($location.$$path)

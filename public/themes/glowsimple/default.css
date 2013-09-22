@@ -1,38 +1,37 @@
 /*html {*/
-    /*height: 100%;*/
+/*height: 100%;*/
 
 /*}*/
 
 /*body {*/
-    /*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
-    /*font-weight: 300;*/
-    /*text-align: left;*/
-    /*text-decoration: none;*/
-    /*overflow: hidden;*/
-    /*background: none;*/
+/*font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;*/
+/*font-weight: 300;*/
+/*text-align: left;*/
+/*text-decoration: none;*/
+/*overflow: hidden;*/
+/*background: none;*/
 
-    /* background-color: #252326;*/
-     /*background: url('img/dots.png') center center fixed, url('img/bg.jpg') center center no-repeat fixed;*/
-     /*background-size: auto, cover;*/
+/* background-color: #252326;*/
+/*background: url('img/dots.png') center center fixed, url('img/bg.jpg') center center no-repeat fixed;*/
+/*background-size: auto, cover;*/
 /*}*/
 
 /*@font-face {*/
-    /*font-family: 'Denk One';*/
-    /*font-style: normal;*/
-    /*font-weight: 400;*/
-    /*src: local('Denk One'), local('DenkOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/denkone/v1/ahLepySZXU_KFQaVZ6XDvPesZW2xOQ-xsNqO47m55DA.woff) format('woff');*/
+/*font-family: 'Denk One';*/
+/*font-style: normal;*/
+/*font-weight: 400;*/
+/*src: local('Denk One'), local('DenkOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/denkone/v1/ahLepySZXU_KFQaVZ6XDvPesZW2xOQ-xsNqO47m55DA.woff) format('woff');*/
 /*}*/
 
 /*@font-face {*/
-    /*font-family: 'broccolidry';*/
-    /*src: url('fonts/broccolidry.eot');*/
-    /*src: url('fonts/broccolidry.eot?#iefix') format('embedded-opentype'), url('fonts/broccolidry.svg#broccolidry') format('svg'), url('fonts/broccolidry.woff') format('woff'), url('fonts/broccolidry.ttf') format('truetype');*/
-    /*font-weight: normal;*/
-    /*font-style: normal;*/
+/*font-family: 'broccolidry';*/
+/*src: url('fonts/broccolidry.eot');*/
+/*src: url('fonts/broccolidry.eot?#iefix') format('embedded-opentype'), url('fonts/broccolidry.svg#broccolidry') format('svg'), url('fonts/broccolidry.woff') format('woff'), url('fonts/broccolidry.ttf') format('truetype');*/
+/*font-weight: normal;*/
+/*font-style: normal;*/
 /*}*/
 
 /* Use the following CSS code if you want to have a class per icon */
-
 
 /*******************
 LOGIN FORM
@@ -45,9 +44,10 @@ HEADER
 /*
 图标设置
 */
-[class^="icon-"]{
+[class^="icon-"] {
     font-size: 25px;
 }
+
 .login-form .header {
     padding: 40px 30px 30px 50px;
 }
@@ -127,8 +127,6 @@ CONTENT
     color: #414848;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25);
 }
-
-
 
 .icon-user {
     top: 147px;
@@ -350,13 +348,16 @@ article.blogcontent {
     /*position: absolute;*/
     top: -1px;
 }
-#top_nav .logo a{
+
+#top_nav .logo a {
     width: 212px;
 }
-#top_nav ul li{
-   margin-bottom: -1px;
+
+#top_nav ul li {
+    margin-bottom: -1px;
     margin-right: 35px;
 }
+
 #top_nav ul li a {
     padding-top: 8px;
     padding-bottom: 10px;
@@ -374,10 +375,12 @@ article.blogcontent {
     background-color: white;
     color: black
 }
-#top_nav ul  .active a{
+
+#top_nav ul  .active a {
     background-color: white;
     color: black
 }
+
 /*** dashboard */
 .s-pk-mod {
     background: none;
@@ -452,15 +455,29 @@ article.blogcontent {
 /**组件 */
 .feeds_search_condition {
     border: 1px solid #ccc;
-    height:auto;
+    height: auto;
 }
-.feeds_search_condition h2{
+
+.feeds_search_condition h2 {
     background-color: #ccc;
 }
 
 /* 页面*/
-.feeds .content{
-height: 200px;
-overflow-y: scroll;
+#top_nav .right_nav {
+    width: 200px;
+    float: right;
+    margin-top: -35px;
 }
-.feeds .conditions div ul li{float: left; margin-right: 20px;}
+#top_nav .right_nav i{
+    color: white;
+}
+
+.feeds .content {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.feeds .conditions div ul li {
+    float: left;
+    margin-right: 20px;
+}
