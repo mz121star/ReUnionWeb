@@ -17,9 +17,10 @@ define(['../app'], function (app) {
 
 define([ 'i18n!resources/nls/res'], function (res) {
 
-    var  IndexController=['$scope','$rootScope',function($scope,$rootScope) {
+    var  IndexController=['$scope','$rootScope','$location',function($scope,$rootScope,$location) {
         $scope.title = res.title;
         $rootScope.title= res.title;
+        $location.path("/feeds");
     }];
 
     return IndexController;
