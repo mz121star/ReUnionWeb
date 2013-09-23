@@ -11,7 +11,7 @@
     <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
     <!--<script data-main="js/main-built" src="lib/require/require.min.js"></script>-->
 
-    <title>{{title}}</title>
+    <title ng-bind="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reunion">
     <meta name="author" content="Pactera">
@@ -34,37 +34,22 @@
 
 <body class="ng-cloak" ng-cloak>
 
-<!--<div id="njblogbg"  >-->
-<!--<img id="bg" ng-src="{{resources.bg}}">-->
-<!--&lt;!&ndash;<a href="javascript:;" class="prv-fullscreen" ng-click="preimg()">Pre</a>&ndash;&gt;-->
-<!--&lt;!&ndash;<a href="javascript:;" class="nxt-fullscreen" ng-click="nextimg()">Next</a>&ndash;&gt;-->
-<!--</div>-->
 <div class="wrap_top_nav">
     <nav id="top_nav">
         <span class="logo"><a href="javascript:;"> &nbsp</a></span>
         <ul class="inline-style clearfix" ng-click="setActive($event)">
-
-            <li class="active"><a href="#/dashboard">{{txt.dashboard}}</a></li>
-            <li class=""><a href="#/feeds">{{txt.feeds}}</a></li>
-            <li class=""><a href="#/analysis">{{txt.analysis}}</a></li>
-            <li class=""><a href="#/reports">{{txt.reports}}</a></li>
-            <li class=""><a href="#/alerts">{{txt.alerts}}</a></li>
-            <li class=""><a href="#/admin">{{txt.admin}}</a></li>
-            <li class=""><a href="#/help">{{txt.help}}</a></li>
-            <!--<li class="active"><a href="#/{{login.url}}">{{login.name}}</a></li>-->
-            <!--<li class="active"><a href="#/{{signup.url}}">{{signup.name}}</a></li>-->
-            <!--<li class="active">-->
-            <!--<a href="javascript:;" class="preview" ng-click="fullscreen()">幻灯片放映</a>-->
-            <!--</li>-->
+               <li ng-repeat="nav in navBars"  ng-click="selectNav($index)" ng-class="{active: $index==selectedRow}">
+                   <a ng-href="{{nav.url}}" ng-bind="nav.name"></a>
+               </li>
 
 
         </ul>
         <div class="right_nav">
                <span class="add-on">
-                <a modalbox href="javascript:;"><i class="icon-envelope" title="message"></i> </a>
-                 <a  href="javascript:;"><i class="icon-cog" title="Settings"></i> </a>
+                <a modalbox href="javascript:;" title="message"><i class="icon-envelope" title="message"></i><i class="has_message">2</i> </a>
+                 <a  href="javascript:;" title="settings"><i class="icon-cog" title="Settings"></i> </a>
                      <a href="javascript:;"><span>Hello,韩青锋</span> </a>
-                         <a href="javascript:;"> <i class="icon-exclamation-sign"></i>Exit </a>
+                         <a href="javascript:;" title="logout"> <i class="icon-signout"></i> </a>
                </span>
 
         </div>
@@ -77,11 +62,17 @@
         <input class="span2" id="appendedInputButton" placeholder="search here..." type="text">
         <button class="btn" type="button">Go!</button>
     </div>
-    <ul>Overview</ul>
+    <h3><a href="javascript:;"  >Overview</a></h3>
+
+    <h3><a href="javascript:;"  >Feeds</a></h3>
     <ul>
-        Feeds
-        <li>Topic</li>
+
+        <li> <a href="javascript:;">Topic</a> </li>
+        <li> <a href="javascript:;">Topic</a> </li>
+        <li> <a href="javascript:;">Topic</a> </li>
     </ul>
+
+
 </div>
 
 

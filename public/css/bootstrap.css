@@ -1999,6 +1999,7 @@ table {
   vertical-align: bottom;
 }
 
+.table thead tr{background: #eeeeee;}
 .table caption + thead tr:first-child th,
 .table caption + thead tr:first-child td,
 .table colgroup + thead tr:first-child th,

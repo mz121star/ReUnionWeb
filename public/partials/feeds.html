@@ -1,4 +1,4 @@
-<div class="feeds">
+<div class="reunioncontent">
     <div class="feeds-search-tools">
         <span>Search <input type="text" ng-model="query"></span>
         <span>
@@ -8,7 +8,7 @@
             </select>
 
         </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+        <span>Or from <input type="date"  > to <input type="date"> </span>
     </div>
     <div class="feeds_search_condition">
         <h2>Feeds List:{{source.brand}}（关键词表达式）</h2>
@@ -16,18 +16,26 @@
         <div class="conditions">
             Source Type:
             <div>
-                <ul>
-                    <li ng-repeat="st in sourceType">
-                       <label><input type="checkbox" name="{{st}}" ng-model="st"/>{{st}}</label>
+                <ul  >
+                    <li ng-repeat="st in sourceType" >
+                       <label><input    type="checkbox" name="{{st}}"  />{{st}}</label>
                     </li>
                 </ul>
-            </div>
+            </div> <br>
             <hr>
             Professional Sites:
-            <hr>
-            Professional Sites:
-            <hr>
             <div>
+                <ul  >
+                    <li ng-repeat="st in professionalSites" >
+                        <label><input    type="checkbox" name="{{st}}"  />{{st}}</label>
+                    </li>
+                </ul>
+            </div><br>
+            <hr>
+            TimeFrame:  <span>  from <input type="date"  > to <input type="date"> </span>
+             <hr>
+
+            <div  >
                 <input class="btn btn-primary" type="button" value="Search">
                 <input class="btn btn-primary" type="button" value="Search Current Set">
                 <input class="btn btn-primary" type="button" value="Export Feed List">
@@ -39,14 +47,140 @@
 
     <div class="content">
         <div>
-            <ul>
-                <li ng-repeat="k in kimiss">
-                    {{k.childs| kimissList:'Title'|highlightWords:query}}
-                    <!-- Name: {{k.childs.childs.name | highlightWords:query}}
-                     Description:{{k.childs.childs.content}}-->
 
-                </li>
-            </ul>
+            <!--<table  >-->
+                <!--<tr ng-repeat="k in kimiss" ng-click="selectkimiss($index)" ng-class="{selected: $index==selectedRow}">-->
+                    <!--<td>{{k.childs| kimissList:'Title'|highlightWords:query}}</td>-->
+
+                <!--</tr>-->
+            <!--</table>-->
+            <table class="table table-hover table-bordered table-theadBG">
+                <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Real Name</th>
+                    <th>Role Name</th>
+                    <th>Current Point</th>
+                    <th>Email</th>
+                    <th>Phone Number </th>
+                    <th>MSN</th>
+                    <th>Skype</th>
+                    <th>QQ</th>
+                    <th>Setting</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr>
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr>
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr class="success">
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr class="error">
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                </tr>
+                <tr class="warning">
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr class="info">
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr>
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                <tr>
+                    <td>rax</td>
+                    <td>夏禹</td>
+                    <td>developer</td>
+                    <td>0</td>
+                    <td>yu.xia@hisoft.com</td>
+                    <td>15040606890</td>
+                    <td>xiaoxia567@hotmail.com</td>
+                    <td>123456</td>
+                    <td>192.168.122.16</td>
+                    <td>－</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>

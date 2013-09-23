@@ -1,6 +1,6 @@
-<div>
+<div class="reunioncontent">
     <div class="feeds-search-tools">
-        <span>Search <input type="text"></span>
+        <span>Search <input type="text" ng-model="query"></span>
         <span>
             <select>
                 <option>Last 7 Days</option>
@@ -8,15 +8,64 @@
             </select>
 
         </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+        <span>Or from <input type="date"  > to <input type="date"> </span>
     </div>
     <div class="feeds_search_condition">
-        <h2>Feeds List:兰蔻品牌（关键词表达式）</h2>
+        <h2>Feeds List:{{source.brand}}（关键词表达式）</h2>
+
         <div class="conditions">
+            Source Type:
+            <div>
+                <ul  >
+                    <li ng-repeat="st in sourceType" >
+                        <label><input    type="checkbox" name="{{st}}"  />{{st}}</label>
+                    </li>
+                </ul>
+            </div> <br>
+            <hr>
+            Professional Sites:
+            <div>
+                <ul  >
+                    <li ng-repeat="st in professionalSites" >
+                        <label><input    type="checkbox" name="{{st}}"  />{{st}}</label>
+                    </li>
+                </ul>
+            </div><br>
+            <hr>
+            TimeFrame:  <span>  from <input type="date"  > to <input type="date"> </span>
+            <hr>
+
+            <div  >
+                <input class="btn btn-primary" type="button" value="Search Again">
+                <input class="btn btn-primary" type="button" value="Search Current Set">
+
+            </div>
 
         </div>
+
     </div>
     <div class="content">
+        <div style="float: left ;width: 400px; margin-right: 20px;margin-left: 40px"    class="s-pk-mod" data-pkid="26">
+            <h5 class="pk-title"><span>图表</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv3'></div>
+            </div>
+        </div>
+
+        <div style="float: left ;width: 400px;"   class="s-pk-mod" data-pkid="27">
+            <h5 class="pk-title"><span>图表</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv4'></div>
+            </div>
+        </div>
+    </div>
     </div>
 </div>

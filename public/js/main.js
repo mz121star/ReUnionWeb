@@ -15,13 +15,16 @@ require.config({
         mcustomscrollbar: '../lib/jquery.mCustomScrollbar.concat.min',
         detectbrowser: '../lib/detectbrowser',
         //res:'../resources/nls/res'
-        ichart: '../lib/ichart.1.2.src'
+        ichart: '../lib/ichart.1.2.src' ,
+        jqueryui:'../lib/jquery-ui-1.10.3.custom'
     },
     shim: {
         'angular': {'exports': 'angular'},
         'angular-resource': {deps: ['angular']},
         'bootstrap': {deps: ['jquery']},
         'mcustomscrollbar': {deps: ['jquery']},
+        'jqueryui':{deps: ['jquery']},
+
         'underscore': {exports: '_'},
         'detectbrowser': {deps: ['modernizr']}
         /*,
