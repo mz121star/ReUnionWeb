@@ -392,6 +392,7 @@ article.blogcontent {
     color: black
 }
 
+#footer{height: 30px;background-color: darkblue}
 /*** dashboard */
 .s-pk-mod {
     background: none;

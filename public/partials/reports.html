@@ -1,1 +1,88 @@
-<div>reports</div>
+<div class="reunioncontent">
+    <div class="feeds-search-tools">
+        <span>Search <input type="text" ng-model="query"></span>
+        <span>
+            <select>
+                <option>Last 7 Days</option>
+                <option>Last month</option>
+            </select>
+
+        </span>
+        <span>Or from <input type="date"> to <input type="date"> </span>
+    </div>
+    <div class="feeds_search_condition">
+        <h2>Reports for:{{source.brand}}（临时Title,可定义）</h2>
+
+        <div class="conditions">
+            Header:
+            <div>
+
+                <ul>
+                    <li ng-repeat="h in headers">
+                        <label><input type="checkbox" name="{{h}}"/>{{h}}</label>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <hr>
+            Features:
+            <div>
+
+                <ul>
+                    <li ng-repeat="f in features">
+                        <label><input type="checkbox" name="{{f}}"/>{{f}}</label>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <hr>
+
+            Sections:
+            <div>
+
+                <ul>
+                    <li ng-repeat="s in sections">
+                        <label><input type="checkbox" name="{{s}}"/>{{s}}</label>
+                    </li>
+                </ul>
+            </div>
+            <br>
+            <hr>
+            Schedule: Every Monday at 08:00
+
+
+            <div>
+                <input class="btn btn-primary" type="button" value="Schedule Report">
+                <input class="btn btn-primary" type="button" value="Generate Report">
+                <input class="btn btn-primary" type="button" value="Save Report As">
+                <input class="btn btn-primary" type="button" value="Email Report">
+            </div>
+
+        </div>
+
+    </div>
+    <div class="content">
+        <div style="float: left ;width: 400px; margin-right: 20px;margin-left: 40px" class="s-pk-mod" data-pkid="26">
+            <h5 class="pk-title"><span>图表</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv3'></div>
+            </div>
+        </div>
+
+        <div style="float: left ;width: 400px;" class="s-pk-mod" data-pkid="27">
+            <h5 class="pk-title"><span>图表</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv4'></div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
