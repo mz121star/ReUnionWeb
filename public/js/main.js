@@ -49,6 +49,7 @@ require(['angular',
     'controllers/index',
     'directives/compare',
     'filter/filters' ,
+    'services/services',
     'routes',
     'detectbrowser'
 ], function (angular) {

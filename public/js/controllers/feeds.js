@@ -2,7 +2,7 @@
 
 define([ 'i18n!resources/nls/res'], function (res) {
 
-    var FeedsController = ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    var FeedsController = ['$scope', '$rootScope', '$http','kimissService' ,function ($scope, $rootScope, $http,kimissService) {
         $rootScope.title = "Feeds - " + res.title;
         $scope.source = {
             brand: "兰蔻品牌"
@@ -15,9 +15,12 @@ define([ 'i18n!resources/nls/res'], function (res) {
         $scope.selectkimiss = function(row){
             $scope.selectedRow = row;
         };
-        $http.get('/kimiss').success(function (data) {
-            $scope.kimiss = data;
-        });
+//        $http.get('/kimiss').success(function (data) {
+//            $scope.kimiss = data;
+//        });
+        kimissService.query().then(function(d){
+            $scope.kimiss =d
+         });
 
     }];
 
