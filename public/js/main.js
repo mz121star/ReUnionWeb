@@ -16,7 +16,8 @@ require.config({
         detectbrowser: '../lib/detectbrowser',
         //res:'../resources/nls/res'
         ichart: '../lib/ichart.1.2.src' ,
-        jqueryui:'../lib/jquery-ui-1.10.3.custom'
+        jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
+        bootstrapModal:'../lib/bootstrap/js/modal'
     },
     shim: {
         'angular': {'exports': 'angular'},
@@ -24,7 +25,7 @@ require.config({
         'bootstrap': {deps: ['jquery']},
         'mcustomscrollbar': {deps: ['jquery']},
         'jqueryui':{deps: ['jquery']},
-
+        'facebox':{deps: ['jquery']},
         'underscore': {exports: '_'},
         'detectbrowser': {deps: ['modernizr']}
         /*,

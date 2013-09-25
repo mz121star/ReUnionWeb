@@ -36,5 +36,32 @@ define(['app'], function (app) {
             }
         };
     });
+    app.directive('sortable', function () {
+        return {
+            link: function (scope, elm, attrs, ctrl) {
+                $(elm).css('cursor','pointer')
+
+                $(elm).on("click", function () {
+                    alert('准备排序')
+                    console.log(attrs);
+                    console.log(scope)              ;
+                })
+            }
+        };
+    });
+    app.directive('showdetail', function () {
+        return {
+            link: function (scope, elm, attrs, ctrl) {
+                $(elm).css('cursor','pointer')
+
+
+                /* $(elm).on("click", function () {
+                     alert('popup')
+                     console.log(elm);
+                     console.log(scope)              ;
+                 })*/
+            }
+        };
+    });
 
 });

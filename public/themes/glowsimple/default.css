@@ -307,7 +307,8 @@ article.blogcontent {
  layout */
 
 #leftmenu {
-    min-width: 220px;;
+    min-width: 220px;
+
     border: 1px solid #c0c0c0;
     padding: 10px 5px;
     background-color: #CCCCCC;
@@ -474,10 +475,10 @@ article.blogcontent {
 }
 
 .feeds_search_condition h2 {
-    background-color: #ccc;
+    background-color: #eee;
 }
 
-.feeds_search_condition .conditions  div{margin-left: 140px}
+.feeds_search_condition .conditions  div{/*margin-left: 140px*/}
 /* 页面*/
 #top_nav .right_nav {
     width: 150px;
@@ -545,3 +546,4 @@ article.blogcontent {
 }
 
 .hidden{display: none}
+.button-group{text-align: center}
