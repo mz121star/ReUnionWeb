@@ -24,7 +24,7 @@
                       <!--  </li>                                                                                 -->
 
                       <li ng-repeat="st in sourcetype"   >
-                           <label><input    type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
+                           <label><input  class="checkbox" uniform    type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
                       </li>
                     </ul>
                 </div>
@@ -35,7 +35,7 @@
                    <h4 class="condition-title"> Professional Sites:</h4>
                     <ul>
                         <li ng-repeat="st in professionalSites">
-                            <label><input   type="checkbox" name="{{st}}"/>{{st}}</label>
+                            <label><input  class="checkbox"  uniform type="checkbox" name="{{st}}"/>{{st}}</label>
                         </li>
                     </ul>
                 </div>

@@ -11,6 +11,7 @@ var user = require('./user');
 var blog = require('./blog');
 var kimiss=require('./kimiss');
 var feeds=require('./feeds');
+var reports=require('./report');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
@@ -23,4 +24,9 @@ module.exports = function (app) {
     app.post('/login', user.login);
     app.get('/logout', user.logout);
     app.get('/checklogin', index.getLoginUser);
+
+    /***
+     * Report
+     */
+    app.get('/2DBarReprot',reports.list);
 };
