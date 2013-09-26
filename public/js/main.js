@@ -15,8 +15,7 @@ require.config({
         mcustomscrollbar: '../lib/jquery.mCustomScrollbar.concat.min',
         detectbrowser: '../lib/detectbrowser',
         //res:'../resources/nls/res'
-        ichart: '../lib/ichart.1.2.src' ,
-        icheck:'../lib/icheck/jquery.icheck',
+        ichart: '../lib/ichart.1.2.src'  ,
         jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
         bootstrapModal:'../lib/bootstrap/js/modal',
         jqueryuniform: '../lib/uniform/jquery.uniform.min',
@@ -31,8 +30,7 @@ require.config({
         'facebox':{deps: ['jquery']},
         'jqueryuniform': {deps: ['jquery']} ,
         'underscore': {exports: '_'},
-        'detectbrowser': {deps: ['modernizr']},
-        'icheck' : {deps: ['jquery']}
+        'detectbrowser': {deps: ['modernizr']}
         /*,
          'res':{exports:'res'}*/
 

@@ -1,4 +1,4 @@
-<div class="reunioncontent" >
+<div class="reunioncontent" uniform>
     <div class="feeds-search-tools">
         <span>Search <input type="text"  ng-model="query"></span>
         <span>
@@ -47,8 +47,8 @@
 
                 <div class="button-group">
                     <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                    <input class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid' type="button" value="Search Current Set">
-                    <input class="btn btn-primary"  ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')"  type="button" value="Export Feed List">
+                    <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid'  > Search Current Set </button>
+                    <button class="btn btn-primary"  ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')"  type="button" >      Export Feed List  </button>
                 </div>
 
             </div>
