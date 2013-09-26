@@ -10,7 +10,6 @@
 
     <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
     <!--<script data-main="js/main-built" src="lib/require/require.min.js"></script>-->
-
     <title ng-bind="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reunion">
@@ -29,6 +28,10 @@
     <link rel="stylesheet" href="css/base.css" type='text/css' media="all"/>
     <link href='themes/glowsimple/default.css' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="themes/admin.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel='stylesheet' href='lib/uniform/themes/default/css/uniform.default.css'/>
 </head>
 
 
@@ -36,49 +39,54 @@
 
 <div class="wrap_top_nav">
     <nav id="top_nav">
-        <span class="logo"><a href="javascript:;"> &nbsp</a></span>
+        <span class="logo"><a href="javascript;"> &nbsp</a></span>
         <ul class="inline-style clearfix" ng-click="setActive($event)">
-               <li ng-repeat="nav in navBars"  ng-click="selectNav($index)" ng-class="{active: $index==selectedRow}">
-                   <a ng-href="{{nav.url}}" ng-bind="nav.name"></a>
-               </li>
+            <li ng-repeat="nav in navBars" ng-click="selectNav($index)" ng-class="{active: $index==selectedRow}">
+                <a ng-href="{{nav.url}}" ng-bind="nav.name"></a>
+            </li>
 
 
         </ul>
         <div class="right_nav">
                <span class="add-on">
-                <a modalbox href="javascript:;" title="message"><i class="icon-envelope" title="message"></i><i class="has_message">2</i> </a>
-                 <a  href="javascript:;" title="settings"><i class="icon-cog" title="Settings"></i> </a>
-                     <a href="javascript:;"><span>Hello,韩青锋</span> </a>
-                         <a href="javascript:;" title="logout"> <i class="icon-signout"></i> </a>
+                <a modalbox href="javascript:;" title="message"><span class="icon-envelope mr20" title="message"></span><span
+                        class="tap-nav-pic">2</span> </a>
+                 <a href="javascript:;" title="settings"><span class="icon-cog mr20" title="Settings"></span> </a>
+                     <a href="javascript:;"><span class=" mr20">Hello,韩青锋</span> </a>
+                         <a href="javascript:;" title="logout"> <span class="icon-signout mr20"></span> </a>
                </span>
 
         </div>
     </nav>
 </div>
-
-
-<div id="leftmenu">
-    <div class="input-append">
-        <input class="span2" id="appendedInputButton" placeholder="search here..." type="text">
-        <button class="btn" type="button">Go!</button>
+    <div class="navigation">
+        <div>
+            <input  type="text" placeholder="Search">
+            <span class="search-pic"></span>
+        </div>
+        <ul class="navr">
+            <li><a>Overview</a><i class="icon-a"></i></li>
+            <li><a>Feeds</a><i class="icon-b"></i>
+                <ul class="second">
+                    <li class="current"><a>Topic1</a></li>
+                    <li><a >Topic2</a></li>
+                    <li><a >Topic3</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
-    <h3><a href="javascript:;"  >Overview</a></h3>
 
-    <h3><a href="javascript:;"  >Feeds</a></h3>
-    <ul>
-
-        <li> <a href="javascript:;">Topic</a> </li>
-        <li> <a href="javascript:;">Topic</a> </li>
-        <li> <a href="javascript:;">Topic</a> </li>
-    </ul>
+    <div class="page" ng-view="">
 
 
+    </div>
+<div class="footer">
+    <nav id="top_nav">
+
+        <span class="footer-message">@2012Pactera US RDS-PDS Octopus Team</span>
+        <span class="footer-logo"><a href="javascript;"> &nbsp</a></span>
+    </nav>
 </div>
-
-
-<div class="page" ng-view=""></div>
- <!--<div id="footer"></div>-->
-
 </body>
 <script type="text/javascript" charset="UTF-8" src="lib/prefixfree.min.js"></script>
 
