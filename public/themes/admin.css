@@ -113,6 +113,7 @@ h5 {
     background: #eeeeee;
     float: left;
     width: 16%;
+    margin-top: 10px;
 }
 
 .navr li {
@@ -181,13 +182,13 @@ h5 {
     background: url("../img/search.png") no-repeat scroll 0 0 transparent !important;
     height: 24px;
     left: 194px;
-    top: 42px;
+    top: 53px;
     position: absolute;
     width: 24px;
 }
 
 .footer {
-    background-color: #007DC8;
+    background-color: #003a83;
     clear: both;
     height: 30px;
 }

@@ -52,6 +52,17 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                 color: '#98c045'
             }
         ];
+
+        var data5 = [
+            {name: 'Baidu', value: 35.75, color: '#9d4a4a'},
+            {name: 'Google', value: 29.84, color: '#5d7f97'},
+            {name: 'Firefox', value: 24.88, color: '#97b3bc'},
+            {name: 'Safari', value: 6.77, color: '#a5aaaa'},
+            {name: 'Opera', value: 2.02, color: '#778088'},
+            {name: 'Other', value: 0.73, color: '#6f83a5'}
+        ];
+
+
         $http.get('/2DBarReprot').success(function(d){
             new iChart.Bar2D({
                 render: 'canvasDiv1',
@@ -73,6 +84,13 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                 shadow_offsety: 1,
                 shadow_offsetx: 1,
                 legend: {enable: false}
+            }).draw();
+
+            new iChart.Pie2D({
+                render: 'canvasDiv5',
+                data: data5,
+                title: '搜索来源',
+                radius: 140
             }).draw();
         })  ;
         $(function () {
@@ -149,21 +167,7 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
             }).draw();
 
 
-            var data5 = [
-                {name: 'IE', value: 35.75, color: '#9d4a4a'},
-                {name: 'Chrome', value: 29.84, color: '#5d7f97'},
-                {name: 'Firefox', value: 24.88, color: '#97b3bc'},
-                {name: 'Safari', value: 6.77, color: '#a5aaaa'},
-                {name: 'Opera', value: 2.02, color: '#778088'},
-                {name: 'Other', value: 0.73, color: '#6f83a5'}
-            ];
 
-            new iChart.Pie2D({
-                render: 'canvasDiv5',
-                data: data5,
-                title: '搜索来源',
-                radius: 140
-            }).draw();
 
             $(".s-pk-mod").draggable({ revert: "invalid" });
             $(".s-pk-col").droppable({
