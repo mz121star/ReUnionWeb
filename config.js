@@ -7,6 +7,6 @@
  */
 module.exports={
     cookieSecret:'reunion',
-    connectionstring:'mongodb://192.168.122.87:27017/weibo_db'
+    connectionstring:'mongodb://192.168.122.87:27017/test_db'
     // connectionstring:'mongodb://localhost/njblog'
 };

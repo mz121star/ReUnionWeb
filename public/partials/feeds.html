@@ -17,10 +17,14 @@
             <div class="conditions">
                 Source Type:
                 <div>
-                    <ul>
-                        <li ng-repeat="st in sourceType">
-                            <label><input type="checkbox" name="{{st}}"/>{{st}}</label>
-                        </li>
+                    <ul  >
+                      <!--  <li ng-repeat="st in sourceType">                                                     -->
+                      <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
+                      <!--  </li>                                                                                 -->
+
+                      <li ng-repeat="st in sourcetype"   >
+                           <label><input type="checkbox" name="fruits[]" ng-checked="st.checked"  ng-model="st.checked" value="{{st}}"/>{{st}}</label>
+                      </li>
                     </ul>
                 </div>
                 <br>
@@ -35,14 +39,14 @@
                 </div>
                 <br>
                 <hr>
-                TimeFrame: <span>  from <input type="date" ng-model="feeds.startTime" name="startTime" required=""> to <input type="date" ng-model="feeds.endTime" > </span>
+                TimeFrame: <span>  from <input type="date" ng-model="feeds.startTime" name="startTime"   required=""> to <input type="date" ng-model="feeds.endTime" > </span>
                 <hr>
                   <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
 
                 <div class="button-group">
                     <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                    <input class="btn btn-primary "  ng-disabled='searchFeedForm.$invalid' type="button" value="Search Current Set">
-                    <input class="btn btn-primary"   type="button" value="Export Feed List">
+                    <input class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid' type="button" value="Search Current Set">
+                    <input class="btn btn-primary"  ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')"  type="button" value="Export Feed List">
                 </div>
 
             </div>
@@ -58,7 +62,7 @@
 
                   </tr>
               </table>-->
-            <table class="table table-hover table-bordered table-theadBG">
+            <table id="feedTable" class="table table-hover table-bordered table-theadBG">
                 <thead>
                 <tr>
                     <th>Num</th>
@@ -69,11 +73,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed.title,feed.source,feed.url)" data-target="#myModal">
-                    <td>{{ $index }}</td>
-                    <td>{{feed.title  }} </td>
-                    <td>{{ feed.source }}</td>
-                    <td>{{ feed.url }}</td>
+                <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+                    <td>{{ $index+1 }}</td>
+                    <td>{{feed.Title  }} </td>
+                    <td>{{ feed.FromSite }}</td>
+                    <td>{{ feed.FromUrl }}</td>
 
                 </tr>
 
@@ -93,6 +97,7 @@
             </div>
             <div class="modal-body">
                 <div>{{modal.title  }}</div>来源:{{modal.source}}
+                <div>{{modal.content  }}</div>
                 <div>{{modal.url  }}</div>
             </div>
             <div class="modal-footer">
@@ -102,3 +107,20 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+ <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+     <div class="modal-dialog">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                 <h4 class="modal-title">Save Tpoic</h4>
+             </div>
+             <div class="modal-body">
+                Topic Name: <input type="text" ng-model="topicName">
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 <button type="button" class="btn btn-primary">Save Topic</button>
+             </div>
+         </div><!-- /.modal-content -->
+     </div><!-- /.modal-dialog -->
+ </div>

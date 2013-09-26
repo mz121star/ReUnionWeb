@@ -1,9 +1,9 @@
 define(['app'], function (app) {
-    app.factory('kimissService', ['$http', '$q', function ($http, $q) {
+    app.factory('FeedService', ['$http', '$q', function ($http, $q) {
         var items = {};
         items.query = function () {
             var delay = $q.defer();
-            $http.get('/kimiss').success(function (data) {
+            $http.get('/feeds').success(function (data) {
                 delay.resolve(data);
             });
             return delay.promise;

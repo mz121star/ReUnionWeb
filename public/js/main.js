@@ -17,7 +17,8 @@ require.config({
         //res:'../resources/nls/res'
         ichart: '../lib/ichart.1.2.src' ,
         jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
-        bootstrapModal:'../lib/bootstrap/js/modal'
+        bootstrapModal:'../lib/bootstrap/js/modal',
+        linqjs:'../lib/linq'
     },
     shim: {
         'angular': {'exports': 'angular'},
