@@ -17,8 +17,8 @@ module.exports = function (app) {
     app.get('/blog', blog.list);
     app.get('/user', user.list);
 
-    app.get('/feeds', feeds.list);
-    app.get('/sourcetype',feeds.sourcetype);
+    app.post('/feeds', feeds.list);
+    app.get('/feedsSourceType',feeds.sourcetype);
     app.post('/signup', user.create);
     app.post('/login', user.login);
     app.get('/logout', user.logout);

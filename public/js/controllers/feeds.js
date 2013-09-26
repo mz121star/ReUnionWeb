@@ -1,8 +1,15 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' ], function (res, excel) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs', 'icheck' ], function (res, excel) {
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
+
+      /* $(function(){
+           $('input').iCheck({
+               checkboxClass: 'icheckbox_minimal-blue',
+               radioClass: 'iradio_minimal-blue'
+           });
+       })*/
         $rootScope.title = "Feeds - " + res.title;
         $scope.source = {
             brand: "兰蔻品牌"
@@ -20,14 +27,15 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 })
                 .Select("$.type")
                 .ToArray();
+            sts=sts.join('|')
             console.log(sts);
 
-            $http.get("/feeds").success(function (d) {
+            $http.post("/feeds",{st:sts}).success(function (d) {
                 console.log($scope.feeds.startTime);
-                $scope.feedContent = Enumerable.From(d)
-                    .Where(function (x) {
+                $scope.feedContent = Enumerable.From(d.feeds)
+                   /* .Where(function (x) {
                         return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
-                    })
+                    })*/
                     .ToArray();
             })
 
@@ -35,9 +43,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
 //        $http.get('/kimiss').success(function (data) {
 //            $scope.kimiss = data;
 //        });
-        FeedService.query().then(function (d) {
+        FeedService.querySourceType().then(function (d) {
             // $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("$.FromType").ToJSON();
-            $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("{type:$.FromType,checked:false}").ToArray();
+            $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
         });
 
         $scope.feeds = {
@@ -57,8 +65,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
             source: "",
             url: ""
         };
-        $http.get("/feeds").success(function (d) {
-            $scope.feedContent = d;
+        $http.post("/feeds").success(function (d) {
+            $scope.feedContent = d.feeds;
         });
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {

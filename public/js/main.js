@@ -16,6 +16,7 @@ require.config({
         detectbrowser: '../lib/detectbrowser',
         //res:'../resources/nls/res'
         ichart: '../lib/ichart.1.2.src' ,
+        icheck:'../lib/icheck/jquery.icheck',
         jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
         bootstrapModal:'../lib/bootstrap/js/modal',
         linqjs:'../lib/linq'
@@ -28,7 +29,8 @@ require.config({
         'jqueryui':{deps: ['jquery']},
         'facebox':{deps: ['jquery']},
         'underscore': {exports: '_'},
-        'detectbrowser': {deps: ['modernizr']}
+        'detectbrowser': {deps: ['modernizr']},
+        'icheck' : {deps: ['jquery']}
         /*,
          'res':{exports:'res'}*/
 

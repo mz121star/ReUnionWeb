@@ -15,25 +15,27 @@
 
         <form novalidate  name="searchFeedForm" >
             <div class="conditions">
-                Source Type:
+
                 <div>
-                    <ul  >
+                    <h4 class="condition-title">Source Type:</h4>
+                    <ul class="condition-cboxs" >
                       <!--  <li ng-repeat="st in sourceType">                                                     -->
                       <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
                       <!--  </li>                                                                                 -->
 
                       <li ng-repeat="st in sourcetype"   >
-                           <label><input type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
+                           <label><input    type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
                       </li>
                     </ul>
                 </div>
                 <br>
                 <hr>
-                Professional Sites:
+
                 <div>
+                   <h4 class="condition-title"> Professional Sites:</h4>
                     <ul>
                         <li ng-repeat="st in professionalSites">
-                            <label><input type="checkbox" name="{{st}}"/>{{st}}</label>
+                            <label><input   type="checkbox" name="{{st}}"/>{{st}}</label>
                         </li>
                     </ul>
                 </div>
@@ -83,6 +85,15 @@
 
                 </tbody>
             </table>
+            <ul class="pagination">
+                <li><a href="javascript:;">&laquo;</a></li>
+                <li><a href="javascript:;">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+                <li><a href="javascript:;">4</a></li>
+                <li><a href="javascript:;">5</a></li>
+                <li><a href="javascript:;">&raquo;</a></li>
+            </ul>
         </div>
 
     </div>

@@ -1,4 +1,4 @@
-define(['app'], function (app) {
+define(['app' ], function (app) {
     app.directive('compare', function () {
         return {
             require: 'ngModel',
@@ -63,5 +63,23 @@ define(['app'], function (app) {
             }
         };
     });
+    app.directive('icheck', function () {
+        require('icheck');
+        return {
 
+            link: function (scope, elm, attrs, ctrl) {
+
+                $(elm).iCheck({
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue'
+                });
+
+                 $(elm).on("click", function () {
+                 alert('popup')
+                 console.log(elm);
+                 console.log(scope)              ;
+                 })
+            }
+        };
+    });
 });
