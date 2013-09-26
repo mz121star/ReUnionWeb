@@ -15,19 +15,24 @@ require.config({
         mcustomscrollbar: '../lib/jquery.mCustomScrollbar.concat.min',
         detectbrowser: '../lib/detectbrowser',
         //res:'../resources/nls/res'
-        ichart: '../lib/ichart.1.2.src',
-        jqueryui: '../lib/jquery-ui-1.10.3.custom',
-        jqueryuniform: '../lib/uniform/jquery.uniform.min'
+        ichart: '../lib/ichart.1.2.src' ,
+        icheck:'../lib/icheck/jquery.icheck',
+        jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
+        bootstrapModal:'../lib/bootstrap/js/modal',
+        jqueryuniform: '../lib/uniform/jquery.uniform.min',
+        linqjs:'../lib/linq'
     },
     shim: {
         'angular': {'exports': 'angular'},
         'angular-resource': {deps: ['angular']},
         'bootstrap': {deps: ['jquery']},
         'mcustomscrollbar': {deps: ['jquery']},
-        'jqueryui': {deps: ['jquery']},
+        'jqueryui':{deps: ['jquery']},
+        'facebox':{deps: ['jquery']},
         'jqueryuniform': {deps: ['jquery']} ,
         'underscore': {exports: '_'},
-        'detectbrowser': {deps: ['modernizr']}
+        'detectbrowser': {deps: ['modernizr']},
+        'icheck' : {deps: ['jquery']}
         /*,
          'res':{exports:'res'}*/
 

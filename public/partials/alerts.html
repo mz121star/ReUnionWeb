@@ -18,13 +18,13 @@
             <div>
                 <ul>
                     <li>
-                        <label> <input type="radio" ng-model="show1" ng-change="showsection1()" name="sex"
+                        <label> <input type="radio" ng-model="show1" ng-change="show2=false" name="sex"
                                        value="Topics"/> Topics</label>
 
                     </li>
                     <li>
 
-                        <label> <input type="radio" ng-model="show2" ng-change="showsection2()" name="sex"
+                        <label> <input type="radio" ng-model="show2" ng-change="show1=false" name="sex"
                                        value="Fresh New"/> Fresh New</label>
                     </li>
                 </ul>
@@ -54,13 +54,26 @@
                  </span>
             <br>
             <hr>
-            TimeFrame: <span>  from <input type="date"> to <input type="date"> </span>
+            RegExpression: <div>  <input type="text"> </div>
             <hr>
+            Valid Period: <div> from <input type="date"> to <input type="date"> </div>
+            <hr>
+            Actions:
+            <div class=" form-inline">
 
+
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+                <input type="text" class="form-control" placeholder="@">
+
+
+            </div>
+            <hr>
             <div>
-                <input class="btn btn-primary" type="button" value="Search Again">
-                <input class="btn btn-primary" type="button" value="Search Current Set">
-
+                <input class="btn btn-primary" type="button" value="Simulate">
+                <input class="btn btn-primary" type="button" value="Save Alert">
+                <input class="btn btn-primary" type="button" value="Export Alert List">
             </div>
 
         </div>

@@ -10,12 +10,15 @@ var index = require('./index');
 var user = require('./user');
 var blog = require('./blog');
 var kimiss=require('./kimiss');
+var feeds=require('./feeds');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
     app.get('/blog', blog.list);
     app.get('/user', user.list);
-    app.get('/kimiss', kimiss.list);
+
+    app.post('/feeds', feeds.list);
+    app.get('/feedsSourceType',feeds.sourcetype);
     app.post('/signup', user.create);
     app.post('/login', user.login);
     app.get('/logout', user.logout);

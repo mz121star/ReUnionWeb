@@ -20,7 +20,6 @@ define(['app',
                 when('/login', {templateUrl: 'partials/login.html', controller: login}).
                 when('/logout', {templateUrl: 'partials/logout.html', controller: logout}).
                 when('/signup', {templateUrl: 'partials/signup.html', controller: singnup}).
-
                 when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: dashboard}).
                 when('/feeds/', {templateUrl: 'partials/feeds.html', controller: feeds}).
                 when('/feeds/:feedId', {templateUrl: 'partials/feeds-detial.html', controller: feeddetail}).
