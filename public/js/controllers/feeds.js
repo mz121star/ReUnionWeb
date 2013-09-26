@@ -51,7 +51,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         $scope.feeds = {
             startTime: '',
             endTime: '',
-            sourceTypeName: ''
+            sourceTypeName: ''  ,
+            description:''
         };
 
         $scope.showDetail = function (feed) {
