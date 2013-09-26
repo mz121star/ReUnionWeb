@@ -4,9 +4,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
 
-        $(function(){
-            $("select, input").uniform();
-        })
+
 
         $rootScope.title = "Feeds - " + res.title;
         $scope.source = {
