@@ -11,9 +11,9 @@ exports.list = function (req, res) {
                     FeedsModel
                         .find({FromType: /搜索/i})
                         .count(function (err, searchfeeds) {
-                            result.push({name:"微博",value:weibofeeds}) ;
-                            result.push({name:"论坛",value:forumofeeds});
-                            result.push({name:"搜索",value:searchfeeds});
+                            result.push({name:"微博",value:weibofeeds,color: '#9d4a4a'}) ;
+                            result.push({name:"论坛",value:forumofeeds,color: '#045004'});
+                            result.push({name:"搜索",value:searchfeeds,color: '#B60A34'});
                                 return res.json(result) ;
 
                         });
