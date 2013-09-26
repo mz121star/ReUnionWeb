@@ -5,13 +5,9 @@
         </select>
     </div>
     or form
-    <input class="Wdate" type="text" id="startDate" placeholder=""
-           onclick="WdatePicker({el:'startDate',isShowClear:false,readOnly:true})"
-           onFocus="var endDate=$dp.$('endDate');WdatePicker({onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})">
+    <input class="Wdate" type="text"/>
     to
-    <input class="Wdate" type="text" id="endDate" placeholder=""
-           onclick="WdatePicker({el:'endDate',isShowClear:false,readOnly:true})"
-           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})">
+    <input class="Wdate" type="text"/>
 
 
     <div class="search_all">
@@ -19,14 +15,17 @@
 
         <div class="search_list clearfix">
             <div class="title">Define Type:</div>
-            <ul class="search_content">
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
-            </ul>
+              <div>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
+
+              </div>
         </div>
         <div class="search_list clearfix">
             <div class="title">RegExpression:</div>
