@@ -411,16 +411,16 @@ article.blogcontent {
 
 /*** dashboard */
 .s-pk-mod {
-    background: none;
+    background: #007dc8;
     width: 398px;
-    border: 1px solid #eee;
+    border: 1px solid #007dc8;
     margin-bottom: 10px;
     position: relative;
 }
 
 .s-pk-mod .pk-title {
     border-bottom: 1px solid #eee;
-    color: #666;
+    color: #fff;
     height: 29px;
     line-height: 30px;
     font-size: 14px;
@@ -428,10 +428,11 @@ article.blogcontent {
     cursor: move;
     position: relative;
     _line-height: 29px;
+    background-color: #007dc8;
 }
 
 .s-pk-mod .pk-title {
-    color: #666;
+    color: #fff;
     line-height: 30px;
     font-size: 14px;
     cursor: move;
