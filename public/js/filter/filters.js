@@ -20,4 +20,13 @@ define(['app'], function (app) {
 
         };
     });
+    app.filter('maxlen', function () {
+        return function (input, text) {
+            var len=text;
+            return input.substring(0,len);
+
+        };
+    });
+
+
 });

@@ -79,7 +79,7 @@
                 <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
                     <td>{{ $index+1 }}</td>
                     <td>{{feed.Title  }} </td>
-                    <td>{{feed.Content  }} </td>
+                    <td>{{feed.Content | maxlen:20  }} </td>
                     <td>{{ feed.FromSite }}</td>
                     <td>{{ feed.FromUrl }}</td>
 
