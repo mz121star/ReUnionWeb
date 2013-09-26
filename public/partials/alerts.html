@@ -1,106 +1,86 @@
-<div class="reunioncontent">
-    <div class="feeds-search-tools">
-        <span>Search <input type="text" ng-model="query"></span>
-        <span>
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last month</option>
-            </select>
-
-        </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+<div class="reunioncontent" uniform xmlns="http://www.w3.org/1999/html">
+    <div class="pull-left">
+        <select>
+            <option value="0">Last 7Days</option>
+        </select>
     </div>
-    <div class="feeds_search_condition">
-        <h2>Alert List:{{source.brand}}（表达式）</h2>
-
-        <div class="conditions">
-            Define Type:
-            <div>
-                <ul>
-                    <li>
-                        <label> <input type="radio" ng-model="show1" ng-change="show2=false" name="sex"
-                                       value="Topics"/> Topics</label>
-
-                    </li>
-                    <li>
-
-                        <label> <input type="radio" ng-model="show2" ng-change="show1=false" name="sex"
-                                       value="Fresh New"/> Fresh New</label>
-                    </li>
-                </ul>
-            </div>
-            <span ng-show="show1">
-              <br>
-            <hr>
-            Choose Topic:
-            <div>
-                <ul>
-                    <li ng-repeat="st in choosetopics">
-                        <label><input type="checkbox" name="{{st}}"/>{{st}}</label>
-                    </li>
-                </ul>
-            </div>  </span>
-            <span ng-show="show2"><br>
-            <hr>
-
-            Source Type:
-            <div>
-                <ul>
-                    <li ng-repeat="st in sourcetype">
-                        <label><input type="checkbox" name="{{st}}"/>{{st}}</label>
-                    </li>
-                </ul>
-            </div>
-                 </span>
-            <br>
-            <hr>
-            RegExpression: <div>  <input type="text"> </div>
-            <hr>
-            Valid Period: <div> from <input type="date"> to <input type="date"> </div>
-            <hr>
-            Actions:
-            <div class=" form-inline">
+    or form
+    <input class="Wdate" type="text" id="startDate" placeholder=""
+           onclick="WdatePicker({el:'startDate',isShowClear:false,readOnly:true})"
+           onFocus="var endDate=$dp.$('endDate');WdatePicker({onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})">
+    to
+    <input class="Wdate" type="text" id="endDate" placeholder=""
+           onclick="WdatePicker({el:'endDate',isShowClear:false,readOnly:true})"
+           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})">
 
 
-                <label>
-                    <input type="checkbox"> Remember me
-                </label>
-                <input type="text" class="form-control" placeholder="@">
+    <div class="search_all">
+        <h2 class="titbg search_list clearfix">Alert List:（表达式）</h2>
 
-
-            </div>
-            <hr>
-            <div>
-                <input class="btn btn-primary" type="button" value="Simulate">
-                <input class="btn btn-primary" type="button" value="Save Alert">
-                <input class="btn btn-primary" type="button" value="Export Alert List">
-            </div>
+        <div class="search_list clearfix">
+            <div class="title">Define Type:</div>
+            <ul class="search_content">
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+                <li class="input_style"><label><input type="radio" class="radio"/>Source</label></li>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">RegExpression:</div>
+            <ul class="search_content">
+                <li class="input_style"><label><input type="text"/></label></li>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">Valid Period:</div>
+            <ul class="search_content">
+                form<input type="text"/> to<input type="text"/>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">Actions: </div>
+            <ul class="search_content">
+                <input type="checkbox" class="checkbox"/>Remember me<input type="text" placeholder="@"/>
+            </ul>
 
         </div>
-
+        <div class="search_list clearfix">
+            <div class="censt">
+                <div>
+                    <input class="btn btn-primary" type="button" value="Schedule Report">
+                    <input class="btn btn-primary" type="button" value="Generate Report">
+                    <input class="btn btn-primary" type="button" value="Save Report As">
+                    <input class="btn btn-primary" type="button" value="Email Report">
+                </div>
+            </div>
+        </div>
     </div>
     <div class="content">
-        <div style="float: left ;width: 400px; margin-right: 20px;margin-left: 40px" class="s-pk-mod" data-pkid="26">
-            <h5 class="pk-title"><span>图表</span>
+        <div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">
+            <h5>
                 <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-                <div class="s-title-bg"></div>
+                <div class="s-title-bg-blue">图表</div>
             </h5>
             <div class="pk-content">
                 <div id='canvasDiv3'></div>
             </div>
         </div>
 
-        <div style="float: left ;width: 400px;" class="s-pk-mod" data-pkid="27">
-            <h5 class="pk-title"><span>图表</span>
+        <div class="s-pk-mod pic-bdle pk-title-red">
+            <h5>
                 <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-                <div class="s-title-bg"></div>
+                <div class="s-title-bg-red">图表</div>
             </h5>
             <div class="pk-content">
                 <div id='canvasDiv4'></div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>

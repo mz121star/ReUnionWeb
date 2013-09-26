@@ -1,88 +1,103 @@
-<div class="reunioncontent">
-    <div class="feeds-search-tools">
-        <span>Search <input type="text" ng-model="query"></span>
-        <span>
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last month</option>
-            </select>
-
-        </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+<div class="reunioncontent" uniform xmlns="http://www.w3.org/1999/html">
+    <div class="pull-left">
+        <select>
+            <option value="0">Last 7Days</option>
+        </select>
     </div>
-    <div class="feeds_search_condition">
-        <h2>Reports for:{{source.brand}}（临时Title,可定义）</h2>
-
-        <div class="conditions">
-            Header:
-            <div>
-
-                <ul>
-                    <li ng-repeat="h in headers">
-                        <label><input type="checkbox" name="{{h}}"/>{{h}}</label>
-                    </li>
-                </ul>
-            </div>
-            <br>
-            <hr>
-            Features:
-            <div>
-
-                <ul>
-                    <li ng-repeat="f in features">
-                        <label><input type="checkbox" name="{{f}}"/>{{f}}</label>
-                    </li>
-                </ul>
-            </div>
-            <br>
-            <hr>
-
-            Sections:
-            <div>
-
-                <ul>
-                    <li ng-repeat="s in sections">
-                        <label><input type="checkbox" name="{{s}}"/>{{s}}</label>
-                    </li>
-                </ul>
-            </div>
-            <br>
-            <hr>
-            Schedule: Every Monday at 08:00
+    or form
+    <input class="Wdate" type="text" id="startDate" placeholder=""
+           onclick="WdatePicker({el:'startDate',isShowClear:false,readOnly:true})"
+           onFocus="var endDate=$dp.$('endDate');WdatePicker({onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})">
+    to
+    <input class="Wdate" type="text" id="endDate" placeholder=""
+           onclick="WdatePicker({el:'endDate',isShowClear:false,readOnly:true})"
+           onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})">
 
 
-            <div>
-                <input class="btn btn-primary" type="button" value="Schedule Report">
-                <input class="btn btn-primary" type="button" value="Generate Report">
-                <input class="btn btn-primary" type="button" value="Save Report As">
-                <input class="btn btn-primary" type="button" value="Email Report">
-            </div>
+
+    <div class="search_all">
+        <h2 class="titbg search_list clearfix">Reports for:{{source.brand}}（临时Title,可定义）</h2>
+
+        <div class="search_list clearfix">
+            <div class="title">Header:</div>
+            <ul class="search_content">
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">Features:</div>
+            <ul class="search_content">
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">Sections:</div>
+            <ul class="search_content">
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
+            </ul>
+        </div>
+        <div class="search_list clearfix">
+            <div class="title">Schedule: </div>
+            <ul class="search_content">
+                <li ><label>Every Monday at 08:00</label></li>
+            </ul>
 
         </div>
-
+        <div class="search_list clearfix">
+            <div class="censt">
+                <div>
+                    <button type="button" class="btn btn-primary">Schedule Report</button>
+                    <button type="button" class="btn btn-primary">Generate Report</button>
+                    <button type="button" class="btn btn-primary">Save Report As</button>
+                    <button type="button" class="btn btn-primary">Email Report</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="content">
-        <div style="float: left ;width: 400px; margin-right: 20px;margin-left: 40px" class="s-pk-mod" data-pkid="26">
-            <h5 class="pk-title"><span>图表</span>
+        <div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">
+            <h5>
                 <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-                <div class="s-title-bg"></div>
+                <div class="s-title-bg-blue">图表</div>
             </h5>
             <div class="pk-content">
                 <div id='canvasDiv3'></div>
             </div>
         </div>
 
-        <div style="float: left ;width: 400px;" class="s-pk-mod" data-pkid="27">
-            <h5 class="pk-title"><span>图表</span>
+        <div class="s-pk-mod pic-bdle pk-title-red">
+            <h5>
                 <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-                <div class="s-title-bg"></div>
+                <div class="s-title-bg-red">图表</div>
             </h5>
             <div class="pk-content">
                 <div id='canvasDiv4'></div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>
