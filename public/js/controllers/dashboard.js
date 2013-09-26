@@ -28,14 +28,12 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
 
         ];
         var data2 = [
-            {name: 'Renren', value: 33.1, color: '#b5bcc5'},
-            {name: 'Facebook', value: 19.14, color: '#b5bcc5'},
-            {name: 'StumbleUpon', value: 13.97, color: '#b5bcc5'},
-            {name: 'reddit', value: 7.44, color: '#b5bcc5'},
-            {name: 'Hi5', value: 5.22, color: '#b5bcc5'},
-            {name: 'LinkedIn', value: 4.85, color: '#b5bcc5'},
-            {name: 'Twitter', value: 4.59, color: '#b5bcc5'},
-            {name: 'Other', value: 11.68, color: '#b5bcc5'}
+            {name: '化妆品', value: 33.1, color: '#b5bcc5'},
+            {name: '促销', value: 19.14, color: '#b5bcc5'},
+            {name: '洗面奶', value: 13.97, color: '#b5bcc5'},
+            {name: '高端', value: 7.44, color: '#b5bcc5'},
+            {name: '奢饰品', value: 5.22, color: '#b5bcc5'}
+
         ];
         var data3 = [
             {
@@ -60,19 +58,9 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                 background_color: '#EEEEEE',
                 data: d,
                 title: '搜索来源柱状图',
-                width:400,
-                coordinate: {
-                    width: 640,
-                    height: 260,
-                    scale: [
-                        {
-                            position: 'bottom',
-                            start_scale: 0,
-                            end_scale: 6500,
-                            scale_space: 500
-                        }
-                    ]
-                },
+                width : 400,
+
+
                 sub_option: {
                     border: {
                         enable: false
@@ -90,13 +78,27 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
         $(function () {
 
 
+            new iChart.Bar2D({
+                render : 'canvasDiv2',
+                data: data2,
+                title : '产品活动关键字',
+                footnote : 'Data from StatCounter',
 
+
+                rectangle:{
+                    listeners:{
+                        drawText:function(r,t){
+                            return t+"%";
+                        }
+                    }
+                }
+            }).draw();
             new iChart.ColumnStacked2D({
                 render: 'canvasDiv3',
                 data: data3,
                 labels: ["亚马逊", "京东" ],
                 title: {
-                    text: '收录情况',
+                    text: '情感分析图',
                     color: '#254d70'
                 },
 
@@ -129,24 +131,6 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                     border: {
                         enable: false
                     }
-                },
-                coordinate: {
-                    background_color: 0,
-                    axis: {
-                        color: '#c0d0e0',
-                        width: 0
-                    },
-                    scale: [
-                        {
-                            position: 'left',
-                            scale_enable: false,
-                            start_scale: 0,
-                            scale_space: 50,
-                            label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                        }
-                    ],
-                    width: 600,
-                    height: 260
                 }
             }).draw();
 
@@ -154,9 +138,9 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
             new iChart.LineBasic2D({
                 render: 'canvasDiv4',
                 data: data,
-                title: '亚马逊收录情况',
+                title: '情感分析时间轴曲线图  ',
 
-                coordinate: {height: '90%', background_color: '#f6f9fa'},
+
                 sub_option: {
                     hollow_inside: false,//设置一个点的亮色在外环的效果
                     point_size: 16
@@ -177,9 +161,10 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: data5,
-                title: 'top 5',
+                title: '搜索来源',
                 radius: 140
             }).draw();
+
             $(".s-pk-mod").draggable({ revert: "invalid" });
             $(".s-pk-col").droppable({
 //                drop: function( event, ui ) {
