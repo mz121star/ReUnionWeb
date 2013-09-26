@@ -39,47 +39,41 @@ define(['app' ], function (app) {
     app.directive('sortable', function () {
         return {
             link: function (scope, elm, attrs, ctrl) {
-                $(elm).css('cursor','pointer')
+                $(elm).css('cursor', 'pointer')
 
                 $(elm).on("click", function () {
                     alert('准备排序')
                     console.log(attrs);
-                    console.log(scope)              ;
+                    console.log(scope);
                 })
             }
         };
     });
     app.directive('showdetail', function () {
+
         return {
             link: function (scope, elm, attrs, ctrl) {
-                $(elm).css('cursor','pointer')
+                $(elm).css('cursor', 'pointer')
 
 
                 /* $(elm).on("click", function () {
-                     alert('popup')
-                     console.log(elm);
-                     console.log(scope)              ;
+                 alert('popup')
+                 console.log(elm);
+                 console.log(scope)              ;
                  })*/
             }
         };
     });
-    app.directive('icheck', function () {
-        require('icheck');
+
+    app.directive('uniform', function () {
+        require('jqueryuniform');
         return {
 
             link: function (scope, elm, attrs, ctrl) {
 
-                $(elm).iCheck({
-                    checkboxClass: 'icheckbox_minimal-blue',
-                    radioClass: 'iradio_minimal-blue'
-                });
-
-                 $(elm).on("click", function () {
-                 alert('popup')
-                 console.log(elm);
-                 console.log(scope)              ;
-                 })
+                $("select, input").uniform();
             }
         };
     });
+
 });

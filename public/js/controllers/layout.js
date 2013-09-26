@@ -1,6 +1,6 @@
 'use strict';
-//TODO Define module
-define(['../app', 'i18n!resources/nls/res', '../../background/images'], function (app, res, images) {
+
+define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuniform'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
     return app.controller('LayoutController', function ($scope, $http, $location) {
@@ -11,6 +11,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
+
         $http.get('/checklogin').success(function (user) {
             $scope.resetLogin(user);
         });
