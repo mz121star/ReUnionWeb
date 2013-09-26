@@ -10,20 +10,24 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
 
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
         $scope.professionalSites = ['CSDN', 'IDC'];
-        $scope.sourceTypeChange = function (e) {
-            console.log(e);
-        };
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
         $scope.searchFeed = function () {
+            var sts = Enumerable.From($scope.sourcetype)
+                .Where(function (x) {
+                    return x.checked === true
+                })
+                .Select("$.type")
+                .ToArray();
+            console.log(sts);
+
             $http.get("/feeds").success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.feedContent = Enumerable.From(d)
                     .Where(function (x) {
-                        return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime
+                        return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
                     })
-                    /*.Where("$.CrawlerTime>"+$scope.feeds.startTime)*/
                     .ToArray();
             })
 
@@ -32,7 +36,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
 //            $scope.kimiss = data;
 //        });
         FeedService.query().then(function (d) {
-            $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("$.FromType").ToArray();
+            // $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("$.FromType").ToJSON();
+            $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("{type:$.FromType,checked:false}").ToArray();
         });
 
         $scope.feeds = {
@@ -54,9 +59,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
         };
         $http.get("/feeds").success(function (d) {
             $scope.feedContent = d;
-        }) ;
+        });
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
-
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
                 $scope.warning = "开始不能大于结束";
                 $scope.searchFeedForm.$invalid = true;
@@ -65,10 +69,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 $scope.warning = ""
                 $scope.searchFeedForm.$invalid = false;
             }
-
         });
-        $scope.exportExcel=function(tname,excelname){
-               excel(tname,excelname);
+        $scope.exportExcel = function (tname, excelname) {
+            excel(tname, excelname);
         }
     }];
 

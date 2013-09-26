@@ -23,7 +23,7 @@
                       <!--  </li>                                                                                 -->
 
                       <li ng-repeat="st in sourcetype"   >
-                           <label><input type="checkbox" name="fruits[]" ng-checked="st.checked"  ng-model="st.checked" value="{{st}}"/>{{st}}</label>
+                           <label><input type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
                       </li>
                     </ul>
                 </div>
