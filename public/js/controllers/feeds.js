@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs', 'icheck' ], function (res, excel) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' ], function (res, excel) {
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
 
