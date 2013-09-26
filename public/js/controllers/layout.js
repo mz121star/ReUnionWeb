@@ -1,5 +1,5 @@
 'use strict';
-//TODO Define module
+
 define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuniform'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
@@ -11,6 +11,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuni
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
+
         $http.get('/checklogin').success(function (user) {
             $scope.resetLogin(user);
         });
