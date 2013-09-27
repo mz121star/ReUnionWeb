@@ -12,7 +12,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 name: '北京',
                 value: [-9, 1, 12, 20, 26, 30, 32, 29, 22, 12, 0, -6],
                 color: '#1f7e92',
-                line_width: 3
+                line_width: 2
+            }
+            ,
+            {
+                name: '天津',
+                value: [4, 11, 2, 4, 5, 23, 11, 32, 12, 22, 29, -3],
+                color: '#1f7e92',
+                line_width: 2
             }
         ];
 
@@ -85,32 +92,43 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 shadow_offsetx: 1,
                 legend: {enable: false}
             }).draw();
-
+        });
+        $http.get('/SearchSource').success(function (searchSourceDate) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
-                data: data5,
+                data: searchSourceDate,
                 title: '搜索来源',
+                legend: {
+                    enable: true
+                },
+                showpercent: true,
                 radius: 140
             }).draw();
         });
         $(function () {
 
-
-            new iChart.Bar2D({
-                render: 'canvasDiv2',
-                data: data2,
-                title: '产品活动关键字',
-                footnote: 'Data from StatCounter',
-
-
-                rectangle: {
-                    listeners: {
-                        drawText: function (r, t) {
-                            return t + "%";
-                        }
+            $http.get('/TopicKeywordReport').success(function (d2) {
+                new iChart.Bar2D({
+                    render: 'canvasDiv2',
+                    data: d2,
+                    title: '产品活动关键字',
+                    width: 400,
+                    offsetx: 17,
+                    padding: 25,
+                    coordinate: {
+                        scale: [
+                            {
+                                position: 'bottom',
+                                listeners: {
+                                    parseText: function (t, x, y) {
+                                        return {text: t}
+                                    }
+                                }
+                            }
+                        ]
                     }
-                }
-            }).draw();
+                }).draw();
+            })
             new iChart.ColumnStacked2D({
                 render: 'canvasDiv3',
                 data: data3,
@@ -192,15 +210,16 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             context.font = "30px  Helvetica,arial";
             context.fillText("卸妆液", 250, 210);
 
-  /*          $(".s-pk-mod").draggable({ revert: "invalid" });
+
+            $(".s-pk-mod").draggable({ revert: "invalid" });
             $(".s-pk-col").droppable({
-                drop: function( event, ui ) {
-                    $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
-                }
-            });*/
+//                drop: function( event, ui ) {
+//                    $( this )
+//                        .addClass( "ui-state-highlight" )
+//                        .find( "p" )
+//                        .html( "Dropped!" );
+//                }
+            });
         });
 
 
