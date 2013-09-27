@@ -1,8 +1,8 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichart) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart) {
 
-    var DashboardController = ['$scope', '$rootScope', '$http',function ($scope, $rootScope,$http) {
+    var DashboardController = ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
         $rootScope.title = "Dashboard - " + res.title;
         //定义数据
         //定义数据
@@ -63,13 +63,13 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
         ];
 
 
-        $http.get('/2DBarReprot').success(function(d){
+        $http.get('/2DBarReprot').success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
                 background_color: '#EEEEEE',
                 data: d,
                 title: '搜索来源柱状图',
-                width : 400,
+                width: 400,
 
 
                 sub_option: {
@@ -92,21 +92,21 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                 title: '搜索来源',
                 radius: 140
             }).draw();
-        })  ;
+        });
         $(function () {
 
 
             new iChart.Bar2D({
-                render : 'canvasDiv2',
+                render: 'canvasDiv2',
                 data: data2,
-                title : '产品活动关键字',
-                footnote : 'Data from StatCounter',
+                title: '产品活动关键字',
+                footnote: 'Data from StatCounter',
 
 
-                rectangle:{
-                    listeners:{
-                        drawText:function(r,t){
-                            return t+"%";
+                rectangle: {
+                    listeners: {
+                        drawText: function (r, t) {
+                            return t + "%";
                         }
                     }
                 }
@@ -166,18 +166,41 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                 labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
             }).draw();
 
+            var canvas = document.getElementById('canvasDiv6');
+            var context = canvas.getContext('2d');
 
+            context.fillStyle = "#ff0000";
+            context.textBaseline = "top";
+            context.font = " 50px  Helvetica,arial";
+            context.fillText("兰蔻", 100, 100);
+            context.fillStyle = "#000";
+            context.font = " 20px  Helvetica,arial";
+            context.fillText("雅诗兰黛", 1, 100);
+            context.fillStyle = "#300";
+            context.font = " 18px  Helvetica,arial";
+            context.fillText("兰蔻唇彩", 20, 150);
+            context.fillStyle = "#600";
+            context.font = " 60px  Helvetica,arial";
+            context.fillText("唇彩", 140, 50);
+            context.fillStyle = "#090";
+            context.font = " 28px  Helvetica,arial";
+            context.fillText("睫毛膏", 200, 10);
+            context.fillStyle = "#009";
+            context.font = " 14px  Helvetica,arial";
+            context.fillText("2013化妆品", 100, 210);
+            context.fillStyle = "#0ac";
+            context.font = "30px  Helvetica,arial";
+            context.fillText("卸妆液", 250, 210);
 
-
-            $(".s-pk-mod").draggable({ revert: "invalid" });
+  /*          $(".s-pk-mod").draggable({ revert: "invalid" });
             $(".s-pk-col").droppable({
-//                drop: function( event, ui ) {
-//                    $( this )
-//                        .addClass( "ui-state-highlight" )
-//                        .find( "p" )
-//                        .html( "Dropped!" );
-//                }
-            });
+                drop: function( event, ui ) {
+                    $( this )
+                        .addClass( "ui-state-highlight" )
+                        .find( "p" )
+                        .html( "Dropped!" );
+                }
+            });*/
         });
 
 
