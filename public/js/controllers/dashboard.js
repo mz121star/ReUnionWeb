@@ -1,8 +1,8 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichart) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart) {
 
-    var DashboardController = ['$scope', '$rootScope', '$http',function ($scope, $rootScope,$http) {
+    var DashboardController = ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
         $rootScope.title = "Dashboard - " + res.title;
         //定义数据
         //定义数据
@@ -127,7 +127,7 @@ define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichar
                             }
                         ]
                     }
-                }
+                })
             }).draw();
             new iChart.ColumnStacked2D({
                 render: 'canvasDiv3',
