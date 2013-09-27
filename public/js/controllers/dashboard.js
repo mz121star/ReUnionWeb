@@ -127,8 +127,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                             }
                         ]
                     }
-                })
-            }).draw();
+                }).draw();
+            })
             new iChart.ColumnStacked2D({
                 render: 'canvasDiv3',
                 data: data3,
