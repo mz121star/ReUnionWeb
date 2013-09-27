@@ -29,4 +29,5 @@ module.exports = function (app) {
      * Report
      */
     app.get('/2DBarReprot',reports.list);
+    app.get('/TopicKeywordReport',reports.TopicKeywordReport);
 };
