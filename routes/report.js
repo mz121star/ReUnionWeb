@@ -28,13 +28,25 @@ exports.TopicKeywordReport = function (req, res) {
 
 };
 exports.test = function (req, res) {
+    /*  FeedsModel.aggregate(
+     { $group: { _id:{name:'$FromType'} ,value: { $sum: '$Semantic' } } }
+     , { $project: {_id:0, name:"$_id.name",value:1 } }
+     */
+    /*   , { $sort: { "_id.month_joined": 1 } } */
+    /*
+     , function (err, d) {
+     if (err) return err;
+     return res.json(d); // [ { maxAge: 98 } ]
+     })*/
+
     FeedsModel.aggregate(
-        { $group: { _id: null ,count: { $sum: '$Keyword' } } }
-        /* , { $project: { month_joined: { $month: "$joined" } } }*/
-        /*   , { $sort: { "_id.month_joined": 1 } } */
-        , function (err, res) {
+        { $group: { _id: {time: '$CrawlerTime', semantic: "$Semantic"}, value: { $sum: '$Semantic' } } }
+        , { $project: {_id: 0, time: "$_id.time", value: 1 } }
+        , {$match: {}}
+
+        , function (err, d) {
             if (err) return err;
-            return res.json(res); // [ { maxAge: 98 } ]
+            return res.json(d); // [ { maxAge: 98 } ]
         })
 
 };
