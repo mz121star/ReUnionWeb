@@ -32,7 +32,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                    /* .Where(function (x) {
                         return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
                     })*/
-                    .ToArray();
+                    .ToArray().reverse();
             })
 
         };
@@ -45,8 +45,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         });
 
         $scope.feeds = {
-            startTime: '',
-            endTime: '',
+            startTime: '2013-01-12',
+            endTime: '2013-11-12',
             sourceTypeName: ''  ,
             description:''
         };

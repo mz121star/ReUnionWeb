@@ -1,11 +1,12 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart) {
+define([ 'i18n!resources/nls/res', 'ichart' ,  'jqueryui'], function (res, ichart) {
 
-    var DashboardController = ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    var DashboardController = ['$scope', '$rootScope', '$http',function ($scope, $rootScope,$http) {
         $rootScope.title = "Dashboard - " + res.title;
         //定义数据
         //定义数据
+
         var data = [
             {
                 name: '北京',
@@ -21,6 +22,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 line_width: 2
             }
         ];
+
         var data1 = [
             {name: 'Civic', value: 6078, color: '#97b3bc'},
             {name: 'Accord', value: 5845, color: '#FF3333'},
@@ -30,6 +32,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             {name: 'Ridgeline', value: 2389, color: '#9d4a4a'},
             {name: 'Prlus', value: 2147, color: '#eee8aa'}
 
+
+        ];
+        var data2 = [
+            {name: '化妆品', value: 33.1, color: '#b5bcc5'},
+            {name: '促销', value: 19.14, color: '#b5bcc5'},
+            {name: '洗面奶', value: 13.97, color: '#b5bcc5'},
+            {name: '高端', value: 7.44, color: '#b5bcc5'},
+            {name: '奢饰品', value: 5.22, color: '#b5bcc5'}
 
         ];
         var data3 = [
@@ -117,8 +127,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                             }
                         ]
                     }
-                }).draw();
-            });
+                }
+            }).draw();
             new iChart.ColumnStacked2D({
                 render: 'canvasDiv3',
                 data: data3,
@@ -173,6 +183,32 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 },
                 labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
             }).draw();
+
+            var canvas = document.getElementById('canvasDiv6');
+            var context = canvas.getContext('2d');
+
+            context.fillStyle = "#ff0000";
+            context.textBaseline = "top";
+            context.font = " 50px  Helvetica,arial";
+            context.fillText("兰蔻", 100, 100);
+            context.fillStyle = "#000";
+            context.font = " 20px  Helvetica,arial";
+            context.fillText("雅诗兰黛", 1, 100);
+            context.fillStyle = "#300";
+            context.font = " 18px  Helvetica,arial";
+            context.fillText("兰蔻唇彩", 20, 150);
+            context.fillStyle = "#600";
+            context.font = " 60px  Helvetica,arial";
+            context.fillText("唇彩", 140, 50);
+            context.fillStyle = "#090";
+            context.font = " 28px  Helvetica,arial";
+            context.fillText("睫毛膏", 200, 10);
+            context.fillStyle = "#009";
+            context.font = " 14px  Helvetica,arial";
+            context.fillText("2013化妆品", 100, 210);
+            context.fillStyle = "#0ac";
+            context.font = "30px  Helvetica,arial";
+            context.fillText("卸妆液", 250, 210);
 
 
             $(".s-pk-mod").draggable({ revert: "invalid" });

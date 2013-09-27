@@ -30,5 +30,6 @@ module.exports = function (app) {
      */
     app.get('/2DBarReprot',reports.list);
     app.get('/TopicKeywordReport',reports.TopicKeywordReport);
+    app.get('/Test',reports.test);
     app.get('/SearchSource',reports.SearchSource);
 };
