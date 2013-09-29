@@ -72,6 +72,7 @@ exports.TopicKeywordReport = function (req, res) {
             });
     });
 };
+//饼图
 exports.SearchSource = function (req, res) {
     var o = {};
     o.map = function () {
