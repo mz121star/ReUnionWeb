@@ -186,6 +186,43 @@ exports.SentimentAnalysis = function (req, res) {
             });
     });
 };
+exports.keyWordCloud=function(req,res){
+    var o = {};
+    o.map = function () {
+        var keywords = this.Keyword.split(';');
+        for (var i in keywords) {
+            if (keywords[i].trim() !== "");
+            emit(keywords[i], 1);
+        }
+
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+    };
+
+    o.finalize = function (k, reduced) {
+        return {name: k, value: reduced}
+    }
+
+    o.out = { replace: 'keywordsColudForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+        model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result = [];
+                for (var d in docs) {
+                    docs[d].value.color = utils.randomColor();
+                    result.push(docs[d].value);
+                }
+                return res.json(result);
+            });
+    });
+}
 exports.test = function (req, res) {
     var o = {};
 

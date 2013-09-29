@@ -106,23 +106,23 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                     enable: true
                 },
                 showpercent: true,
-                radius: 140 ,
-                sub_option : {
-                    label : {
-                        background_color:null,
-                        sign:false,//设置禁用label的小图标
-                        padding:'0 4',
-                        border:{
-                            enable:false,
-                            color:'#666666'
+                radius: 140,
+                sub_option: {
+                    label: {
+                        background_color: null,
+                        sign: false,//设置禁用label的小图标
+                        padding: '0 4',
+                        border: {
+                            enable: false,
+                            color: '#666666'
                         },
-                        fontsize:12,
-                        fontweight:600,
-                        color : '#4572a7'
+                        fontsize: 12,
+                        fontweight: 600,
+                        color: '#4572a7'
                     },
-                    border : {
-                        width : 2,
-                        color : '#ffffff'
+                    border: {
+                        width: 2,
+                        color: '#ffffff'
                     }
                 }
             }).draw();
@@ -195,7 +195,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             }).draw();
 
 //            $http.get('/SentimentAnalysis').success(function (d4) {
-            $http.get('/SentimentAnalysis').success(function(d){
+            $http.get('/SentimentAnalysis').success(function (d) {
                 new iChart.LineBasic2D({
                     render: 'canvasDiv4',
                     data: d,
@@ -204,13 +204,13 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                         enable: true,
                         shadow: true
                     },
-                    legend : {
-                        enable : true,
-                        sign:'bar',
-                        background_color:null,//设置透明背景
-                        offsetx:19,//设置x轴偏移，满足位置需要
-                        offsety:-20,//设置y轴偏移，满足位置需要
-                        border : true
+                    legend: {
+                        enable: true,
+                        sign: 'bar',
+                        background_color: null,//设置透明背景
+                        offsetx: 19,//设置x轴偏移，满足位置需要
+                        offsety: -20,//设置y轴偏移，满足位置需要
+                        border: true
                     },
                     sub_option: {
                         hollow_inside: false,//设置一个点的亮色在外环的效果
@@ -221,42 +221,40 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             })
 //            });
 
-            var canvas = document.getElementById('canvasDiv6');
-            var context = canvas.getContext('2d');
 
-            context.fillStyle = "#ff0000";
-            context.textBaseline = "top";
-            context.font = " 50px  Helvetica,arial";
-            context.fillText("兰蔻", 100, 100);
-            context.fillStyle = "#000";
-            context.font = " 20px  Helvetica,arial";
-            context.fillText("雅诗兰黛", 1, 100);
-            context.fillStyle = "#300";
-            context.font = " 18px  Helvetica,arial";
-            context.fillText("兰蔻唇彩", 20, 150);
-            context.fillStyle = "#600";
-            context.font = " 60px  Helvetica,arial";
-            context.fillText("唇彩", 140, 50);
-            context.fillStyle = "#090";
-            context.font = " 28px  Helvetica,arial";
-            context.fillText("睫毛膏", 200, 10);
-            context.fillStyle = "#009";
-            context.font = " 14px  Helvetica,arial";
-            context.fillText("2013化妆品", 100, 210);
-            context.fillStyle = "#0ac";
-            context.font = "30px  Helvetica,arial";
-            context.fillText("卸妆液", 250, 210);
+            $http.get('/KeyWordCloud').success(function (d2) {
+                var canvas = document.getElementById('canvasDiv6');
+                var context = canvas.getContext('2d');
+                context.fillStyle = "#ff0000";
+                context.textBaseline = "top";
+                context.font = " 50px  Helvetica,arial";
+                for(var i in d2){
+                    var v=d2[i];
+                    context.fillText(v.name, Math.round(Math.random()*200),  Math.round(Math.random()*200));
+                    context.fillStyle = v.color;
+                    if(v.value>100)
+                        v.value=v.value/3;
+                    else if(v.value<14)
+                        v.value= v.value;
+                    else if(v.value>30)
+                        v.value= v.value/2;
+
+                    context.font = v.value+"px  Helvetica,arial";
+                }
 
 
- /*           $(".s-pk-mod").draggable({ revert: "invalid" });
-            $(".s-pk-col").droppable({
-//                drop: function( event, ui ) {
-//                    $( this )
-//                        .addClass( "ui-state-highlight" )
-//                        .find( "p" )
-//                        .html( "Dropped!" );
-//                }
-            });*/
+
+
+            });
+            /*           $(".s-pk-mod").draggable({ revert: "invalid" });
+             $(".s-pk-col").droppable({
+             //                drop: function( event, ui ) {
+             //                    $( this )
+             //                        .addClass( "ui-state-highlight" )
+             //                        .find( "p" )
+             //                        .html( "Dropped!" );
+             //                }
+             });*/
         });
 
 

@@ -33,5 +33,6 @@ module.exports = function (app) {
     app.get('/Test',reports.test);
     app.get('/SearchSource',reports.SearchSource);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
+    app.get('/KeyWordCloud',reports.keyWordCloud);
 
 };
