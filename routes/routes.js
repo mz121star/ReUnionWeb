@@ -32,4 +32,6 @@ module.exports = function (app) {
     app.get('/TopicKeywordReport',reports.TopicKeywordReport);
     app.get('/Test',reports.test);
     app.get('/SearchSource',reports.SearchSource);
+    app.get('/SentimentAnalysis',reports.SentimentAnalysis);
+
 };
