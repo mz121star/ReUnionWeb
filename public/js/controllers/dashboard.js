@@ -248,7 +248,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             context.fillText("卸妆液", 250, 210);
 
 
-            $(".s-pk-mod").draggable({ revert: "invalid" });
+       /*     $(".s-pk-mod").draggable({ revert: "invalid" });
             $(".s-pk-col").droppable({
 //                drop: function( event, ui ) {
 //                    $( this )
@@ -258,7 +258,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
 //                }
             });
         });
-
+*/
 
     }];
 
