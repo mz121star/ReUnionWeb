@@ -89,3 +89,14 @@ exports.escape = function(html){
 exports.xss = function (html) {
   return xss(html);
 };
+
+
+var randomRange=function(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+exports.randomColor=function(){
+
+        var color = randomRange(0, 0xFFFFFF);
+        return '#' + ('000000' + color.toString(16)).slice(-6);
+
+}
