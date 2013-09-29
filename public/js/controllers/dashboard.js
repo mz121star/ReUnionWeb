@@ -51,17 +51,17 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
         var data3 = [
             {
                 name: '一月',
-                value: [45, 52, 54],
+                value: [45, 52, 54, 60],
                 color: '#4f81bd'
             },
             {
                 name: '二月',
-                value: [60, 80, 105],
+                value: [60, 80, 105, 80],
                 color: '#bd4d4a'
             },
             {
                 name: '三月',
-                value: [50, 70, 120],
+                value: [50, 70, 120, 100],
                 color: '#98c045'
             }
         ];
@@ -81,34 +81,50 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 render: 'canvasDiv1',
                 background_color: '#EEEEEE',
                 data: d,
-                title: '搜索来源柱状图',
-                width: 400,
-
-
-                sub_option: {
-                    border: {
-                        enable: false
-                    },
-                    label: {color: '#333333'}
-                },
-                shadow: true,
-                shadow_color: '#8d8d8d',
-                shadow_blur: 1,
-                shadow_offsety: 1,
-                shadow_offsetx: 1,
-                legend: {enable: false}
+                title: '搜索来源条型图',
+                coordinate: {
+                    scale: [
+                        {
+                            position: 'bottom',
+                            listeners: {
+                                parseText: function (t, x, y) {
+                                    return {text: t}
+                                }
+                            },
+                            label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                        }
+                    ]
+                }
             }).draw();
         });
-        $http.get('/SearchSource').success(function (searchSourceDate) {
+        $http.get('/SearchSource').success(function (a) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
-                data: searchSourceDate,
+                data: a,
                 title: '搜索来源',
                 legend: {
                     enable: true
                 },
                 showpercent: true,
-                radius: 140
+                radius: 140 ,
+                sub_option : {
+                    label : {
+                        background_color:null,
+                        sign:false,//设置禁用label的小图标
+                        padding:'0 4',
+                        border:{
+                            enable:false,
+                            color:'#666666'
+                        },
+                        fontsize:12,
+                        fontweight:600,
+                        color : '#4572a7'
+                    },
+                    border : {
+                        width : 2,
+                        color : '#ffffff'
+                    }
+                }
             }).draw();
         });
         $(function () {
@@ -129,7 +145,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                                     parseText: function (t, x, y) {
                                         return {text: t}
                                     }
-                                }
+                                },
+                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
                             }
                         ]
                     }
@@ -143,49 +160,64 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                     text: '情感分析图',
                     color: '#254d70'
                 },
-
-                label: {color: '#254d70', fontsize: 12, fontweight: 300},
+                label: {color: '#254d70', fontsize: 12, fontweight: 600},
                 percent: true,//标志为百分比堆积图
                 showpercent: true,
                 decimalsnum: 1,
-                background_color : '#ffffff',
-                legend:{
-                    enable:true,
-                    background_color : null,
-                    border : {
-                        enable : false
-                    }   ,
-                    offsetx:19,//设置x轴偏移，满足位置需要
-                    offsety:-20,//设置y轴偏移，满足位置需要
+                tip: {
+                    enable: true,
+                    shadow: true
+                },
+                legend: {
+                    enable: true,
+                    background_color: null,
+                    border: {
+                        enable: false
+                    },
+                    offsetx: 19,//设置x轴偏移，满足位置需要
+                    offsety: -20//设置y轴偏移，满足位置需要
+                },
+                coordinate: {
+                    axis: {
+                        color: '#c0d0e0',
+                        width: 0
+                    },
+                    scale: [
+                        {
+                            position: 'left',
+                            scale_enable: false,
+                            start_scale: 0,
+                            scale_space: 50,
+                            label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                        }
+                    ]
                 }
             }).draw();
 
 //            $http.get('/SentimentAnalysis').success(function (d4) {
-            $http.get('/SentimentAnalysis').success(function(d){
-                new iChart.LineBasic2D({
-                    render: 'canvasDiv4',
-                    data: d,
-                    title: '情感分析时间轴曲线图  ',
-                    tip: {
-                        enable: true,
-                        shadow: true
-                    },
-                    legend : {
-                        enable : true,
-                        sign:'bar',
-                        background_color:null,//设置透明背景
-                        offsetx:19,//设置x轴偏移，满足位置需要
-                        offsety:-20,//设置y轴偏移，满足位置需要
-                        border : true
-                    },
-                    sub_option: {
-                        hollow_inside: false,//设置一个点的亮色在外环的效果
-                        point_size: 10
-                    },
-                    labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-                }).draw();
-            })
+            new iChart.LineBasic2D({
+                render: 'canvasDiv4',
+                data: data,
+                title: '情感分析时间轴曲线图  ',
+                tip: {
+                    enable: true,
+                    shadow: true
+                },
+                legend: {
+                    enable: true,
+                    sign: 'bar',
+                    background_color: null,//设置透明背景
+                    offsetx: 19,//设置x轴偏移，满足位置需要
+                    offsety: -20,//设置y轴偏移，满足位置需要
+                    border: true
+                },
+                sub_option: {
+                    hollow_inside: false,//设置一个点的亮色在外环的效果
+                    point_size: 10
+                },
 
+                labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+            }).draw();
 //            });
 
             var canvas = document.getElementById('canvasDiv6');
