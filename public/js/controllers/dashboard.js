@@ -161,28 +161,31 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             }).draw();
 
 //            $http.get('/SentimentAnalysis').success(function (d4) {
-            new iChart.LineBasic2D({
-                render: 'canvasDiv4',
-                data: data,
-                title: '情感分析时间轴曲线图  ',
-                tip: {
-                    enable: true,
-                    shadow: true
-                },
-                legend : {
-                    enable : true,
-                    sign:'bar',
-                    background_color:null,//设置透明背景
-                    offsetx:19,//设置x轴偏移，满足位置需要
-                    offsety:-20,//设置y轴偏移，满足位置需要
-                    border : true
-                },
-                sub_option: {
-                    hollow_inside: false,//设置一个点的亮色在外环的效果
-                    point_size: 10
-                },
-                labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-            }).draw();
+            $http.get('/SentimentAnalysis').success(function(d){
+                new iChart.LineBasic2D({
+                    render: 'canvasDiv4',
+                    data: d,
+                    title: '情感分析时间轴曲线图  ',
+                    tip: {
+                        enable: true,
+                        shadow: true
+                    },
+                    legend : {
+                        enable : true,
+                        sign:'bar',
+                        background_color:null,//设置透明背景
+                        offsetx:19,//设置x轴偏移，满足位置需要
+                        offsety:-20,//设置y轴偏移，满足位置需要
+                        border : true
+                    },
+                    sub_option: {
+                        hollow_inside: false,//设置一个点的亮色在外环的效果
+                        point_size: 10
+                    },
+                    labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+                }).draw();
+            })
+
 //            });
 
             var canvas = document.getElementById('canvasDiv6');
