@@ -78,6 +78,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         });
         $scope.exportExcel = function (tname, excelname) {
             excel(tname, excelname);
+        }  ;
+        $rootScope.Topics=[{name:"topic1"},{name:"topic2"}]
+
+        $scope.saveTopic=function(){
+
         }
     }];
 

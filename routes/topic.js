@@ -1,4 +1,4 @@
-var FeedsModel = require("./../models").Feeds;
+var TopicModel = require("./../models").Topic;
 exports.list = function (req, res) {
     console.log(req.body.st);
     var sts = req.body.st;
@@ -15,9 +15,9 @@ exports.list = function (req, res) {
     }
 
     FeedsModel.find(queryCondition)
-          .limit(20)
+        .limit(20)
         /*.select('childs')*/
-         .exec(function (err, feeds) {
+        .exec(function (err, feeds) {
             return res.json({
                 "feeds": feeds,
                 "count": feeds.length
@@ -25,12 +25,20 @@ exports.list = function (req, res) {
         });
 
 };
-exports.sourcetype = function (req, res) {
-    FeedsModel
-        .find()
-        /*.limit(20)*/
-        .select('FromType')
-        .distinct('FromType', function (err, feeds) {
-            return res.json(feeds);
-        });
+/***
+ * POST /topic
+ * {name:"topicName"}
+ * @param req
+ * @param res
+ */
+exports.saveTopic = function (req, res) {
+    var topic = new TopicModel(req.body);
+    topic.save(function(err,date){
+        if (err) {
+            return res.json({err: err});
+        }
+
+        res.json(data);
+    })
+
 }

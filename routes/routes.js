@@ -12,6 +12,7 @@ var blog = require('./blog');
 var kimiss=require('./kimiss');
 var feeds=require('./feeds');
 var reports=require('./report');
+var topic=require('./topic');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
@@ -34,5 +35,11 @@ module.exports = function (app) {
     app.get('/SearchSource',reports.SearchSource);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
+
+
+    /***
+     * Topics
+     */
+    app.post('/topic',topic.saveTopic);
 
 };
