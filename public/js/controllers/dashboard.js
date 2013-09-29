@@ -9,16 +9,22 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
 
         var data = [
             {
-                name: '北京',
-                value: [-9, 1, 12, 20, 26, 30, 32, 29, 22, 12, 0, -6],
-                color: '#1f7e92',
+                name: '好评',
+                value: [9, 1, 12, 20, 26, 30, 32, 29, 22, 12, 0, 6],
+                color: '#4f81bd',
                 line_width: 2
             }
             ,
             {
-                name: '天津',
-                value: [4, 11, 2, 4, 5, 23, 11, 32, 12, 22, 29, -3],
-                color: '#1f7e92',
+                name: '中评',
+                value: [4, 11, 2, 4, 5, 23, 11, 32, 12, 22, 29, 15],
+                color: '#bd4d4a',
+                line_width: 2
+            },
+            {
+                name: '差评',
+                value: [25, 23, 34, 53, 23, 41, 12, 11, 12, 55, 34, 23],
+                color: '#98c045',
                 line_width: 2
             }
         ];
@@ -45,17 +51,17 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
         var data3 = [
             {
                 name: '一月',
-                value: [45, 52, 54, 60],
+                value: [45, 52, 54],
                 color: '#4f81bd'
             },
             {
                 name: '二月',
-                value: [60, 80, 105, 80],
+                value: [60, 80, 105],
                 color: '#bd4d4a'
             },
             {
                 name: '三月',
-                value: [50, 70, 120, 100],
+                value: [50, 70, 120],
                 color: '#98c045'
             }
         ];
@@ -138,51 +144,46 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                     color: '#254d70'
                 },
 
-
-                column_width: 90,
-                background_color: '#ffffff',
-                shadow: true,
-                shadow_blur: 2,
-                shadow_color: '#aaaaaa',
-                shadow_offsetx: 1,
-                shadow_offsety: 0,
-                sub_option: {
-                    label: {color: '#f9f9f9', fontsize: 12, fontweight: 600},
-                    border: {
-                        width: 2,
-                        color: '#ffffff'
-                    }
-                },
-                label: {color: '#254d70', fontsize: 12, fontweight: 600},
+                label: {color: '#254d70', fontsize: 12, fontweight: 300},
                 percent: true,//标志为百分比堆积图
                 showpercent: true,
                 decimalsnum: 1,
-                legend: {
-                    enable: true,
-                    background_color: null,
-                    line_height: 25,
-                    color: '#254d70',
-                    fontsize: 12,
-                    fontweight: 600,
-                    border: {
-                        enable: false
-                    }
+                background_color : '#ffffff',
+                legend:{
+                    enable:true,
+                    background_color : null,
+                    border : {
+                        enable : false
+                    }   ,
+                    offsetx:19,//设置x轴偏移，满足位置需要
+                    offsety:-20,//设置y轴偏移，满足位置需要
                 }
             }).draw();
 
-
+//            $http.get('/SentimentAnalysis').success(function (d4) {
             new iChart.LineBasic2D({
                 render: 'canvasDiv4',
                 data: data,
                 title: '情感分析时间轴曲线图  ',
-
-
+                tip: {
+                    enable: true,
+                    shadow: true
+                },
+                legend : {
+                    enable : true,
+                    sign:'bar',
+                    background_color:null,//设置透明背景
+                    offsetx:19,//设置x轴偏移，满足位置需要
+                    offsety:-20,//设置y轴偏移，满足位置需要
+                    border : true
+                },
                 sub_option: {
                     hollow_inside: false,//设置一个点的亮色在外环的效果
-                    point_size: 16
+                    point_size: 10
                 },
                 labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
             }).draw();
+//            });
 
             var canvas = document.getElementById('canvasDiv6');
             var context = canvas.getContext('2d');
