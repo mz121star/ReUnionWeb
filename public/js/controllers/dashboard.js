@@ -81,7 +81,6 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 render: 'canvasDiv1',
                 background_color: '#EEEEEE',
                 data: d,
-                title: '搜索来源条型图',
                 coordinate: {
                     scale: [
                         {
@@ -101,7 +100,6 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
-                title: '搜索来源',
                 legend: {
                     enable: true
                 },
@@ -133,7 +131,6 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 new iChart.Bar2D({
                     render: 'canvasDiv2',
                     data: d2,
-                    title: '产品活动关键字',
                     width: 400,
                     offsetx: 17,
                     padding: 25,
@@ -156,10 +153,6 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                 render: 'canvasDiv3',
                 data: data3,
                 labels: ["亚马逊", "京东" ],
-                title: {
-                    text: '情感分析图',
-                    color: '#254d70'
-                },
                 label: {color: '#254d70', fontsize: 12, fontweight: 600},
                 percent: true,//标志为百分比堆积图
                 showpercent: true,
@@ -198,7 +191,6 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
             new iChart.LineBasic2D({
                 render: 'canvasDiv4',
                 data: data,
-                title: '情感分析时间轴曲线图  ',
                 tip: {
                     enable: true,
                     shadow: true
