@@ -17,7 +17,7 @@ exports.list = function (req, res) {
         return {name: k, value: reduced}
     }
 
-    o.out = { replace: 'createdCollectionNameForResults' };
+    o.out = { replace: '2dbarReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
           model.find().select("value")
@@ -35,24 +35,6 @@ exports.list = function (req, res) {
 
 //产品活动柱状图
 exports.TopicKeywordReport = function (req, res) {
-/*    var result = [];
-    FeedsModel
-        .find({Keyword: /兰蔻/i})
-        .count(function (err, chnkeyword) {
-            FeedsModel
-                .find({Keyword: /LANCOME/i})
-                .count(function (err, engkeyword) {
-                    FeedsModel
-                        .find({Keyword: /香水/i})
-                        .count(function (err, perfume) {
-                            result.push({name: "香水", value: perfume, color: '#F0E68C'});
-                            result.push({name: "兰蔻", value: chnkeyword, color: '#FF8C00'});
-                            result.push({name: "LANCOME", value: engkeyword, color: '#FFD700'});
-                            return res.json(result);
-                        });
-
-                });
-        });*/
 
     var o = {};
     o.map = function () {

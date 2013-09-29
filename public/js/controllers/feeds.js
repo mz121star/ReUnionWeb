@@ -25,8 +25,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 .ToArray();
             sts=sts.join('|')
             console.log(sts);
-
-            $http.post("/feeds",{st:sts}).success(function (d) {
+             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
+            console.log(searchData);
+            $http.post("/feeds",searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.feedContent = Enumerable.From(d.feeds)
                    /* .Where(function (x) {
