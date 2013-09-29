@@ -1,30 +1,41 @@
 var FeedsModel = require("./../models").Feeds;
+var utils = require("./../libs/util");
 exports.list = function (req, res) {
+    var o = {};
+     o.map = function () {
+        emit(this.FromType ,1);
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+     };
 
-     var result=[];
-    FeedsModel
-        .find({FromType: '微博'})
-        .count(function (err, weibofeeds) {
-            FeedsModel
-                .find({FromType: '论坛'})
-                .count(function (err, forumofeeds) {
-                    FeedsModel
-                        .find({FromType: /搜索/i})
-                        .count(function (err, searchfeeds) {
-                            result.push({name:"微博",value:weibofeeds,color: '#9d4a4a'}) ;
-                            result.push({name:"论坛",value:forumofeeds,color: '#045004'});
-                            result.push({name:"搜索",value:searchfeeds,color: '#B60A34'});
-                                return res.json(result) ;
+    o.finalize = function (k, reduced) {
+        return {name: k, value: reduced}
+    }
 
-                        });
-                });
-
-        });
+    o.out = { replace: 'createdCollectionNameForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+          model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result=[];
+                for(var d in docs){
+                    docs[d].value.color=utils.randomColor();
+                    result.push(docs[d].value);
+                }
+                return res.json(result) ;
+            });
+    });
 };
 
 //产品活动柱状图
 exports.TopicKeywordReport = function (req, res) {
-    var result = [];
+/*    var result = [];
     FeedsModel
         .find({Keyword: /兰蔻/i})
         .count(function (err, chnkeyword) {
@@ -41,7 +52,43 @@ exports.TopicKeywordReport = function (req, res) {
                         });
 
                 });
-        });
+        });*/
+
+    var o = {};
+    o.map = function () {
+        var keywords=this.Keyword.split(';') ;
+        for(var i in keywords){
+            if(keywords[i].trim()!=="");
+            emit(keywords[i] ,1);
+        }
+
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+    };
+
+    o.finalize = function (k, reduced) {
+        return {name: k, value: reduced}
+    }
+
+    o.out = { replace: 'createdCollectionNameForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+        model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result=[];
+                for(var d in docs){
+                    docs[d].value.color=utils.randomColor();
+                    result.push(docs[d].value);
+                }
+                return res.json(result) ;
+            });
+    });
 };
 exports.SearchSource = function (req, res) {
 
@@ -81,13 +128,41 @@ exports.SentimentAnalysis = function (req, res) {
     })
 };
 exports.test = function (req, res) {
-    FeedsModel.aggregate(
-        { $group: { _id: null ,count: { $sum: '$Keyword' } } }
-        /* , { $project: { month_joined: { $month: "$joined" } } }*/
-        /*   , { $sort: { "_id.month_joined": 1 } } */
-        , function (err, res) {
-            if (err) return err;
-            return res.json(res); // [ { maxAge: 98 } ]
-        })
 
+    var o = {};
+
+    o.map = function () {
+
+            var key=this.PublishTime.match(/\d*/)[0]+this.PublishTime.match(/-(\d*)/)[1];
+            emit(key ,1);
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+
+    };
+
+
+   o.finalize = function (k, reduced) {
+     return {name: k, value: reduced}
+     }
+
+    o.out = { replace: 'createdCollectionNameForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+
+        model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result=[];
+                for(var d in docs){
+                    docs[d].value.color=utils.randomColor();
+                     result.push(docs[d].value);
+                }
+                return res.json(result) ;
+            });
+    });
 };
