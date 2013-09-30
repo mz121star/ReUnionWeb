@@ -52,7 +52,7 @@
     <div class="navlist">
         <a class="button" href="#"><span>Overview</span><span class="close"></span></a>
         <a class="button" href="#"><span>Feeds</span><span class="open"></span></a>
-        <a class="button sub" href="#" ng-repeat="topic in Topics"><span>{{topic.name}}</span></a>
+        <a class="button sub" href="javascript:;" ng-repeat="topic in Topics"><span  ng-click="topicSelected(topic)" >{{topic.Name}}</span></a>
 
     </div>
 </div>
