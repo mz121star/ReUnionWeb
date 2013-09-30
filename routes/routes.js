@@ -30,9 +30,11 @@ module.exports = function (app) {
      * Report
      */
     app.get('/2DBarReprot',reports.list);
+    app.post('/2DBarReprot',reports.listPost);
     app.get('/TopicKeywordReport',reports.TopicKeywordReport);
     app.get('/Test',reports.test);
     app.get('/SearchSource',reports.SearchSource);
+    app.post('/SearchSource',reports.SearchSourcePost);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
 
