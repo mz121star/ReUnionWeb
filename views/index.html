@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html lang="zh-CN" ng-controller="LayoutController">
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
     <meta name="description" content="Reunion">
     <meta name="author" content="Pactera">
 
-    <link rel="shortcut icon" href="img/logo.gif">
+    <link rel="shortcut icon" href="images/icon/reunion-r.png">
     <!--[if lt IE 9]>
     <script type="text/javascript" charset="UTF-8" src="lib/html5shiv.js"></script>
     <![endif]-->
@@ -25,69 +25,59 @@
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>
     <link rel='stylesheet' href='lib/bootstrap/css/bootstrap-responsive.css'/>
 
-    <link rel="stylesheet" href="css/base.css" type='text/css' media="all"/>
-    <link href='themes/glowsimple/default.css' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href='css/default.css' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="themes/admin.css">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel='stylesheet' href='lib/uniform/themes/default/css/uniform.default.css'/>
 </head>
-
-
 <body class="ng-cloak" ng-cloak>
 
-<div class="wrap_top_nav">
-    <nav id="top_nav">
-        <span class="logo"><a href="javascript;"> &nbsp</a></span>
-        <ul class="inline-style clearfix" ng-click="setActive($event)">
-            <li ng-repeat="nav in navBars" ng-click="selectNav($index)" ng-class="{active: $index==selectedRow}">
-                <a ng-href="{{nav.url}}" ng-bind="nav.name"></a>
-            </li>
+<div id="header">
+    <div class="logo"><a href="#"></a></div>
+    <div class="nav" >
+        <a ng-repeat="nav in navBars" ng-click="selectNav($index)" ng-href="{{nav.url}}" ng-bind="nav.name" ng-class="{selected: $index==selectedRow}" class="button">Dashboard</a>
 
-
-        </ul>
-        <div class="right_nav">
-               <span class="add-on">
-                <a modalbox href="javascript:;" title="message"><span class="icon-envelope mr20" title="message"></span><span
-                        class="tap-nav-pic">2</span> </a>
-                 <a href="javascript:;" title="settings"><span class="icon-cog mr20" title="Settings"></span> </a>
-                     <a href="javascript:;"><span class=" mr20">Hello,韩青锋</span> </a>
-                         <a href="javascript:;" title="logout"> <span class="icon-signout mr20"></span> </a>
-               </span>
-
-        </div>
-    </nav>
-</div>
-    <div class="navigation">
-        <div>
-            <input  type="text" placeholder="Search">
-            <span class="search-pic"></span>
-        </div>
-        <ul class="navr">
-            <li><a>Overview</a><i class="icon-a"></i></li>
-            <li><a>Feeds</a><i class="icon-b"></i>
-                <ul class="second">
-
-                    <li ng-repeat="topic in Topics"  class="current"><a>{{topic.name}}</a></li>
-                    <li><a >Topic2</a></li>
-                    <li><a >Topic3</a></li>
-                </ul>
-            </li>
-        </ul>
     </div>
+    <div class="userinfo">
+        <a class="user" href="#">Hi,Guest</a>
+        <a class="message" href="#">Message(0)</a>
+        <a class="button" href="#">Setting</a>
+        <a class="logout" href="#">Exit</a>
+    </div>
+</div>
 
-    <div class="page" ng-view="">
+
+
+
+<div id="leftbar">
+    <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="#"></a></div>
+    <div class="navlist">
+        <a class="button" href="#"><span>Overview</span><span class="close"></span></a>
+        <a class="button" href="#"><span>Feeds</span><span class="open"></span></a>
+        <a class="button sub" href="#" ng-repeat="topic in Topics"><span>{{topic.name}}</span></a>
+
+    </div>
+</div>
+
+
+
+
+<div id="maincontent">
+    <div class="containercrumbs"><span class="label">Dashboard Summary For Lancome</span></div>
+    <div class="containercontent">
+
+
+    <div class="page" ng-view=""></div>
 
 
     </div>
-<div class="footer">
-    <nav  >
 
-        <span class="footer-message">@2012Pactera US RDS-PDS Octopus Team</span>
-        <span class="footer-logo"><a href="javascript;"> &nbsp</a></span>
-    </nav>
+    <div class="footer">
+        <div class="copyright">&copy;2013 Pactera US RDS-PDS RDS Octopus Team</div>
+        <div class="logo"><a href="http://www.pactera.com"></a></div>
+    </div>
+    <div class="footer2"></div>
+
 </div>
+
 </body>
 <script type="text/javascript" charset="UTF-8" src="lib/prefixfree.min.js"></script>
 

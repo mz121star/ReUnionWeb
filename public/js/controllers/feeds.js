@@ -1,9 +1,8 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs','jqueryuniform' ], function (res, excel) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs', 'jqueryuniform' ], function (res, excel) {
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
-
 
 
         $rootScope.title = "Feeds - " + res.title;
@@ -23,16 +22,16 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 })
                 .Select("$.type")
                 .ToArray();
-            sts=sts.join('|')
+            sts = sts.join('|')
             console.log(sts);
-             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
+            var searchData = {st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime};
             console.log(searchData);
-            $http.post("/feeds",searchData).success(function (d) {
+            $http.post("/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.feedContent = Enumerable.From(d.feeds)
-                   /* .Where(function (x) {
-                        return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
-                    })*/
+                    /* .Where(function (x) {
+                     return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
+                     })*/
                     .ToArray().reverse();
             })
 
@@ -48,8 +47,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         $scope.feeds = {
             startTime: '2013-01-12',
             endTime: '2013-11-12',
-            sourceTypeName: ''  ,
-            description:''
+            sourceTypeName: '',
+            description: ''
         };
 
         $scope.showDetail = function (feed) {
@@ -78,6 +77,76 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         });
         $scope.exportExcel = function (tname, excelname) {
             excel(tname, excelname);
+        };
+        $rootScope.Topics = [
+            {name: "topic1"},
+            {name: "topic2"}
+        ]
+        var getTopics = function (callback) {
+            $http.get('/topic').success(function (d) {
+                $rootScope.Topics = d;
+                /*  Enumerable.From(d);*/
+                /* .Select("{name:$.Name}").ToArray();*/
+                if (callback) callback();
+            });
+        }
+        getTopics();
+        $scope.saveTopic = function () {
+            //load sourcetype
+            var sts = Enumerable.From($scope.sourcetype)
+                .Where(function (x) {
+                    return x.checked === true
+                })
+                .Select("$.type")
+                .ToArray();
+            $http.post('/topic', {
+                Name: $scope.topicName,
+                SearchCondition: {
+                    SourceType: sts,
+                    StartDate: new Date($scope.feeds.startTime),
+                    EndDate: new Date($scope.feeds.endTime)
+                },
+                OwnerId: "admin",
+                CreateDate: Date.now(),
+                UpdateDate: Date.now()
+
+            }).success(function (d) {
+                    getTopics(function () {
+                        $scope.topicName = '';
+                        $scope.saveTopicWarning = "Save Topic Successfully"
+                    })
+
+                });
+        }
+
+        $rootScope.topicSelected = function (topic) {
+            $scope.feeds.startTime = topic.SearchCondition.StartDate;
+            $scope.feeds.endTime = topic.SearchCondition.EndDate;
+            var sourceType = topic.SearchCondition.SourceType;
+            console.log($scope.sourcetype);
+            /*    for(var i in sourceType){
+             for(var k in $scope.sourcetype) {
+             $scope.sourcetype[k].checked=false;
+             if($scope.sourcetype[k].type===sourceType[i]){
+             $scope.sourcetype[k].checked=true;
+             }
+
+             }
+             }*/
+
+            for (var k in $scope.sourcetype) {
+                $scope.sourcetype[k].checked=false;
+                for (var i in sourceType) {
+                    if ($scope.sourcetype[k].type === sourceType[i]) {
+                        $scope.sourcetype[k].checked = true;
+                    }
+
+                }
+            }
+
+            $scope.sourcetype = $scope.sourcetype;
+            console.log($scope.sourcetype);
+            console.log(topic);
         }
     }];
 
