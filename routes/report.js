@@ -106,6 +106,92 @@ exports.SearchSource = function (req, res) {
     });
 };
 
+exports.SearchSourcePost = function (req, res) {
+    var params=req.body;
+    var o = {};
+    o.map = function () {
+        emit(this.FromType, 1);
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+    };
+
+    o.finalize = function (k, reduced) {
+        return {name: k, value: reduced}
+    }
+
+    o.out = { replace: '2dpieReportForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+        model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result = [];
+                for (var d in docs) {
+                    docs[d].value.color = utils.randomColor();
+                    if(params.st!=''){
+                        var cname= params.st.split("|");
+                        for(var n in cname){
+                            if(docs[d].value.name==cname[n]){
+                                result.push(docs[d].value);
+                            }
+                        }
+                    }else{
+                        result.push(docs[d].value);
+                    }
+                }
+                return res.json(result);
+            });
+    });
+};
+
+exports.listPost = function (req, res) {
+    var params=req.body;
+    var o = {};
+    o.map = function () {
+        emit(this.FromType, 1);
+    }
+    o.reduce = function (k, vals) {
+        var total = 0;
+        for (var i in vals) {
+            total += vals[i];
+        }
+        return total;
+    };
+
+    o.finalize = function (k, reduced) {
+        return {name: k, value: reduced}
+    }
+
+    o.out = { replace: '2dbarReportForResults' };
+    o.verbose = true;
+    FeedsModel.mapReduce(o, function (err, model, stats) {
+        model.find().select("value")
+            //*.where('value').gt(10)*//*
+            .exec(function (err, docs) {
+                var result = [];
+                for (var d in docs) {
+                    docs[d].value.color = utils.randomColor();
+                    if(params.st!=''){
+                        var cname= params.st.split("|");
+                        for(var n in cname){
+                            if(docs[d].value.name==cname[n]){
+                                result.push(docs[d].value);
+                            }
+                        }
+                    }else{
+                        result.push(docs[d].value);
+                    }
+                }
+                return res.json(result);
+            });
+    });
+};
+
 exports.SentimentAnalysis = function (req, res) {
 
 };

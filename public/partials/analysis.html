@@ -1,96 +1,103 @@
 <div class="reunioncontent" uniform>
-    <div class="pull-left">
-        <select>
-            <option value="0">Last 7Days</option>
-        </select>
+    <div class="feeds-search-tools">
+
+        <span>
+            <select>
+                <option>Last 7 Days</option>
+                <option>Last month</option>
+            </select>
+
+        </span>
+        <span>Or from <input type="date"> to <input type="date"> </span>
     </div>
-    or form
-    <input class="Wdate" type="text" id="startDate" placeholder="  " />
-    to
-    <input class="Wdate" type="text" id="endDate" placeholder="" />
+    <div class="feeds_search_condition">
+        <h2>Analysis:{{source.brand}}（关键词表达式）</h2>
 
+        <form novalidate name="searchFeedForm">
+            <div class="conditions">
 
+                <div>
+                    <h4 class="condition-title">Source Type:</h4>
+                    <ul class="condition-cboxs">
+                        <!--  <li ng-repeat="st in sourceType">                                                     -->
+                        <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
+                        <!--  </li>                                                                                 -->
 
-    <div class="search_all">
-        <h2 class="titbg search_list clearfix">Feeds List:兰蔻品牌</h2>
+                        <li ng-repeat="st in sourcetype">
+                            <label><input class="checkbox" uniform type="checkbox" name="sourceType"
+                                          ng-checked="st.checked" ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <hr>
 
-        <div class="search_list clearfix">
-            <div class="title">Source Type:</div>
-            <ul class="search_content">
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-            </ul>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">Source Type:</div>
-            <ul class="search_content">
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-            </ul>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">Source Type:</div>
-            <ul class="search_content">
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-                <li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>
-            </ul>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">Source Type:</div>
-            <div class="search_content">
-                from <input class="Wdate" type="text"/>
-                to <input class="Wdate" type="text" />
+                <div>
+                    <h4 class="condition-title"> Professional Sites:</h4>
+                    <ul>
+                        <li ng-repeat="st in professionalSites">
+                            <label><input class="checkbox" uniform type="checkbox" name="{{st}}"/>{{st}}</label>
+                        </li>
+                    </ul>
+                </div>
+                <br>
+                <hr>
+                TimeFrame: <span>  from <input type="text" ng-model="feeds.startTime" name="startTime"
+                                               required=""> to <input type="text" ng-model="feeds.endTime"> </span>
+                <hr>
+                <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>
+                        Search
+                    </button>
+                    <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                            ng-disabled='searchFeedForm.$invalid'> Search Current Set
+                    </button>
+                </div>
+
             </div>
-        </div>
-        <div class="search_list clearfix">
-            <div class="censt">
-                <button type="button" class="btn btn-primary">Search</button>
-                <button type="button" class="btn btn-primary">Search Current Set</button>
-                <button type="button" class="btn btn-primary">Export Feed List</button>
-            </div>
-        </div>
+        </form>
     </div>
-    <div class="content">
-        <div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">
-            <h5>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-                <div class="s-title-bg-blue">图表</div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv3'></div>
-            </div>
-        </div>
+    <div   class="s-pk-mod" data-pkid="26">
+        <h5 class="pk-title"><span>搜索来源饼图</span>
+            <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-        <div class="s-pk-mod pic-bdle pk-title-red">
-            <h5>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
-
-                <div class="s-title-bg-red">图表</div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv4'></div>
-            </div>
+            <div class="s-title-bg"></div>
+        </h5>
+        <div class="pk-content">
+            <div id='canvasDiv3'></div>
         </div>
     </div>
+
+    <div   class="s-pk-mod" data-pkid="26">
+        <h5 class="pk-title"><span>情感分析图条形堆积图</span>
+            <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+
+            <div class="s-title-bg"></div>
+        </h5>
+        <div class="pk-content">
+            <div id='canvasDiv4'></div>
+        </div>
+    </div>
+    </div>
+<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Save Tpoic</h4>
+            </div>
+            <div class="modal-body">
+                Topic Name: <input type="text" ng-model="topicName">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save Topic</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 </div>
 </div>
