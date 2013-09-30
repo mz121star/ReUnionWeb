@@ -68,7 +68,7 @@ background-image: -webkit-gradient(linear, 600 bottom , right bottom, color-stop
 
 #header .nav {float:left;}
 #header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:20px;padding-right:20px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
-#header .nav .button:hover {color:#333333;background:#FFF;padding-bottom:0px;}
+#header .nav .button:hover {color:#333333;background:#FFF;padding-bottom:0px;text-decoration: none;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
 #header .userinfo {float:right;line-height:38px;padding:0 15px;
