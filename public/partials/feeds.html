@@ -1,60 +1,66 @@
-<div class="reunioncontent" uniform>
+
+<div class="panel">
     <div class="feeds-search-tools">
 
-        <span>
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last month</option>
-            </select>
-
-        </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+        <select class="inputdate">
+            <option>Last 7 Days</option>
+            <option>Last month</option>
+        </select>
+        <span>Or from <input class="inputdate" type="text"> to <input class="inputdate" type="text"> </span>
     </div>
-    <div class="feeds_search_condition">
-        <h2>Feeds List:{{source.brand}}（关键词表达式）</h2>
+</div>
 
-        <form novalidate  name="searchFeedForm" >
-            <div class="conditions">
+<div class="panel">
+    <form novalidate  name="searchFeedForm" >
+    <div class="conditionspanel">
+        <div class="title"><span class="titlelabel">Feeds List:{{source.brand}}（关键词表达式）</span></div>
+        <div class="content">
+             <div class="cell size1">Source Type:</div>
+             <div class="cell size5">
 
-                <div>
-                    <h4 class="condition-title">Source Type:</h4>
-                    <ul class="condition-cboxs" >
-                      <!--  <li ng-repeat="st in sourceType">                                                     -->
-                      <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
-                      <!--  </li>                                                                                 -->
+                <span class="item" ng-repeat="st in sourcetype">
+                    <input  class="checkbox" uniform  type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
+                </span>
 
-                      <li ng-repeat="st in sourcetype"   >
-                           <label><input  class="checkbox" uniform    type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
-                      </li>
-                    </ul>
-                </div>
-                <br>
-                <hr>
+             </div>
+        </div>
+        <div class="content">
+            <div class="cell size1">Professional Sites:</div>
+            <div class="cell size5">
 
-                <div>
-                   <h4 class="condition-title"> Professional Sites:</h4>
-                    <ul>
-                        <li ng-repeat="st in professionalSites">
-                            <label><input  class="checkbox"  uniform type="checkbox" name="{{st}}"/>{{st}}</label>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <hr>
-                TimeFrame: <span>  from <input type="text"  ng-model="feeds.startTime" name="startTime"   required=""> to <input   type="text" ng-model="feeds.endTime" > </span>
-                <hr>
-                  <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+                <span class="item" ng-repeat="st in professionalSites">
+                    <input  class="checkbox"  uniform type="checkbox" name="{{st}}"/>{{st}}{{st.type}}
+                </span>
 
-                <div class="button-group">
-                    <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                    <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid'  > Search Current Set </button>
-                    <button class="btn btn-primary"  ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')"  type="button" >      Export Feed List  </button>
-                </div>
 
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="content">
+            <div class="cell size1">Source Type:</div>
+            <div class="cell size5">
 
+                TimeFrame: <span>  from <input type="text"  ng-model="feeds.startTime" name="startTime"   required=""> to <input   type="text" ng-model="feeds.endTime" > </span>
+                <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="cell size1"></div>
+            <div class="cell size5">
+
+                <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
+                <button class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid'>Search Current Set </button>
+                <button class="btn btn-primary" ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')" type="button">Export Feed</button>
+
+            </div>
+        </div>
+
+    </div>
+    </form>
+</div>
+
+<div class="panel">
     <div class="content">
         <div>
 
@@ -100,8 +106,8 @@
         </div>
 
     </div>
-
 </div>
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
