@@ -41,5 +41,6 @@ module.exports = function (app) {
      * Topics
      */
     app.post('/topic',topic.saveTopic);
+    app.get('/topic',topic.list);
 
 };

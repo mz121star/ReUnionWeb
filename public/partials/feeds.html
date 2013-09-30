@@ -116,12 +116,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
  <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
      <div class="modal-dialog">
          <div class="modal-content">
              <div class="modal-header">
@@ -129,12 +130,17 @@
                  <h4 class="modal-title">Save Tpoic</h4>
              </div>
              <div class="modal-body">
-                Topic Name: <input type="text" ng-model="topicName">
+
+                Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+
+                 <div ng-show="!!saveTopicWarning"  class="alert alert-success"> {{ saveTopicWarning }}</div>
+
              </div>
              <div class="modal-footer">
-                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                 <button type="button" class="btn btn-primary" ng-click="saveTopic()">Save Topic</button>
+                 <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+                 <button type="button" ng-disabled="!!!topicName"  class="btn btn-primary" ng-click="saveTopic()">Save Topic</button>
              </div>
          </div><!-- /.modal-content -->
      </div><!-- /.modal-dialog -->
+
  </div>

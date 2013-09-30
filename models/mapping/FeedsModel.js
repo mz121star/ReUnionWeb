@@ -3,6 +3,6 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
 
-}, {collection: 'ResultData'});
+}, {collection: 'ResultData_Max'});
 
 mongoose.model('Feeds', schema);

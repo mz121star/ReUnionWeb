@@ -3,7 +3,12 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
     Name:String,
-    SearchCondition:{SourceType:Array,ProfessionalSite:Array},
+    SearchCondition:{
+        SourceType:Array,
+        ProfessionalSite:Array,
+        StartDate:Date,
+        EndDate:Date
+    },
     OwnerId:String,
     CreateDate:Date,
     UpdateDate:Date

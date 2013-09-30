@@ -70,8 +70,7 @@ define(['app' ], function (app) {
         return {
 
             link: function (scope, elm, attrs, ctrl) {
-
-                $("select, input").uniform();
+                 $("select, input").uniform();
             }
         };
     });
