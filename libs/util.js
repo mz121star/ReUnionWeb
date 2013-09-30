@@ -96,7 +96,7 @@ var randomRange=function(min, max) {
 };
 exports.randomColor=function(){
 
-        var color = randomRange(0, 0xFFFFFF);
+        var color = randomRange(0, 0xC5BF27);
         return '#' + ('000000' + color.toString(16)).slice(-6);
 
 }
