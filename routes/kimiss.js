@@ -6,6 +6,9 @@ exports.list = function (req, res) {
         .limit(20)
         .select('childs')
         .exec(function (err, kimiss) {
+            if(err){
+                return res.json(500,err);
+            }
             return res.json(kimiss);
         });
 };

@@ -20,6 +20,9 @@ exports.list = function (req, res) {
     o.out = { replace: '2dbarReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -60,6 +63,9 @@ exports.TopicKeywordReport = function (req, res) {
     o.out = { replace: 'createdCollectionNameForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -93,6 +99,9 @@ exports.SearchSource = function (req, res) {
     o.out = { replace: '2dpieReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -127,6 +136,9 @@ exports.SearchSourcePost = function (req, res) {
     o.out = { replace: '2dpieReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -170,6 +182,9 @@ exports.listPost = function (req, res) {
     o.out = { replace: '2dbarReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -230,7 +245,9 @@ exports.SentimentAnalysis = function (req, res) {
     o.out = { replace: 'SentimentAnalysisReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
@@ -299,6 +316,9 @@ exports.keyWordCloud=function(req,res){
     o.out = { replace: 'keywordsColudForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
+        if(err){
+            return res.json(500,err);
+        }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {

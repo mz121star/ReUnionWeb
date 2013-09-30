@@ -18,6 +18,7 @@ require.config({
         ichart: '../lib/ichart.1.2.src'  ,
         jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
         bootstrapModal:'../lib/bootstrap/js/modal',
+        bootstrapAlert:'../lib/bootstrap/js/alert',
         jqueryuniform: '../lib/uniform/jquery.uniform.min',
         linqjs:'../lib/linq'
     },

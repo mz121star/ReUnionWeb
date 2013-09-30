@@ -1,6 +1,6 @@
 'use strict';
 
-define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuniform'], function (app, res, images) {
+define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryuniform'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
     return app.controller('LayoutController', function ($scope, $http, $location) {
@@ -26,15 +26,15 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuni
             help: "Help"
         };
         $scope.navBars = [
-            {name:  $scope.txt.dashboard, url: "#/dashboard"},
-            {name:  $scope.txt.feeds, url: "#/feeds"},
-            {name:  $scope.txt.analysis, url: "#/analysis"},
-            {name: $scope. txt.reports, url: "#/reports"},
-            {name:  $scope.txt.alerts, url: "#/alerts"},
-            {name:  $scope.txt.admin, url: "#/admin"},
-            {name: $scope. txt.help, url: "#/help"}
-        ] ;
-        $scope.selectNav = function(row){
+            {name: $scope.txt.dashboard, url: "#/dashboard"},
+            {name: $scope.txt.feeds, url: "#/feeds"},
+            {name: $scope.txt.analysis, url: "#/analysis"},
+            {name: $scope.txt.reports, url: "#/reports"},
+            {name: $scope.txt.alerts, url: "#/alerts"},
+            {name: $scope.txt.admin, url: "#/admin"},
+            {name: $scope.txt.help, url: "#/help"}
+        ];
+        $scope.selectNav = function (row) {
             $scope.selectedRow = row;
         };
         $scope.navHash = function () {
@@ -43,6 +43,9 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images','jqueryuni
             return $location
         };
 
+        $scope.global = {
+            error: ""
+        };
         /* $scope.resources = {
          theme: " <link href='themes/glow/default.css' rel='stylesheet' type='text/css'>",
          bg: imgs[randombg()] //Random generate background image

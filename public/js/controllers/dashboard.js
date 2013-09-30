@@ -1,8 +1,8 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui','bootstrapAlert'], function (res, ichart) {
 
-    var DashboardController = ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    var DashboardController = ['$scope', '$rootScope', '$http','$timeout', function ($scope, $rootScope, $http,$timeout) {
         $rootScope.title = "Dashboard - " + res.title;
         //定义数据
         //定义数据
@@ -126,6 +126,11 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui'], function (res, ichart
                     }
                 }
             }).draw();
+        }).error(function(data, status, headers, config) {
+
+                $scope.global.error="内部数据错误";
+               $timeout(function(){ $scope.global.error="";},3000)
+
         });
         $(function () {
 

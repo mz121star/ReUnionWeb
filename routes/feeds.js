@@ -18,6 +18,9 @@ exports.list = function (req, res) {
           .limit(20)
         /*.select('childs')*/
          .exec(function (err, feeds) {
+            if(err){
+                return res.json(500,err);
+            }
             return res.json({
                 "feeds": feeds,
                 "count": feeds.length
@@ -45,6 +48,9 @@ exports.sourcetype = function (req, res) {
         /*.limit(20)*/
         .select('FromType')
         .distinct('FromType', function (err, feeds) {
+            if(err){
+                return res.json(500,err);
+            }
             return res.json(feeds);
         });
 }
