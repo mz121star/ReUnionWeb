@@ -96,11 +96,8 @@
             </table>
             <ul class="pagination">
                 <li><a href="javascript:;">&laquo;</a></li>
-                <li><a href="javascript:;">1</a></li>
-                <li><a href="javascript:;">2</a></li>
-                <li><a href="javascript:;">3</a></li>
-                <li><a href="javascript:;">4</a></li>
-                <li><a href="javascript:;">5</a></li>
+                <li ng-repeat="n in [] | range:pages"><a href="javascript:;" ng-click="PagerData(n+1)">{{n+1}}</a></li>
+
                 <li><a href="javascript:;">&raquo;</a></li>
             </ul>
         </div>

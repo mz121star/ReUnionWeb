@@ -10,37 +10,29 @@ exports.list = function (req, res) {
     if(FromTypeReg){
         queryCondition.FromType= FromTypeReg  ;
     }
-    if(req.body.starttime&&req.body.endtime) {
+/*    if(req.body.starttime&&req.body.endtime) {
         queryCondition.PublishTime={$gte:req.body.starttime,$lte:req.body.endtime } ;
-    }
+    }*/
+    var pageindex=  req.body.pageindex? req.body.pageindex*1-1:1;
+    FeedsModel.find(queryCondition).count(function (err, count) {
 
-    FeedsModel.find(queryCondition)
-          .limit(20)
-        /*.select('childs')*/
-         .exec(function (err, feeds) {
-            if(err){
-                return res.json(500,err);
-            }
-            return res.json({
-                "feeds": feeds,
-                "count": feeds.length
+        FeedsModel.find(queryCondition)
+            .skip(pageindex)
+            .limit(1)
+            /*.select('childs')*/
+            .exec(function (err, feeds) {
+                if(err){
+                    return res.json(500,err);
+                }
+                return res.json({
+                    "feeds": feeds,
+                    "count": count
+                });
             });
-        });
+    })
 
-    /* else {
-     FeedsModel
-     .find()
-     .limit(20)
-     */
-    /*.select('childs')*/
-    /*
-     .exec(function (err, feeds) {
-     return res.json({
-     "feeds": feeds,
-     "count": feeds.length
-     });
-     });
-     }*/
+
+
 };
 exports.sourcetype = function (req, res) {
     FeedsModel

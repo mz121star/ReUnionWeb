@@ -24,15 +24,16 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 .ToArray();
             sts = sts.join('|')
             console.log(sts);
-            var searchData = {st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime};
+            var searchData = {st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
             console.log(searchData);
             $http.post("/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
+                $scope.pages= d.count;
                 $scope.feedContent = Enumerable.From(d.feeds)
                     /* .Where(function (x) {
                      return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
                      })*/
-                    .ToArray().reverse();
+                    .ToArray();
             })
 
         };
@@ -45,10 +46,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         });
 
         $scope.feeds = {
-            startTime: '2013-01-12',
-            endTime: '2013-11-12',
+            startTime: new Date("2010-01-12"),
+            endTime:  new Date("2013-11-12"),
             sourceTypeName: '',
-            description: ''
+            description: '' ,
+            pageIndex:1
         };
 
         $scope.showDetail = function (feed) {
@@ -64,6 +66,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         };
         $http.post("/feeds").success(function (d) {
             $scope.feedContent = d.feeds;
+            $scope.pages= d.count;
         });
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
@@ -147,6 +150,12 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             $scope.sourcetype = $scope.sourcetype;
             console.log($scope.sourcetype);
             console.log(topic);
+        }
+
+
+        $scope.PagerData=function(pageindex){
+            $scope.feeds.pageIndex=pageindex;
+            $scope.searchFeed();
         }
     }];
 
