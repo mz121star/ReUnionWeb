@@ -251,6 +251,9 @@ exports.SentimentAnalysis = function (req, res) {
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
+                if(!!!docs.length||err){
+                    return res.json(500,docs);
+                }
                 var result = [];
                 var temp1 = [], temp2 = [], temp3 = [];
                 for (var d in docs) {
