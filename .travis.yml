@@ -4,6 +4,8 @@ node_js:
    - "0.6"
 notifications:
    email:
-     - zhuang.miao@pactera.com
-     - 395802201@qq.com
+      recipients:
+        - zhuang.miao@pactera.com
+        - 395802201@qq.com
+       on_success:  always
 
