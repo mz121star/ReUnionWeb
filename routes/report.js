@@ -66,7 +66,7 @@ exports.TopicKeywordReport = function (req, res) {
         if(err){
             return res.json(500,err);
         }
-        model.find().select("value")
+        model.find().select("value").limit(10)
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
                 var result = [];

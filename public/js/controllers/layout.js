@@ -26,13 +26,13 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             help: "Help"
         };
         $scope.navBars = [
-            {name: $scope.txt.dashboard, url: "#/dashboard"},
-            {name: $scope.txt.feeds, url: "#/feeds"},
-            {name: $scope.txt.analysis, url: "#/analysis"},
-            {name: $scope.txt.reports, url: "#/reports"},
-            {name: $scope.txt.alerts, url: "#/alerts"},
-            {name: $scope.txt.admin, url: "#/admin"},
-            {name: $scope.txt.help, url: "#/help"}
+            {name: $scope.txt.dashboard, url: "#/dashboard",index:1},
+            {name: $scope.txt.feeds, url: "#/feeds",index:2},
+            {name: $scope.txt.analysis, url: "#/analysis",index:3},
+            {name: $scope.txt.reports, url: "#/reports",index:4},
+            {name: $scope.txt.alerts, url: "#/alerts",index:5},
+            {name: $scope.txt.admin, url: "#/admin",index:6},
+            {name: $scope.txt.help, url: "#/help",index:7}
         ];
         $scope.selectNav = function (row) {
             $scope.selectedRow = row;
@@ -85,6 +85,19 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
                 };
             }
         };
+
+
+        /***
+         * 设置当前选项卡的颜色
+         * @type {string}
+         */
+       var hash= $location.$$url.replace(/\//gmi,'') ;
+        $.each($scope.navBars,function(i,item){
+                if(item.url.match(hash)){
+                    $scope.selectedRow=item.index-1;
+                }
+        })
+
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;
