@@ -10,15 +10,15 @@ exports.list = function (req, res) {
     if(FromTypeReg){
         queryCondition.FromType= FromTypeReg  ;
     }
-/*    if(req.body.starttime&&req.body.endtime) {
-        queryCondition.PublishTime={$gte:req.body.starttime,$lte:req.body.endtime } ;
+ /*   if(req.body.starttime&&req.body.endtime) {
+        queryCondition.PublishTime={$gte:new Date(req.body.starttime),$lte:new Date(req.body.endtime) } ;
     }*/
-    var pageindex=  req.body.pageindex? req.body.pageindex*1-1:1;
+    var pageindex=  req.body.pageindex? req.body.pageindex*20-20:1;
     FeedsModel.find(queryCondition).count(function (err, count) {
 
         FeedsModel.find(queryCondition)
             .skip(pageindex)
-            .limit(1)
+            .limit(20)
             /*.select('childs')*/
             .exec(function (err, feeds) {
                 if(err){

@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'jqueryui','bootstrapAlert'], function (res, ichart) {
+define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, ichart) {
 
     var DashboardController = ['$scope', '$rootScope', '$http','$timeout', function ($scope, $rootScope, $http,$timeout) {
         $rootScope.title = "Dashboard - " + res.title;

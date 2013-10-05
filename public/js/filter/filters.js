@@ -38,5 +38,13 @@ define(['app'], function (app) {
             return input;
         };
     });
-
+    app.filter('PagerRange', function() {
+        return function(input, total) {
+            total = parseInt(total);
+            if(total>20) total=20
+            for (var i=0; i<total; i++)
+                input.push(i);
+            return input;
+        };
+    });
 });

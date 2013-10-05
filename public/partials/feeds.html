@@ -39,7 +39,14 @@
             <div class="cell size1">Source Type:</div>
             <div class="cell size5">
 
-                TimeFrame: <span>  from <input type="text"  ng-model="feeds.startTime" name="startTime"   required=""> to <input   type="text" ng-model="feeds.endTime" > </span>
+                TimeFrame: <span>
+                from
+               <!-- <input data-date-format="dd/mm/yyyy" bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">-->
+
+                    <input   bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">
+
+                to
+                <input    bs-datepicker type="text" ng-model="feeds.endTime" > </span>
                 <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
 
             </div>
@@ -96,7 +103,7 @@
             </table>
             <ul class="pagination">
                 <li><a href="javascript:;">&laquo;</a></li>
-                <li ng-repeat="n in [] | range:pages"><a href="javascript:;" ng-click="PagerData(n+1)">{{n+1}}</a></li>
+                <li  ng-class="{active: $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
 
                 <li><a href="javascript:;">&raquo;</a></li>
             </ul>

@@ -20,11 +20,15 @@ require.config({
         bootstrapModal:'../lib/bootstrap/js/modal',
         bootstrapAlert:'../lib/bootstrap/js/alert',
         jqueryuniform: '../lib/uniform/jquery.uniform.min',
-        linqjs:'../lib/linq'
+        linqjs:'../lib/linq',
+        'angular-strap':'../lib/angular-strap/angular-strap',
+        'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker'
     },
     shim: {
         'angular': {'exports': 'angular'},
         'angular-resource': {deps: ['angular']},
+        'bootstrap-datepicker':  {deps: ['jquery']},
+        'angular-strap':   {deps: ['angular','bootstrap-datepicker']},
         'bootstrap': {deps: ['jquery']},
         'mcustomscrollbar': {deps: ['jquery']},
         'jqueryui':{deps: ['jquery']},
@@ -48,8 +52,6 @@ require.config({
 require(['angular',
     'app',
     'jquery',
-    'fullscreen',
-    'mcore',
     'controllers/layout',
     'controllers/index',
     'directives/compare',
