@@ -79,9 +79,10 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
         $http.get('/2DBarReprot').success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
-                background_color: '#EEEEEE',
                 data: d,
-                title: '搜索来源条型图',
+                width: 550,
+                height:315,
+                border:'none',
                 coordinate: {
                     scale: [
                         {
@@ -101,7 +102,10 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
-                title: '搜索来源',
+                //title: '搜索来源',
+                width: 550,
+                height:315,
+                border:'none',
                 legend: {
                     enable: true
                 },
@@ -138,8 +142,10 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
                 new iChart.Bar2D({
                     render: 'canvasDiv2',
                     data: d2,
-                    title: '产品活动关键字',
-                    width: 400,
+//                    title: '产品活动关键字',
+                    width: 550,
+                    height:315,
+                    border:'none',
                     offsetx: 17,
                     padding: 25,
                     coordinate: {
@@ -204,7 +210,10 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
                 new iChart.LineBasic2D({
                     render: 'canvasDiv4',
                     data: d,
-                    title: '情感分析时间轴曲线图  ',
+//                    title: '情感分析时间轴曲线图  ',
+                    width: 550,
+                    height:315,
+                    border:'none',
                     tip: {
                         enable: true,
                         shadow: true
