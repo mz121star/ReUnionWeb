@@ -1,86 +1,98 @@
 <div class="reunioncontent" uniform>
-    <div class="feeds-search-tools">
 
-        <span>
-            <select>
-                <option>Last 7 Days</option>
-                <option>Last month</option>
-            </select>
+    <div class="panel">
+        <div class="feeds-search-tools">
 
-        </span>
-        <span>Or from <input type="date"> to <input type="date"> </span>
+            <span>
+                <select>
+                    <option>Last 7 Days</option>
+                    <option>Last month</option>
+                </select>
+
+            </span>
+            <span>Or from <input type="date"> to <input type="date"> </span>
+        </div>
     </div>
-    <div class="feeds_search_condition">
-        <h2>Analysis:{{source.brand}}（关键词表达式）</h2>
 
-        <form novalidate name="searchFeedForm">
-            <div class="conditions">
+    <div class="panel">
+        <div class="conditionspanel">
+            <div class="title"><span class="titlelabel">Analysis:{{source.brand}}（关键词表达式）</div>
 
-                <div>
-                    <h4 class="condition-title">Source Type:</h4>
-                    <ul class="condition-cboxs">
-                        <!--  <li ng-repeat="st in sourceType">                                                     -->
-                        <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
-                        <!--  </li>                                                                                 -->
+                <form novalidate name="searchFeedForm">
 
-                        <li ng-repeat="st in sourcetype">
-                            <label><input class="checkbox" uniform type="checkbox" name="sourceType"
-                                          ng-checked="st.checked" ng-model="st.checked" value="{{st.type}}"/>{{st.type}}</label>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <hr>
+                        <div class="content">
+                            <div class="cell size1">Source Type:</div>
+                            <div class="cell size5">
+                                    <!--  <li ng-repeat="st in sourceType">                                                     -->
+                                    <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
+                                    <!--  </li>                                                                                 -->
 
-                <div>
-                    <h4 class="condition-title"> Professional Sites:</h4>
-                    <ul>
-                        <li ng-repeat="st in professionalSites">
-                            <label><input class="checkbox" uniform type="checkbox" name="{{st}}"/>{{st}}</label>
-                        </li>
-                    </ul>
-                </div>
-                <br>
-                <hr>
-                TimeFrame: <span>  from <input type="text" ng-model="feeds.startTime" name="startTime"
-                                               required=""> to <input type="text" ng-model="feeds.endTime"> </span>
-                <hr>
-                <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+                                    <span class="item" ng-repeat="st in sourcetype">
+                                        <input class="checkbox" uniform type="checkbox" name="sourceType"
+                                                      ng-checked="st.checked" ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
+                                    </span>
+                            </div>
+                        </div>
 
-                <div class="button-group">
-                    <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>
-                        Search
-                    </button>
-                    <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal"
-                            ng-disabled='searchFeedForm.$invalid'> Search Current Set
-                    </button>
-                </div>
+                        <div class="content">
+                            <div class="cell size1"> Professional Sites:</div>
+                            <div class="cell size5">
+                                <ul>
+                                    <span class="item" ng-repeat="st in professionalSites">
+                                        <input class="checkbox" uniform type="checkbox" name="{{st}}"/>{{st}}
+                                    </span>
+                                </ul>
+                            </div>
+                        </div>
 
+                        <div class="content">
+                            <div class="cell size1">TimeFrame:</div>
+                            <div class="cell size5">
+                             <span>  from <input type="text" ng-model="feeds.startTime" name="startTime" required=""> to <input type="text" ng-model="feeds.endTime"> </span>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="cell size1"></div>
+                            <div class="cell size5">
+                            <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+
+                            <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
+                            <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                                    ng-disabled='searchFeedForm.$invalid'> Search Current Set</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-
-    <div   class="s-pk-mod" data-pkid="26">
-        <h5 class="pk-title"><span>搜索来源饼图</span>
-            <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
-
-            <div class="s-title-bg"></div>
-        </h5>
-        <div class="pk-content">
-            <div id='canvasDiv3'></div>
         </div>
     </div>
 
-    <div   class="s-pk-mod" data-pkid="26">
-        <h5 class="pk-title"><span>情感分析图条形堆积图</span>
-            <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+    <div class="panel">
+        <div   class="s-pk-mod" data-pkid="26">
+            <h5 class="pk-title"><span>搜索来源饼图</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
 
-            <div class="s-title-bg"></div>
-        </h5>
-        <div class="pk-content">
-            <div id='canvasDiv4'></div>
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv3'></div>
+            </div>
         </div>
     </div>
+
+    <div class="panel">
+        <div   class="s-pk-mod" data-pkid="26">
+            <h5 class="pk-title"><span>情感分析图条形堆积图</span>
+                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+
+                <div class="s-title-bg"></div>
+            </h5>
+            <div class="pk-content">
+                <div id='canvasDiv4'></div>
+            </div>
+        </div>
+    </div>
+
     </div>
 <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">

@@ -167,13 +167,16 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
                 render: 'canvasDiv3',
                 data: data3,
                 labels: ["亚马逊", "京东" ],
-                title: {
-                    text: '情感分析图',
-                    color: '#254d70'
-                },
+//                title: {
+//                    text: '情感分析图',
+//                    color: '#254d70'
+//                },
                 label: {color: '#254d70', fontsize: 12, fontweight: 600},
                 percent: true,//标志为百分比堆积图
                 showpercent: true,
+                width: 550,
+                height:315,
+                border:'none',
                 decimalsnum: 1,
                 tip: {
                     enable: true,
