@@ -5,6 +5,7 @@ exports.list = function (req, res) {
     o.map = function () {
         emit(this.FromType, 1);
     }
+
     o.reduce = function (k, vals) {
         var total = 0;
         for (var i in vals) {
@@ -18,10 +19,12 @@ exports.list = function (req, res) {
     }
 
     o.out = { replace: '2dbarReportForResults' };
+
     o.verbose = true;
+
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
@@ -48,6 +51,7 @@ exports.TopicKeywordReport = function (req, res) {
         }
 
     }
+
     o.reduce = function (k, vals) {
         var total = 0;
         for (var i in vals) {
@@ -63,10 +67,10 @@ exports.TopicKeywordReport = function (req, res) {
     o.out = { replace: 'createdCollectionNameForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
-        model.find().select("value")
+        model.find().select("value").limit(10)
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
                 var result = [];
@@ -99,8 +103,8 @@ exports.SearchSource = function (req, res) {
     o.out = { replace: '2dpieReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
@@ -116,7 +120,7 @@ exports.SearchSource = function (req, res) {
 };
 
 exports.SearchSourcePost = function (req, res) {
-    var params=req.body;
+    var params = req.body;
     var o = {};
     o.map = function () {
         emit(this.FromType, 1);
@@ -136,8 +140,8 @@ exports.SearchSourcePost = function (req, res) {
     o.out = { replace: '2dpieReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
@@ -145,14 +149,14 @@ exports.SearchSourcePost = function (req, res) {
                 var result = [];
                 for (var d in docs) {
                     docs[d].value.color = utils.randomColor();
-                    if(params.st!=''){
-                        var cname= params.st.split("|");
-                        for(var n in cname){
-                            if(docs[d].value.name==cname[n]){
+                    if (params.st != '') {
+                        var cname = params.st.split("|");
+                        for (var n in cname) {
+                            if (docs[d].value.name == cname[n]) {
                                 result.push(docs[d].value);
                             }
                         }
-                    }else{
+                    } else {
                         result.push(docs[d].value);
                     }
                 }
@@ -162,7 +166,7 @@ exports.SearchSourcePost = function (req, res) {
 };
 
 exports.listPost = function (req, res) {
-    var params=req.body;
+    var params = req.body;
     var o = {};
     o.map = function () {
         emit(this.FromType, 1);
@@ -182,8 +186,8 @@ exports.listPost = function (req, res) {
     o.out = { replace: '2dbarReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
@@ -191,14 +195,14 @@ exports.listPost = function (req, res) {
                 var result = [];
                 for (var d in docs) {
                     docs[d].value.color = utils.randomColor();
-                    if(params.st!=''){
-                        var cname= params.st.split("|");
-                        for(var n in cname){
-                            if(docs[d].value.name==cname[n]){
+                    if (params.st != '') {
+                        var cname = params.st.split("|");
+                        for (var n in cname) {
+                            if (docs[d].value.name == cname[n]) {
                                 result.push(docs[d].value);
                             }
                         }
-                    }else{
+                    } else {
                         result.push(docs[d].value);
                     }
                 }
@@ -245,14 +249,14 @@ exports.SentimentAnalysis = function (req, res) {
     o.out = { replace: 'SentimentAnalysisReportForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
             .exec(function (err, docs) {
-                if(!!!docs.length||err){
-                    return res.json(500,docs);
+                if (!!!docs.length || err) {
+                    return res.json(500, docs);
                 }
                 var result = [];
                 var temp1 = [], temp2 = [], temp3 = [];
@@ -294,7 +298,7 @@ exports.SentimentAnalysis = function (req, res) {
     });
 };
 
-exports.keyWordCloud=function(req,res){
+exports.keyWordCloud = function (req, res) {
     var o = {};
     o.map = function () {
         var keywords = this.Keyword.split(';');
@@ -319,8 +323,8 @@ exports.keyWordCloud=function(req,res){
     o.out = { replace: 'keywordsColudForResults' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
-        if(err){
-            return res.json(500,err);
+        if (err) {
+            return res.json(500, err);
         }
         model.find().select("value")
             //*.where('value').gt(10)*//*
@@ -339,15 +343,15 @@ exports.test = function (req, res) {
 
     o.map = function () {
         if (this.PublishTime.match(/\d*/)[0] === "2013") {
-            var key =  this.PublishTime.match(/-(\d*)/)[1];
+            var key = this.PublishTime.match(/-(\d*)/)[1];
             if (this.Semantic > 0) {
-                emit({s:"好评",d:key}, 1);
+                emit({s: "好评", d: key}, 1);
             }
             if (this.Semantic > 0) {
-                emit({s:"中评",d:key}, 1);
+                emit({s: "中评", d: key}, 1);
             }
             if (this.Semantic > 0) {
-                emit({s:"差评",d:key}, 1);
+                emit({s: "差评", d: key}, 1);
             }
         }
 
