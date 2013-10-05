@@ -8,5 +8,5 @@ notifications:
         - zhuang.miao@pactera.com
         - 395802201@qq.com
         - qingfeng.han@pactera.com
-       on_success:  always
+       on_success:always
 
