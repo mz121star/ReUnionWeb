@@ -103,7 +103,7 @@
             </table>
             <ul class="pagination">
                 <li><a href="javascript:;">&laquo;</a></li>
-                <li  ng-class="{active: $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
+                <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
 
                 <li><a href="javascript:;">&raquo;</a></li>
             </ul>
