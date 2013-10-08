@@ -14,7 +14,7 @@
     "requirejs": "latest",
     "moment": "latest",
     "xss": "0.0.6",
-    "nodemailder": "latest"
+    "nodemailer": "latest"
   },
   "devDependencies": {
     "should": "*",
