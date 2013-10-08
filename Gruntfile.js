@@ -67,11 +67,16 @@ module.exports = function(grunt) {
                 src : 'dest/reunion.js',
                 dest : 'dest/reunion.min.js'
             }
+        },
+        nodeunit: {
+            all: ['test/nodetest/*Test.js']
         }
     });
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.registerTask('default', ['requirejs','cssmin','concat', 'uglify']);
+    grunt.registerTask("test",['nodeunit']);
 };

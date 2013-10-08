@@ -23,6 +23,8 @@ define(['app'], function (app) {
     app.filter('maxlen', function () {
         return function (input, text) {
             var len=text||40;
+            if(input.length<=len)
+             return input;
             return input.substring(0,len)+"...";
 
         };

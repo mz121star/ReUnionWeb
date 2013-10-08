@@ -58,6 +58,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             $scope.modal.source = feed.FromSite;
             $scope.modal.url = feed.FromUrl;
             $scope.modal.content = feed.content || feed.Content;
+
         };
         $scope.modal = {
             title: "Title",
@@ -78,6 +79,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 $scope.searchFeedForm.$invalid = false;
             }
         });
+
         $scope.exportExcel = function (tname, excelname) {
             excel(tname, excelname);
         };
