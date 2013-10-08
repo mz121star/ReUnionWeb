@@ -63,8 +63,11 @@ caption {background:#eee;}
 #header {position:relative;top:0;background:#003A83;width:100%;height:38px;border-bottom:3px solid #D61027;color:#FFFFFF;
     background:#003A83 url("../images/bg/top-bg.png");
 }
-#header .logo {float:left;width:217px;}
+#header .logo {float:left;width:197px;}
 #header .logo a {float:left;display:block;width:90px;height:33px;margin:3px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
+
+#header .leftbarbtn {float:left;width:20px;}
+#header .leftbarbtn a {float:left;display:block;width:13px;height:10px;margin-top:13px;background:url('../images/icon/tanc.png') no-repeat;}
 
 #header .nav {float:left;}
 #header .nav a {text-decoration: none;}
@@ -72,11 +75,7 @@ caption {background:#eee;}
 #header .nav .button:hover {color:#333333;background:#FFF;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
-#header .userinfo {float:right;line-height:38px;padding:0 15px;
-    background-image: -moz-linear-gradient(left, #003A83, #0072BC); /* Firefox */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endColorstr='#FFF', GradientType='0'); /*  IE6,IE7 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ff0000")"; /* IE8 */
-}
+#header .userinfo {float:right;line-height:38px;padding:0 15px;}
 #header .userinfo a {color:#FFFFFF;margin:0 3px;}
 #header .userinfo .user {float:left;}
 #header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:8px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
@@ -114,11 +113,12 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel .content {float:left;width:100%;}
 
 #maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
-#maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;}
-#maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:0px;font-size:12px;color:#333333;font-weight: bold;}
-#maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#eff6ff;border:1px solid #FFF;}
+#maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;vertical-align:middle;}
+#maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:0px;font-size:12px;color:#333333;font-weight: bold;vertical-align:middle;}
+#maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#eff6ff;border-bottom:2px solid #FFF;}
 #maincontent .containercontent .conditionspanel .content .cell {float:left;margin: 10px;}
-#maincontent .containercontent .conditionspanel .content .item {float:left;}
+#maincontent .containercontent .conditionspanel .content .item {float:left;width:80px;height:20px;line-height:20px;}
+#maincontent .containercontent .conditionspanel .content .item .checkbox {float:left;margin-right:5px;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
 #maincontent .containercontent .conditionspanel .content .size5 {}
 
@@ -177,6 +177,13 @@ caption {background:#eee;}
     }
 
 }
+
+
+
+
+
+
+
 
 
 
