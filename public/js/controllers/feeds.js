@@ -11,7 +11,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         };
 
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
-        $scope.professionalSites = ['CSDN', 'IDC'];
+
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
