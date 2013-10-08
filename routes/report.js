@@ -75,8 +75,10 @@ exports.TopicKeywordReport = function (req, res) {
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
-                    docs[d].value.color = utils.randomColor();
-                    result.push(docs[d].value);
+                    if (docs[d].value.name.trim() !== "") {
+                        docs[d].value.color = utils.randomColor();
+                        result.push(docs[d].value);
+                    }
                 }
                 return res.json(result);
             });
@@ -330,8 +332,10 @@ exports.keyWordCloud = function (req, res) {
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
-                    docs[d].value.color = utils.randomColor();
-                    result.push(docs[d].value);
+                    if (docs[d].value.name.trim() !== "") {
+                        docs[d].value.color = utils.randomColor();
+                        result.push(docs[d].value);
+                    }
                 }
                 return res.json(result);
             });

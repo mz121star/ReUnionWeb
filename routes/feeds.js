@@ -10,7 +10,7 @@ exports.list = function (req, res) {
     if(FromTypeReg){
         queryCondition.FromType= FromTypeReg  ;
     }
- /*   if(req.body.starttime&&req.body.endtime) {
+/*    if(req.body.starttime&&req.body.endtime) {
         queryCondition.PublishTime={$gte:new Date(req.body.starttime),$lte:new Date(req.body.endtime) } ;
     }*/
     var pageindex=  req.body.pageindex? req.body.pageindex*20-20:0;

@@ -22,8 +22,8 @@ define(['app'], function (app) {
     });
     app.filter('maxlen', function () {
         return function (input, text) {
-            var len=text;
-            return input.substring(0,len);
+            var len=text||40;
+            return input.substring(0,len)+"...";
 
         };
     });
