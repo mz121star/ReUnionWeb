@@ -92,10 +92,10 @@
                 <tbody>
                 <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
                     <td>{{ $index+1 }}</td>
-                    <td>{{feed.Title  }} </td>
-                    <td>{{feed.Content | maxlen  }} </td>
+                    <td title="{{feed.Title}}">{{feed.Title |maxlen:20  }} </td>
+                    <td title="{{feed.Content}}">{{feed.Content | maxlen  }} </td>
                     <td>{{ feed.FromSite }}</td>
-                    <td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                    <td><a title="{{feed.FromUrl}}" ng-href="feed.FromUrl">{{feed.FromUrl|maxlen:40}}</a></td>
 
                 </tr>
 
