@@ -75,8 +75,10 @@ exports.TopicKeywordReport = function (req, res) {
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
-                    docs[d].value.color = utils.randomColor();
-                    result.push(docs[d].value);
+                    if (docs[d].value.name.trim() !== "") {
+                        docs[d].value.color = utils.randomColor();
+                        result.push(docs[d].value);
+                    }
                 }
                 return res.json(result);
             });
@@ -137,7 +139,7 @@ exports.SearchSourcePost = function (req, res) {
         return {name: k, value: reduced}
     }
 
-    o.out = { replace: '2dpieReportForResults' };
+    o.out = { replace: '2dpieReportForResultsPost' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
         if (err) {
@@ -183,7 +185,7 @@ exports.listPost = function (req, res) {
         return {name: k, value: reduced}
     }
 
-    o.out = { replace: '2dbarReportForResults' };
+    o.out = { replace: '2dbarReportForResultsPost' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
         if (err) {
@@ -232,7 +234,6 @@ exports.SentimentAnalysis = function (req, res) {
 
     o.reduce = function (k, vals) {
         var total = 0;
-
         for (var i in vals) {
             total += vals[i];
         }
@@ -331,8 +332,10 @@ exports.keyWordCloud = function (req, res) {
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
-                    docs[d].value.color = utils.randomColor();
-                    result.push(docs[d].value);
+                    if (docs[d].value.name.trim() !== "") {
+                        docs[d].value.color = utils.randomColor();
+                        result.push(docs[d].value);
+                    }
                 }
                 return res.json(result);
             });

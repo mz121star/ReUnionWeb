@@ -1,8 +1,10 @@
 language: node_js
 node_js:
    - "0.8"
-   - "0.6"
 notifications:
-   email:
-     - zhuang.miao@pactera.com
+  email:
+        - zhuang.miao@pactera.com
+        - 395802201@qq.com
+        - qingfeng.han@pactera.com
+  on_success: always # default: change
 

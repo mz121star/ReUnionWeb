@@ -6,7 +6,7 @@
             <option>Last 7 Days</option>
             <option>Last month</option>
         </select>
-        <span>Or from <input class="inputdate" type="text"> to <input class="inputdate" type="text"> </span>
+        <span>Or from <input bs-datepicker class="inputdate" type="text"> to <input bs-datepicker class="inputdate" type="text"> </span>
     </div>
 </div>
 
@@ -93,9 +93,9 @@
                 <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
                     <td>{{ $index+1 }}</td>
                     <td>{{feed.Title  }} </td>
-                    <td>{{feed.Content | maxlen:20  }} </td>
+                    <td>{{feed.Content | maxlen  }} </td>
                     <td>{{ feed.FromSite }}</td>
-                    <td>{{ feed.FromUrl }}</td>
+                    <td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
 
                 </tr>
 
@@ -103,7 +103,7 @@
             </table>
             <ul class="pagination">
                 <li><a href="javascript:;">&laquo;</a></li>
-                <li  ng-class="{active: $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
+                <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
 
                 <li><a href="javascript:;">&raquo;</a></li>
             </ul>

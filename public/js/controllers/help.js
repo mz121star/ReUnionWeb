@@ -6,6 +6,5 @@ define([ 'i18n!resources/nls/res'], function (res) {
         $rootScope.title = "Help - "+ res.title;
 
     }];
-
-    return HelpController;
+           return HelpController;
 });

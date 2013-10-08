@@ -10,10 +10,10 @@ exports.list = function (req, res) {
     if(FromTypeReg){
         queryCondition.FromType= FromTypeReg  ;
     }
- /*   if(req.body.starttime&&req.body.endtime) {
+/*    if(req.body.starttime&&req.body.endtime) {
         queryCondition.PublishTime={$gte:new Date(req.body.starttime),$lte:new Date(req.body.endtime) } ;
     }*/
-    var pageindex=  req.body.pageindex? req.body.pageindex*20-20:1;
+    var pageindex=  req.body.pageindex? req.body.pageindex*20-20:0;
     FeedsModel.find(queryCondition).count(function (err, count) {
 
         FeedsModel.find(queryCondition)
@@ -26,7 +26,7 @@ exports.list = function (req, res) {
                 }
                 return res.json({
                     "feeds": feeds,
-                    "count": count
+                    "count": count/20>1?count/20:1
                 });
             });
     })
