@@ -79,6 +79,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 $scope.searchFeedForm.$invalid = false;
             }
         });
+
         $scope.exportExcel = function (tname, excelname) {
             excel(tname, excelname);
         };
