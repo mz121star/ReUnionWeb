@@ -61,7 +61,7 @@ caption {background:#eee;}
 .clear{ clear:both}
 
 #header {position:relative;top:0;background:#003A83;width:100%;height:38px;border-bottom:3px solid #D61027;color:#FFFFFF;
-    background-image: -webkit-gradient(linear, 300 bottom , right bottom, color-stop(0, #003A83), color-stop(1, #0072BC)); /* Saf4+, Chrome */
+    background:#003A83 url("../images/bg/top-bg.png");
 }
 #header .logo {float:left;width:217px;}
 #header .logo a {float:left;display:block;width:90px;height:33px;margin:3px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
@@ -103,20 +103,20 @@ caption {background:#eee;}
 
 #maincontent .containercontent {float:left;width:95%;margin: 20px;padding: 0;}
 
-#maincontent .containercontent .containercrumbs {float:left;width:100%;margin:20px 0 0 0;padding: 0;}
-#maincontent .containercontent .containercrumbs .text {float:left;margin:20px 0 0 0;font-size:16px;font-weight:bold;}
+#maincontent .containercontent .containercrumbs {float:left;width:100%;padding: 0;}
+#maincontent .containercontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
 
 #maincontent .containercontent .inputdate {float:left;width:158px;height:28px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
 #maincontent .containercontent .panel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
-#maincontent .containercontent .chartpanel {float:left;margin:20px 0 0 0;width:550px;height:350px;border:2px solid #007DC9;}
-#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:35px;line-height:35px;background:#007DC9;}
-#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;color:#FFF;}
+#maincontent .containercontent .chartpanel {float:left;margin:20px 0 0 0;width:550px;height:350px;border:1px solid #006DCC;}
+#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;background:#006DCC;}
+#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#FFF;}
 #maincontent .containercontent .chartpanel .content {float:left;width:100%;}
 
 #maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
 #maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;}
 #maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:0px;font-size:12px;color:#333333;font-weight: bold;}
-#maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#EEE;border:1px solid #FFF;}
+#maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#eff6ff;border:1px solid #FFF;}
 #maincontent .containercontent .conditionspanel .content .cell {float:left;margin: 10px;}
 #maincontent .containercontent .conditionspanel .content .item {float:left;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
@@ -138,8 +138,8 @@ caption {background:#eee;}
 
 #maincontent .containercontent .table {float:left;margin:20px 0 0 0;padding: 0;width:100%;color:#333;}
 #maincontent .containercontent .table thead {}
-#maincontent .containercontent .table thead tr {background:#E5E5E5;}
-#maincontent .containercontent .table thead td {border-right:1px solid #DDD;border-bottom:1px solid #EFEFEF;color:#333;font-weight:bold;}
+#maincontent .containercontent .table thead tr {background:#006DCC;}
+#maincontent .containercontent .table thead td {border-bottom:1px solid #EFEFEF;color:#EEE;text-align:center;font-weight:bold;}
 #maincontent .containercontent .table thead td.last {border-right:none;}
 #maincontent .containercontent .table thead td .filterasc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 0;}
 #maincontent .containercontent .table thead td .filterdesc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 -7px;}
@@ -177,13 +177,6 @@ caption {background:#eee;}
     }
 
 }
-
-
-
-
-
-
-
 
 
 

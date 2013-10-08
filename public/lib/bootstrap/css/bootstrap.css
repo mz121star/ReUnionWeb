@@ -1836,19 +1836,19 @@ table {
 
 .table th,
 .table td {
-  padding: 8px;
-  line-height: 20px;
   text-align: left;
   vertical-align: top;
 }
 
 .table th {
   font-weight: bold;
-    background:#E5E5E5;
+    background:#006DCC;
+    color: #FFF;
 }
 
 .table thead th {
   vertical-align: bottom;
+    text-align: center;
 }
 .table thead tr{background: #eeeeee;}
 .table caption + thead tr:first-child th,
