@@ -24,7 +24,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 .ToArray();
             sts = sts.join('|')
             console.log(sts);
-            var searchData = {st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
+            var searchData = {keyword: $scope.topicName,st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
             console.log(searchData);
             $http.post("/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
@@ -125,6 +125,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         }
 
         $rootScope.topicSelected = function (topic) {
+            $scope.topicName = topic.Name;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
             var sourceType = topic.SearchCondition.SourceType;

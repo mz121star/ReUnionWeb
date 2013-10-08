@@ -1,19 +1,15 @@
 
 <div class="panel">
-    <div class="feeds-search-tools">
-
-        <select class="inputdate">
-            <option>Last 7 Days</option>
-            <option>Last month</option>
-        </select>
-        <span>Or from <input bs-datepicker class="inputdate" type="text"> to <input bs-datepicker class="inputdate" type="text"> </span>
-    </div>
-</div>
-
-<div class="panel">
     <form novalidate  name="searchFeedForm" >
     <div class="conditionspanel">
         <div class="title"><span class="titlelabel">Feeds List:{{source.brand}}（关键词表达式）</span></div>
+        <div class="content">
+            <div class="cell size1">Topic:</div>
+            <div class="cell size5">
+                <input type="text" ng-model="topicName" >
+            </div>
+
+        </div>
         <div class="content">
              <div class="cell size1">Source Type:</div>
              <div class="cell size5">
@@ -57,7 +53,9 @@
             <div class="cell size5">
 
                 <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                <button class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid'>Search Current Set </button>
+                    <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                            ng-disabled='searchFeedForm.$invalid||!!!topicName'>Search Current Set
+                    </button>
                 <button class="btn btn-primary" ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')" type="button">Export Feed</button>
 
             </div>
@@ -125,26 +123,31 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
 
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title">Save Tpoic</h4>
-             </div>
-             <div class="modal-body">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Are your sure save the topic?</h4>
+            </div>
+            <div class="modal-body">
 
-                Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+                <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+ -->             Topic:{{topicName}}
+                <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
 
-                 <div ng-show="!!saveTopicWarning"  class="alert alert-success"> {{ saveTopicWarning }}</div>
-
-             </div>
-             <div class="modal-footer">
-                 <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
-                 <button type="button" ng-disabled="!!!topicName"  class="btn btn-primary" ng-click="saveTopic()">Save Topic</button>
-             </div>
-         </div><!-- /.modal-content -->
-     </div><!-- /.modal-dialog -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-disabled="!!!topicName" class="btn btn-primary" ng-click="saveTopic()">Save
+                    Topic
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 
  </div>
