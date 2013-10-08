@@ -232,7 +232,6 @@ exports.SentimentAnalysis = function (req, res) {
 
     o.reduce = function (k, vals) {
         var total = 0;
-
         for (var i in vals) {
             total += vals[i];
         }

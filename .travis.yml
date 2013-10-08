@@ -4,9 +4,7 @@ node_js:
    - "0.6"
 notifications:
   email:
-    recipients:
         - zhuang.miao@pactera.com
         - 395802201@qq.com
         - qingfeng.han@pactera.com
-    on_success: always # default: change
 
