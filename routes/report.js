@@ -137,7 +137,7 @@ exports.SearchSourcePost = function (req, res) {
         return {name: k, value: reduced}
     }
 
-    o.out = { replace: '2dpieReportForResults' };
+    o.out = { replace: '2dpieReportForResultsPost' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
         if (err) {
@@ -183,7 +183,7 @@ exports.listPost = function (req, res) {
         return {name: k, value: reduced}
     }
 
-    o.out = { replace: '2dbarReportForResults' };
+    o.out = { replace: '2dbarReportForResultsPost' };
     o.verbose = true;
     FeedsModel.mapReduce(o, function (err, model, stats) {
         if (err) {
