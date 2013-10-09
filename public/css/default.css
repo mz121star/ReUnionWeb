@@ -177,6 +177,7 @@ caption {background:#eee;}
     }
 
 }
+.loading{position: absolute; width:31px;height:31px;background-image: url(../img/loading.gif);display: inline-block;margin-left: 20% ;margin-top: 100px  }
 
 
 

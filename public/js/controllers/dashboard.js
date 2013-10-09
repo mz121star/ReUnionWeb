@@ -183,7 +183,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
 
 
         });*/
+       var loadReport=function(){
 
+       }
         async.series([
             function(callback){  $http.get('/2DBarReprot').success(function (d) {
                 new iChart.Bar2D({
