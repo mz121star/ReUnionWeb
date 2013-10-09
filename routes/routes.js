@@ -37,7 +37,7 @@ module.exports = function (app) {
     app.post('/SearchSource',reports.SearchSourcePost);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
-
+    app.get('/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
 
     /***
      * Topics

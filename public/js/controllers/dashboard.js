@@ -163,50 +163,49 @@ define([ 'i18n!resources/nls/res', 'ichart' ,'bootstrapAlert'], function (res, i
                     }
                 }).draw();
             })
-            new iChart.ColumnStacked2D({
-                render: 'canvasDiv3',
-                data: data3,
-                labels: ["亚马逊", "京东" ],
-//                title: {
-//                    text: '情感分析图',
-//                    color: '#254d70'
-//                },
-                label: {color: '#254d70', fontsize: 12, fontweight: 600},
-                percent: true,//标志为百分比堆积图
-                showpercent: true,
-                width: 550,
-                height:315,
-                border:'none',
-                decimalsnum: 1,
-                tip: {
-                    enable: true,
-                    shadow: true
-                },
-                legend: {
-                    enable: true,
-                    background_color: null,
-                    border: {
-                        enable: false
+            $http.get('/SentimentAnalysisColumn').success(function (d) {
+                new iChart.ColumnStacked2D({
+                    render: 'canvasDiv3',
+                    data: d,
+                    labels: ["一月", "二月", "三月", "四月", "五月", "六月"],
+                    label: {color: '#254d70', fontsize: 12, fontweight: 600},
+                    percent: true,//标志为百分比堆积图
+                    showpercent: true,
+                    width: 550,
+                    height: 315,
+                    border: 'none',
+                    decimalsnum: 1,
+                    tip: {
+                        enable: true,
+                        shadow: true
                     },
-                    offsetx: 19,//设置x轴偏移，满足位置需要
-                    offsety: -20//设置y轴偏移，满足位置需要
-                },
-                coordinate: {
-                    axis: {
-                        color: '#c0d0e0',
-                        width: 0
+                    legend: {
+                        enable: true,
+                        background_color: null,
+                        border: {
+                            enable: false
+                        },
+                        offsetx: 19,//设置x轴偏移，满足位置需要
+                        offsety: -20//设置y轴偏移，满足位置需要
                     },
-                    scale: [
-                        {
-                            position: 'left',
-                            scale_enable: false,
-                            start_scale: 0,
-                            scale_space: 50,
-                            label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                        }
-                    ]
-                }
-            }).draw();
+                    coordinate: {
+                        axis: {
+                            color: '#c0d0e0',
+                            width: 0
+                        },
+                        scale: [
+                            {
+                                position: 'left',
+                                scale_enable: false,
+                                start_scale: 0,
+                                scale_space: 50,
+                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                            }
+                        ]
+                    }
+                }).draw();
+            });
+
 
 //            $http.get('/SentimentAnalysis').success(function (d4) {
             $http.get('/SentimentAnalysis').success(function (d) {
