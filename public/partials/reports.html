@@ -1,4 +1,5 @@
-<button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveReportModal"  >Add New Report
+<button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveReportModal">
+    Add New Report
 </button>
 
 
@@ -14,10 +15,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr  ng-repeat="report in reportContent"   ng-click="showDetail(report)" showdetail >
+    <tr ng-repeat="report in reportContent" ng-click="showDetail(report)" showdetail>
         <td>{{ $index+1 }}</td>
-        <td>{{report.Title  }} </td>
-        <td>{{report.Receiver   }} </td>
+        <td>{{report.Title }}</td>
+        <td>{{report.Receiver }}</td>
         <td>
             <button class="btn btn-primary">停止</button>
             <button class="btn btn-primary" data-toggle="modal" data-target="#saveReportModal">详细</button>
@@ -44,11 +45,10 @@
                     <div class="content">
                         <div class="left"><span class="title">报告类型</span></div>
                         <div class="center">
-                            <input type="radio">日报
-                            <input type="radio">周报
-                            <input type="radio">月报
-                            <input type="radio">季报
-                            <input type="radio">年报
+
+                       <span class="item" ng-repeat="dt in report.dataType">
+                               <label><input type="radio" name="dataType" ng-value="dt.value" ng-model="report.type" >{{dt.value}}</label>
+                         </span>
                         </div>
                         <div class="right"></div>
                     </div>
@@ -56,29 +56,18 @@
                     <div class="content">
                         <div class="left"><span class="title">接收人</span></div>
                         <div class="center">
-                            <textarea>abc@pactera.com</textarea>
+                            <textarea ng-model="report.receiver">abc@pactera.com</textarea>
                         </div>
                         <div class="right"></div>
                     </div>
 
-                    <div class="content">
-                        <div class="left"><span class="title">数据来源</span></div>
-                        <div class="center">
-                            <input type="checkbox">微博
-                            <input type="checkbox">论坛
-                            <input type="checkbox">商城
-                            <input type="checkbox">搜索引擎
-                        </div>
-                        <div class="right"></div>
-                    </div>
 
                     <div class="content">
                         <div class="left"><span class="title">Topic选择</span></div>
                         <div class="center">
-                            <input type="checkbox">兰蔻微博
-                            <input type="checkbox">Topic1
-                            <input type="checkbox">Topic2
-                            <input type="checkbox">Topic3
+                            <span class="item" ng-repeat="topic in Topics">
+                          <label> <input class="checkbox"   type="checkbox" name="sourceType" ng-checked="topic.checked"   ng-model="topic.checked" value="{{topic.type}}"/>{{topic.type}}</label>
+                            </span>
 
                         </div>
                         <div class="right"></div>
@@ -87,7 +76,7 @@
                     <div class="content">
                         <div class="left"><span class="title">操作</span></div>
                         <div class="center">
-                            <button class="btn">Save</button>
+                            <button class="btn btn-primary" ng-click="saveReport()">Save</button>
                         </div>
                         <div class="right"></div>
                     </div>
@@ -106,8 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button"   class="btn btn-primary"  >Save
-                </button>
+
             </div>
         </div>
         <!-- /.modal-content -->
@@ -115,107 +103,105 @@
     <!-- /.modal-dialog -->
 
 
-
-<!--<div class="reunioncontent" uniform xmlns="http://www.w3.org/1999/html">-->
+    <!--<div class="reunioncontent" uniform xmlns="http://www.w3.org/1999/html">-->
     <!--<div class="pull-left">-->
-        <!--<select>-->
-            <!--<option value="0">Last 7Days</option>-->
-        <!--</select>-->
+    <!--<select>-->
+    <!--<option value="0">Last 7Days</option>-->
+    <!--</select>-->
     <!--</div>-->
     <!--or form-->
     <!--<input class="Wdate" type="text" id="startDate" placeholder=""-->
-           <!--onclick="WdatePicker({el:'startDate',isShowClear:false,readOnly:true})"-->
-           <!--onFocus="var endDate=$dp.$('endDate');WdatePicker({onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})">-->
+    <!--onclick="WdatePicker({el:'startDate',isShowClear:false,readOnly:true})"-->
+    <!--onFocus="var endDate=$dp.$('endDate');WdatePicker({onpicked:function(){endDate.focus();},maxDate:'#F{$dp.$D(\'endDate\')}'})">-->
     <!--to-->
     <!--<input class="Wdate" type="text" id="endDate" placeholder=""-->
-           <!--onclick="WdatePicker({el:'endDate',isShowClear:false,readOnly:true})"-->
-           <!--onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})">-->
-
+    <!--onclick="WdatePicker({el:'endDate',isShowClear:false,readOnly:true})"-->
+    <!--onFocus="WdatePicker({minDate:'#F{$dp.$D(\'startDate\')}'})">-->
 
 
     <!--<div class="search_all">-->
-        <!--<h2 class="titbg search_list clearfix">Reports for:{{source.brand}}（临时Title,可定义）</h2>-->
+    <!--<h2 class="titbg search_list clearfix">Reports for:{{source.brand}}（临时Title,可定义）</h2>-->
 
-        <!--<div class="search_list clearfix">-->
-            <!--<div class="title">Header:</div>-->
-            <!--<ul class="search_content">-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--<div class="search_list clearfix">-->
-            <!--<div class="title">Features:</div>-->
-            <!--<ul class="search_content">-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--<div class="search_list clearfix">-->
-            <!--<div class="title">Sections:</div>-->
-            <!--<ul class="search_content">-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-                <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
-            <!--</ul>-->
-        <!--</div>-->
-        <!--<div class="search_list clearfix">-->
-            <!--<div class="title">Schedule: </div>-->
-            <!--<ul class="search_content">-->
-                <!--<li ><label>Every Monday at 08:00</label></li>-->
-            <!--</ul>-->
+    <!--<div class="search_list clearfix">-->
+    <!--<div class="title">Header:</div>-->
+    <!--<ul class="search_content">-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="search_list clearfix">-->
+    <!--<div class="title">Features:</div>-->
+    <!--<ul class="search_content">-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="search_list clearfix">-->
+    <!--<div class="title">Sections:</div>-->
+    <!--<ul class="search_content">-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--<li class="input_style"><label><input type="checkbox" class="checkbox"/>Source</label></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--<div class="search_list clearfix">-->
+    <!--<div class="title">Schedule: </div>-->
+    <!--<ul class="search_content">-->
+    <!--<li ><label>Every Monday at 08:00</label></li>-->
+    <!--</ul>-->
 
-        <!--</div>-->
-        <!--<div class="search_list clearfix">-->
-            <!--<div class="censt">-->
-                <!--<div>-->
-                    <!--<button type="button" class="btn btn-primary">Schedule Report</button>-->
-                    <!--<button type="button" class="btn btn-primary">Generate Report</button>-->
-                    <!--<button type="button" class="btn btn-primary">Save Report As</button>-->
-                    <!--<button type="button" class="btn btn-primary">Email Report</button>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="search_list clearfix">-->
+    <!--<div class="censt">-->
+    <!--<div>-->
+    <!--<button type="button" class="btn btn-primary">Schedule Report</button>-->
+    <!--<button type="button" class="btn btn-primary">Generate Report</button>-->
+    <!--<button type="button" class="btn btn-primary">Save Report As</button>-->
+    <!--<button type="button" class="btn btn-primary">Email Report</button>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
     <!--</div>-->
     <!--<div class="content">-->
-        <!--<div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">-->
-            <!--<h5>-->
-                <!--<a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>-->
+    <!--<div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">-->
+    <!--<h5>-->
+    <!--<a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>-->
 
-                <!--<div class="s-title-bg-blue">图表</div>-->
-            <!--</h5>-->
-            <!--<div class="pk-content">-->
-                <!--<div id='canvasDiv3'></div>-->
-            <!--</div>-->
-        <!--</div>-->
-
-        <!--<div class="s-pk-mod pic-bdle pk-title-red">-->
-            <!--<h5>-->
-                <!--<a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>-->
-
-                <!--<div class="s-title-bg-red">图表</div>-->
-            <!--</h5>-->
-            <!--<div class="pk-content">-->
-                <!--<div id='canvasDiv4'></div>-->
-            <!--</div>-->
-        <!--</div>-->
+    <!--<div class="s-title-bg-blue">图表</div>-->
+    <!--</h5>-->
+    <!--<div class="pk-content">-->
+    <!--<div id='canvasDiv3'></div>-->
     <!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="s-pk-mod pic-bdle pk-title-red">-->
+    <!--<h5>-->
+    <!--<a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>-->
+
+    <!--<div class="s-title-bg-red">图表</div>-->
+    <!--</h5>-->
+    <!--<div class="pk-content">-->
+    <!--<div id='canvasDiv4'></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
