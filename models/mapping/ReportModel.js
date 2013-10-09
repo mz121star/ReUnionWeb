@@ -3,15 +3,13 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
     Name:String,
-    SearchCondition:{
-        SourceType:Array,
-        ProfessionalSite:Array,
-        StartDate:Date,
-        EndDate:Date
-    },
+    Receiver:String,
+    Type:String,
+    Topics:Array,
     OwnerId:String,
     CreateDate:Date,
-    UpdateDate:Date
-}, {collection: 'Report'});
+    UpdateDate:Date,
+    Status:Number
+}, {collection: 'SubReport'});
 
 mongoose.model('Report', schema);

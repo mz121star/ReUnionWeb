@@ -2,7 +2,7 @@
 
 define([ 'i18n!resources/nls/res'], function (res) {
 
-    var ReportsController = ['$scope', '$rootScope','$http', function ($scope, $rootScope,$http) {
+    var ReportsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Reports - " + res.title;
         // $rootScope.title= res.title;
         $scope.source = {
@@ -20,8 +20,20 @@ define([ 'i18n!resources/nls/res'], function (res) {
         ];
         $http.get('/topic').success(function (d) {
 
-            $scope.Topics= Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
+            $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
         });
+        var InitData = {
+            dataType: [
+                {value: "日报"} ,
+                {value: "周报"},
+                {value: "月报"},
+                {value: "季报"},
+                {value: "年报"}
+
+            ],
+            receiver: "",
+            type: "日报"
+        }
         $scope.report = {
             dataType: [
                 {value: "日报"} ,
@@ -30,19 +42,68 @@ define([ 'i18n!resources/nls/res'], function (res) {
                 {value: "季报"},
                 {value: "年报"}
 
-            ]  ,
-            receiver:"miaozhuang.net" ,
-            type:"日报"
+            ],
+            receiver: "miaozhuang.net",
+            type: "日报"
 
+        };
+
+        $http.get('/subReport').success(function (d) {
+
+            $scope.subReports = d;
+        });
+        $scope.editWindowTitle="Add New" ;
+        $scope.addReport = function () {
+            $scope.editWindowTitle="Add New" ;
+            var sts = Enumerable.From($scope.Topics)
+                .Where(function (x) {
+                    return x.checked === true
+                })
+                .Select("$.type")
+                .ToArray();
+            $http.post('/subReport', {
+                Name: "(" + sts.join("|") + ")-" + $scope.report.type,
+                Type: $scope.report.type,
+                Receiver: $scope.report.receiver,
+                Topics: sts,
+                OwnerId: "admin",
+                CreateDate: Date.now(),
+                UpdateDate: Date.now() ,
+                Status:1
+
+            }).success(function (d) {
+                    $http.get('/subReport').success(function (d) {
+                        $scope.subReports = d;
+                    });
+
+                    $scope.saveTopicWarning = "Save Topic Successfully"
+                        $scope.report = InitData;
+                        $timeout(function () {
+                            $scope.saveTopicWarning = ""
+                        }, 1000) ;
+
+
+                });
+        };
+        $scope.changeSubStatus=function(report){
+            $http.put('/subReport', {
+               _id:report._id
+
+            }).success(function (d) {
+
+                    $http.get('/subReport').success(function (d) {
+                        $scope.subReports = d;
+                    });
+            });
         }
-         $scope.$watch("report.dataType",function(v1,v2){
-             console.log(v1);
-
-         },true)
-        $scope.$watch("Topics",function(v1,v2){
+        $scope.$watch("report.dataType", function (v1, v2) {
             console.log(v1);
-            console.log(v2)   ;
-        },true)
+
+        }, true)
+        $scope.$watch("Topics", function (v1, v2) {
+            console.log(v1);
+            console.log(v2);
+        }, true)
 
 
     }];

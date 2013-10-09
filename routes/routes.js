@@ -13,6 +13,7 @@ var kimiss=require('./kimiss');
 var feeds=require('./feeds');
 var reports=require('./report');
 var topic=require('./topic');
+var subscription=require('./subscription');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
@@ -44,5 +45,13 @@ module.exports = function (app) {
      */
     app.post('/topic',topic.saveTopic);
     app.get('/topic',topic.list);
+
+    /***
+     * Reports-subscription report
+     */
+    app.post('/subReport',subscription.saveReport);
+    app.get('/subReport',subscription.list);
+    app.put('/subReport',subscription.editReport);
+
 
 };

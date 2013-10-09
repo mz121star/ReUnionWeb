@@ -3,7 +3,7 @@ define(['app'], function (app) {
         return function (input, text) {
             var r = new RegExp(text, 'gmi');
             if (r.exec(input)) {
-                return input ;
+                return input;
             }
             else
                 return "";
@@ -22,31 +22,39 @@ define(['app'], function (app) {
     });
     app.filter('maxlen', function () {
         return function (input, text) {
-            var len=text||40;
-            if(input.length<=len)
-             return input;
-            return input.substring(0,len)+"...";
+            var len = text || 40;
+            if (input.length <= len)
+                return input;
+            return input.substring(0, len) + "...";
 
         };
     });
     /***
      * AngularJS For Loop with Numbers & Ranges
      */
-    app.filter('range', function() {
-        return function(input, total) {
+    app.filter('range', function () {
+        return function (input, total) {
             total = parseInt(total);
-            for (var i=0; i<total; i++)
+            for (var i = 0; i < total; i++)
                 input.push(i);
             return input;
         };
     });
-    app.filter('PagerRange', function() {
-        return function(input, total) {
+    app.filter('PagerRange', function () {
+        return function (input, total) {
             total = parseInt(total);
-            if(total>20) total=20
-            for (var i=0; i<total; i++)
+            if (total > 20) total = 20
+            for (var i = 0; i < total; i++)
                 input.push(i);
             return input;
         };
     });
+    app.filter("numToTxt", function () {
+        return function (input, text) {
+            if (input === 1)
+                return "停止";
+            if (input === 0)
+                return "开始";
+        };
+    })
 });
