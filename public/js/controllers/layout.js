@@ -94,6 +94,9 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
        var hash= $location.$$url.replace(/\//gmi,'') ;
         $.each($scope.navBars,function(i,item){
                 if(item.url.match(hash)){
+                    if(!!!hash)
+                        $scope.selectedRow=0
+                    else
                     $scope.selectedRow=item.index-1;
                 }
         })
