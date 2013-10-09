@@ -8,16 +8,8 @@ define([ 'i18n!resources/nls/res'], function (res) {
         $scope.source = {
             brand: "兰蔻"
         };
-        $scope.headers = ['Summary', 'Volume', 'Dashboard'];
-        $scope.features = ['Time Trend', 'Sentiment', 'Top feed list'];
-        $scope.sections = ['topic1', 'topic2', 'topic3'];
-        $scope.reportContent = [
-            {Title: "兰蔻", Receiver: "miaozhuang.net"} ,
-            {Title: "雅诗兰黛", Receiver: "miaozhuang.net"}     ,
-            {Title: "化妆品", Receiver: "miaozhuang.net"},
-            {Title: "好评的内容", Receiver: "miaozhuang.net"},
-            {Title: "差评", Receiver: "miaozhuang.net"},
-        ];
+
+
         $http.get('/topic').success(function (d) {
 
             $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
@@ -52,15 +44,20 @@ define([ 'i18n!resources/nls/res'], function (res) {
 
             $scope.subReports = d;
         });
-        $scope.editWindowTitle="Add New" ;
+        $scope.editWindowTitle = "Add New";
         $scope.addReport = function () {
-            $scope.editWindowTitle="Add New" ;
+            $scope.editWindowTitle = "Add New";
+            $scope.saveTopicError="";
             var sts = Enumerable.From($scope.Topics)
                 .Where(function (x) {
                     return x.checked === true
                 })
                 .Select("$.type")
                 .ToArray();
+            if(sts.length===0){
+                $scope.saveTopicError="必须选择一个Topic";
+                return false;
+            }
             $http.post('/subReport', {
                 Name: "(" + sts.join("|") + ")-" + $scope.report.type,
                 Type: $scope.report.type,
@@ -68,8 +65,8 @@ define([ 'i18n!resources/nls/res'], function (res) {
                 Topics: sts,
                 OwnerId: "admin",
                 CreateDate: Date.now(),
-                UpdateDate: Date.now() ,
-                Status:1
+                UpdateDate: Date.now(),
+                Status: 1
 
             }).success(function (d) {
                     $http.get('/subReport').success(function (d) {
@@ -77,33 +74,24 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     });
 
                     $scope.saveTopicWarning = "Save Topic Successfully"
-                        $scope.report = InitData;
-                        $timeout(function () {
-                            $scope.saveTopicWarning = ""
-                        }, 1000) ;
+                    $scope.report = InitData;
+                    $timeout(function () {
+                        $scope.saveTopicWarning = ""
+                    }, 1000);
 
 
                 });
         };
-        $scope.changeSubStatus=function(report){
+        $scope.changeSubStatus = function (report) {
             $http.put('/subReport', {
-               _id:report._id
+                _id: report._id
 
             }).success(function (d) {
-
                     $http.get('/subReport').success(function (d) {
                         $scope.subReports = d;
                     });
-            });
+                });
         }
-        $scope.$watch("report.dataType", function (v1, v2) {
-            console.log(v1);
-
-        }, true)
-        $scope.$watch("Topics", function (v1, v2) {
-            console.log(v1);
-            console.log(v2);
-        }, true)
 
 
     }];

@@ -1,85 +1,126 @@
-<div class="reunioncontent" uniform xmlns="http://www.w3.org/1999/html">
-    <div class="pull-left">
-        <select>
-            <option value="0">Last 7Days</option>
-        </select>
-    </div>
-    or form
-    <input class="Wdate" type="text"/>
-    to
-    <input class="Wdate" type="text"/>
+<div class="panel">
+    <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click=""
+            data-target="#saveReportModal">
+        Add New Alert
+    </button>
 
 
-    <div class="search_all">
-        <h2 class="titbg search_list clearfix">Alert List:（表达式）</h2>
+    <table id="reportsTable" class="table">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th sortable>Title</th>
+            <th>类型</th>
+            <th>收件人</th>
+            <th>创建时间</th>
+            <th>操作</th>
 
-        <div class="search_list clearfix">
-            <div class="title">Define Type:</div>
-              <div>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
-                  <li class="input_style"><label> <input type="radio" name="radio" value="hi" /> Saying hi</label> </li>
 
-              </div>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">RegExpression:</div>
-            <ul class="search_content">
-                <li class="input_style"><label><input type="text"/></label></li>
-            </ul>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">Valid Period:</div>
-            <ul class="search_content">
-                form<input type="text"/> to<input type="text"/>
-            </ul>
-        </div>
-        <div class="search_list clearfix">
-            <div class="title">Actions: </div>
-            <ul class="search_content">
-                <input type="checkbox" class="checkbox"/>Remember me<input type="text" placeholder="@"/>
-            </ul>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="report in subReports" ng-click="showDetail(report)" showdetail>
+            <td>{{ $index+1 }}</td>
+            <td>{{report.Name }}</td>
+            <td>{{report.Type }}</td>
+            <td>{{report.Receiver }}</td>
+            <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
+            <td>
+                <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
 
-        </div>
-        <div class="search_list clearfix">
-            <div class="censt">
-                <div>
-                    <button type="button" class="btn btn-primary">Send Code</button>
-                    <button type="button" class="btn btn-primary">Sumulate</button>
-                    <button type="button" class="btn btn-primary">Save Alert</button>
-                    <button type="button" class="btn btn-primary">Export Alert List</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div class="s-pk-mod pic-bdle pk-title-blue" data-pkid="26">
-            <h5>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+            </td>
 
-                <div class="s-title-bg-blue">图表</div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv3'></div>
-            </div>
-        </div>
 
-        <div class="s-pk-mod pic-bdle pk-title-red">
-            <h5>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
+        </tr>
 
-                <div class="s-title-bg-red">图表</div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv4'></div>
-            </div>
-        </div>
-    </div>
+        </tbody>
+    </table>
 </div>
-</div>
+<div style="display: none" class="modal fade" id="saveReportModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{editWindowTitle}}</h4>
+            </div>
+            <div class="modal-body">
+                <form  name="alertForm">
+                    <div class="editpanel">
+
+                        <!--<div class="content">
+                            <div class="left"><span class="title">报告类型</span></div>
+                            <div class="center">
+
+                           <span class="item" ng-repeat="dt in report.dataType">
+                                   <label><input type="radio" name="dataType" ng-value="dt.value" ng-model="report.type">{{dt.value}}</label>
+                             </span>
+                            </div>
+                            <div class="right"></div>
+                        </div>-->
+
+                        <div class="content">
+                            <div class="left"><span class="title">KeyWords</span></div>
+                            <div class="center">
+                                <input type="text" ng-model="report.keyword" required /> <label><input
+                                    type="checkbox"  />使用正则</label>
+                            </div>
+                            <div class="right"></div>
+                        </div>
+
+                        <div class="content">
+                            <div class="left"><span class="title">Mail To:</span></div>
+                            <div class="center">
+                                <textarea ng-model="report.maito" required>abc@pactera.com</textarea>
+                            </div>
+                            <div class="right"></div>
+                        </div>
+
+                        <div class="content">
+                            <div class="left"><span class="title">SMS To:</span></div>
+                            <div class="center">
+                                <textarea ng-model="report.smsto" required>13848866666</textarea>
+                            </div>
+                            <div class="right"></div>
+                        </div>
+
+                        <div class="content">
+                            <div class="left"><span class="title">Topic选择</span></div>
+                            <div class="center">
+                            <span class="item"  ng-repeat="topic in Topics">
+                          <label> <input   class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"
+                                         ng-model="topic.checked" value="{{topic.type}}"/>{{topic.type}}</label>
+                            </span>
+
+                            </div>
+                            <div class="right"></div>
+                        </div>
+
+                        <div class="content">
+                            <div class="left"><span class="title">时间段</span></div>
+                            <div class="center">
+                                <input bs-datepicker type="text" ng-model="feeds.startTime" name="startTime">
+                                                                     to
+                                <input bs-datepicker type="text" ng-model="feeds.endTime">
+
+                            </div>
+                            <div class="right"></div>
+                        </div>
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
+                <div ng-show="!!saveTopicError" class="alert alert-error"> {{ saveTopicError }}</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" ng-disabled='alertForm.$invalid' ng-click="addReport()">Save</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

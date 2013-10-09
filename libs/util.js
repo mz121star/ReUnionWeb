@@ -1,5 +1,5 @@
 var xss = require('xss');
-
+ var moment=require('moment') ;
 exports.format_date = function (date, friendly) {
   var year = date.getFullYear();
   var month = date.getMonth() + 1;
@@ -109,6 +109,18 @@ var getcolor=new getColor();
 exports.randomColor=function(){
    return getcolor.getOne() ;
 };
+
+exports.dateRange = function (start, end) {
+
+    var result=[];
+    var startDate = new Date(start), endDate = new Date(end);
+    for (var i = 0; i < 30; i++) {
+        var d=moment(startDate).add('days',i).format("YYYY-MM-DD");
+        result.push(d);
+    }
+    return result;
+}
+
 /*
 exports.randomColor=function(){
 

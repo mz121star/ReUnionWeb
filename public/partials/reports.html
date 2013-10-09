@@ -90,8 +90,9 @@
             </div>
             <div class="modal-footer">
                 <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
+                <div ng-show="!!saveTopicError" class="alert alert-error"> {{ saveTopicError }}</div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" ng-click="addReport()">Save</button>
+                <button class="btn btn-primary" ng-disabled="!!!report.receiver" ng-click="addReport()">Save</button>
             </div>
         </div>
         <!-- /.modal-content -->
