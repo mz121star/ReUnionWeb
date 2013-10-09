@@ -111,7 +111,6 @@ exports.randomColor=function(){
 };
 
 exports.dateRange = function (start, end) {
-
     var result=[];
     var startDate = new Date(start), endDate = new Date(end);
     for (var i = 0; i < 30; i++) {
