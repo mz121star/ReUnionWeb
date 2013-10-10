@@ -13,9 +13,11 @@ var kimiss=require('./kimiss');
 var feeds=require('./feeds');
 var reports=require('./report');
 var topic=require('./topic');
+var subscription=require('./subscription');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
+    app.get('/login',index.login);
     app.get('/blog', blog.list);
     app.get('/user', user.list);
 
@@ -37,12 +39,20 @@ module.exports = function (app) {
     app.post('/SearchSource',reports.SearchSourcePost);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
-
-
+    app.get('/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
+    app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
     /***
      * Topics
      */
     app.post('/topic',topic.saveTopic);
     app.get('/topic',topic.list);
+
+    /***
+     * Reports-subscription report
+     */
+    app.post('/subReport',subscription.saveReport);
+    app.get('/subReport',subscription.list);
+    app.put('/subReport',subscription.editReport);
+
 
 };

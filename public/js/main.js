@@ -22,7 +22,8 @@ require.config({
         jqueryuniform: '../lib/uniform/jquery.uniform.min',
         linqjs:'../lib/linq',
         'angular-strap':'../lib/angular-strap/angular-strap',
-        'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker'
+        'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
+        "async":'../lib/async'
     },
     shim: {
         'angular': {'exports': 'angular'},

@@ -14,11 +14,20 @@ exports.index = function (req, res) {
 
 //    Users.getById('51037e2a8a75b31c53000001');
 //    Users.getByName('Jarrick678.9289640728384');
+    var s =req.session["user"] ;
+    if(!s){
+        res.redirect('login');
+        return;
+    }
     var html = path.normalize(__dirname + '/../views/index.html');
     res.sendfile(html);
 //    res.render('index', { title:'NJBlog.' });
 };
 
+exports.login = function (req, res) {
+    var html = path.normalize(__dirname + '/../views/login.html');
+    res.sendfile(html);
+}
 exports.getLoginUser = function (req, res) {
     res.json(req.session["user"] || {});
 };

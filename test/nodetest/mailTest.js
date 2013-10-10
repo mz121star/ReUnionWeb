@@ -1,3 +1,4 @@
+/*
 
 exports.testSomething = function(test){
     test.expect(1);
@@ -8,4 +9,4 @@ exports.testSomething = function(test){
 exports.testSomethingElse = function(test){
     test.ok(false, "this assertion should fail");
     test.done();
-};
+};*/
