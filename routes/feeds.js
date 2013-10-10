@@ -21,6 +21,7 @@ exports.list = function (req, res) {
     FeedsModel.find(queryCondition).count(function (err, count) {
 
         FeedsModel.find(queryCondition)
+            .sort({PublishTime:'desc'})
             .skip(pageindex)
             .limit(20)
             /*.select('childs')*/
