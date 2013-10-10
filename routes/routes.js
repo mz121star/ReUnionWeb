@@ -39,7 +39,7 @@ module.exports = function (app) {
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
     app.get('/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
-
+    app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
     /***
      * Topics
      */
