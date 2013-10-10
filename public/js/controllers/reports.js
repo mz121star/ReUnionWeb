@@ -92,8 +92,22 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     });
                 });
         }
+        $scope.subPreview_URL="javascript:;" ;
+         $scope.showPreview=function(url){
+           $scope.subPreview_URL=  "subReportPreview/"+url;
 
-
+         }   ;
+        $scope.sendSubReport=function(report){
+           $scope.report.text="正在发送.."
+            $http.get("/sendPreviewMail/"+report._id).success(function(d){
+                $scope.sendSuccess="主题为"+(report.Name)+"的邮件发送成功" ;
+                $timeout(function () {
+                    $scope.sendSuccess = ""
+                }, 2000);
+            }).error(function(d){
+                    $scope.sendError="主题为"+(report.Name)+"的发送失败" ;
+                }) ;
+        }
     }];
 
     return ReportsController;

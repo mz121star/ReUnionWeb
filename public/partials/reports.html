@@ -4,7 +4,8 @@
         Add New Report
     </button>
 
-
+    <div ng-show="!!sendSuccess" class="alert alert-success"> {{ sendSuccess }}</div>
+    <div ng-show="!!sendError" class="alert alert-error"> {{ sendError }}</div>
     <table id="reportsTable" class="table">
         <thead>
         <tr>
@@ -27,10 +28,10 @@
             <td>{{report.UpdateDate | date:'yyyy-MM-dd'  }}</td>
             <td>
                 <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
-                <button class="btn btn-primary" ng-click="sendSubReport(report)">发送</button>
-                <a href="subReportPreview/{{report._id}}" target="_blank" data-toggle="modal" ng-click=""
+                <button class="btn btn-primary" ng-click="sendSubReport(report)">{{report.text="发送"}}</button>
+                <a href="javascript:;" target="_blank" data-toggle="modal" ng-click="showPreview(report._id)"
                    data-target="#subPreviewModal">预览</a>
-
+               <!-- subReportPreview/{{report._id}}-->
             </td>
 
 
@@ -40,7 +41,7 @@
     </table>
 </div>
 
-<div style="display: none" class="modal fade" id="subPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div style="display: none;width: 900px;margin: -250px 0 0 -450px;" class="modal fade" id="subPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
     <div class="modal-dialog">
@@ -52,7 +53,7 @@
             <div class="modal-body">
 
                  <div style="width: 800px;height: 400px">
-                     <iframe src="http://www.hexun.com" width="500" height="300" />
+                     <iframe ng-src="{{subPreview_URL}}" style="     width: 800px;         height: 500px; "/>
                  </div>
 
             </div>

@@ -56,5 +56,6 @@ module.exports = function (app) {
     app.get('/subReport',subscription.list);
     app.put('/subReport',subscription.editReport);
     app.get('/subReportPreview/:id', subscription.subReportPreview);
+    app.get('/sendPreviewMail/:id',subscription.sendReportPreviewByEmail);
 
 };
