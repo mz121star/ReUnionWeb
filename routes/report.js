@@ -1,5 +1,6 @@
 var FeedsModel = require("./../models").Feeds;
 var utils = require("./../libs/util");
+var underscore = require("underscore");
 exports.list = function (req, res) {
 /*    var o = {};
     o.map = function () {
@@ -56,7 +57,7 @@ exports.list = function (req, res) {
 //产品活动柱状图
 exports.TopicKeywordReport = function (req, res) {
 
-    var o = {};
+   /* var o = {};
     o.map = function () {
         var keywords = this.Keyword.split(';');
         for (var i in keywords) {
@@ -85,7 +86,7 @@ exports.TopicKeywordReport = function (req, res) {
             return res.json(500, err);
         }
         model.find().select("value").limit(10)
-            //*.where('value').gt(10)*//*
+            /*//*.where('value').gt(10)*//**//*
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
@@ -96,11 +97,50 @@ exports.TopicKeywordReport = function (req, res) {
                 }
                 return res.json(result);
             });
-    });
+    });*/
+
+    FeedsModel.aggregate(
+        { $group: { _id: "$Keyword", value: { $sum: 1 }}}
+        , { $project: {name:"$_id",  value:1 }}
+        /* , { $project: { _id: 0, maxAge: 1 }}*/
+        , function (err, docs) {
+            if (err) return handleError(err);
+
+
+            var keywords=[];
+           /**
+            * map
+            * */
+            for(var i=0;i<docs.length;i++){
+                var obj=docs[i];
+                var names=obj.name.split(";")
+                 names= underscore.uniq(names);
+                for(var k in names){
+                    var keyword=names[k];
+                     keywords.push({key:keyword,value:obj.value})
+                }
+            }
+            /**
+             * reduce
+             */
+             var result={};
+            for(var i=0; i<keywords.length; i++) {
+                var keyword = keywords[i];
+                result[keyword.key] = result[keyword.key] ? (result[keyword.key] + keyword.value) : keyword.value;
+            }
+
+            var finalResult=[];
+             var keys=underscore.keys(result);
+            var values=underscore.values(result);
+            for(var i= 0,len=keys.length>10?10:keys.length;i<len;i++){
+                finalResult.push({name:keys[i],value:values[i],color: utils.randomColor()})
+            }
+            res.json(finalResult); // [ { maxAge: 98 } ]
+        });
 };
 //饼图
 exports.SearchSource = function (req, res) {
-    var o = {};
+  /*  var o = {};
     o.map = function () {
         emit(this.FromType, 1);
     }
@@ -123,7 +163,7 @@ exports.SearchSource = function (req, res) {
             return res.json(500, err);
         }
         model.find().select("value")
-            //*.where('value').gt(10)*//*
+            /*//*.where('value').gt(10)*//**//*
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
@@ -132,7 +172,21 @@ exports.SearchSource = function (req, res) {
                 }
                 return res.json(result);
             });
-    });
+    });*/
+    FeedsModel.aggregate(
+        { $group: { _id: "$FromType", value: { $sum: 1 }}}
+        , { $project: {name:"$_id",  value:1 }}
+        /* , { $project: { _id: 0, maxAge: 1 }}*/
+        , function (err, docs) {
+            if (err) return handleError(err);
+            var result = [];
+            for (var d in docs) {
+                docs[d].color = utils.randomColor();
+                result.push(docs[d]);
+            }
+            return res.json(result);
+            res.json(result); // [ { maxAge: 98 } ]
+        });
 };
 
 exports.SearchSourcePost = function (req, res) {
