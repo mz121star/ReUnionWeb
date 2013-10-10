@@ -217,7 +217,7 @@ exports.SentimentAnalysis = function (req, res) {
     var o = {};
 
     o.map = function () {
-        if (this.PublishTime.getFullYear() === 2013) {
+        if (this.PublishTime&&this.PublishTime.getFullYear() === 2013) {
             var key = this.PublishTime.getMonth()+1;
             if (this.Semantic > 0) {
                 emit({s: "好评", d: key}, 1);
@@ -302,9 +302,9 @@ exports.SentimentAnalysisColumn = function (req, res) {
     var o = {};
 
     o.map = function () {
-        if (this.PublishTime.getFullYear() === 2013) {
+        if (this.PublishTime&&this["PublishTime"].getFullYear() === 2013) {
             //var key = this.PublishTime..match(/-(\d*)/)[1];
-            var key = this.PublishTime.getMonth()+1;
+            var key = this["PublishTime"].getMonth()+1;
             if (this.Semantic > 0) {
                 emit({s: "好评", d: key}, 1);
             }
