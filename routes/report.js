@@ -464,6 +464,7 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
                 finalResult.push({name: "好评", value: pl.good, color: utils.randomColor(), line_width: 2});
                 finalResult.push({name: "差评", value: pl.bad, color: utils.randomColor(), line_width: 2})
                 //                    处理结束
+               // var result={data:finalResult,labels:utils.dateRange(sta)}
                 return res.json(finalResult);
             });
     });
