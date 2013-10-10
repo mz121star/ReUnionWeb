@@ -538,46 +538,45 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
     });
 };
 exports.keyWordCloud = function (req, res) {
-    var o = {};
-    o.map = function () {
-        var keywords = this.Keyword.split(';');
-        for (var i in keywords) {
-            if (keywords[i].trim() !== "");
-            emit(keywords[i], 1);
-        }
 
-    }
-    o.reduce = function (k, vals) {
-        var total = 0;
-        for (var i in vals) {
-            total += vals[i];
-        }
-        return total;
-    };
+    FeedsModel.aggregate(
+        { $group: { _id: "$Keyword", value: { $sum: 1 }}}
+        , { $project: {name:"$_id",  value:1 }}
+        /* , { $project: { _id: 0, maxAge: 1 }}*/
+        , function (err, docs) {
+            if (err) return handleError(err);
 
-    o.finalize = function (k, reduced) {
-        return {name: k, value: reduced}
-    }
 
-    o.out = { replace: 'keywordsColudForResults' };
-    o.verbose = true;
-    FeedsModel.mapReduce(o, function (err, model, stats) {
-        if (err) {
-            return res.json(500, err);
-        }
-        model.find().select("value")
-            //*.where('value').gt(10)*//*
-            .exec(function (err, docs) {
-                var result = [];
-                for (var d in docs) {
-                    if (docs[d].value.name.trim() !== "") {
-                        docs[d].value.color = utils.randomColor();
-                        result.push(docs[d].value);
-                    }
+            var keywords=[];
+            /**
+             * map
+             * */
+            for(var i=0;i<docs.length;i++){
+                var obj=docs[i];
+                var names=obj.name.split(";")
+                names= underscore.uniq(names);
+                for(var k in names){
+                    var keyword=names[k];
+                    keywords.push({key:keyword,value:obj.value})
                 }
-                return res.json(result);
-            });
-    });
+            }
+            /**
+             * reduce
+             */
+            var result={};
+            for(var i=0; i<keywords.length; i++) {
+                var keyword = keywords[i];
+                result[keyword.key] = result[keyword.key] ? (result[keyword.key] + keyword.value) : keyword.value;
+            }
+
+            var finalResult=[];
+            var keys=underscore.keys(result);
+            var values=underscore.values(result);
+            for(var i= 0,len=keys.length>10?10:keys.length;i<len;i++){
+                finalResult.push({name:keys[i],value:values[i],color: utils.randomColor()})
+            }
+            res.json(finalResult); // [ { maxAge: 98 } ]
+        });
 };
 exports.test = function (req, res) {
     var o = {};

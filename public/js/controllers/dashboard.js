@@ -95,6 +95,29 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 }, 3000)
 
             });
+           $http.get('/KeyWordCloud').success(function (d2) {
+            var canvas = document.getElementById('canvasDiv6');
+            var context = canvas.getContext('2d');
+             context.fillStyle = "#ff0000";
+            context.textBaseline = "top";
+            context.font = " 50px  Helvetica,arial";
+            for (var i in d2) {
+                var v = d2[i];
+                context.fillText(v.name, Math.round(Math.random() * 200), Math.round(Math.random() * 200));
+                context.fillStyle = v.color;
+                if (v.value > 100)
+                    v.value = v.value / 3;
+                else if (v.value < 14)
+                    v.value = v.value;
+                else if (v.value > 30)
+                    v.value = v.value / 2;
+
+                context.font = v.value + "px  Helvetica,arial";
+
+            }
+
+
+        });
        var loadReport=function(){
 
        }
@@ -174,29 +197,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 callback(null, 'five');
             });},
 
-            function(callback){  $http.get('/KeyWordCloud').success(function (d2) {
-                var canvas = document.getElementById('canvasDiv6');
-                var context = canvas.getContext('2d');
-                context.fillStyle = "#ff0000";
-                context.textBaseline = "top";
-                context.font = " 50px  Helvetica,arial";
-                for (var i in d2) {
-                    var v = d2[i];
-                    context.fillText(v.name, Math.round(Math.random() * 200), Math.round(Math.random() * 200));
-                    context.fillStyle = v.color;
-                    if (v.value > 100)
-                        v.value = v.value / 3;
-                    else if (v.value < 14)
-                        v.value = v.value;
-                    else if (v.value > 30)
-                        v.value = v.value / 2;
 
-                    context.font = v.value + "px  Helvetica,arial";
-                    callback(null, 'six');
-                }
-
-
-            });}
 
         ]);
 
