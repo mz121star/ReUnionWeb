@@ -16,7 +16,7 @@ var schema = new Schema({
     email:String,
     phone:String,
     address:{city:String, street:String}
-});
+}, {collection: 'User'});
 
 schema.virtual("password").set(function (password) {
     this.hash_password = encryptPassword(password);

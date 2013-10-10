@@ -1,19 +1,15 @@
 
 <div class="panel">
-    <div class="feeds-search-tools">
-
-        <select class="inputdate">
-            <option>Last 7 Days</option>
-            <option>Last month</option>
-        </select>
-        <span>Or from <input class="inputdate" type="text"> to <input class="inputdate" type="text"> </span>
-    </div>
-</div>
-
-<div class="panel">
     <form novalidate  name="searchFeedForm" >
     <div class="conditionspanel">
         <div class="title"><span class="titlelabel">Feeds List:{{source.brand}}（关键词表达式）</span></div>
+        <div class="content">
+            <div class="cell size1">Topic:</div>
+            <div class="cell size5">
+                <input type="text" ng-model="topicName" >
+            </div>
+
+        </div>
         <div class="content">
              <div class="cell size1">Source Type:</div>
              <div class="cell size5">
@@ -24,20 +20,16 @@
 
              </div>
         </div>
-        <div class="content">
-            <div class="cell size1">Professional Sites:</div>
-            <div class="cell size5">
 
-                <span class="item" ng-repeat="st in professionalSites">
-                    <input  class="checkbox"  uniform type="checkbox" name="{{st}}"/>{{st}}{{st.type}}
-                </span>
-
-
-            </div>
-        </div>
         <div class="content">
             <div class="cell size1">Source Type:</div>
             <div class="cell size5">
+
+                <select>
+                    <option>Last 7 Days</option>
+                    <option>Last month</option>
+                </select>
+
 
                 TimeFrame: <span>
                 from
@@ -57,7 +49,9 @@
             <div class="cell size5">
 
                 <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                <button class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal" ng-disabled='searchFeedForm.$invalid'>Search Current Set </button>
+                    <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                            ng-disabled='searchFeedForm.$invalid||!!!topicName'>Search Current Set
+                    </button>
                 <button class="btn btn-primary" ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')" type="button">Export Feed</button>
 
             </div>
@@ -68,48 +62,42 @@
 </div>
 
 <div class="panel">
-    <div class="content">
-        <div>
+    <!--  <table  >
+          <tr ng-repeat="k in kimiss" ng-click="selectkimiss($index)" ng-class="{selected: $index==selectedRow}">
+              <td>{{k.childs| kimissList:'Title'|highlightWords:query}}</td>
 
-            <!--  <table  >
-                  <tr ng-repeat="k in kimiss" ng-click="selectkimiss($index)" ng-class="{selected: $index==selectedRow}">
-                      <td>{{k.childs| kimissList:'Title'|highlightWords:query}}</td>
+          </tr>
+      </table>-->
 
-                  </tr>
-              </table>-->
+    <table id="feedTable" class="table">
+        <thead>
+        <tr>
+            <th>N0.</th>
+            <th sortable>Title</th>
+            <th>Description</th>
+            <th>Source</th>
+            <th>Url</th>
 
-            <table id="feedTable" class="table table-hover table-bordered table-theadBG">
-                <thead>
-                <tr>
-                    <th>Num</th>
-                    <th sortable>Title</th>
-                    <th>Description</th>
-                    <th>Source</th>
-                    <th>Url</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+            <td>{{ $index+1 }}</td>
+            <td>{{feed.Title| maxlen:20  }} </td>
+            <td>{{feed.Content | maxlen:40  }} </td>
+            <td>{{ feed.FromSite | maxlen:40}}</td>
+            <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
 
-                </tr>
-                </thead>
-                <tbody>
-                <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
-                    <td>{{ $index+1 }}</td>
-                    <td>{{feed.Title  }} </td>
-                    <td>{{feed.Content | maxlen:20  }} </td>
-                    <td>{{ feed.FromSite }}</td>
-                    <td>{{ feed.FromUrl }}</td>
+        </tr>
 
-                </tr>
+        </tbody>
+    </table>
+    <ul class="pagination">
+        <li><a href="javascript:;">&laquo;</a></li>
+        <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
 
-                </tbody>
-            </table>
-            <ul class="pagination">
-                <li><a href="javascript:;">&laquo;</a></li>
-                <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages"><a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a></li>
-
-                <li><a href="javascript:;">&raquo;</a></li>
-            </ul>
-        </div>
-
-    </div>
+        <li><a href="javascript:;">&raquo;</a></li>
+    </ul>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -131,26 +119,31 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
- <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
 
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                 <h4 class="modal-title">Save Tpoic</h4>
-             </div>
-             <div class="modal-body">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Are your sure save the topic?</h4>
+            </div>
+            <div class="modal-body">
 
-                Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+                <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+ -->             Topic:{{topicName}}
+                <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
 
-                 <div ng-show="!!saveTopicWarning"  class="alert alert-success"> {{ saveTopicWarning }}</div>
-
-             </div>
-             <div class="modal-footer">
-                 <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
-                 <button type="button" ng-disabled="!!!topicName"  class="btn btn-primary" ng-click="saveTopic()">Save Topic</button>
-             </div>
-         </div><!-- /.modal-content -->
-     </div><!-- /.modal-dialog -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-disabled="!!!topicName" class="btn btn-primary" ng-click="saveTopic()">Save
+                    Topic
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 
  </div>

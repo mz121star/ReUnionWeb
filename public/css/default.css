@@ -61,22 +61,21 @@ caption {background:#eee;}
 .clear{ clear:both}
 
 #header {position:relative;top:0;background:#003A83;width:100%;height:38px;border-bottom:3px solid #D61027;color:#FFFFFF;
-background-image: -webkit-gradient(linear, 600 bottom , right bottom, color-stop(0, #003A83), color-stop(1, #0072BC)); /* Saf4+, Chrome */
+    background:#003A83 url("../images/bg/top-bg.png");
 }
-#header .logo {float:left;width:217px;}
+#header .logo {float:left;width:197px;}
 #header .logo a {float:left;display:block;width:90px;height:33px;margin:3px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
+
+#header .leftbarbtn {float:left;width:20px;}
+#header .leftbarbtn a {float:left;display:block;width:13px;height:10px;margin-top:13px;background:url('../images/icon/tanc.png') no-repeat;}
 
 #header .nav {float:left;}
 #header .nav a {text-decoration: none;}
 #header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:15px;padding-right:15px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
-#header .nav .button:hover {color:#333333;background:#FFF;padding-bottom:0px;}
+#header .nav .button:hover {color:#333333;background:#FFF;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
-#header .userinfo {float:right;line-height:38px;padding:0 15px;
-background-image: -moz-linear-gradient(left, #003A83, #0072BC); /* Firefox */
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endColorstr='#FFF', GradientType='0'); /*  IE6,IE7 */
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ff0000")"; /* IE8 */
-}
+#header .userinfo {float:right;line-height:38px;padding:0 15px;}
 #header .userinfo a {color:#FFFFFF;margin:0 3px;}
 #header .userinfo .user {float:left;}
 #header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:8px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
@@ -91,35 +90,39 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endC
 #leftbar .searchbar .button {float:left;width:28px;height:28px;margin:0;display:block;border:1px solid #CCC;border-left:none;background: #FFF url('../images/icon/search.png') no-repeat center;}
 #leftbar .navlist {float:left;width:100%;}
 #leftbar .navlist .button {float:left;display:block;width:100%;height:36px;line-height:36px;}
-#leftbar .navlist .button span {margin-left:20px;font-size:14px;font-weight:bold;color:#444444;}
+#leftbar .navlist .button span {margin-left:20px;font-size:12px;font-weight:bold;color:#444444;}
 #leftbar .navlist .sub {float:left;background:#F5F5F5;height:34px;line-height:34px;}
-#leftbar .navlist .sub span {margin-left:40px;font-size:14px;font-weight:normal;color:#717171;}
+#leftbar .navlist .sub span {margin-left:40px;font-size:12px;font-weight:normal;color:#717171;}
 #leftbar .navlist .button:hover {background:#CCC;}
 #leftbar .navlist .button .close {float:right;display:block;width:10px;height:10px;margin:15px;background:url("../images/icon/arrow.png") 0 0;}
 #leftbar .navlist .button .open {float:right;display:block;width:10px;height:10px;margin:15px;background:url("../images/icon/arrow.png") 0 -10px;}
 
 #maincontent {position:absolute;top:41px;left:220px;right:0;min-height:600px;padding-bottom:30px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
-#maincontent .containercrumbs {float:left;width:100%;}
-#maincontent .containercrumbs .text {float:left;margin:15px;font-size:16px;font-weight:bold;margin-left:40px;}
 
-#maincontent .containercontent {float:left;width:100%;margin: 0;padding: 0;}
+
+#maincontent .containercontent {float:left;width:95%;margin: 20px;padding: 0;}
+
+#maincontent .containercontent .containercrumbs {float:left;width:100%;padding: 0;}
+#maincontent .containercontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
+
 #maincontent .containercontent .inputdate {float:left;width:158px;height:28px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
-#maincontent .containercontent .panel {float:left;margin: 15px;padding: 0;width:97%;}
-#maincontent .containercontent .chartpanel {float:left;margin:10px;width:550px;height:350px;border:2px solid #007DC9;}
-#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:35px;line-height:35px;background:#007DC9;}
-#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;color:#FFF;}
+#maincontent .containercontent .panel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
+#maincontent .containercontent .chartpanel {float:left;margin:20px 0 0 0;width:550px;height:350px;border:1px solid #006DCC;}
+#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;background:#006DCC;}
+#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#FFF;}
 #maincontent .containercontent .chartpanel .content {float:left;width:100%;}
 
-#maincontent .containercontent .conditionspanel {float:left;margin: 0;padding: 0;width:100%;border:2px solid #CCC;border-bottom: 1px solid #CCC;}
-#maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:35px;line-height:35px;background:#cccccc;}
-#maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;color:#333333;font-weight: bold;}
-#maincontent .containercontent .conditionspanel .content {float:left;width:100%;border-bottom:1px solid #CCC;}
+#maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
+#maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;vertical-align:middle;}
+#maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:0px;font-size:12px;color:#333333;font-weight: bold;vertical-align:middle;}
+#maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#eff6ff;border-bottom:2px solid #FFF;}
 #maincontent .containercontent .conditionspanel .content .cell {float:left;margin: 10px;}
-#maincontent .containercontent .conditionspanel .content .item {float:left;}
+#maincontent .containercontent .conditionspanel .content .item {float:left;width:80px;height:20px;line-height:20px;}
+#maincontent .containercontent .conditionspanel .content .item .checkbox {float:left;margin-right:5px;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
 #maincontent .containercontent .conditionspanel .content .size5 {}
 
-#maincontent .containercontent .editpanel {float:left;margin-left: 20px;padding: 0;width:96%;border:2px solid #CCC;border-bottom: 1px solid #CCC;}
+#maincontent .containercontent .editpanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;border:2px solid #CCC;border-bottom: 1px solid #CCC;}
 #maincontent .containercontent .editpanel .content {float:left;width:100%;border-bottom:1px solid #CCC;}
 #maincontent .containercontent .editpanel .content .left {float:left;width:100px;padding:10px;font-size:20px;font-weight:bold;color:#444444;}
 #maincontent .containercontent .editpanel .content .center {float:left;padding:10px;border-left:1px solid #CCC;min-height:50px;}
@@ -130,14 +133,13 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endC
 
 #maincontent .containercontent .editpanel .content .center .workflow {float:left;border:1px solid #CCC;width:100px;height:100px;margin:10px;}
 
-
 #maincontent .containercontent .editpanel .content .right {float:right;padding:10px;}
 
 
-#maincontent .containercontent .table {float:left;margin-left: 20px;margin-top:20px;padding: 0;width:96%;color:#333;}
+#maincontent .containercontent .table {float:left;margin:20px 0 0 0;padding: 0;width:100%;color:#333;}
 #maincontent .containercontent .table thead {}
-#maincontent .containercontent .table thead tr {background:#E5E5E5;}
-#maincontent .containercontent .table thead td {border-right:1px solid #DDD;border-bottom:1px solid #EFEFEF;color:#333;font-weight:bold;}
+#maincontent .containercontent .table thead tr {background:#006DCC;}
+#maincontent .containercontent .table thead td {border-bottom:1px solid #EFEFEF;color:#EEE;text-align:center;font-weight:bold;}
 #maincontent .containercontent .table thead td.last {border-right:none;}
 #maincontent .containercontent .table thead td .filterasc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 0;}
 #maincontent .containercontent .table thead td .filterdesc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 -7px;}
@@ -157,7 +159,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endC
 #maincontent .containercontent .table tbody tr.bg2 {background:#FBEDE3;}
 #maincontent .containercontent .table tbody tr.bg3 {background:#FDEBF9;}
 
-#maincontent .containercontent .pageturning {float:left;width:96%;margin:20px;}
+#maincontent .containercontent .pageturning {float:left;width:100%;margin:20px 0 0 0;}
 #maincontent .containercontent .pageturning a.btn {cursor:pointer;float:left;padding:3px 8px;margin-right: 8px;background:#DDD;color:#333;}
 #maincontent .containercontent .pageturning a.btn:hover {background:#368EE0;color:#FFF;}
 
@@ -172,10 +174,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003A83', endC
 /*added by miaozhuang*/
 @media screen and (max-width:1024px) {
     #header .userinfo {float: left;  position: fixed;bottom: 0px; background-color:#003A83;width:220px;height:30px;margin:0;padding:0;z-index: 999;
-}
+    }
 
 }
-
+.loading{position: absolute; width:31px;height:31px;background-image: url(../img/loading.gif);display: inline-block;margin-left: 20% ;margin-top: 100px  }
+.item {float:left;width:80px;height:20px;line-height:20px;}
 
 
 

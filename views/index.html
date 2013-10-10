@@ -34,27 +34,28 @@
 <body class="ng-cloak" ng-cloak>
 
 <div id="header">
-    <div class="logo"><a href="#"></a></div>
+    <div class="logo"><a href="javascript:;"></a></div>
+    <div class="leftbarbtn"><a href="javascript:;"></a></div>
     <div class="nav">
         <a ng-repeat="nav in navBars" ng-click="selectNav($index)" ng-href="{{nav.url}}" ng-bind="nav.name"
            ng-class="{selected: $index==selectedRow}" class="button">Dashboard</a>
 
     </div>
     <div class="userinfo">
-        <a class="user" href="#">Hi,Guest</a>
-        <a class="message" href="#">2</a>
-        <a class="setting" href="#"></a>
-        <a class="logout" href="#"></a>
+        <a class="user" href="javascript:;">Hi,{{UserName}}</a>
+        <a class="message" href="javascript:;">2</a>
+        <a class="setting" href="javascript:;"></a>
+        <a class="logout" ng-click="logout()" href="javascript:;"></a>
     </div>
 </div>
 
 
 <div id="leftbar">
-    <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="#"></a></div>
+    <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="javascript:;"></a></div>
     <div class="navlist">
-        <a class="button" href="#"><span>Overview</span><span class="close"></span></a>
-        <a class="button" href="#"><span>Feeds</span><span class="open"></span></a>
-        <a class="button sub" href="javascript:;" ng-repeat="topic in Topics"><span ng-click="topicSelected(topic)">{{topic.Name}}</span></a>
+        <a class="button" href="javascript:;"><span>Overview</span><span class="close"></span></a>
+        <a class="button" href="javascript:;"><span>Feeds</span><span class="open"></span></a>
+        <a ng-click="topicSelected(topic)" class="button sub" href="javascript:;" ng-repeat="topic in Topics"><span >{{topic.Name}}</span></a>
 
     </div>
 </div>
@@ -63,7 +64,7 @@
 <div id="maincontent">
     <div class="containercrumbs">
       <!--  <span class="text">Dashboard Summary For Lancome</span>-->
-         <!--<a ng-show="!!global.error" class="close" data-dismiss="alert" href="#" aria-hidden="true"> {{ global.error }}</a>-->
+         <!--<a ng-show="!!global.error" class="close" data-dismiss="alert" href="javascript:;" aria-hidden="true"> {{ global.error }}</a>-->
         <div ng-show="!!global.error" class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <strong>Error!</strong> {{ global.error }}

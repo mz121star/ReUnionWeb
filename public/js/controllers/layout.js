@@ -3,7 +3,7 @@
 define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryuniform'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
-    return app.controller('LayoutController', function ($scope, $http, $location) {
+    return app.controller('LayoutController', function ($scope, $http, $location, $window) {
         /*      var i = 0,
          imgs = images.imageurls,
          randombg = function () {
@@ -11,10 +11,19 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
-
+        $scope.LoginInfo = function (user) {
+            $scope.UserName=user["name"];
+        };
         $http.get('/checklogin').success(function (user) {
-            $scope.resetLogin(user);
+            $scope.LoginInfo(user);
         });
+        $scope.logout = function () {
+            if ($window.confirm("Are you sure?")) {
+                $http.get('/logout').success(function (d) {
+                    $window.location="/login";
+                });
+            }
+        }
         $scope.txt = {
             home: res.welcome,
             dashboard: "Dashboard",
@@ -26,13 +35,13 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             help: "Help"
         };
         $scope.navBars = [
-            {name: $scope.txt.dashboard, url: "#/dashboard",index:1},
-            {name: $scope.txt.feeds, url: "#/feeds",index:2},
-            {name: $scope.txt.analysis, url: "#/analysis",index:3},
-            {name: $scope.txt.reports, url: "#/reports",index:4},
-            {name: $scope.txt.alerts, url: "#/alerts",index:5},
-            {name: $scope.txt.admin, url: "#/admin",index:6},
-            {name: $scope.txt.help, url: "#/help",index:7}
+            {name: $scope.txt.dashboard, url: "#/dashboard", index: 1},
+            {name: $scope.txt.feeds, url: "#/feeds", index: 2},
+            {name: $scope.txt.analysis, url: "#/analysis", index: 3},
+            {name: $scope.txt.reports, url: "#/reports", index: 4},
+            {name: $scope.txt.alerts, url: "#/alerts", index: 5},
+            {name: $scope.txt.admin, url: "#/admin", index: 6},
+            {name: $scope.txt.help, url: "#/help", index: 7}
         ];
         $scope.selectNav = function (row) {
             $scope.selectedRow = row;
@@ -63,39 +72,22 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             }
             //console.log($location.$$path)
         };
-        $scope.resetLogin = function (user) {
-            if (user.name) {
-                $scope.login = {
-                    url: 'logout',
-                    name: res.logout
-                };
 
-                $scope.signup = {
-                    url: '',
-                    name: 'welcome:' + user.name
-                };
-            } else {
-                $scope.login = {
-                    url: 'login',
-                    name: res.login
-                };
-                $scope.signup = {
-                    url: 'signup',
-                    name: res.signup
-                };
-            }
-        };
+
 
 
         /***
          * 设置当前选项卡的颜色
          * @type {string}
          */
-       var hash= $location.$$url.replace(/\//gmi,'') ;
-        $.each($scope.navBars,function(i,item){
-                if(item.url.match(hash)){
-                    $scope.selectedRow=item.index-1;
-                }
+        var hash = $location.$$url.replace(/\//gmi, '');
+        $.each($scope.navBars, function (i, item) {
+            if (item.url.match(hash)) {
+                if (!!!hash)
+                    $scope.selectedRow = 0
+                else
+                    $scope.selectedRow = item.index - 1;
+            }
         })
 
 

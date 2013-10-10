@@ -1,5 +1,5 @@
 //var should = require('should');
-//var models = require('./../models');
+ var models = require('./../models');
 "use strict";
 
 var exports = (typeof window === "undefined") ? module.exports : window;

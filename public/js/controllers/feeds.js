@@ -11,7 +11,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         };
 
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
-        $scope.professionalSites = ['CSDN', 'IDC'];
+
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
@@ -24,7 +24,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 .ToArray();
             sts = sts.join('|')
             console.log(sts);
-            var searchData = {st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
+            var searchData = {keyword: $scope.topicName,st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
             console.log(searchData);
             $http.post("/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
@@ -58,6 +58,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             $scope.modal.source = feed.FromSite;
             $scope.modal.url = feed.FromUrl;
             $scope.modal.content = feed.content || feed.Content;
+
         };
         $scope.modal = {
             title: "Title",
@@ -78,6 +79,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 $scope.searchFeedForm.$invalid = false;
             }
         });
+
         $scope.exportExcel = function (tname, excelname) {
             excel(tname, excelname);
         };
@@ -123,6 +125,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         }
 
         $rootScope.topicSelected = function (topic) {
+            $scope.topicName = topic.Name;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
             var sourceType = topic.SearchCondition.SourceType;

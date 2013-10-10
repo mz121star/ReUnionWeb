@@ -7,7 +7,7 @@ install:
 	@npm install
 
 test: install
-
+      @grunt nodeunit:all
 
 cov: install
 	@rm -rf .cov

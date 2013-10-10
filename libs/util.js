@@ -1,5 +1,5 @@
 var xss = require('xss');
-
+ var moment=require('moment') ;
 exports.format_date = function (date, friendly) {
   var year = date.getFullYear();
   var month = date.getMonth() + 1;
@@ -94,9 +94,39 @@ exports.xss = function (html) {
 var randomRange=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
+var getColor =function(){
+    this.colors=["#ea342f","#063c81","#008b00","#9d4d99","#fdb200","#1174ba","#04cfc3","#df498c","#fde200","#00bbf6"];
+    this.index=1
+
+};
+getColor.prototype.getOne=function(){
+    var color= this.colors[this.index%10];
+    this.index++;
+    console.log(color);
+    return color;
+}
+var getcolor=new getColor();
+exports.randomColor=function(){
+   return getcolor.getOne() ;
+};
+
+exports.dateRange = function (start, end) {
+    var result=[];
+    var startDate = new Date(start), endDate = new Date(end);
+    for (var i = 0; i < 30; i++) {
+        var d=moment(startDate).add('days',i).format("YYYY-MM-DD");
+        result.push(d);
+    }
+    return result;
+}
+
+/*
 exports.randomColor=function(){
 
-        var color = randomRange(0, 0xC5BF27);
-        return '#' + ('000000' + color.toString(16)).slice(-6);
+      var colors=["#ea342f","#063c81","#008b00","#9d4d99","#fdb200","#1174ba","#04cfc3","#df498c","#fde200","00bbf6"];
+      */
+/*  var color = randomRange(0, 0xC5BF27);
+        return '#' + ('000000' + color.toString(16)).slice(-6);*//*
 
-}
+
+}*/
