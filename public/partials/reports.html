@@ -28,7 +28,9 @@
             <td>
                 <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
                 <button class="btn btn-primary" ng-click="sendSubReport(report)">发送</button>
-                <a href="subReportPreview/{{report._id}}" target="_blank">预览</a>
+                <a href="subReportPreview/{{report._id}}" target="_blank" data-toggle="modal" ng-click=""
+                   data-target="#subPreviewModal">预览</a>
+
             </td>
 
 
@@ -36,6 +38,33 @@
 
         </tbody>
     </table>
+</div>
+
+<div style="display: none" class="modal fade" id="subPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">预览</h4>
+            </div>
+            <div class="modal-body">
+
+                 <div style="width: 800px;height: 400px">
+                     <iframe src="http://www.hexun.com" width="500" height="300" />
+                 </div>
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 <div style="display: none" class="modal fade" id="saveReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
