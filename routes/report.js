@@ -1,7 +1,7 @@
 var FeedsModel = require("./../models").Feeds;
 var utils = require("./../libs/util");
 exports.list = function (req, res) {
-    var o = {};
+/*    var o = {};
     o.map = function () {
         emit(this.FromType, 1);
     }
@@ -27,7 +27,7 @@ exports.list = function (req, res) {
             return res.json(500, err);
         }
         model.find().select("value")
-            //*.where('value').gt(10)*//*
+            /*//*.where('value').gt(10)*//**//*
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
@@ -36,7 +36,21 @@ exports.list = function (req, res) {
                 }
                 return res.json(result);
             });
-    });
+    });*/
+    FeedsModel.aggregate(
+        { $group: { _id: "$FromType", value: { $sum: 1 }}}
+        , { $project: {name:"$_id",  value:1 }}
+        /* , { $project: { _id: 0, maxAge: 1 }}*/
+        , function (err, docs) {
+            if (err) return handleError(err);
+            var result = [];
+            for (var d in docs) {
+                docs[d].color = utils.randomColor();
+                result.push(docs[d]);
+            }
+            return res.json(result);
+            res.json(result); // [ { maxAge: 98 } ]
+        });
 };
 
 //产品活动柱状图
