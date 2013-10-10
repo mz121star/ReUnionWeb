@@ -17,6 +17,7 @@ var subscription=require('./subscription');
 module.exports = function (app) {
     app.get('/', index.index);
     app.get('/list', user.list);
+    app.get('/login',index.login);
     app.get('/blog', blog.list);
     app.get('/user', user.list);
 
