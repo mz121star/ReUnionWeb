@@ -28,6 +28,8 @@ module.exports = function (app) {
     app.get('/logout', user.logout);
     app.get('/checklogin', index.getLoginUser);
 
+
+
     /***
      * Report
      */
@@ -53,6 +55,6 @@ module.exports = function (app) {
     app.post('/subReport',subscription.saveReport);
     app.get('/subReport',subscription.list);
     app.put('/subReport',subscription.editReport);
-
+    app.get('/subReportPreview/:id', subscription.subReportPreview);
 
 };

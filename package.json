@@ -15,7 +15,8 @@
     "moment": "latest",
     "xss": "0.0.6",
     "nodemailer": "latest",
-    "underscore": "~1.5.2"
+    "underscore": "~1.5.2",
+    "handlebars": "~1.0.12"
   },
   "devDependencies": {
     "should": "*",

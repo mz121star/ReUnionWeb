@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html dir="ltr">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<link rel="shortcut icon" href="./images/icon/reunion-r.png" type="image/x-icon" media="screen"/>
+	<title>{{title}}</title>
+<style>
+html {font-size:100.01%;}
+body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
+#container {position:absolute;top:0;left:50%;margin-left:-400px;width:800px;background:#FFF;}
+#container .header {float:left;width:100%;height:60px;line-height:60px;margin-bottom:20px;background:#003A83 url("./images/bg/top-bg.png") right;border-bottom:3px solid #D61027;color:#FFFFFF;}
+#container .header .logo {float:left;display:block;width:90px;height:33px;margin:13px 20px;background:url('./images/bg/reunion-logo-top.png') no-repeat;}
+#container .header .title {float:left;width:550px;text-align:center;font-size:28px;}
+#container .header .date {float:right;width:100px;height:50px;margin-top:5px;}
+#container .header .date .day {float:left;width:100px;height:35px;line-height:35px;font-size:42px;margin:0;padding:0;text-align:center;}
+#container .header .date .year {float:left;width:100px;height:15px;line-height:15px;font-size:12px;margin:0;padding:0;text-align:center;}
+#container .content .line {float:left;width:760px;margin:10px 20px 0 20px;}
+#container .content .title {font-weight:bold;font-size:16px;}
+#container .content .subtitle {background:#e0eeff;padding:5px 10px;width:740px;}
+#container .content .message {}
+#container .content .red {color:#D61027;font-weight:bold;margin-left:5px;}
+
+#container .footer {float:left;width:760px;margin:20px 20px;padding:15px 0;border-top:2px solid #007DC9;}
+#container .footer .message {}
+#container .footer .splitline {}
+#container .footer .copyright {margin-top:20px;}
+
+
+</style>
+</head>
+<body>
+	
+	<div id="container">
+		<div class="header">
+			<div class="logo"></div>
+			<div class="title">兰蔻24小时监测报告</div>
+			<div class="date">
+				<span class="day">09</span>
+				<span class="year">2013,10</span>
+			</div>
+		</div>
+		<div class="content">
+			<div class="line title">{{title}}</div>
+			<div class="line subtitle">微博<span class="red">Top5</span></div>
+			<div class="line msghead">每日大智慧消息20131008 - 股票基金 - 乐彩论坛 - bbs.17500.cn </div>
+			<div class="line msgcontetn">每日大智慧消息20131008 - 股票基金 - 乐彩论坛 - bbs.17500.cn </div>
+		</div>
+		<div class="footer">
+			<div class="message">本邮件是根据您在文思海辉ReUnion监测服务中开启了关键词邮件订阅服务，用于提醒您最近24小时之内网络媒体报道情况与微博话题提及情况的监测趋势变更，如需关闭，请登录ReUnion进行设置。 </div>
+			<div class="splitline"></div>
+			<div class="copyright">&copy;2013 Pactera Group. All Rights Reserved.</div>
+		</div>
+		
+	</div>
+	
+	
+	
+	
+</body>
+</html>
