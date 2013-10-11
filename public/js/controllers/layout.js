@@ -11,9 +11,11 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
-
-        $http.get('/checklogin').success(function (user) {
-            $scope.resetLogin(user);
+        $scope.LoginInfo = function (user) {
+            $scope.UserName=user["name"];
+        };
+        $http.get('api/checklogin').success(function (user) {
+            $scope.LoginInfo(user);
         });
         $scope.logout = function () {
             if ($window.confirm("Are you sure?")) {
@@ -70,28 +72,8 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             }
             //console.log($location.$$path)
         };
-        $scope.resetLogin = function (user) {
-            if (user.name) {
-                $scope.login = {
-                    url: 'logout',
-                    name: res.logout
-                };
 
-                $scope.signup = {
-                    url: '',
-                    name: 'welcome:' + user.name
-                };
-            } else {
-                $scope.login = {
-                    url: 'login',
-                    name: res.login
-                };
-                $scope.signup = {
-                    url: 'signup',
-                    name: res.signup
-                };
-            }
-        };
+
 
 
         /***

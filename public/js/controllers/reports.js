@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res'], function (res) {
+define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
 
     var ReportsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Reports - " + res.title;
@@ -40,7 +40,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
 
         };
 
-        $http.get('/subReport').success(function (d) {
+        $http.get('api/subReport').success(function (d) {
 
             $scope.subReports = d;
         });
@@ -58,7 +58,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
                 $scope.saveTopicError="必须选择一个Topic";
                 return false;
             }
-            $http.post('/subReport', {
+            $http.post('api/subReport', {
                 Name: "(" + sts.join("|") + ")-" + $scope.report.type,
                 Type: $scope.report.type,
                 Receiver: $scope.report.receiver,
@@ -69,7 +69,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
                 Status: 1
 
             }).success(function (d) {
-                    $http.get('/subReport').success(function (d) {
+                    $http.get('api/subReport').success(function (d) {
                         $scope.subReports = d;
                     });
 
@@ -83,17 +83,34 @@ define([ 'i18n!resources/nls/res'], function (res) {
                 });
         };
         $scope.changeSubStatus = function (report) {
-            $http.put('/subReport', {
+            $http.put('api/subReport', {
                 _id: report._id
 
             }).success(function (d) {
-                    $http.get('/subReport').success(function (d) {
+                    $http.get('api/subReport').success(function (d) {
                         $scope.subReports = d;
                     });
                 });
         }
+        $scope.subPreview_URL="javascript:;" ;
+         $scope.showPreview=function(url){
+           $scope.subPreview_URL=  "api/subReportPreview/"+url;
 
+         }   ;
+        $scope.sendSubReport=function(report,event){
 
+            $(event.target).button("loading");
+            $http.get("api/sendPreviewMail/"+report._id).success(function(d){
+                $scope.sendSuccess="主题为"+(report.Name)+"的邮件发送成功" ;
+                $timeout(function () {
+                    $scope.sendSuccess = ""
+                }, 2000);
+                $(event.target).button("reset");
+            }).error(function(d){
+                    $scope.sendError="主题为"+(report.Name)+"的发送失败" ;
+                    $(event.target).button("reset");
+                }) ;
+        }
     }];
 
     return ReportsController;

@@ -21,7 +21,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             console.log(sts);
             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
             console.log(searchData);
-            $http.post('/SearchSource',searchData).success(function (a) {
+            $http.post('api//SearchSource',searchData).success(function (a) {
                 //搜索来源饼图
                 new iChart.Pie2D({
                     render: 'canvasDiv3',
@@ -50,7 +50,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                         }
                     }
                 }).draw();
-                $http.post('/SentimentAnalysisColumnPost',searchData).success(function (d) {
+                $http.post('api//SentimentAnalysisColumnPost',searchData).success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv4',
                         data: d,

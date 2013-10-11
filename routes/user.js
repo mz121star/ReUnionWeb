@@ -6,16 +6,7 @@ var UsersModel = require("./../models").Users;
 
 var path = require('path');
 
-exports.list = function (req, res) {
 
-//    var fluffy = new KimissModel({ name: 'fluffy' });
-//    fluffy.save(function (err, fluffy) {
-//
-//
-//    });
-
-    res.send("list");
-};
 
 exports.create = function (req, res) {
     var createUser = new UsersModel(req.body);
