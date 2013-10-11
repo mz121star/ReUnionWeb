@@ -25,14 +25,16 @@
             <td>{{report.Name }}</td>
             <td>{{report.Type }}</td>
             <td>{{report.Receiver }}</td>
-            <td>{{report.UpdateDate | date:'yyyy-MM-dd'  }}</td>
+            <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
             <td>
                 <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
-                <button class="btn btn-primary" data-loading-text="发送中..." ng-click="sendSubReport(report,$event)">发送</button>
-                <button class="btn btn-primary" ng-click="delSubReport(report)">删除</button>
-                <a href="javascript:;" target="_blank" data-toggle="modal" ng-click="showPreview(report._id)"
-                   data-target="#subPreviewModal">预览</a>
-               <!-- subReportPreview/{{report._id}}-->
+                <button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">预览 </button>
+                <button class="btn btn-primary" data-loading-text="发送中..." ng-click="sendSubReport(report,$event)">发送
+                </button>
+
+                <button class="btn btn-primary" ng-click="editSubReport(report)">编辑</button>
+                <button class="btn btn-danger" ng-click="delSubReport(report)">删除</button>
+                <!-- subReportPreview/{{report._id}}-->
             </td>
 
 
@@ -42,7 +44,8 @@
     </table>
 </div>
 
-<div style="display: none;width: 900px;margin: -250px 0 0 -450px;" class="modal fade" id="subPreviewModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div style="display: none;width: 900px;margin: -250px 0 0 -450px;" class="modal fade" id="subPreviewModal" tabindex="-1"
+     role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
 
     <div class="modal-dialog">
@@ -53,9 +56,9 @@
             </div>
             <div class="modal-body">
 
-                 <div style="width: 800px;height: 400px">
-                     <iframe ng-src="{{subPreview_URL}}" style="     width: 800px;         height: 500px; "/>
-                 </div>
+                <div style="width: 800px;height: 400px">
+                    <iframe ng-src="{{subPreview_URL}}" style="     width: 800px;         height: 500px; "/>
+                </div>
 
             </div>
             <div class="modal-footer">
@@ -68,7 +71,8 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<div style="display: none" class="modal fade" id="saveReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div style="display: none" class="modal fade" id="saveReportModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel"
      aria-hidden="true">
 
     <div class="modal-dialog">
@@ -112,9 +116,6 @@
                         </div>
                         <div class="right"></div>
                     </div>
-
-
-
 
 
                 </div>
