@@ -4,7 +4,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
 
     var  AlertsController=['$scope','$rootScope','$http',function($scope,$rootScope,$http) {
         $rootScope.title = "Alerts - "+ res.title;
-        $http.get('/topic').success(function (d) {
+        $http.get('api/topic').success(function (d) {
 
             $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
         });

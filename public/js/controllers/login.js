@@ -17,7 +17,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
             };
 
             $scope.login = function () {
-                $http.post('/login', $scope.user).success(function (data) {
+                $http.post('api/login', $scope.user).success(function (data) {
                     if (data.err) {
                         return $scope.err = data.err;
                     }
@@ -32,7 +32,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     window.location.hash = "/signup"
                 }, 2000)
 */
-                window.location.hash = "/signup";
+                window.location.hash = "signup";
             };
         }];
     return LoginController;

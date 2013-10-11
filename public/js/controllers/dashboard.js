@@ -5,7 +5,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Dashboard - " + res.title;
 
-        $http.get('/2DBarReprot').success(function (d) {
+        $http.get('api/2DBarReprot').success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
                 data: d,
@@ -28,7 +28,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
             }).draw();
 
         });
-         $http.get('/TopicKeywordReport').success(function (d2) {
+         $http.get('api/TopicKeywordReport').success(function (d2) {
             new iChart.Bar2D({
                 render: 'canvasDiv2',
                 data: d2,
@@ -54,7 +54,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
             }).draw();
 
         }) ;
-          $http.get('/SearchSource').success(function (a) {
+          $http.get('api/SearchSource').success(function (a) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
@@ -95,7 +95,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 }, 3000)
 
             });
-           $http.get('/KeyWordCloud').success(function (d2) {
+           $http.get('api/KeyWordCloud').success(function (d2) {
             var canvas = document.getElementById('canvasDiv6');
             var context = canvas.getContext('2d');
              context.fillStyle = "#ff0000";
@@ -125,7 +125,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
 
 
 
-            function(callback){$http.get('/SentimentAnalysisColumn').success(function (d) {
+            function(callback){$http.get('api/SentimentAnalysisColumn').success(function (d) {
                 new iChart.ColumnStacked2D({
                     render: 'canvasDiv3',
                     data: d,
@@ -168,7 +168,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 }).draw();
                 callback(null, 'four');
             });},
-            function(callback){$http.get('/SentimentAnalysis').success(function (d) {
+            function(callback){$http.get('api/SentimentAnalysis').success(function (d) {
                 new iChart.LineBasic2D({
                     render: 'canvasDiv4',
                     data: d,

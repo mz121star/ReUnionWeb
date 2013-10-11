@@ -95,7 +95,7 @@ var randomRange=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 var getColor =function(){
-    this.colors=["#005bb1","#005bb1","#990300"];
+    this.colors=["#b8c0c7","#b8c0c7","#b8c0c7"];
     this.index=1
 
 };

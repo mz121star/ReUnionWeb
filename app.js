@@ -27,10 +27,24 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
 
     /*  app.use(express.static(path.join(__dirname, 'resources')));
-      app.use(express.static(path.join(__dirname, 'views/partials')));*/
+     app.use(express.static(path.join(__dirname, 'views/partials')));*/
 });
+app.all('/api/*', function(req,res,next){
 
+    var s =req.session["user"] ;
+    if(s){
+        next();
+    }
+    else{
+        return res.redirect('login');
+
+    }
+
+})
 app.configure('development', function () {
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+app.configure('production', function () {
     app.use(express.errorHandler());
 });
 

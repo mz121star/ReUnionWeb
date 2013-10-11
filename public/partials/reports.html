@@ -28,7 +28,8 @@
             <td>{{report.UpdateDate | date:'yyyy-MM-dd'  }}</td>
             <td>
                 <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
-                <button class="btn btn-primary" ng-click="sendSubReport(report)">{{report.text="发送"}}</button>
+                <button class="btn btn-primary" data-loading-text="发送中..." ng-click="sendSubReport(report,$event)">发送</button>
+                <button class="btn btn-primary" ng-click="delSubReport(report)">删除</button>
                 <a href="javascript:;" target="_blank" data-toggle="modal" ng-click="showPreview(report._id)"
                    data-target="#subPreviewModal">预览</a>
                <!-- subReportPreview/{{report._id}}-->
