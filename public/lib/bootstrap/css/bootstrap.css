@@ -90,8 +90,8 @@ textarea {
 
 button,
 input {
-  *overflow: visible;
-  line-height: normal;
+
+
 }
 
 button::-moz-focus-inner,
