@@ -27,15 +27,17 @@ exports.list = function (req, res) {
  */
 exports.getlistbyType = function (req, res) {
 
-
-    MonitorModel.find( )
-        .limit(20)
+    var reg = /^\/api\/monitor\/(?:([^\/]+?))\/?$/;
+    var type=req.url.match(reg)[1];
+    if(type) type=decodeURI(type);
+    MonitorModel.find({Type:type})
+        /*.limit(20)*/
         /*.select('childs')*/
-        .exec(function (err, feeds) {
+        .exec(function (err, monitors) {
             if(err){
                 return res.json(500,err);
             }
-            return res.json(feeds);
+            return res.json(monitors);
         });
 
 };

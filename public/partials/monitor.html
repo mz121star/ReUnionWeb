@@ -12,20 +12,18 @@
             <thead>
             <tr>
                 <th>N0.</th>
-                <th sortable>Title</th>
-                <th>Description</th>
-                <th>Source</th>
+                <th sortable>Name</th>
                 <th>Url</th>
+
 
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+            <tr  ng-repeat="m in monitorWeibo"  >
                 <td>{{ $index+1 }}</td>
-                <td>{{feed.Title| maxlen:20  }} </td>
-                <td>{{feed.Content | maxlen:40  }} </td>
-                <td>{{ feed.FromSite | maxlen:40}}</td>
-                <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
 
             </tr>
 
@@ -39,20 +37,18 @@
             <thead>
             <tr>
                 <th>N0.</th>
-                <th sortable>Title</th>
-                <th>Description</th>
-                <th>Source</th>
+                <th sortable>Name</th>
                 <th>Url</th>
+
 
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+            <tr  ng-repeat="m in monitorShops"  >
                 <td>{{ $index+1 }}</td>
-                <td>{{feed.Title| maxlen:20  }} </td>
-                <td>{{feed.Content | maxlen:40  }} </td>
-                <td>{{ feed.FromSite | maxlen:40}}</td>
-                <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
 
             </tr>
 
@@ -65,20 +61,18 @@
             <thead>
             <tr>
                 <th>N0.</th>
-                <th sortable>Title</th>
-                <th>Description</th>
-                <th>Source</th>
+                <th sortable>Name</th>
                 <th>Url</th>
+
 
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+            <tr  ng-repeat="m in monitorForums"  >
                 <td>{{ $index+1 }}</td>
-                <td>{{feed.Title| maxlen:20  }} </td>
-                <td>{{feed.Content | maxlen:40  }} </td>
-                <td>{{ feed.FromSite | maxlen:40}}</td>
-                <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
 
             </tr>
 
@@ -91,22 +85,22 @@
             <thead>
             <tr>
                 <th>N0.</th>
-                <th sortable>Title</th>
-                <th>Description</th>
-                <th>Source</th>
+                <th sortable>Name</th>
                 <th>Url</th>
+
 
             </tr>
             </thead>
             <tbody>
-            <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+            <tr  ng-repeat="m in monitorSearchs"  >
                 <td>{{ $index+1 }}</td>
-                <td>{{feed.Title| maxlen:20  }} </td>
-                <td>{{feed.Content | maxlen:40  }} </td>
-                <td>{{ feed.FromSite | maxlen:40}}</td>
-                <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
 
             </tr>
+
+            </tbody>
 
             </tbody>
         </table>
@@ -127,17 +121,16 @@
                 <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
  -->             Name: <input type="text" ng-model="website.name" >  <br>
                  URL: <input type="text" ng-model="website.url" >
-                <label><input type="radio" name="type" value="微博" />微博   </label>
-                <label><input type="radio" name="type" value="论坛" />论坛   </label>
-                <label><input type="radio" name="type" value="搜索引擎" />搜索引擎   </label>
-                <label><input type="radio" name="type" value="商城" />商城   </label>
-                <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
+                  <span class="item" ng-repeat="dt in SiteType.dataType">
+                               <label><input type="radio" name="dataType" ng-value="dt.value" ng-model="SiteType.type">{{dt.value}}</label>
+                         </span>
+                <div ng-show="!!saveWarning" class="alert alert-success"> {{ saveWarning }}</div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" ng-disabled="!!!website.name||!!!website.url" class="btn btn-primary" ng-click="saveTopic()">Save
-                    Topic
+                <button type="button" ng-disabled="!!!website.name||!!!website.url" class="btn btn-primary" ng-click="saveMonitor()">Save
+
                 </button>
             </div>
         </div>
