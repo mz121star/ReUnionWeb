@@ -46,11 +46,11 @@ module.exports = function (app) {
     app.get('/api/KeyWordCloud',reports.keyWordCloud);
     app.get('/api/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
 
-    app.post('api/SentimentAnalysisPost',reports.SentimentAnalysisPost);
-    app.post('api/2DBarReprot',reports.listPost);
-    app.post('api/SearchSource',reports.SearchSourcePost);
-    app.post('api/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
-    app.post('api/TopicKeywordReportPost',reports.TopicKeywordReportPost);
+    app.post('/api/SentimentAnalysisPost',reports.SentimentAnalysisPost);
+    app.post('/api/2DBarReprotPost',reports.listPost);
+    app.post('/api/SearchSourcePost',reports.SearchSourcePost);
+    app.post('/api/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
+    app.post('/api/TopicKeywordReportPost',reports.TopicKeywordReportPost);
 
     /***
      * Topics

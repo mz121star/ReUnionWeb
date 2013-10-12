@@ -4,8 +4,15 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Dashboard - " + res.title;
-
-        $http.get('api/2DBarReprot').success(function (d) {
+        $scope.searchDate={
+            startDate:"2013-08-01",
+            endDate:"2013-08-31"
+        }
+        var searchData={
+            starttime:$scope.searchDate.startDate
+            ,endtime:$scope.searchDate.endDate
+        };
+        $http.post('api/2DBarReprotPost',searchData).success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
                 data: d,
@@ -28,7 +35,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
             }).draw();
 
         });
-        $http.get('api/TopicKeywordReport').success(function (d2) {
+        $http.post('api/TopicKeywordReportPost',searchData).success(function (d2) {
             new iChart.Bar2D({
                 render: 'canvasDiv2',
                 data: d2,
@@ -54,7 +61,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
             }).draw();
 
         });
-        $http.get('api/SearchSource').success(function (a) {
+        $http.post('/api/SearchSourcePost',searchData).success(function (a) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
@@ -123,15 +130,17 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
         }
         async.series([
             function (callback) {
-                $http.get('api/SentimentAnalysisColumn').success(function (d) {
+                $http.post('/api/SentimentAnalysisColumnPost',searchData).success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv3',
-                        data: d,
-                        labels: ["一月", "二月", "三月", "四月", "五月", "六月"],
-                        label: {color: '#254d70', fontsize: 12, fontweight: 600},
-                        percent: true,//标志为百分比堆积图
+                        data: d.data,
+                        labels: d.labels,
+                        sub_option:{
+                            label:false
+                        },
                         showpercent: true,
-                        width: 550,
+                        percent: true,//标志为百分比堆积图
+                        width: 500,
                         height: 315,
                         border: 'none',
                         decimalsnum: 1,
@@ -168,12 +177,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                 });
             },
             function (callback) {
-                $http.get('api/SentimentAnalysis').success(function (d) {
+                $http.post('api/SentimentAnalysisPost',searchData).success(function (d) {
+                    //搜索来源饼图
                     new iChart.LineBasic2D({
                         render: 'canvasDiv4',
-                        data: d,
+                        data: d.data,
+                        labels: d.labels,
 //                    title: '情感分析时间轴曲线图  ',
-                        width: 550,
+                        width: 500,
                         height: 315,
                         border: 'none',
                         tip: {
@@ -191,8 +202,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                         sub_option: {
                             hollow_inside: false,//设置一个点的亮色在外环的效果
                             point_size: 10
-                        },
-                        labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+                        }
                     }).draw();
                     callback(null, 'five');
                 });
