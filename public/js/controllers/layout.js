@@ -33,7 +33,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
             analysis: "Analysis",
             reports: "Reports",
             alerts: "Alerts",
-            admin: "Monitor",
+            monitor: "Monitor",
             help: "Help"
         };
         $scope.navBars = [
@@ -42,7 +42,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
             {name: $scope.txt.analysis, url: "#/analysis", index: 3},
             {name: $scope.txt.reports, url: "#/reports", index: 4},
             {name: $scope.txt.alerts, url: "#/alerts", index: 5},
-            {name: $scope.txt.admin, url: "#/admin", index: 6},
+            {name: $scope.txt.monitor, url: "#/monitor", index: 6},
             {name: $scope.txt.help, url: "#/help", index: 7}
         ];
         $scope.selectNav = function (row) {

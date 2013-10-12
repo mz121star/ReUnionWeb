@@ -3,7 +3,7 @@ define(['app',
     'controllers/login',
     'controllers/logout',
     'controllers/signup',
-    'controllers/admin',
+    'controllers/monitor',
     'controllers/alerts',
     'controllers/analysis',
     'controllers/dashboard',
@@ -13,7 +13,7 @@ define(['app',
     'controllers/feeddetail'
 
 ],
-    function (app, index, login, logout, singnup, admin, alerts, analysis, dashboard, feeds, help, reports,feeddetail) {
+    function (app, index, login, logout, singnup, monitor, alerts, analysis, dashboard, feeds, help, reports,feeddetail) {
         return app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $routeProvider.
                 when('/', {templateUrl: 'partials/index.html', controller: index}).
@@ -26,7 +26,7 @@ define(['app',
                 when('/analysis', {templateUrl: 'partials/analysis.html', controller: analysis}).
                 when('/reports', {templateUrl: 'partials/reports.html', controller: reports}).
                 when('/alerts', {templateUrl: 'partials/alerts.html', controller: alerts}).
-                when('/admin', {templateUrl: 'partials/admin.html', controller: admin}).
+                when('/monitor', {templateUrl: 'partials/monitor.html', controller: monitor}).
                 when('/help', {templateUrl: 'partials/help.html', controller: help}).
 
 
