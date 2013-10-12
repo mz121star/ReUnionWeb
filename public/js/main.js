@@ -40,7 +40,11 @@ require.config({
         'facebox':{deps: ['jquery']},
         'jqueryuniform': {deps: ['jquery']} ,
         'underscore': {exports: '_'},
-        'detectbrowser': {deps: ['modernizr']}
+        'detectbrowser': {deps: ['modernizr']} ,
+        'bootstrapModal': {deps: ['jquery']},
+        'bootstrapAlert': {deps: ['jquery']},
+        'bootstrapButton': {deps: ['jquery']},
+        'bootstrapTab': {deps: ['jquery']}
         /*,
          'res':{exports:'res'}*/
 
