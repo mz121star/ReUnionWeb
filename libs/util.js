@@ -95,7 +95,7 @@ var randomRange=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 var getColor =function(){
-    this.colors=["#959700","#959700","#959700"];
+    this.colors=["#005bb1","#005bb1","#005bb1"];
     this.index=1
 
 };
@@ -116,7 +116,7 @@ exports.dateRange = function (start, end) {
     var size=endDate.getDate()-startDate.getDate();
     for (var i = 0; i <=size; i++) {
         var d=moment(startDate).add('days',i).format("YYYY-MM-DD");
-        result.push(new Date(d).getDate());
+        result.push(new Date(d).getMonth()+"/"+new Date(d).getDate());
     }
     return result;
 }

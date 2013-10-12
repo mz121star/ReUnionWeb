@@ -11,7 +11,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
         $scope.professionalSites = ['CSDN', 'IDC'];
         $scope.searchFeed = function () {
-                          //主业务
+            //主业务
             var sts = Enumerable.From($scope.sourcetype)
                 .Where(function (x) {
                     return x.checked === true
@@ -22,31 +22,36 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             console.log(sts);
             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
             console.log(searchData);
-            $http.post('api/TopicKeywordReportPost',searchData).success(function (a) {
-                new iChart.Bar2D({
+            $http.post('/api/SearchSourcePost',searchData).success(function (a) {
+                //搜索来源饼图
+                new iChart.Pie2D({
                     render: 'canvasDiv7',
                     data: a,
-//                    title: '产品活动关键字',
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    offsetx: 17,
-                    padding: 25,
-                    coordinate: {
-                        scale: [
-                            {
-                                position: 'bottom',
-                                listeners: {
-                                    parseText: function (t, x, y) {
-                                        return {text: t}
-                                    }
-                                },
-                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                            }
-                        ]
+                    legend: {
+                        enable: true
+                    },
+                    showpercent: true,
+                    radius: 140 ,
+                    sub_option : {
+                        label : {
+                            background_color:null,
+                            sign:false,//设置禁用label的小图标
+                            padding:'0 4',
+                            border:{
+                                enable:false,
+                                color:'#666666'
+                            },
+                            fontsize:12,
+                            fontweight:600,
+                            color : '#4572a7'
+                        },
+                        border : {
+                            width : 2,
+                            color : '#ffffff'
+                        }
                     }
                 }).draw();
-                $http.post('api/SentimentAnalysisColumnPost',searchData).success(function (d) {
+                $http.post('/api/SentimentAnalysisColumnPost',searchData).success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv8',
                         data: d.data,
