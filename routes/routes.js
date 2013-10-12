@@ -32,15 +32,12 @@ module.exports = function (app) {
      * Report
      */
     app.get('/2DBarReprot',reports.list);
-    app.post('/2DBarReprot',reports.listPost);
     app.get('/TopicKeywordReport',reports.TopicKeywordReport);
     app.get('/Test',reports.test);
     app.get('/SearchSource',reports.SearchSource);
-    app.post('/SearchSource',reports.SearchSourcePost);
     app.get('/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/KeyWordCloud',reports.keyWordCloud);
     app.get('/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
-    app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
     /***
      * Topics
      */
@@ -54,5 +51,13 @@ module.exports = function (app) {
     app.get('/subReport',subscription.list);
     app.put('/subReport',subscription.editReport);
 
+    /**
+     * 柱形，饼图，折线，条形post方法
+     */
 
+    app.post('/SentimentAnalysisPost',reports.SentimentAnalysisPost);
+    app.post('/2DBarReprot',reports.listPost);
+    app.post('/SearchSource',reports.SearchSourcePost);
+    app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
+    app.post('/TopicKeywordReportPost',reports.TopicKeywordReportPost);
 };

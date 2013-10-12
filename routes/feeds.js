@@ -1,4 +1,5 @@
 var FeedsModel = require("./../models").Feeds;
+var reunionCore=require("./../libs/reunionCore");
 exports.list = function (req, res) {
     console.log(req.body.st);
     var sts = req.body.st,topicKeyword=req.body.keyword;
@@ -40,15 +41,18 @@ exports.list = function (req, res) {
 
 };
 exports.sourcetype = function (req, res) {
-    FeedsModel
+    reunionCore.GetSourceType(function(d){
+        return res.json(d);
+    })
+/*    FeedsModel
         .find()
-        /*.limit(20)*/
+        *//*.limit(20)*//*
         .select('FromType')
         .distinct('FromType', function (err, feeds) {
             if(err){
                 return res.json(500,err);
             }
             return res.json(feeds);
-        });
+        });*/
 }
 

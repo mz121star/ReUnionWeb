@@ -310,6 +310,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 callback(null, 'five');
             });},
             function(callback){  $http.get('/SearchSource').success(function (a) {
+
                 new iChart.Pie2D({
                     render: 'canvasDiv5',
                     data: a,

@@ -7,7 +7,7 @@ exports.format_date = function (date, friendly) {
   var hour = date.getHours();
   var minute = date.getMinutes();
   var second = date.getSeconds();
-  
+
   if (friendly) {
     var now = new Date();
     var mseconds = -(date.getTime() - now.getTime());
@@ -24,7 +24,7 @@ exports.format_date = function (date, friendly) {
       }
     }
   }
-  
+
   //month = ((month < 10) ? '0' : '') + month;
   //day = ((day < 10) ? '0' : '') + day;
   hour = ((hour < 10) ? '0' : '') + hour;
@@ -51,7 +51,7 @@ exports.escape = function(html){
   var blocks = [];
   var text = String(html).replace(/\r\n/g, '\n')
   .replace('/\r/g', '\n');
-  
+
   text = '\n\n' + text + '\n\n';
 
   text = text.replace(codeSpan, function(code) {
@@ -113,9 +113,10 @@ exports.randomColor=function(){
 exports.dateRange = function (start, end) {
     var result=[];
     var startDate = new Date(start), endDate = new Date(end);
-    for (var i = 0; i < 30; i++) {
+    var size=endDate.getDate()-startDate.getDate();
+    for (var i = 0; i <=size; i++) {
         var d=moment(startDate).add('days',i).format("YYYY-MM-DD");
-        result.push(d);
+        result.push(new Date(d).getDate());
     }
     return result;
 }
