@@ -159,8 +159,8 @@ caption {background:#eee;}
 #maincontent .containercontent .table .w400 {width:400px;}
 #maincontent .containercontent .table .w500 {width:500px;}
 #maincontent .containercontent .table thead {}
-#maincontent .containercontent .table thead tr {background:#006DCC;}
-#maincontent .containercontent .table thead td {border-bottom:1px solid #EFEFEF;color:#EEE;text-align:left;font-weight:bold;}
+#maincontent .containercontent .table thead tr {background:#FFF;}
+#maincontent .containercontent .table thead td {border-bottom:1px solid #003d78;color:#001931;text-align:left;font-weight:bold;vertical-align:bottom;}
 #maincontent .containercontent .table thead td.last {border-right:none;}
 #maincontent .containercontent .table thead td .filterasc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 0;}
 #maincontent .containercontent .table thead td .filterdesc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 -7px;}

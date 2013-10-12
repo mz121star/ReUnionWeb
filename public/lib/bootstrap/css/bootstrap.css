@@ -1832,6 +1832,7 @@ table {
 
 .table {
     float:left;margin:20px 0 0 0;padding: 0;width:100%;color:#333;
+    text-align: left;
 }
 
 .table th,
@@ -1842,13 +1843,14 @@ table {
 
 .table th {
   font-weight: bold;
-    background:#006DCC;
-    color: #FFF;
+    background:#FFF;
+    color: #001931;
+    border-bottom:1px solid #003d78;
 }
 
 .table thead th {
   vertical-align: bottom;
-    text-align: center;
+    text-align: left;
 }
 .table thead tr{background: #eeeeee;}
 .table caption + thead tr:first-child th,
@@ -1861,7 +1863,7 @@ table {
 }
 
 .table tbody + tbody {
-  border-top: 2px solid #dddddd;
+  border-top: 2px solid #003d78;
 }
 
 .table-condensed th,
