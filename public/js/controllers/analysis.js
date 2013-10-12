@@ -21,7 +21,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             console.log(sts);
             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
             console.log(searchData);
-            $http.post('/TopicKeywordReportPost',searchData).success(function (a) {
+            $http.post('api/TopicKeywordReportPost',searchData).success(function (a) {
                 new iChart.Bar2D({
                     render: 'canvasDiv7',
                     data: a,
@@ -45,7 +45,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                         ]
                     }
                 }).draw();
-                $http.post('/SentimentAnalysisColumnPost',searchData).success(function (d) {
+                $http.post('api/SentimentAnalysisColumnPost',searchData).success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv8',
                         data: d.data,

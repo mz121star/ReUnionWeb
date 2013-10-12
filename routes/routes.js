@@ -45,6 +45,13 @@ module.exports = function (app) {
     app.get('/api/SentimentAnalysis',reports.SentimentAnalysis);
     app.get('/api/KeyWordCloud',reports.keyWordCloud);
     app.get('/api/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
+
+    app.post('api/SentimentAnalysisPost',reports.SentimentAnalysisPost);
+    app.post('api/2DBarReprot',reports.listPost);
+    app.post('api/SearchSource',reports.SearchSourcePost);
+    app.post('api/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
+    app.post('api/TopicKeywordReportPost',reports.TopicKeywordReportPost);
+
     /***
      * Topics
      */
@@ -60,14 +67,8 @@ module.exports = function (app) {
     app.get('/api/subReportPreview/:id', subscription.subReportPreview);
     app.get('/api/sendPreviewMail/:id',subscription.sendReportPreviewByEmail);
 
-    /**
-     * 柱形，饼图，折线，条形post方法
-     */
 
-    app.post('/SentimentAnalysisPost',reports.SentimentAnalysisPost);
-    app.post('/2DBarReprot',reports.listPost);
-    app.post('/SearchSource',reports.SearchSourcePost);
-    app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
-    app.post('/TopicKeywordReportPost',reports.TopicKeywordReportPost);
+
+
     /**********************************************************API*************************************************************************/
 };

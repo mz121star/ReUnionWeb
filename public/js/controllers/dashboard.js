@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], function (res, ichart,async) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], function (res, ichart, async) {
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Dashboard - " + res.title;
@@ -28,7 +28,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
             }).draw();
 
         });
-         $http.get('api/TopicKeywordReport').success(function (d2) {
+        $http.get('api/TopicKeywordReport').success(function (d2) {
             new iChart.Bar2D({
                 render: 'canvasDiv2',
                 data: d2,
@@ -53,8 +53,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 }
             }).draw();
 
-        }) ;
-          $http.get('api/SearchSource').success(function (a) {
+        });
+        $http.get('api/SearchSource').success(function (a) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
@@ -95,10 +95,10 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
                 }, 3000)
 
             });
-           $http.get('api/KeyWordCloud').success(function (d2) {
+        $http.get('api/KeyWordCloud').success(function (d2) {
             var canvas = document.getElementById('canvasDiv6');
             var context = canvas.getContext('2d');
-             context.fillStyle = "#ff0000";
+            context.fillStyle = "#ff0000";
             context.textBaseline = "top";
             context.font = " 50px  Helvetica,arial";
             for (var i in d2) {
@@ -118,87 +118,85 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async','bootstrapAlert'], functio
 
 
         });
-       var loadReport=function(){
+        var loadReport = function () {
 
-       }
+        }
         async.series([
-
-
-
-            function(callback){$http.get('api/SentimentAnalysisColumn').success(function (d) {
-                new iChart.ColumnStacked2D({
-                    render: 'canvasDiv3',
-                    data: d,
-                    labels: ["一月", "二月", "三月", "四月", "五月", "六月"],
-                    label: {color: '#254d70', fontsize: 12, fontweight: 600},
-                    percent: true,//标志为百分比堆积图
-                    showpercent: true,
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    decimalsnum: 1,
-                    tip: {
-                        enable: true,
-                        shadow: true
-                    },
-                    legend: {
-                        enable: true,
-                        background_color: null,
-                        border: {
-                            enable: false
+            function (callback) {
+                $http.get('api/SentimentAnalysisColumn').success(function (d) {
+                    new iChart.ColumnStacked2D({
+                        render: 'canvasDiv3',
+                        data: d,
+                        labels: ["一月", "二月", "三月", "四月", "五月", "六月"],
+                        label: {color: '#254d70', fontsize: 12, fontweight: 600},
+                        percent: true,//标志为百分比堆积图
+                        showpercent: true,
+                        width: 550,
+                        height: 315,
+                        border: 'none',
+                        decimalsnum: 1,
+                        tip: {
+                            enable: true,
+                            shadow: true
                         },
-                        offsetx: 19,//设置x轴偏移，满足位置需要
-                        offsety: -20//设置y轴偏移，满足位置需要
-                    },
-                    coordinate: {
-                        axis: {
-                            color: '#c0d0e0',
-                            width: 0
+                        legend: {
+                            enable: true,
+                            background_color: null,
+                            border: {
+                                enable: false
+                            },
+                            offsetx: 19,//设置x轴偏移，满足位置需要
+                            offsety: -20//设置y轴偏移，满足位置需要
                         },
-                        scale: [
-                            {
-                                position: 'left',
-                                scale_enable: false,
-                                start_scale: 0,
-                                scale_space: 50,
-                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                            }
-                        ]
-                    }
-                }).draw();
-                callback(null, 'four');
-            });},
-            function(callback){$http.get('api/SentimentAnalysis').success(function (d) {
-                new iChart.LineBasic2D({
-                    render: 'canvasDiv4',
-                    data: d,
+                        coordinate: {
+                            axis: {
+                                color: '#c0d0e0',
+                                width: 0
+                            },
+                            scale: [
+                                {
+                                    position: 'left',
+                                    scale_enable: false,
+                                    start_scale: 0,
+                                    scale_space: 50,
+                                    label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                                }
+                            ]
+                        }
+                    }).draw();
+                    callback(null, 'four');
+                });
+            },
+            function (callback) {
+                $http.get('api/SentimentAnalysis').success(function (d) {
+                    new iChart.LineBasic2D({
+                        render: 'canvasDiv4',
+                        data: d,
 //                    title: '情感分析时间轴曲线图  ',
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    tip: {
-                        enable: true,
-                        shadow: true
-                    },
-                    legend: {
-                        enable: true,
-                        sign: 'bar',
-                        background_color: null,//设置透明背景
-                        offsetx: 19,//设置x轴偏移，满足位置需要
-                        offsety: -20,//设置y轴偏移，满足位置需要
-                        border: true
-                    },
-                    sub_option: {
-                        hollow_inside: false,//设置一个点的亮色在外环的效果
-                        point_size: 10
-                    },
-                    labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
-                }).draw();
-                callback(null, 'five');
-            });},
-
-
-
+                        width: 550,
+                        height: 315,
+                        border: 'none',
+                        tip: {
+                            enable: true,
+                            shadow: true
+                        },
+                        legend: {
+                            enable: true,
+                            sign: 'bar',
+                            background_color: null,//设置透明背景
+                            offsetx: 19,//设置x轴偏移，满足位置需要
+                            offsety: -20,//设置y轴偏移，满足位置需要
+                            border: true
+                        },
+                        sub_option: {
+                            hollow_inside: false,//设置一个点的亮色在外环的效果
+                            point_size: 10
+                        },
+                        labels: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"]
+                    }).draw();
+                    callback(null, 'five');
+                });
+            },
         ]);
 
     }];
