@@ -5,14 +5,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Dashboard - " + res.title;
         $scope.searchDate={
-            startDate:"2013-08-01",
-            endDate:"2013-08-31"
+            starttime:"2013-08-01",
+            endtime:"2013-08-31"
         }
-        var searchData={
-            starttime:$scope.searchDate.startDate
-            ,endtime:$scope.searchDate.endDate
-        };
-        $http.post('api/2DBarReprotPost',searchData).success(function (d) {
+
+
+
+        var loadReport = function () {
+        $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
                 data: d,
@@ -35,7 +35,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
             }).draw();
 
         });
-        $http.post('api/TopicKeywordReportPost',searchData).success(function (d2) {
+        $http.post('api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
             new iChart.Bar2D({
                 render: 'canvasDiv2',
                 data: d2,
@@ -61,7 +61,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
             }).draw();
 
         });
-        $http.post('/api/SearchSourcePost',searchData).success(function (a) {
+        $http.post('/api/SearchSourcePost', $scope.searchDate).success(function (a) {
             new iChart.Pie2D({
                 render: 'canvasDiv5',
                 data: a,
@@ -125,12 +125,10 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
 
 
         });
-        var loadReport = function () {
 
-        }
         async.series([
             function (callback) {
-                $http.post('/api/SentimentAnalysisColumnPost',searchData).success(function (d) {
+                $http.post('/api/SentimentAnalysisColumnPost', $scope.searchDate).success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv3',
                         data: d.data,
@@ -177,7 +175,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                 });
             },
             function (callback) {
-                $http.post('api/SentimentAnalysisPost',searchData).success(function (d) {
+                $http.post('api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
                     //搜索来源饼图
                     new iChart.LineBasic2D({
                         render: 'canvasDiv4',
@@ -206,9 +204,16 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                     }).draw();
                     callback(null, 'five');
                 });
-            },
+            }
         ]);
+        }
+        $scope.search=function(){
+            $scope.searchDate.starttime=$scope.dashboard.startDate;
+            $scope.searchDate.endtime=$scope.dashboard.endDate ;
 
+            loadReport();
+        }
+        loadReport();
     }];
 
     return DashboardController;
