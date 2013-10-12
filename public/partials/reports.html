@@ -11,10 +11,10 @@
         <tr>
             <th>No.</th>
             <th sortable>Title</th>
-            <th>类型</th>
-            <th>收件人</th>
-            <th>创建时间</th>
-            <th>操作</th>
+            <th>Type</th>
+            <th>MailTo</th>
+            <th>Create Date</th>
+            <th>Action</th>
 
 
         </tr>
@@ -28,12 +28,12 @@
             <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
             <td>
                 <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
-                <button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">预览 </button>
-                <button class="btn btn-primary" data-loading-text="发送中..." ng-click="sendSubReport(report,$event)">发送
+                <button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">Preview </button>
+                <button class="btn btn-primary" data-loading-text="Sending..." ng-click="sendSubReport(report,$event)">Send
                 </button>
 
-                <button class="btn btn-primary" ng-click="editSubReport(report)">编辑</button>
-                <button class="btn btn-danger" ng-click="delSubReport(report)">删除</button>
+                <button class="btn btn-primary" ng-click="editSubReport(report)">Edit</button>
+                <button class="btn btn-danger" ng-click="delSubReport(report)">Delete</button>
                 <!-- subReportPreview/{{report._id}}-->
             </td>
 

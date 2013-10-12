@@ -52,9 +52,9 @@ define(['app'], function (app) {
     app.filter("numToTxt", function () {
         return function (input, text) {
             if (input === 1)
-                return "停止";
+                return "Start";
             if (input === 0)
-                return "开始";
+                return "Stop";
         };
     })
 });

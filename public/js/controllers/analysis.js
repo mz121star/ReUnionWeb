@@ -3,6 +3,7 @@
 define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs','jqueryuniform' ], function (res, excel) {
 
     var AnalysisController=['$scope','$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
+        $rootScope.menuUrl="";
         $rootScope.title ="Analysis - "+ res.title;
         $scope.source = {
             brand: "兰蔻品牌"

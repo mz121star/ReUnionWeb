@@ -4,7 +4,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Dashboard - " + res.title;
-
+        $rootScope.menuUrl="partials/leftmenu/dashboardMenu.html";
         $http.get('api/2DBarReprot').success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
@@ -122,7 +122,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
 
         }
         async.series([
-            function (callback) {
+          /*  function (callback) {
                 $http.get('api/SentimentAnalysisColumn').success(function (d) {
                     new iChart.ColumnStacked2D({
                         render: 'canvasDiv3',
@@ -166,7 +166,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                     }).draw();
                     callback(null, 'four');
                 });
-            },
+            },*/
             function (callback) {
                 $http.get('api/SentimentAnalysis').success(function (d) {
                     new iChart.LineBasic2D({
@@ -196,7 +196,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                     }).draw();
                     callback(null, 'five');
                 });
-            },
+            }
         ]);
 
     }];
