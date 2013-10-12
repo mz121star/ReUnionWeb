@@ -1,6 +1,6 @@
 'use strict';
 
-define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryuniform'], function (app, res, images) {
+define(['../app', 'i18n!resources/nls/res', '../../background/images'], function (app, res, images) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
     return app.controller('LayoutController', function ($scope, $http, $location, $window) {
@@ -11,6 +11,8 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
+
+
         $scope.LoginInfo = function (user) {
             $scope.UserName=user["name"];
         };
@@ -31,7 +33,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             analysis: "Analysis",
             reports: "Reports",
             alerts: "Alerts",
-            admin: "Administration",
+            admin: "Monitor",
             help: "Help"
         };
         $scope.navBars = [

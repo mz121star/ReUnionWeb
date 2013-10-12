@@ -10,23 +10,25 @@
         <tr>
             <th>No.</th>
             <th sortable>Title</th>
-            <th>类型</th>
-            <th>收件人</th>
-            <th>创建时间</th>
-            <th>操作</th>
-
+            <th>Keywords</th>
+            <th>MailTo</th>
+            <th>SMSTo</th>
+            <th>DataRange</th>
+            <th>Action</th>
 
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="report in subReports" ng-click="showDetail(report)" showdetail>
+        <tr ng-repeat="alert in alerts" ng-click="showDetail(alert)" showdetail>
             <td>{{ $index+1 }}</td>
-            <td>{{report.Name }}</td>
-            <td>{{report.Type }}</td>
-            <td>{{report.Receiver }}</td>
-            <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
+            <td>{{alert.Name }}</td>
+            <td>{{alert.Keyword }}</td>
+            <td>{{alert.MailTo }}</td>
+            <td>{{alert.SMSTo }} </td>
+            <td>{{alert.AlertStartTime |date }}-{{alert.AlertEndTime |date }}</td>
+            <td> <button class="btn btn-primary" >Edit</button></td>
             <td>
-                <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
+
 
             </td>
 
@@ -60,12 +62,19 @@
                             </div>
                             <div class="right"></div>
                         </div>-->
-
                         <div class="content">
-                            <div class="left"><span class="title">KeyWords</span></div>
+                            <div class="left"><span class="title">Name:</span></div>
                             <div class="center">
-                                <input type="text" ng-model="report.keyword" required /> <label><input
-                                    type="checkbox"  />使用正则</label>
+                                <input type="text" ng-model="alert.name" required /> <!--<label><input
+                                    type="checkbox"  />使用正则</label>-->
+                            </div>
+                            <div class="right"></div>
+                        </div>
+                        <div class="content">
+                            <div class="left"><span class="title">KeyWords:</span></div>
+                            <div class="center">
+                                <input type="text" ng-model="alert.keywords" required /> <!--<label><input
+                                    type="checkbox"  />使用正则</label>-->
                             </div>
                             <div class="right"></div>
                         </div>
@@ -73,7 +82,7 @@
                         <div class="content">
                             <div class="left"><span class="title">Mail To:</span></div>
                             <div class="center">
-                                <textarea ng-model="report.maito" required>abc@pactera.com</textarea>
+                                <textarea ng-model="alert.maito" required>abc@pactera.com</textarea>
                             </div>
                             <div class="right"></div>
                         </div>
@@ -81,7 +90,7 @@
                         <div class="content">
                             <div class="left"><span class="title">SMS To:</span></div>
                             <div class="center">
-                                <textarea ng-model="report.smsto" required>13848866666</textarea>
+                                <textarea ng-model="alert.smsto" required>13848866666</textarea>
                             </div>
                             <div class="right"></div>
                         </div>
@@ -101,9 +110,9 @@
                         <div class="content">
                             <div class="left"><span class="title">时间段</span></div>
                             <div class="center">
-                                <input bs-datepicker type="text" ng-model="feeds.startTime" name="startTime">
+                                <input bs-datepicker type="text" ng-model="alert.startTime" name="startTime">
                                                                      to
-                                <input bs-datepicker type="text" ng-model="feeds.endTime">
+                                <input bs-datepicker type="text" ng-model="alert.endTime">
 
                             </div>
                             <div class="right"></div>
@@ -117,7 +126,7 @@
                 <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
                 <div ng-show="!!saveTopicError" class="alert alert-error"> {{ saveTopicError }}</div>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary" ng-disabled='alertForm.$invalid' ng-click="addReport()">Save</button>
+                <button class="btn btn-primary" ng-disabled='alertForm.$invalid' ng-click="addAlert()">Save</button>
             </div>
         </div>
         <!-- /.modal-content -->

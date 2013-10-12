@@ -65,7 +65,7 @@ define(['app' ], function (app) {
         };
     });
 
-    app.directive('uniform', function () {
+  /*  app.directive('uniform', function () {
         require('jqueryuniform');
         return {
 
@@ -73,6 +73,6 @@ define(['app' ], function (app) {
                  $("select, input").uniform();
             }
         };
-    });
+    });*/
 
 });

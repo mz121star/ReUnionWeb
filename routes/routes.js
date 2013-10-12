@@ -12,6 +12,8 @@ var feeds=require('./feeds');
 var reports=require('./report');
 var topic=require('./topic');
 var subscription=require('./subscription');
+var alert=require('./alert') ;
+var admintool=require('./admintool');
 module.exports = function (app) {
     /***
      * Render Pages页面相关代码
@@ -68,7 +70,14 @@ module.exports = function (app) {
     app.get('/api/sendPreviewMail/:id',subscription.sendReportPreviewByEmail);
 
 
+    /***
+     * Alert
+     */
+    app.get('/api/alert',alert.list);
+    app.post('/api/alert',alert.save);
 
 
     /**********************************************************API*************************************************************************/
+
+    app.post('/admintool',admintool.admintool);
 };
