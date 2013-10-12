@@ -1,6 +1,6 @@
 'use strict';
 
-define(['../app', 'i18n!resources/nls/res', '../../background/images'], function (app, res, images) {
+define(['../app', 'i18n!resources/nls/res'], function (app, res) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
     return app.controller('LayoutController', function ($scope, $http, $location, $window) {
@@ -110,7 +110,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
         /*  $("body").attr("style","background:url('themes/glowsimple/img/dots.png') center center fixed, url('"+imgs[i--]+"') center center no-repeat fixed;");*/
         /*
          };*/
-        $scope.fullscreen = function () {
+    /*    $scope.fullscreen = function () {
             if (window.fullScreenApi.supportsFullScreen) {
                 setInterval(function () {
                     if (!document.webkitIsFullScreen) {
@@ -125,7 +125,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images'], function
             } else {
                 alert('就你这浏览器，基本就告别全屏功能了,赶紧卸载了吧！！！');
             }
-        };
+        };*/
     });
 });
 /*
