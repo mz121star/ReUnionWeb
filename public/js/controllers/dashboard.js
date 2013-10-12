@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'async' ,'moment','bootstrapAlert'], function (res, ichart, async,moment) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAlert'], function (res, ichart, async, moment) {
 
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
@@ -12,127 +12,157 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' ,'moment','bootstrapAlert'
         }
 
 
-        $scope.$watch("dataRange",function(v1,v2){
-            $scope.searchDate.endtime=new Date();
-            $scope.searchDate.starttime=moment(new Date()).add('days',-v1).calendar();
+        $scope.$watch("dataRange", function (v1, v2) {
+            $scope.searchDate.endtime = new Date();
+            $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
             loadReport();
         })
         var loadReport = function () {
-            $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
-                new iChart.Bar2D({
-                    render: 'canvasDiv1',
-                    data: d,
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    coordinate: {
-                        scale: [
-                            {
-                                position: 'bottom',
-                                listeners: {
-                                    parseText: function (t, x, y) {
-                                        return {text: t}
-                                    }
-                                },
-                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                            }
-                        ]
-                    }
-                }).draw();
 
-            });
-            $http.post('api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
-                new iChart.Bar2D({
-                    render: 'canvasDiv2',
-                    data: d2,
-//                    title: '产品活动关键字',
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    offsetx: 17,
-                    padding: 25,
-                    coordinate: {
-                        scale: [
-                            {
-                                position: 'bottom',
-                                listeners: {
-                                    parseText: function (t, x, y) {
-                                        return {text: t}
-                                    }
-                                },
-                                label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                            }
-                        ]
-                    }
-                }).draw();
-
-            });
-            $http.post('/api/SearchSourcePost', $scope.searchDate).success(function (a) {
-                new iChart.Pie2D({
-                    render: 'canvasDiv5',
-                    data: a,
-                    //title: '搜索来源',
-                    width: 550,
-                    height: 315,
-                    border: 'none',
-                    legend: {
-                        enable: true
-                    },
-                    showpercent: true,
-                    radius: 140,
-                    sub_option: {
-                        label: {
-                            background_color: null,
-                            sign: false,//设置禁用label的小图标
-                            padding: '0 4',
-                            border: {
-                                enable: false,
-                                color: '#666666'
-                            },
-                            fontsize: 12,
-                            fontweight: 600,
-                            color: '#4572a7'
-                        },
-                        border: {
-                            width: 2,
-                            color: '#ffffff'
-                        }
-                    }
-                }).draw();
-
-            }).error(function (data, status, headers, config) {
-
-                    $scope.global.error = "内部数据错误";
-                    $timeout(function () {
-                        $scope.global.error = "";
-                    }, 3000)
-
-                });
-            $http.get('api/KeyWordCloud').success(function (d2) {
-                var canvas = document.getElementById('canvasDiv6');
-                var context = canvas.getContext('2d');
-                context.fillStyle = "#ff0000";
-                context.textBaseline = "top";
-                context.font = " 50px  Helvetica,arial";
-                for (var i in d2) {
-                    var v = d2[i];
-                    context.fillText(v.name, Math.round(Math.random() * 200), Math.round(Math.random() * 200));
-                    context.fillStyle = v.color;
-                    if (v.value > 100)
-                        v.value = v.value / 3;
-                    else if (v.value < 14)
-                        v.value = v.value;
-                    else if (v.value > 30)
-                        v.value = v.value / 2;
-
-                    context.font = v.value + "px  Helvetica,arial";
-
-                }
-
-
-            });
 
             async.series([
+                function (callback) {
+                    $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
+                        new iChart.Bar2D({
+                            render: 'canvasDiv1',
+                            data: d,
+                            width: 550,
+                            height: 315,
+                            border: 'none',
+                            coordinate: {
+                                scale: [
+                                    {
+                                        position: 'bottom',
+                                        listeners: {
+                                            parseText: function (t, x, y) {
+                                                return {text: t}
+                                            }
+                                        },
+                                        label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                                    }
+                                ]
+                            }
+                        }).draw();
+                        callback(null, '1');
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '1');
+                        });
+                },
+                function (callback) {
+                    $http.post('api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
+                        new iChart.Bar2D({
+                            render: 'canvasDiv2',
+                            data: d2,
+//                    title: '产品活动关键字',
+                            width: 550,
+                            height: 315,
+                            border: 'none',
+                            offsetx: 17,
+                            padding: 25,
+                            coordinate: {
+                                scale: [
+                                    {
+                                        position: 'bottom',
+                                        listeners: {
+                                            parseText: function (t, x, y) {
+                                                return {text: t}
+                                            }
+                                        },
+                                        label: {color: '#254d70', fontsize: 11, fontweight: 600}
+                                    }
+                                ]
+                            }
+                        }).draw();
+                        callback(null, '2');
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '2');
+                        });
+                },
+                function (callback) {
+                    $http.post('/api/SearchSourcePost', $scope.searchDate).success(function (a) {
+                        new iChart.Pie2D({
+                            render: 'canvasDiv5',
+                            data: a,
+                            //title: '搜索来源',
+                            width: 550,
+                            height: 315,
+                            border: 'none',
+                            legend: {
+                                enable: true
+                            },
+                            showpercent: true,
+                            radius: 140,
+                            sub_option: {
+                                label: {
+                                    background_color: null,
+                                    sign: false,//设置禁用label的小图标
+                                    padding: '0 4',
+                                    border: {
+                                        enable: false,
+                                        color: '#666666'
+                                    },
+                                    fontsize: 12,
+                                    fontweight: 600,
+                                    color: '#4572a7'
+                                },
+                                border: {
+                                    width: 2,
+                                    color: '#ffffff'
+                                }
+                            }
+                        }).draw();
+                        callback(null, '3');
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '3');
+                        });
+                },
+                function (callback) {
+                    $http.get('api/KeyWordCloud').success(function (d2) {
+                        var canvas = document.getElementById('canvasDiv6');
+                        var context = canvas.getContext('2d');
+                        context.fillStyle = "#ff0000";
+                        context.textBaseline = "top";
+                        context.font = " 50px  Helvetica,arial";
+                        for (var i in d2) {
+                            var v = d2[i];
+                            context.fillText(v.name, Math.round(Math.random() * 200), Math.round(Math.random() * 200));
+                            context.fillStyle = v.color;
+                            if (v.value > 100)
+                                v.value = v.value / 3;
+                            else if (v.value < 14)
+                                v.value = v.value;
+                            else if (v.value > 30)
+                                v.value = v.value / 2;
+
+                            context.font = v.value + "px  Helvetica,arial";
+
+                        }
+                        callback(null, '4');
+
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '4');
+                        });
+                },
                 function (callback) {
                     $http.post('/api/SentimentAnalysisColumnPost', $scope.searchDate).success(function (d) {
                         new iChart.ColumnStacked2D({
@@ -177,8 +207,15 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' ,'moment','bootstrapAlert'
                                 ]
                             }
                         }).draw();
-                        callback(null, 'four');
-                    });
+                        callback(null, '5');
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '5');
+                        });
                 },
                 function (callback) {
                     $http.post('api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
@@ -208,8 +245,15 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' ,'moment','bootstrapAlert'
                                 point_size: 10
                             }
                         }).draw();
-                        callback(null, 'five');
-                    });
+                        callback(null, '6');
+                    }).error(function (data, status, headers, config) {
+
+                            $scope.global.error = "内部数据错误";
+                            $timeout(function () {
+                                $scope.global.error = "";
+                            }, 3000)
+                            callback(null, '6');
+                        });
                 }
             ]);
         }
