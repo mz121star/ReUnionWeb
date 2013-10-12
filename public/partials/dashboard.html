@@ -2,10 +2,11 @@
 <div class="panel">
     <div class="feeds-search-tools">
 
-        <select class="inputdate">
-            <option>Last 7 Days</option>
-            <option>Last month</option>
+        <select class="inputdate"  ng-model="dataRange" >
+            <option value="7" selected="selected" >Last 7 Days</option>
+            <option value="30">Last month</option>
         </select>
+        {{searchDate.starttime}}
         <span>Or from <input  bs-datepicker ng-model="dashboard.startDate" class="inputdate" type="text"> to <input bs-datepicker ng-model="dashboard.endDate" class="inputdate" type="text"> </span>
         <button class="btn btn-primary" ng-click="search()">Search</button>
     </div>

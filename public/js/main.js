@@ -25,7 +25,9 @@ require.config({
         linqjs:'../lib/linq',
         'angular-strap':'../lib/angular-strap/angular-strap',
         'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
-        "async":'../lib/async'
+        "async":'../lib/async',
+        "moment": "../lib/moment.min"
+
     },
     shim: {
         'angular': {'exports': 'angular'},

@@ -1,6 +1,7 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], function (res, ichart, async) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'async' ,'moment','bootstrapAlert'], function (res, ichart, async,moment) {
+
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
@@ -11,6 +12,11 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
         }
 
 
+        $scope.$watch("dataRange",function(v1,v2){
+            $scope.searchDate.endtime=new Date();
+            $scope.searchDate.starttime=moment(new Date()).add('days',-v1).calendar();
+            loadReport();
+        })
         var loadReport = function () {
             $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
                 new iChart.Bar2D({
