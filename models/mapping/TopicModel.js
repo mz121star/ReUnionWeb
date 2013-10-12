@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
     Name:String,
+    Keyword:String,
     SearchCondition:{
         SourceType:Array,
         ProfessionalSite:Array,

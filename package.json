@@ -14,7 +14,9 @@
     "requirejs": "latest",
     "moment": "latest",
     "xss": "0.0.6",
-    "nodemailer": "latest"
+    "underscore": "~1.5.2",
+    "handlebars": "~1.0.12",
+    "nodemailer": "~0.5.3"
   },
   "devDependencies": {
     "should": "*",
@@ -28,8 +30,8 @@
     "grunt-contrib-concat": "~0.1.1",
     "grunt-contrib-requirejs": "~0.4.0",
     "grunt-contrib-cssmin": "~0.4.2",
-    "grunt-contrib-nodeunit": "~0.2.1" ,
-      "nodeunit":"latest"
+    "grunt-contrib-nodeunit": "~0.2.1",
+    "nodeunit": "latest"
   },
   "scripts": {
     "test": "make test",

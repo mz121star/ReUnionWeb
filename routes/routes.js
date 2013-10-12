@@ -8,48 +8,57 @@
 
 var index = require('./index');
 var user = require('./user');
-var blog = require('./blog');
-var kimiss=require('./kimiss');
 var feeds=require('./feeds');
 var reports=require('./report');
 var topic=require('./topic');
 var subscription=require('./subscription');
 module.exports = function (app) {
+    /***
+     * Render Pages页面相关代码
+     */
     app.get('/', index.index);
-    app.get('/list', user.list);
     app.get('/login',index.login);
-    app.get('/blog', blog.list);
-    app.get('/user', user.list);
-
-    app.post('/feeds', feeds.list);
-    app.get('/feedsSourceType',feeds.sourcetype);
-    app.post('/signup', user.create);
-    app.post('/login', user.login);
     app.get('/logout', user.logout);
-    app.get('/checklogin', index.getLoginUser);
+    app.post('/login', user.login);
+     /**********************************************************API*************************************************************************/
+    /***
+     * Users
+     */
+    app.post('/api/signup', user.create);
+
+
+    app.get('/api/checklogin', index.getLoginUser);
+
+    /***
+     * Feeds
+     */
+    app.post('/api/feeds', feeds.list);
+    app.get('/api/feedsSourceType',feeds.sourcetype);
 
     /***
      * Report
      */
-    app.get('/2DBarReprot',reports.list);
-    app.get('/TopicKeywordReport',reports.TopicKeywordReport);
-    app.get('/Test',reports.test);
-    app.get('/SearchSource',reports.SearchSource);
-    app.get('/SentimentAnalysis',reports.SentimentAnalysis);
-    app.get('/KeyWordCloud',reports.keyWordCloud);
-    app.get('/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
+    app.get('/api/2DBarReprot',reports.list);
+    app.get('/api/TopicKeywordReport',reports.TopicKeywordReport);
+    app.get('/api/Test',reports.test);
+    app.get('/api/SearchSource',reports.SearchSource);
+    app.get('/api/SentimentAnalysis',reports.SentimentAnalysis);
+    app.get('/api/KeyWordCloud',reports.keyWordCloud);
+    app.get('/api/SentimentAnalysisColumn',reports.SentimentAnalysisColumn);
     /***
      * Topics
      */
-    app.post('/topic',topic.saveTopic);
-    app.get('/topic',topic.list);
+    app.post('/api/topic',topic.saveTopic);
+    app.get('/api/topic',topic.list);
 
     /***
      * Reports-subscription report
      */
-    app.post('/subReport',subscription.saveReport);
-    app.get('/subReport',subscription.list);
-    app.put('/subReport',subscription.editReport);
+    app.post('/api/subReport',subscription.saveReport);
+    app.get('/api/subReport',subscription.list);
+    app.put('/api/subReport',subscription.editReport);
+    app.get('/api/subReportPreview/:id', subscription.subReportPreview);
+    app.get('/api/sendPreviewMail/:id',subscription.sendReportPreviewByEmail);
 
     /**
      * 柱形，饼图，折线，条形post方法
@@ -60,4 +69,5 @@ module.exports = function (app) {
     app.post('/SearchSource',reports.SearchSourcePost);
     app.post('/SentimentAnalysisColumnPost',reports.SentimentAnalysisColumnPost);
     app.post('/TopicKeywordReportPost',reports.TopicKeywordReportPost);
+    /**********************************************************API*************************************************************************/
 };

@@ -4,9 +4,9 @@
     <div class="conditionspanel">
         <div class="title"><span class="titlelabel">Feeds List:{{source.brand}}（关键词表达式）</span></div>
         <div class="content">
-            <div class="cell size1">Topic:</div>
+            <div class="cell size1">Keyword:</div>
             <div class="cell size5">
-                <input type="text" ng-model="topicName" >
+                <input type="text" ng-model="keyword" ><span class="glyphicon glyphicon-info-sign"></span>
             </div>
 
         </div>
@@ -50,7 +50,7 @@
 
                 <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
                     <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"
-                            ng-disabled='searchFeedForm.$invalid||!!!topicName'>Search Current Set
+                            ng-disabled='searchFeedForm.$invalid||!!!keyword'>Save Current Set
                     </button>
                 <button class="btn btn-primary" ng-disabled="feedContent.length==0" ng-click="exportExcel('feedTable','feeds')" type="button">Export Feed</button>
 
@@ -131,7 +131,7 @@
             <div class="modal-body">
 
                 <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
- -->             Topic:{{topicName}}
+ -->            Topic Name: <input type="text" ng-model="topicName" >
                 <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
 
             </div>

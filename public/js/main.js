@@ -19,6 +19,7 @@ require.config({
         jqueryui:'../lib/jquery-ui-1.10.3.custom' ,
         bootstrapModal:'../lib/bootstrap/js/modal',
         bootstrapAlert:'../lib/bootstrap/js/alert',
+        bootstrapButton:'../lib/bootstrap/js/button',
         jqueryuniform: '../lib/uniform/jquery.uniform.min',
         linqjs:'../lib/linq',
         'angular-strap':'../lib/angular-strap/angular-strap',

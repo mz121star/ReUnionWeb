@@ -14,7 +14,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
         $scope.LoginInfo = function (user) {
             $scope.UserName=user["name"];
         };
-        $http.get('/checklogin').success(function (user) {
+        $http.get('api/checklogin').success(function (user) {
             $scope.LoginInfo(user);
         });
         $scope.logout = function () {

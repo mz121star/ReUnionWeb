@@ -3,7 +3,7 @@ define(['app'], function (app) {
         var items = {};
         items.querySourceType = function () {
             var delay = $q.defer();
-            $http.get('/feedsSourceType').success(function (data) {
+            $http.get('api/feedsSourceType').success(function (data) {
                 delay.resolve(data);
             });
             return delay.promise;

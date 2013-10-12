@@ -17,7 +17,7 @@ var SignUpController = ["$scope", "$rootScope", "$http", "$location", function (
     };
 
     $scope.createClick = function () {
-        $http.post('/signup', $scope.user).success(function (data) {
+        $http.post('api/signup', $scope.user).success(function (data) {
             if (data.err) {
                 return $scope.err = data.err;
             }

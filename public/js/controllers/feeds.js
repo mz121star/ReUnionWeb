@@ -24,9 +24,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 .ToArray();
             sts = sts.join('|')
             console.log(sts);
-            var searchData = {keyword: $scope.topicName,st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
+            var searchData = {keyword: $scope.keyword,st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
             console.log(searchData);
-            $http.post("/feeds", searchData).success(function (d) {
+            $http.post("api/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.pages= d.count;
                 $scope.feedContent = Enumerable.From(d.feeds)
@@ -65,7 +65,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             source: "",
             url: ""
         };
-        $http.post("/feeds").success(function (d) {
+        $http.post("api/feeds").success(function (d) {
             $scope.feedContent = d.feeds;
             $scope.pages= d.count;
         });
@@ -88,7 +88,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
             {name: "topic2"}
         ]
         var getTopics = function (callback) {
-            $http.get('/topic').success(function (d) {
+            $http.get('api/topic').success(function (d) {
                 $rootScope.Topics = d;
                 /*  Enumerable.From(d);*/
                 /* .Select("{name:$.Name}").ToArray();*/
@@ -104,8 +104,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
                 })
                 .Select("$.type")
                 .ToArray();
-            $http.post('/topic', {
+            $http.post('api/topic', {
                 Name: $scope.topicName,
+                Keyword:$scope.keyword,
                 SearchCondition: {
                     SourceType: sts,
                     StartDate: new Date($scope.feeds.startTime),
@@ -125,7 +126,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs',
         }
 
         $rootScope.topicSelected = function (topic) {
-            $scope.topicName = topic.Name;
+            $scope.keyword = topic.Keyword;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
             var sourceType = topic.SearchCondition.SourceType;
