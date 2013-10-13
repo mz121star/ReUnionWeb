@@ -137,10 +137,11 @@ caption {background:#eee;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
 #maincontent .containercontent .conditionspanel .content .size5 {}
 
-#maincontent .containercontent .editpanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;border:2px solid #CCC;border-bottom: 1px solid #CCC;}
+#maincontent .containercontent .editpanel {float:left;margin:0;padding: 0;width:100%;border:1px solid #CCC;border-bottom: none;}
 #maincontent .containercontent .editpanel .content {float:left;width:100%;border-bottom:1px solid #CCC;}
-#maincontent .containercontent .editpanel .content .left {float:left;width:100px;padding:10px;font-size:20px;font-weight:bold;color:#444444;}
-#maincontent .containercontent .editpanel .content .center {float:left;padding:10px;border-left:1px solid #CCC;min-height:50px;}
+#maincontent .containercontent .editpanel .content .left {float:left;width:100px;padding:10px;font-size:14px;font-weight:bold;color:#444444;}
+
+#maincontent .containercontent .editpanel .content .center {float:left;padding:10px;border-left:1px solid #CCC;min-height:30px;}
 #maincontent .containercontent .editpanel .content .center .input {float:left;}
 #maincontent .containercontent .editpanel .content .center .input .title {float:left;margin-right:10px;font-size:16px;height:28px;line-height:28px;}
 #maincontent .containercontent .editpanel .content .center .input .text {float:left;height:22px;line-height:22px;background:#FFF;border:1px solid #CCC;}
