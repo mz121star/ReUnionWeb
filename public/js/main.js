@@ -26,7 +26,8 @@ require.config({
         'angular-strap':'../lib/angular-strap/angular-strap',
         'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
         "async":'../lib/async',
-        "moment": "../lib/moment.min"
+        "moment": "../lib/moment.min",
+        "handlebars":"../lib/handlebars"
 
     },
     shim: {

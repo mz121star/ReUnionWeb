@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>111</title>
+    <style type="text/css">
+        .keywords_tab {width:737px;border-collapse:collapse;font:Arial, Helvetica, sans-serif;text-align:center;color:#000000;margin-top:10px;}
+        .keywords_tab td {border:1px solid #bbbbbb;padding-left:6px;text-align:left;font-size:12px; font-family:"宋体";}
+        .keywords_tab td a {color:#3367cc;}
+        .keywords_tab th {border:1px solid #bbbbbb;background:url(../images/thbg.png);font-weight:bold;text-align:center;padding-left:6px;}
+        .keywords_tab th.thwidth1{width:165px;}
+        .keywords_tab th.thwidth2{width:120px;}
+        .keywords_tab th.thwidth3{width:200px;}
+        .keywords_tab th.thwidth4{width:167px;}
+        .keywords_tab th.thwidth5{width:90px;}
+        .keywords_tab td.fc_red{color:#ff0000;}
+        .keywords_tab td.fc_green{color:#127e07;}
+        .keywords_tab td.trace{text-align:center;}
+        .keywords_tab td.talign{text-align:right;padding-right:6px;}
+        .cline{ background:#ffffe1;}
+        .keywords_tab td.padle{ padding-left:28px;}
+        .keywords_tab td.tdcen{ text-align:center;}
+    </style>
+</head>
+<body bgcolor="#ffffff">
+
+<script language="JavaScript">
+    function refold(self) {
+        var child = self.getAttribute('child');
+        var isfold = self.getAttribute('isfold');
+        var level = self.getAttribute('level');
+
+        if(isfold == 'off') {
+            self.setAttribute('isfold', 'on');
+            self.src = "static/images/off_icon.gif";
+            isfold = 'on';
+        }else if(isfold == 'on') {
+            self.setAttribute('isfold', 'off');
+            self.src = "static/images/on_icon.gif";
+            isfold = 'off';
+        }
+
+        fixRowspan();
+    }
+
+    function fixRowspan() {
+        var oTable = document.getElementById('reftable');
+        var ln = oTable.rows.length;
+        var cur_pid = '';
+        var row1 = {};
+
+        var camp_ln = oTable.getAttribute('child');
+        for(var i=1; i<=camp_ln; i++) {
+            var oCamp = document.getElementById('camp'+i);
+            row1['camp'+i] = {all:0, disp:0, lastchildrows:0};
+            var oCampImg = oCamp.getElementsByTagName('img');
+            var oCampDisp = oCampImg[0].getAttribute('isfold');
+
+            var auc_ln = oCamp.getAttribute('child');
+            for(var j=1; j<=auc_ln; j++) {
+                var oAuc = document.getElementById('camp'+i+'_'+j);
+                var keyword_ln = parseInt(oAuc.getAttribute('child'));
+                var oAucImg = oAuc.getElementsByTagName('img');
+                var oKeyDisp = '';
+
+                if(j==auc_ln)
+                    row1['camp'+i]['lastchildrows'] = (oAucImg[0].getAttribute('isfold')=='off') ? keyword_ln : 0;
+
+                row1['camp'+i]['all'] += keyword_ln+1;
+                if(oAucImg[0].getAttribute('isfold') == 'on') {
+                    row1['camp'+i]['disp'] += keyword_ln+1;
+                }else {
+                    row1['camp'+i]['disp'] += 1;
+                    oKeyDisp = 'none';
+                }
+
+                if(oCampDisp=='off')
+                    oAuc.style.display = 'none';
+                else if(oCampDisp=='on')
+                    oAuc.style.display = '';
+
+                for(var k=1; k<=keyword_ln; k++) {
+                    var okey = document.getElementById('camp'+i+'_'+j+'_'+k);
+                    okey.style.display = oKeyDisp;
+                    if(oCampDisp=='off')
+                        okey.style.display = 'none';
+                    //else if(oCampDisp=='on')
+                    //	okey.style.display = '';
+                }
+            }
+        }
+
+
+        var bt = getBrowserType();
+        for(var i in row1) {
+            var rowspanner = document.getElementById(i+'_1');
+            if(!rowspanner)
+                continue;
+
+            if(bt=='IE5' || bt=='IE6' || bt=='IE7') {
+                rowspanner.cells[0].rowSpan = row1[i]['all']-row1[i]['lastchildrows'];
+            }else {
+                rowspanner.cells[0].rowSpan = row1[i]['disp'];
+                //alert(i+' : ' + row1[i]['all'] + ' - ' + row1[i]['disp']);
+            }
+        }
+
+    }
+
+    function nextSib(node){
+        var tempLast = node.parentNode.lastChild;
+        if(node == tempLast)
+            return null;
+        var tempObj=node.nextSibling;
+        while(tempObj.nodeType != 1 && tempObj.nextSibling != null) {
+            tempObj = tempObj.nextSibling;
+        }
+        return (tempObj.nodeType == 1)? tempObj : null;
+    }
+
+    function getBrowserType() {
+        var ua = navigator.userAgent;
+        if(ua.indexOf("MSIE 8.0")!=-1) {
+            return 'IE8';
+        }else if(ua.indexOf("MSIE 7.0")!=-1) {
+            return 'IE7';
+        }else if(ua.indexOf("MSIE 6.0")!=-1) {
+            return 'IE6';
+        }else if(ua.indexOf("MSIE 5.0")!=-1) {
+            return 'IE5';
+        }else if(ua.indexOf("Firefox")!=-1) {
+            return 'FF';
+        }else if(ua.indexOf("Opera")!=-1) {
+            return 'Opera';
+        }else if(ua.indexOf("Chrome")!=-1) {
+            return 'Chrome';
+        }else if(ua.indexOf("Safari")!=-1) {
+            return 'Safari';
+        }
+    }
+
+</script>
+
+
+<div class="60minsv">
+    <!--点击文字和点击加号减号都可以实现列表的展开和收缩-->
+    <table id="reftable" child="1" class="keywords_tab">
+        <tbody>
+        <tr>
+            <th class="thwidth1" colspan="2" height="32">&nbsp;</th>
+            <th class="thwidth2" colspan="2">&nbsp;</th>
+            <th class="thwidth3" colspan="3">&nbsp;</th>
+            <th class="thwidth4" colspan="2">&nbsp;</th>
+            <th class="thwidth5">&nbsp;</th>
+        </tr>
+
+        <tr>
+            <td colspan="2" height="25">&nbsp;</td>
+            <td>111</td>
+            <td>222</td>
+            <td>333</td>
+            <td><span class="guke">4444</span></td>
+            <td><span class="guke">55555555555</span></td>
+            <td><span class="guke">6666666</span></td>
+            <td><span class="guke">77777</span></td>
+            <td class="trace">&nbsp;</td>
+        </tr>
+        <tr level="1" id="camp1" child="3">
+            <td class="p4ptablepad" colspan="2" height="25"><img level="1" child="3" isfold="on" style="cursor: pointer;" onclick="refold(this)" src="p4p_camp_files/off_icon.gif" align="absmiddle"> 1qqsasdassas </td>
+            <td>10</td>
+            <td>2</td>
+            <td>18.03</td>
+            <td>0.21</td>
+            <td>18.03</td>
+            <td>130.18</td>
+            <td>1.28</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr style="" pid="camp1" id="camp1_1" child="4">
+            <td rowspan="3" width="4%"></td>
+            <td class="p4ptablepad" height="25"><img level="2" child="7" isfold="off" style="cursor: pointer;" src="p4p_camp_files/on_icon.gif" onclick="refold(this)" align="absmiddle" height="15" width="15"> asdadad111111111111111111 </td>
+            <td class="fc_green">7</td>
+            <td>0</td>
+            <td>13.69</td>
+            <td>0</td>
+            <td>13.69</td>
+            <td>97.79</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr style="display: none;" pid="camp1" id="camp1_1_1" class="cline">
+            <td class="p4ptablepad" height="25"></td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr style="display: none;" pid="camp1" id="camp1_1_2" class="cline">
+            <td class="p4ptablepad" height="25">12121212122w</td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr style="display: none;" pid="camp1" id="camp1_1_3" class="cline">
+            <td class="p4ptablepad" height="25">121212</td>
+            <td class="fc_red">2</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>32.53</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr style="display: none;" pid="camp1" id="camp1_1_4" class="cline">
+            <td class="talign" colspan="9" height="25">wwwww</td>
+        </tr>
+        <tr style="" pid="camp1" id="camp1_2" child="4">
+            <td class="p4ptablepad" height="25"><img level="2" child="7" isfold="off" style="cursor: pointer;" src="p4p_camp_files/on_icon.gif" onclick="refold(this)" align="absmiddle" height="15" width="15"> 111111111111111111111 </td>
+            <td class="fc_green">1</td>
+            <td>0</td>
+            <td>4.57</td>
+            <td>0</td>
+            <td>4.57</td>
+            <td>32.21</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_2_1" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25"></td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_2_2" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25">111111111111111111</td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_2_3" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25">1</td>
+            <td class="fc_red">2</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>32.53</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" style="display: none;" id="camp1_2_4" class="cline">
+            <td class="talign" colspan="9" height="25">wwwqwqwq</td>
+        </tr>
+        <tr style="" pid="camp1" id="camp1_3" child="4">
+            <td class="p4ptablepad" height="25"><img level="2" child="7" isfold="off" style="cursor: pointer;" src="p4p_camp_files/on_icon.gif" onclick="refold(this)" align="absmiddle" height="15" width="15">1111111111111111111111111111111111</td>
+            <td class="fc_green">2</td>
+            <td>2</td>
+            <td>0.04</td>
+            <td>0.04</td>
+            <td>0.04</td>
+            <td>0.38</td>
+            <td>0.38</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_3_1" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25"></td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_3_2" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25">12121..</td>
+            <td class="fc_red">1</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0</td>
+            <td>0.04</td>
+            <td>0.32</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" id="camp1_3_3" style="display: none;" class="cline">
+            <td class="p4ptablepad" height="25">1212121</td>
+            <td class="fc_red">2</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>0</td>
+            <td>4.61</td>
+            <td>32.53</td>
+            <td>0</td>
+            <td class="trace">www</td>
+        </tr>
+        <tr pid="camp1" style="display: none;" id="camp1_3_4" class="cline">
+            <td class="talign" colspan="9" height="25">wqwqwq</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body></html>

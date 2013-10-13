@@ -111,7 +111,7 @@ caption {background:#eee;}
 #leftbar .search .button:hover {cursor:pointer;background:#003d78;border:1px solid #0062B8;border-bottom:1px solid #005199;}
 
 
-#maincontent {position:absolute;top:58px;left:220px;right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
+#maincontent {position:absolute;top:58px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
 
 
 #maincontent .containercontent {float:left;width:95%;margin:20px 0 0 20px;padding: 0;}
@@ -210,4 +210,64 @@ caption {background:#eee;}
 
 }
 
+ .text-icon{
+     font-size: 22px;
+     font-weight: bold;
+ }
+#showMenu{
+    width: 1px;
+    background-color: silver;
+    height: 100%;
+    position: absolute;
+    float: left;
+    cursor: pointer;
+}
+.resizable-icon{
+height: 38px;
+width: 9px;
+background: url("../images/icon/toggle.png")   no-repeat;
+top: 50%;
+margin-top: -19px;
+left: -1px;
+position: absolute;
+z-index: 10;
+}
 
+  .mainshow{left: 220px;}
+  .mainhidden{left: 0px;}
+
+#css_table {
+    display:table;
+}
+.css_tr,.css_thead {
+    display: table-row;
+    float: left;
+    clear: both;
+}
+
+.css_td {
+    display: table-cell;
+    border-right: 1px solid #DDD;
+    border-bottom: 1px dashed #DDD;
+    padding: 4px 10px 4px 5px;
+
+}
+
+.css_th{
+    border-bottom: 1px solid #003d78;
+    border-right: 0px;
+    font-weight: bold;
+
+}
+.css_tr:hover {background:#A6CFE4;}
+
+.css_inline_table   {position: relative;
+    float: left;
+    clear: both;
+    margin-left: 3px;
+    left: 38px;
+   display: none;
+    background: silver;
+    zoom: 1;
+}
+#maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #c0c0c0}
