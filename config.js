@@ -7,7 +7,7 @@
  */
 module.exports={
     cookieSecret:'reunion',
-      connectionstring:'mongodb://reunion:reunion@192.168.122.87:27017/local',
+      connectionstring:'mongodb://192.168.122.87:27017/resultdata_db',
     // connectionstring:'mongodb://localhost/njblog'
    // connectionstring:'mongodb://njblog:njblog@linus.mongohq.com:10062/NJBlog' ,
     emailSection:{
