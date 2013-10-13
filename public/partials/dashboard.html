@@ -1,15 +1,18 @@
 
 <div class="panel">
-    <div class="feeds-search-tools">
+        <span class="item">
+            <select class="inputdate"  ng-model="dataRange" >
+                <option value="7" selected="selected" >Last 7 Days</option>
+                <option value="30">Last month</option>
+            </select>
+            {{searchDate.starttime}}
+        </span>
+        <span class="item">Or from </span>
+        <span class="item"><input  bs-datepicker ng-model="dashboard.startDate" class="inputdate" type="text"></span>
+        <span class="item">to</span>
+        <span class="item"><input bs-datepicker ng-model="dashboard.endDate" class="inputdate" type="text"></span>
+        <span class="item"><button class="btn btn-primary" ng-click="search()">Search</button></span>
 
-        <select class="inputdate"  ng-model="dataRange" >
-            <option value="7" selected="selected" >Last 7 Days</option>
-            <option value="30">Last month</option>
-        </select>
-        {{searchDate.starttime}}
-        <span>Or from <input  bs-datepicker ng-model="dashboard.startDate" class="inputdate" type="text"> to <input bs-datepicker ng-model="dashboard.endDate" class="inputdate" type="text"> </span>
-        <button class="btn btn-primary" ng-click="search()">Search</button>
-    </div>
 </div>
 
         <div class="chartpanel">
