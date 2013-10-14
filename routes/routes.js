@@ -85,6 +85,6 @@ module.exports = function (app) {
 
 
     /**********************************************************API*************************************************************************/
-
+     app.get('/test',reports.test);
     app.post('/admintool',admintool.admintool);
 };

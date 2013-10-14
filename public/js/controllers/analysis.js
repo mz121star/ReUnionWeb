@@ -51,47 +51,31 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                         }
                     }
                 }).draw();
-                $http.post('/api/SentimentAnalysisColumnPost',searchData).success(function (d) {
-                    new iChart.ColumnStacked2D({
+                $http.post('/api/SentimentAnalysisPost',searchData).success(function (d) {
+                    new iChart.LineBasic2D({
                         render: 'canvasDiv8',
                         data: d.data,
                         labels: d.labels,
-                        sub_option:{
-                            label:false
-                        },
-                        showpercent: true,
-                        percent: true,//标志为百分比堆积图
-                        width: 900,
+                        label : {fontsize:8},
+//                    title: '情感分析时间轴曲线图  ',
+                        width: 500,
                         height: 315,
                         border: 'none',
-                        decimalsnum: 1,
                         tip: {
                             enable: true,
                             shadow: true
                         },
                         legend: {
                             enable: true,
-                            background_color: null,
-                            border: {
-                                enable: false
-                            },
+                            sign: 'bar',
+                            background_color: null,//设置透明背景
                             offsetx: 19,//设置x轴偏移，满足位置需要
-                            offsety: -20//设置y轴偏移，满足位置需要
+                            offsety: -20,//设置y轴偏移，满足位置需要
+                            border: true
                         },
-                        coordinate: {
-                            axis: {
-                                color: '#c0d0e0',
-                                width: 0
-                            },
-                            scale: [
-                                {
-                                    position: 'left',
-                                    scale_enable: false,
-                                    start_scale: 0,
-                                    scale_space: 50,
-                                    label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                                }
-                            ]
+                        sub_option: {
+                            hollow_inside: false,//设置一个点的亮色在外环的效果
+                            point_size: 10
                         }
                     }).draw();
                 });

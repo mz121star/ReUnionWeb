@@ -14,6 +14,6 @@ var schema = new Schema({
     Semantic:String,
     Cleanout:Number
 
-}, {collection: 'ResultData_Max'});
+}, {collection: 'ResultData_Max_new'});
 
 mongoose.model('Feeds', schema);

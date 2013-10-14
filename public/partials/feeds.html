@@ -2,7 +2,7 @@
 <div class="panel">
     <form novalidate  name="searchFeedForm" >
     <div class="conditionspanel">
-        <div class="title"><span class="titlelabel">Feeds List:{{source.brand}}（关键词表达式）</span></div>
+        <div class="title"><span class="titlelabel">Feeds List:{{source.keywordExpression}}（关键词表达式）</span></div>
         <div class="content">
             <div class="cell size1">Keyword:</div>
             <div class="cell size5">
@@ -15,7 +15,7 @@
              <div class="cell size5">
 
                 <span class="item" ng-repeat="st in sourcetype">
-                    <input  class="checkbox" uniform  type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
+                   <label><input  class="checkbox" uniform  type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}  </label>
                 </span>
 
              </div>
