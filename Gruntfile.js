@@ -8,30 +8,33 @@ module.exports = function(grunt) {
                     baseUrl: "public/js",
                     paths: {
                         jquery: '../lib/jquery/jquery-1.8.2.min',
-                        bootstrap: '../lib/bootstrap/js/bootstrap',
                         underscore: '../lib/underscore/underscore',
                         angular: '../lib/angular/angular',
                         angularResource: '../lib/angular/angular-resource',
                         text: '../lib/require/text',
                         i18n: '../lib/require/i18n',
-                        modernizr: '../lib/modernizr',
-                        html5shiv: '../lib/html5shiv',
-                        mcore: '../lib/mcore.min',
-                        fullscreen: '../lib/fullscreen',
-                        mcustomscrollbar: '../lib/jquery.mCustomScrollbar.concat.min',
-                        detectbrowser: '../lib/detectbrowser',
-                        //res:'../resources/nls/res'
-                        ichart: '../lib/ichart.1.2.src'
+                        ichart: '../lib/ichart.1.2.src'  ,
+                        bootstrapModal:'../lib/bootstrap/js/modal',
+                        bootstrapAlert:'../lib/bootstrap/js/alert',
+                        bootstrapButton:'../lib/bootstrap/js/button',
+                        bootstrapTab:'../lib/bootstrap/js/tab',
+                        linqjs:'../lib/linq',
+                        'angular-strap':'../lib/angular-strap/angular-strap',
+                        'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
+                        "async":'../lib/async',
+                        "moment": "../lib/moment.min"
+
                     },
                     shim: {
-                        'angular': {'exports': 'angular'},
+                        'angular': {deps: ['jquery'],'exports': 'angular'},
                         'angular-resource': {deps: ['angular']},
-                        'bootstrap': {deps: ['jquery']},
-                        'mcustomscrollbar': {deps: ['jquery']},
+                        'bootstrap-datepicker':  {deps: ['jquery']},
+                        'angular-strap':   {deps: ['angular','bootstrap-datepicker']},
                         'underscore': {exports: '_'},
-                        'detectbrowser': {deps: ['modernizr']}
-                        /*,
-                         'res':{exports:'res'}*/
+                        'bootstrapModal': {deps: ['jquery']},
+                        'bootstrapAlert': {deps: ['jquery']},
+                        'bootstrapButton': {deps: ['jquery']},
+                        'bootstrapTab': {deps: ['jquery']}
 
                     },
 
@@ -44,12 +47,11 @@ module.exports = function(grunt) {
             }
         },
         cssmin: {
-            compress: {
-                options: {
-                    banner: '/* NJBLog minified css file */'
-                },
+
+            combine: {
+
                 files: {
-                    'dest/reunion.css': ['public/css/base', 'public/themes/glowsimple/default.css']
+                    'public/css/reunion.css': ['public/lib/bootstrap/css/bootstrap.css','public/lib/bootstrap/css/bootstrap-responsive.css','public/lib/angular-strap/bootstrap-datepicker.css','public/css/default.css']
                 }
             }
         },

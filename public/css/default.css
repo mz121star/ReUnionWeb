@@ -1,4 +1,4 @@
-body {margin:0;padding:0;color:##001931;font-size:12px;background:#FFF;font-family:arial;}
+
 a {color:#333;text-decoration:none;margin:0;padding:0;}
 a:link {color:#333;}
 a:hover {color:#333;}
@@ -19,7 +19,7 @@ a img {border:none;}
 
 /* typography.css */
 html {font-size:100.01%;}
-body {font-size:75%;color:#222;background:#E5E5E5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
+body {margin:0;padding:0;font-size:12px;color:#001931;background:#D0D4D5 url('../images/bg/left-bg.png');font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;}
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
 h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:2em;margin-bottom:0.75em;}
@@ -51,42 +51,42 @@ ol {list-style-type:decimal;}
 dl {margin:0 0 1.5em 0;}
 dl dt {font-weight:bold;}
 dd {margin-left:1.5em;}
-table {margin-bottom:1.4em;width:100%;}
+
 th {font-weight:bold;}
-thead th {background:#c3d9ff;}
+
 th, td, caption {padding:4px 10px 4px 5px;}
 
 tfoot {font-style:italic;}
 caption {background:#eee;}
 .clear{ clear:both}
 
-#header {position:relative;top:0;background:#003A83;width:100%;height:38px;border-bottom:3px solid #B90400;color:#FFFFFF;
-    background:#004281 url("../images/bg/top-bg.png") right;
+#header {position:relative;top:0;background:#003A83;width:100%;height:55px;border-bottom:3px solid #B90400;color:#FFFFFF;
+    background:#004281 url("../images/bg/top-bg.png") right repeat-y;
 }
 #header .logo {float:left;width:217px;}
-#header .logo a {float:left;display:block;width:90px;height:33px;margin:3px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
+#header .logo a {float:left;display:block;width:90px;height:33px;margin:8px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
 
 #header .leftbarbtn {float:left;width:20px;display:none;}
 #header .leftbarbtn a {float:left;display:block;width:13px;height:10px;margin-top:13px;background:url('../images/icon/tanc.png') no-repeat;}
 
-#header .nav {float:left;}
+#header .nav {float:left;height:40px;margin-top:17px;}
 #header .nav a {text-decoration: none;}
-#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:15px;padding-right:15px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
+#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:10px;padding-right:10px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
 #header .nav .button:hover {color:#333333;background:#FFF;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
-#header .userinfo {float:right;line-height:38px;padding:0 15px;}
+#header .userinfo {float:right;line-height:38px;padding:18px 15px;}
 #header .userinfo a {color:#FFFFFF;margin:0 3px;}
 #header .userinfo .user {float:left;}
 #header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:8px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
 #header .userinfo .setting {float:left;display:block;margin-top:7px;width:24px;height: 24px;background: url('../images/icon/setting.png') no-repeat;}
 #header .userinfo .logout {float:left;display:block;margin-top:7px;width:24px;height: 24px;background: url('../images/icon/power.png') no-repeat;}
 
-#container {float:left;width:100%;background:#E5E5E5;}
+#container {float:left;width:100%;background:#D0D4D5;}
 
-#leftbar {position:absolute;top:41px;left:0;background:#E5E5E5;width:220px;height:auto;margin:0;}
+#leftbar {position:absolute;top:58px;left:0;width:220px;height:auto;margin:0;}
 #leftbar .searchbar {float:left;margin:15px;}
-#leftbar .searchbar .input {float:left;width:158px;height:28px;padding:0;border:1px solid #CCC;border-right:none;background: #FFF;}
+#leftbar .searchbar .input {float:left;width:155px;height:26px;pading:0;padding-left:3px;border:1px solid #CCC;border-right:none;background: #FFF;}
 #leftbar .searchbar .button {float:left;width:28px;height:28px;margin:0;display:block;border:1px solid #CCC;border-left:none;background: #FFF url('../images/icon/search.png') no-repeat center;}
 #leftbar .navlist {float:left;width:100%;}
 #leftbar .navlist .button {float:left;display:block;width:100%;height:36px;line-height:36px;}
@@ -96,7 +96,7 @@ caption {background:#eee;}
 #leftbar .navlist .button:hover {background:#CCC;}
 #leftbar .navlist .button .close {float:right;display:block;width:10px;height:10px;margin:15px;background:url("../images/icon/arrow.png") 0 0;}
 #leftbar .navlist .button .open {float:right;display:block;width:10px;height:10px;margin:15px;background:url("../images/icon/arrow.png") 0 -10px;}
-#leftbar .search {float:left;width:100%;background:#dadfe3;padding-bottom:10px;}
+#leftbar .search {float:left;width:100%;padding-bottom:10px;}
 #leftbar .search .group {float:left;width:200px;margin-left:10px;margin-top:10px;padding-bottom:10px;border-bottom:1px dashed #b8c0c7;}
 #leftbar .search .last {border-bottom:none;}
 #leftbar .search .group input.textbox {width:160px;height:20px;line-height:20px;padding-left:5px;}
@@ -111,7 +111,7 @@ caption {background:#eee;}
 #leftbar .search .button:hover {cursor:pointer;background:#003d78;border:1px solid #0062B8;border-bottom:1px solid #005199;}
 
 
-#maincontent {position:absolute;top:41px;left:220px;right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
+#maincontent {position:absolute;top:58px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
 
 
 #maincontent .containercontent {float:left;width:95%;margin:20px 0 0 20px;padding: 0;}
@@ -119,12 +119,15 @@ caption {background:#eee;}
 #maincontent .containercontent .containercrumbs {float:left;width:100%;padding: 0;}
 #maincontent .containercontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
 
-#maincontent .containercontent .inputdate {float:left;width:158px;height:28px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
+#maincontent .containercontent .inputdate {float:left;width:158px;height:24px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
 #maincontent .containercontent .panel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
-#maincontent .containercontent .chartpanel {float:left;margin:20px 20px 0 0;width:550px;height:350px;}
-#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;border-bottom: 1px solid #003d78;}
-#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#001931;}
-#maincontent .containercontent .chartpanel .content {float:left;width:100%;border-bottom: 1px solid #b8c0c7;}
+#maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
+
+#maincontent .containercontent .chartpanel {float:left;margin:20px 20px 0 0;width:350px;height:200px;}
+#maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
+#maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
+#maincontent .containercontent .chartpanel .content {float:left;width:100%;border-bottom: 0px solid #b8c0c7;}
+#maincontent .containercontent .chartpanel .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
 
 #maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
 #maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;vertical-align:middle;}
@@ -136,10 +139,11 @@ caption {background:#eee;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
 #maincontent .containercontent .conditionspanel .content .size5 {}
 
-#maincontent .containercontent .editpanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;border:2px solid #CCC;border-bottom: 1px solid #CCC;}
+#maincontent .containercontent .editpanel {float:left;margin:0;padding: 0;width:100%;border:1px solid #CCC;border-bottom: none;}
 #maincontent .containercontent .editpanel .content {float:left;width:100%;border-bottom:1px solid #CCC;}
-#maincontent .containercontent .editpanel .content .left {float:left;width:100px;padding:10px;font-size:20px;font-weight:bold;color:#444444;}
-#maincontent .containercontent .editpanel .content .center {float:left;padding:10px;border-left:1px solid #CCC;min-height:50px;}
+#maincontent .containercontent .editpanel .content .left {float:left;width:100px;padding:10px;font-size:14px;font-weight:bold;color:#444444;}
+
+#maincontent .containercontent .editpanel .content .center {float:left;padding:10px;border-left:1px solid #CCC;min-height:30px;}
 #maincontent .containercontent .editpanel .content .center .input {float:left;}
 #maincontent .containercontent .editpanel .content .center .input .title {float:left;margin-right:10px;font-size:16px;height:28px;line-height:28px;}
 #maincontent .containercontent .editpanel .content .center .input .text {float:left;height:22px;line-height:22px;background:#FFF;border:1px solid #CCC;}
@@ -160,6 +164,8 @@ caption {background:#eee;}
 #maincontent .containercontent .table .w500 {width:500px;}
 #maincontent .containercontent .table thead {}
 #maincontent .containercontent .table thead tr {background:#FFF;}
+#maincontent .containercontent .table thead th {border-bottom:1px solid #003d78;color:#001931;text-align:left;font-weight:bold;vertical-align:bottom;}
+#maincontent .containercontent .table thead th.last {border-right:none;}
 #maincontent .containercontent .table thead td {border-bottom:1px solid #003d78;color:#001931;text-align:left;font-weight:bold;vertical-align:bottom;}
 #maincontent .containercontent .table thead td.last {border-right:none;}
 #maincontent .containercontent .table thead td .filterasc {float:left;display:block;width:8px;height:7px;margin:6px 3px;background:url(../images/button/tab_tit_topb.gif) no-repeat 0 0;}
@@ -187,6 +193,10 @@ caption {background:#eee;}
 #maincontent .containercontent .button {background:#016CCC;border:1px solid #0062B8;border-bottom:1px solid #005199;color:#FFF;padding:4px 8px;}
 #maincontent .containercontent .button:hover {}
 
+.btn {cursor:pointer;margin:0 5px;background:#016CCC;border:1px solid #0062B8;border-bottom:1px solid #005199;color:#FFF;padding:4px 8px;}
+.btn:hover {cursor:pointer;background:#003d78;border:1px solid #0062B8;border-bottom:1px solid #005199;}
+
+
 #maincontent .footer {position:absolute;left:-0;bottom:0;background:#005bb1;width:100%;height:30px;color:#FFFFFF;z-index:100;}
 #maincontent .footer .logo {float:right;}
 #maincontent .footer .logo a {float:right;display:block;width:67px;height:20px;margin:4px 12px;background:url('../images/bg/pactera.png') no-repeat;}
@@ -200,4 +210,64 @@ caption {background:#eee;}
 
 }
 
+ .text-icon{
+     font-size: 22px;
+     font-weight: bold;
+ }
+#showMenu{
+    width: 1px;
+    background-color: silver;
+    height: 100%;
+    position: absolute;
+    float: left;
+    cursor: pointer;
+}
+.resizable-icon{
+height: 38px;
+width: 9px;
+background: url("../images/icon/toggle.png")   no-repeat;
+top: 50%;
+margin-top: -19px;
+left: -1px;
+position: absolute;
+z-index: 10;
+}
 
+  .mainshow{left: 220px;}
+  .mainhidden{left: 0px;}
+
+#css_table {
+    display:table;
+}
+.css_tr,.css_thead {
+    display: table-row;
+    float: left;
+    clear: both;
+}
+
+.css_td {
+    display: table-cell;
+    border-right: 1px solid #DDD;
+    border-bottom: 1px dashed #DDD;
+    padding: 4px 10px 4px 5px;
+
+}
+
+.css_th{
+    border-bottom: 1px solid #003d78;
+    border-right: 0px;
+    font-weight: bold;
+
+}
+.css_tr:hover {background:#A6CFE4;}
+
+.css_inline_table   {position: relative;
+    float: left;
+    clear: both;
+    margin-left: 3px;
+    left: 38px;
+   display: none;
+    background: silver;
+    zoom: 1;
+}
+#maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #c0c0c0}

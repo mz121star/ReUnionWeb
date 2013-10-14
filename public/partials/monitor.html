@@ -1,0 +1,141 @@
+<ul class="nav nav-tabs">
+    <!--<li ng-repeat="st in sourcetype"><a href="#{{st.type}}" data-toggle="tab">{{st.type}}</a></li>-->
+    <li class="active"><a href="#weibo" data-toggle="tab">Micro Blog</a></li>
+   <li><a href="#shop" data-toggle="tab">Shop</a></li>
+    <li><a href="#forum" data-toggle="tab">Forums</a></li>
+    <li><a href="#se" data-toggle="tab">Search Engine</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+    <div  class="tab-pane fade active in" id="weibo">
+        <h3>Micro Blog</h3>
+        <table id="weiboTable" class="table">
+            <thead>
+            <tr>
+                <th>N0.</th>
+                <th sortable>Name</th>
+                <th>Url</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr  ng-repeat="m in monitorWeibo"  >
+                <td>{{ $index+1 }}</td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+    <div class="tab-pane fade" id="shop">
+        <h3>Shopping Mall</h3>
+        <table id="shopTable" class="table">
+            <thead>
+            <tr>
+                <th>N0.</th>
+                <th sortable>Name</th>
+                <th>Url</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr  ng-repeat="m in monitorShops"  >
+                <td>{{ $index+1 }}</td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="forum">
+        <h3>Forums</h3>
+        <table id="forumTable" class="table">
+            <thead>
+            <tr>
+                <th>N0.</th>
+                <th sortable>Name</th>
+                <th>Url</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr  ng-repeat="m in monitorForums"  >
+                <td>{{ $index+1 }}</td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
+
+            </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="tab-pane fade" id="se">
+        <h3>Search Engine</h3>
+        <table id="SETable" class="table">
+            <thead>
+            <tr>
+                <th>N0.</th>
+                <th sortable>Name</th>
+                <th>Url</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr  ng-repeat="m in monitorSearchs"  >
+                <td>{{ $index+1 }}</td>
+                <td>{{m.Name}} </td>
+                <td>{{m.Url }} </td>
+
+
+            </tr>
+
+            </tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Add New WebSite</h4>
+            </div>
+            <div class="modal-body">
+
+                <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
+ -->             Name: <input type="text" ng-model="website.name" >  <br>
+                 URL: <input type="text" ng-model="website.url" >
+                  <span class="item" ng-repeat="dt in SiteType.dataType">
+                               <label><input type="radio" name="dataType" ng-value="dt.value" ng-model="SiteType.type">{{dt.value}}</label>
+                         </span>
+                <div ng-show="!!saveWarning" class="alert alert-success"> {{ saveWarning }}</div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-disabled="!!!website.name||!!!website.url" class="btn btn-primary" ng-click="saveMonitor()">Save
+
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+
+</div>

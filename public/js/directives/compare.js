@@ -1,4 +1,4 @@
-define(['app' ], function (app) {
+define(['app', 'handlebars' ], function (app, handlebars) {
     app.directive('compare', function () {
         return {
             require: 'ngModel',
@@ -65,14 +65,82 @@ define(['app' ], function (app) {
         };
     });
 
-    app.directive('uniform', function () {
-        require('jqueryuniform');
+    app.directive('toggletable', ['$http', function ($http) {
+
         return {
 
             link: function (scope, elm, attrs, ctrl) {
-                 $("select, input").uniform();
+
+                var temp = "<table class='feedTable' class='table'>" +
+                    "<thead>  " +
+                    "<tr>    " +
+                    "<th>N0.</th>    " +
+                    "<th sortable>Title</th>         " +
+                    "<th>Description</th>       " +
+                    "<th>Source</th>            " +
+                    "<th>Url</th>                      " +
+
+                    " </tr>    " +
+                    "</thead>       " +
+                    "<tbody>                  " +
+                    "{{#each feeds}} " +
+                    " <tr  >" +
+                    "<td> </td>         " +
+                    "<td>{{Title  }} </td>    " +
+                    " <td  >{{ maxContent   }} </td>   " +
+                    "<td>{{ FromSite }}</td>                              " +
+                    "<td class='last'><a  >{{FromUrl}}</a></td>  " +
+
+                    "</tr>                    " +
+                    "{{/each}}" +
+                    " </tbody>        " +
+                    " </table>";
+
+                $(elm).toggle(
+                    function () {
+                        $(elm).html("<a class='text-icon'   href='javascript:;'>-</a>");
+                    },
+                    function () {
+                        $(elm).html("<a class='text-icon'   href='javascript:;'>+</a>");
+                    }
+
+                );
+                $(elm).on("click", function () {
+
+                    console.log(attrs)
+                    if (attrs.queryover === "0") {
+                        $http.get('/api/alert/' + attrs.id).success(function (d) {
+
+                            $http.post("/api/feeds", {keyword: d[0].Keyword}).success(function (data) {
+
+
+                                var template = Handlebars.compile(temp);
+                                Handlebars.registerHelper('maxContent', function() {
+
+                                    var len =this.Content.length>50?50: this.Content.length
+                                    return this.Content.substring(0,len-1)+"...";
+                                });
+                                attrs.queryover="1"
+                                $(elm).parent().next().html(template(data))
+
+                            })
+                        });
+                    }
+                    $(elm).parent().next().toggle();
+
+                })
             }
         };
-    });
+    }])
+
+    /*  app.directive('uniform', function () {
+     require('jqueryuniform');
+     return {
+
+     link: function (scope, elm, attrs, ctrl) {
+     $("select, input").uniform();
+     }
+     };
+     });*/
 
 });

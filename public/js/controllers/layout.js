@@ -1,6 +1,6 @@
 'use strict';
 
-define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryuniform'], function (app, res, images) {
+define(['../app', 'i18n!resources/nls/res'], function (app, res) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
     return app.controller('LayoutController', function ($scope, $http, $location, $window) {
@@ -11,6 +11,8 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
          };
 
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
+
+
         $scope.LoginInfo = function (user) {
             $scope.UserName=user["name"];
         };
@@ -31,7 +33,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             analysis: "Analysis",
             reports: "Reports",
             alerts: "Alerts",
-            admin: "Administration",
+            monitor: "Monitor",
             help: "Help"
         };
         $scope.navBars = [
@@ -40,7 +42,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             {name: $scope.txt.analysis, url: "#/analysis", index: 3},
             {name: $scope.txt.reports, url: "#/reports", index: 4},
             {name: $scope.txt.alerts, url: "#/alerts", index: 5},
-            {name: $scope.txt.admin, url: "#/admin", index: 6},
+            {name: $scope.txt.monitor, url: "#/monitor", index: 6},
             {name: $scope.txt.help, url: "#/help", index: 7}
         ];
         $scope.selectNav = function (row) {
@@ -89,7 +91,10 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
                     $scope.selectedRow = item.index - 1;
             }
         })
-
+        $scope.show=true;
+        $scope.hiddenMenu=function(){
+            $scope.show=!$scope.show;
+        }
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;
@@ -108,7 +113,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
         /*  $("body").attr("style","background:url('themes/glowsimple/img/dots.png') center center fixed, url('"+imgs[i--]+"') center center no-repeat fixed;");*/
         /*
          };*/
-        $scope.fullscreen = function () {
+    /*    $scope.fullscreen = function () {
             if (window.fullScreenApi.supportsFullScreen) {
                 setInterval(function () {
                     if (!document.webkitIsFullScreen) {
@@ -123,7 +128,7 @@ define(['../app', 'i18n!resources/nls/res', '../../background/images', 'jqueryun
             } else {
                 alert('就你这浏览器，基本就告别全屏功能了,赶紧卸载了吧！！！');
             }
-        };
+        };*/
     });
 });
 /*

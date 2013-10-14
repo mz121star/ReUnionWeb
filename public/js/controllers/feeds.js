@@ -1,10 +1,10 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs', 'jqueryuniform' ], function (res, excel) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs'], function (res, excel) {
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
 
-
+        $rootScope.menuUrl="partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
         $scope.source = {
             brand: "兰蔻品牌"

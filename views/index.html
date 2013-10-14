@@ -9,7 +9,7 @@
     </style>
 
     <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
-    <!--<script data-main="js/main-built" src="lib/require/require.min.js"></script>-->
+<!-- <script data-main="js/main-built" src="lib/require/require.min.js"></script>-->
     <title ng-bind="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reunion">
@@ -20,16 +20,15 @@
     <script type="text/javascript" charset="UTF-8" src="lib/html5shiv.js"></script>
     <![endif]-->
 
-    <!--    <script type="text/javascript" charset="UTF-8" src="lib/angular/angular.js"></script>-->
 
+     <!-- development -->
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css"/>
     <link rel='stylesheet' href='lib/bootstrap/css/bootstrap-responsive.css'/>
-
-
     <link rel='stylesheet' href='lib/angular-strap/bootstrap-datepicker.css'/>
-
     <link href='css/default.css' rel='stylesheet' type='text/css'>
 
+    <!--production-->
+  <!--  <link rel="stylesheet" href="css/reunion.css"/>-->
 </head>
 <body class="ng-cloak" ng-cloak>
 
@@ -51,16 +50,13 @@
 
 
 <div id="leftbar">
-    <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="javascript:;"></a></div>
-    <div class="navlist">
-        <a class="button" href="javascript:;"><span>Overview</span><span class="close"></span></a>
-        <a class="button" href="javascript:;"><span>Feeds</span><span class="open"></span></a>
-        <a ng-click="topicSelected(topic)" class="button sub" href="javascript:;" ng-repeat="topic in Topics"><span >{{topic.Name}}</span></a>
-
-    </div>
+    <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button"
+                                                                                      href="javascript:;"></a></div>
 
 
-    <div class="search">
+
+    <div ng-include="menuUrl"  ></div>
+  <!--  <div class="search">
         <div class="group">
             <span class="title">Keyword:</span>
             <span class="line"><input type="text" class="textbox"></span>
@@ -100,35 +96,37 @@
 
         <div class="group">
             <span class="title">Data Source:</span>
-            <span class="line"><input id="a1" name="a" type="checkbox" class="checkbox">Micro Blog</span>
-            <span class="line"><input id="a2" name="a" type="checkbox" class="checkbox">eShop</span>
-            <span class="line"><input id="a3" name="a" type="checkbox" class="checkbox">Forum</span>
-            <span class="line"><input id="a3" name="a" type="checkbox" class="checkbox">Web Media</span>
+            <span class="line"><input name="a" type="checkbox" class="checkbox">Micro Blog</span>
+            <span class="line"><input name="a" type="checkbox" class="checkbox">eShop</span>
+            <span class="line"><input name="a" type="checkbox" class="checkbox">Forum</span>
+            <span class="line"><input name="a" type="checkbox" class="checkbox">Web Media</span>
         </div>
 
         <div class="group">
             <span class="title">Setting Cycle:</span>
-            <span class="line"><input id="a3" name="a" type="radio" class="radio" checked>Sunday</span>
-            <span class="line"><input id="a1" name="a" type="radio" class="radio">Monday</span>
-            <span class="line"><input id="a2" name="a" type="radio" class="radio">Tuesday</span>
-            <span class="line"><input id="a3" name="a" type="radio" class="radio">Wednesday</span>
-            <span class="line"><input id="a3" name="a" type="radio" class="radio">Thursday</span>
-            <span class="line"><input id="a3" name="a" type="radio" class="radio">Friday</span>
-            <span class="line"><input id="a3" name="a" type="radio" class="radio">Saturday</span>
+            <span class="line"><input name="a" type="radio" class="radio" checked>Sunday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Monday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Tuesday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Wednesday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Thursday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Friday</span>
+            <span class="line"><input name="a" type="radio" class="radio">Saturday</span>
         </div>
 
-        <div class="group last" style="text-align:right;"><input type="button" value="Save" class="button"><input type="button" value="Search" class="button"></div>
+        <div class="group last" style="text-align:right;"><input type="button" value="Save" class="button"><input
+                type="button" value="Search" class="button"></div>
 
+    </div>-->
 
-    </div>
 
 </div>
 
 
-<div id="maincontent">
+<div id="maincontent" ng-class="{mainshow:show,mainhidden:!show }">
+    <div id="showMenu" ng-click="hiddenMenu()" ><div class="resizable-icon" id="widResize"></div></div>
     <div class="containercrumbs">
-      <!--  <span class="text">Dashboard Summary For Lancome</span>-->
-         <!--<a ng-show="!!global.error" class="close" data-dismiss="alert" href="javascript:;" aria-hidden="true"> {{ global.error }}</a>-->
+        <!--  <span class="text">Dashboard Summary For Lancome</span>-->
+        <!--<a ng-show="!!global.error" class="close" data-dismiss="alert" href="javascript:;" aria-hidden="true"> {{ global.error }}</a>-->
         <div ng-show="!!global.error" class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <strong>Error!</strong> {{ global.error }}

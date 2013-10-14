@@ -10,7 +10,7 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
         };
 
 
-        $http.get('/topic').success(function (d) {
+        $http.get('api/topic').success(function (d) {
 
             $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
         });
