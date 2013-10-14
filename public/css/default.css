@@ -129,7 +129,7 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;}
 #maincontent .containercontent .chartpanel .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
 
-#maincontent .containercontent .chartpanel .content .row {float:left;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
+#maincontent .containercontent .chartpanel .content .row {float:right;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
 #maincontent .containercontent .chartpanel .content .row .from {float:left;width:100%;color:#333;font-size:14px;font-weight:bold;}
 #maincontent .containercontent .chartpanel .content .row .from .logo {float:left;display:block;width:24px;height:24px;margin:0 3px;}
 #maincontent .containercontent .chartpanel .content .row .from .sina {background:url('../images/icon/sina.png') no-repeat;}
