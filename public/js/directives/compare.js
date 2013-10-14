@@ -109,18 +109,19 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                     console.log(attrs)
                     if (attrs.queryover === "0") {
+                        $(elm).parent().next().html("<img src='images/icon/waiting.gif' />Loading...");
                         $http.get('/api/alert/' + attrs.id).success(function (d) {
 
                             $http.post("/api/feeds", {keyword: d[0].Keyword}).success(function (data) {
 
 
                                 var template = Handlebars.compile(temp);
-                                Handlebars.registerHelper('maxContent', function() {
+                                Handlebars.registerHelper('maxContent', function () {
 
-                                    var len =this.Content.length>50?50: this.Content.length
-                                    return this.Content.substring(0,len-1)+"...";
+                                    var len = this.Content.length > 50 ? 50 : this.Content.length
+                                    return this.Content.substring(0, len - 1) + "...";
                                 });
-                                attrs.queryover="1"
+                                attrs.queryover = "1"
                                 $(elm).parent().next().html(template(data))
 
                             })
