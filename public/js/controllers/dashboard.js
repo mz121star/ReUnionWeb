@@ -12,7 +12,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
 
 
         var loadReport = function () {
-        $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
+        $http.post('/api/2DBarReprotPost', $scope.searchDate).success(function (d) {
             new iChart.Bar2D({
                 render: 'canvasDiv1',
                 data: d,
@@ -35,7 +35,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
             }).draw();
 
         });
-        $http.post('api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
+        $http.post('/api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
             new iChart.Bar2D({
                 render: 'canvasDiv2',
                 data: d2,
@@ -102,7 +102,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                 }, 3000)
 
             });
-        $http.get('api/KeyWordCloud').success(function (d2) {
+        $http.get('/api/KeyWordCloud').success(function (d2) {
             var canvas = document.getElementById('canvasDiv6');
             var context = canvas.getContext('2d');
             context.fillStyle = "#ff0000";
@@ -175,7 +175,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async', 'bootstrapAlert'], functi
                 });
             },
             function (callback) {
-                $http.post('api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
+                $http.post('/api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
                     //搜索来源饼图
                     new iChart.LineBasic2D({
                         render: 'canvasDiv4',
