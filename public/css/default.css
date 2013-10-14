@@ -64,18 +64,18 @@ caption {background:#eee;}
     background:#004281 url("../images/bg/top-bg.png") right repeat-y;
 }
 #header .logo {float:left;width:217px;}
-#header .logo a {float:left;display:block;width:90px;height:33px;margin:8px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
+#header .logo a {float:left;display:block;width:90px;height:33px;margin:12px 12px;background:url('../images/bg/reunion-logo-top.png') no-repeat;}
 
 #header .leftbarbtn {float:left;width:20px;display:none;}
 #header .leftbarbtn a {float:left;display:block;width:13px;height:10px;margin-top:13px;background:url('../images/icon/tanc.png') no-repeat;}
 
 #header .nav {float:left;height:40px;margin-top:17px;}
 #header .nav a {text-decoration: none;}
-#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:10px;padding-right:10px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
+#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:13px;padding-right:13px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
 #header .nav .button:hover {color:#333333;background:#FFF;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
-#header .userinfo {float:right;line-height:38px;padding:18px 15px;}
+#header .userinfo {float:right;line-height:38px;padding:10px 15px;}
 #header .userinfo a {color:#FFFFFF;margin:0 3px;}
 #header .userinfo .user {float:left;}
 #header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:8px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
@@ -203,38 +203,27 @@ caption {background:#eee;}
 #maincontent .footer .copyright {float:right;height:30px;line-height:30px;margin-right:20px;}
 #maincontent .footer2 {position:absolute;left:-220px;bottom:0;margin-top:20px;background:#005bb1;width:220px;height:30px;color:#FFFFFF;z-index:100;}
 
-/*added by miaozhuang*/
+/*added by miaozhuang
 @media screen and (max-width:1024px) {
     #header .userinfo {float: left;  position: fixed;bottom: 0px; background-color:#003A83;width:220px;height:30px;margin:0;padding:0;z-index: 999;
     }
 
 }
+*/
 
- .text-icon{
-     font-size: 22px;
-     font-weight: bold;
- }
-#showMenu{
-    width: 1px;
-    background-color: silver;
-    height: 100%;
-    position: absolute;
-    float: left;
-    cursor: pointer;
-}
-.resizable-icon{
-height: 38px;
-width: 9px;
-background: url("../images/icon/toggle.png")   no-repeat;
-top: 50%;
-margin-top: -19px;
-left: -1px;
-position: absolute;
+.text-icon {font-size: 22px;font-weight: bold;}
+#showMenu {width: 0;background-color: silver;height: 100%;position: absolute;cursor: pointer;}
+.mainshow {left: 220px;}
+.mainhidden {left: 0px;}
+.resizable-icon {
+position: absolute;left: 0;top: 50%;
+width: 9px;height: 33px;
+border-top:1px solid #CCC;
+border-bottom:1px solid #CCC;
+background: url("../images/icon/toggle.png") no-repeat;
 z-index: 10;
 }
 
-  .mainshow{left: 220px;}
-  .mainhidden{left: 0px;}
 
 #css_table {
     display:table;
@@ -270,4 +259,5 @@ z-index: 10;
     background: silver;
     zoom: 1;
 }
-#maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #c0c0c0}
+#maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #FFF}
+
