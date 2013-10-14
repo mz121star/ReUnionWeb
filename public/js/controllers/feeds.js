@@ -6,7 +6,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
 
         $rootScope.menuUrl="partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
-        $scope.show=true;
+
         $scope.source = {
             keywordExpression: "兰蔻品牌"
         };
