@@ -12,11 +12,13 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         }
 
 
-      /*  $scope.$watch("dataRange", function (v1, v2) {
-            $scope.searchDate.endtime = new Date();
-            $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
-            loadReport();
-        })*/
+        $scope.$watch("dataRange", function (v1, v2) {
+            if (v1 ) {
+                $scope.searchDate.endtime = new Date();
+                $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
+                loadReport();
+            }
+        })
         var loadReport = function () {
 
 
