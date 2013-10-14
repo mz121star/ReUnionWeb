@@ -180,6 +180,18 @@ caption {background:#eee;}
 #maincontent .containercontent .table tbody td.last {border-right:none;}
 #maincontent .containercontent .table tbody tr:hover {background:#A6CFE4;}
 #maincontent .containercontent .table tbody tr.comments {width:200px;}
+
+
+#maincontent .containercontent .table tbody tr.subrow {padding:0;display: none;}
+#maincontent .containercontent .table tbody tr.subrow .subrowtd {padding:0;padding-left:20px;border-right:none;}
+
+#maincontent .containercontent .table .subtable {width:100%;margin:0;padding:0;background:#EEE;border-left:1px solid #DDD;}
+#maincontent .containercontent .table .subtable .thead {margin:0;padding:0;}
+#maincontent .containercontent .table .subtable .thead td {border-bottom:1px solid #b8c0c7;font-weight:bold;color:#001931;}
+#maincontent .containercontent .table .subtable .tbody {margin:0;padding:0;}
+#maincontent .containercontent .table .subtable .tbody td {border-right:1px solid #DDD;border-bottom:1px dashed  #DDD;}
+
+
 #maincontent .containercontent .table .split_line {border-top:1px solid #CCC;margin-bottom:5px;margin-left:-5px;margin-right:-10px;padding:0;}
 
 #maincontent .containercontent .table tbody tr.bg1 {background:#EDF7E9;}
@@ -213,7 +225,7 @@ caption {background:#eee;}
 
 .text-icon {font-size: 22px;font-weight: bold;}
 #showMenu {width: 0;background-color: silver;height: 100%;position: absolute;cursor: pointer;}
-.mainshow {left: 220px;}
+.mainshow {left: 220px; }
 .mainhidden {left: 0px;}
 .resizable-icon {
 position: absolute;left: 0;top: 50%;
