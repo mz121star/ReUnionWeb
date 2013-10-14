@@ -71,9 +71,11 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
             link: function (scope, elm, attrs, ctrl) {
 
-                var temp = "<table class='feedTable table'  >" +
-                    "<thead>  " +
-                    "<tr>    " +
+                var temp =
+                    "  <td colspan='8' class='subrowtd'>" +
+                    "<table class='subtable'>" +
+
+                    "<tr class='thead'>    " +
                     "<th>N0.</th>    " +
                     "<th sortable>Title</th>         " +
                     "<th>Description</th>       " +
@@ -81,27 +83,27 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                     "<th>Url</th>                      " +
 
                     " </tr>    " +
-                    "</thead>       " +
-                    "<tbody>                  " +
+
+
                     "{{#each feeds}} " +
-                    " <tr  >" +
+                    " <tr class='tbody'>" +
                     "<td> </td>         " +
                     "<td>{{Title  }} </td>    " +
-                    " <td  >{{ maxContent   }} </td>   " +
+                    " <td class='w200' >{{ maxContent   }} </td>   " +
                     "<td>{{ FromSite }}</td>                              " +
                     "<td class='last'><a  >{{FromUrl}}</a></td>  " +
 
                     "</tr>                    " +
                     "{{/each}}" +
-                    " </tbody>        " +
-                    " </table>";
+
+                    " </table></td>";
 
                 $(elm).toggle(
                     function () {
-                        $(elm).html("<a class='text-icon'   href='javascript:;'>-</a>");
+                        $(elm).attr("class","closelist");
                     },
                     function () {
-                        $(elm).html("<a class='text-icon'   href='javascript:;'>+</a>");
+                        $(elm).attr("class","openlist");
                     }
 
                 );
@@ -113,20 +115,18 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                         $http.get('/api/alert/' + attrs.id).success(function (d) {
 
                             $http.post("/api/feeds", {keyword: d[0].Keyword}).success(function (data) {
-                                  console.log(data)
-                                if (data.count>0) {
-                                    var template = Handlebars.compile(temp);
-                                    Handlebars.registerHelper('maxContent', function () {
 
-                                        var len = this.Content.length > 50 ? 50 : this.Content.length;
-                                        return this.Content.substring(0, len - 1) + "...";
-                                    });
-                                    attrs.queryover = "1";
-                                    $(elm).parent().next().html(template(data));
-                                }
-                                else{
-                                    $(elm).parent().next().html("NO Data");
-                                }
+
+                                var template = Handlebars.compile(temp);
+                                Handlebars.registerHelper('maxContent', function () {
+
+                                    var len = this.Content.length > 50 ? 50 : this.Content.length
+                                    return this.Content.substring(0, len - 1) + "...";
+                                });
+                                attrs.queryover = "1"
+                                console.log($(elm).parent().next().children('.subrowtd')) ;
+                                $(elm).parent().next().html(template(data))
+
                             })
                         });
                     }
