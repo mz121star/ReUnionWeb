@@ -26,9 +26,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                         new iChart.Bar2D({
                             render: 'canvasDiv1',
                             data: d,
-                            width: 550,
-                            height: 315,
-                            border: 'none',
+                            width: 450,
+                            height: 300,
+                            border:false,
                             coordinate: {
                                 scale: [
                                     {
@@ -59,11 +59,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             render: 'canvasDiv2',
                             data: d2,
 //                    title: '产品活动关键字',
-                            width: 550,
-                            height: 315,
-                            border: 'none',
-                            offsetx: 17,
-                            padding: 25,
+                            width: 450,
+                            height: 300,
+                            border:false,
                             coordinate: {
                                 scale: [
                                     {
@@ -94,9 +92,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             render: 'canvasDiv5',
                             data: a,
                             //title: '搜索来源',
-                            width: 550,
-                            height: 315,
-                            border: 'none',
+                            width: 450,
+                            height: 300,
+                            border:false,
                             legend: {
                                 enable: true
                             },
@@ -174,9 +172,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             showpercent: true,
                             percent: true,//标志为百分比堆积图
-                            width: 500,
-                            height: 315,
-                            border: 'none',
+                            width: 450,
+                            height: 300,
+                            border:false,
                             decimalsnum: 1,
                             tip: {
                                 enable: true,
@@ -225,9 +223,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             data: d.data,
                             labels: d.labels,
 //                    title: '情感分析时间轴曲线图  ',
-                            width: 500,
-                            height: 315,
-                            border: 'none',
+                            width: 450,
+                            height: 300,
+                            border:false,
                             tip: {
                                 enable: true,
                                 shadow: true
