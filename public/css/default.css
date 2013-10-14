@@ -132,10 +132,10 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel .content .row {float:left;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
 #maincontent .containercontent .chartpanel .content .row .from {float:left;width:100%;color:#333;font-size:14px;font-weight:bold;}
 #maincontent .containercontent .chartpanel .content .row .from .logo {float:left;display:block;width:24px;height:24px;margin:0 3px;}
-#maincontent .containercontent .chartpanel .content .row .from .sina {background:url('./images/icon/sina.png') no-repeat;}
-#maincontent .containercontent .chartpanel .content .row .from .tencent {background:url('./images/icon/tencent.png') no-repeat;}
-#maincontent .containercontent .chartpanel .content .row .from .netease {background:url('./images/icon/netease.png') no-repeat;}
-#maincontent .containercontent .chartpanel .content .row .from .sohu {background:url('./images/icon/sohu.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .sina {background:url('../images/icon/sina.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .tencent {background:url('../images/icon/tencent.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .netease {background:url('../images/icon/netease.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .sohu {background:url('../images/icon/sohu.png') no-repeat;}
 #maincontent .containercontent .chartpanel .content .row .from .name {float:left;}
 #maincontent .containercontent .chartpanel .content .row .date {float:left;width:100%;color:#AAA;}
 #maincontent .containercontent .chartpanel .content .row .text {float:left;width:100%;color:#666;}
