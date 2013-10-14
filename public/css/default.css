@@ -71,7 +71,7 @@ caption {background:#eee;}
 
 #header .nav {float:left;height:40px;margin-top:17px;}
 #header .nav a {text-decoration: none;}
-#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:15px;padding-right:15px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
+#header .nav .button {float:left;display:block;margin:0 3px;padding-bottom:3px;padding-left:10px;padding-right:10px;height:38px;color:#FFFFFF;font-size:16px;line-height:38px;}
 #header .nav .button:hover {color:#333333;background:#FFF;}
 #header .nav .selected {color:#333333;background:#FFF;}
 
@@ -123,7 +123,7 @@ caption {background:#eee;}
 #maincontent .containercontent .panel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
 #maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
 
-#maincontent .containercontent .chartpanel {float:left;margin:20px 20px 0 0;width:550px;height:350px;}
+#maincontent .containercontent .chartpanel {float:left;margin:20px 20px 0 0;width:350px;height:200px;}
 #maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
 #maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
 #maincontent .containercontent .chartpanel .content {float:left;width:100%;border-bottom: 0px solid #b8c0c7;}
