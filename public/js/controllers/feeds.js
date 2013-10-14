@@ -7,7 +7,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
         $rootScope.menuUrl="partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
         $scope.source = {
-            brand: "兰蔻品牌"
+            keywordExpression: "兰蔻品牌"
         };
 
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
@@ -129,7 +129,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             $scope.keyword = topic.Keyword;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
+            $scope.source.keywordExpression =topic.Keyword;
             var sourceType = topic.SearchCondition.SourceType;
+
             console.log($scope.sourcetype);
             /*    for(var i in sourceType){
              for(var k in $scope.sourcetype) {

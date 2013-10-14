@@ -71,7 +71,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
             link: function (scope, elm, attrs, ctrl) {
 
-                var temp = "<table class='feedTable' class='table'>" +
+                var temp = "<table class='feedTable table'  >" +
                     "<thead>  " +
                     "<tr>    " +
                     "<th>N0.</th>    " +
@@ -113,17 +113,20 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                         $http.get('/api/alert/' + attrs.id).success(function (d) {
 
                             $http.post("/api/feeds", {keyword: d[0].Keyword}).success(function (data) {
+                                  console.log(data)
+                                if (data.count>0) {
+                                    var template = Handlebars.compile(temp);
+                                    Handlebars.registerHelper('maxContent', function () {
 
-
-                                var template = Handlebars.compile(temp);
-                                Handlebars.registerHelper('maxContent', function () {
-
-                                    var len = this.Content.length > 50 ? 50 : this.Content.length
-                                    return this.Content.substring(0, len - 1) + "...";
-                                });
-                                attrs.queryover = "1"
-                                $(elm).parent().next().html(template(data))
-
+                                        var len = this.Content.length > 50 ? 50 : this.Content.length;
+                                        return this.Content.substring(0, len - 1) + "...";
+                                    });
+                                    attrs.queryover = "1";
+                                    $(elm).parent().next().html(template(data));
+                                }
+                                else{
+                                    $(elm).parent().next().html("NO Data");
+                                }
                             })
                         });
                     }

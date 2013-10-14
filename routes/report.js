@@ -840,10 +840,29 @@ exports.keyWordCloud = function (req, res) {
         });
 };
 exports.test = function (req, res) {
-    var o = {};
+    FeedsModel.aggregate(
+        { $match : { PublishTimeTemp : { $gte :new Date("2013-08-01"), $lte :new Date("2013-08-31")},Semantic:{$gt:0} }},
+        { $group: { _id:"$PublishTimeTemp", value: { $sum: 1 }} }   ,
+        { $project: {name: "$_id", value: 1 }},
+        { $sort: { name: 1 } }      ,
 
-    o.map = function () {
-        if (this.PublishTime.match(/\d*/)[0] === "2013") {
+
+//        { $project: {name:"$_id",  value:1 }},
+//
+        function (err, docs) {
+            var result = [];
+            for (var d in docs) {
+                docs[d].color = utils.randomColor();
+                result.push(docs[d]);
+            }
+            return res.json(result);
+            res.json(result); // [ { maxAge: 98 } ]
+        });
+
+    /*   var o = {};
+
+       o.map = function () {
+           if (this.PublishTime.match(/\d*//*)[0] === "2013") {
             var key = this.PublishTime.match(/-(\d*)/)[1];
             if (this.Semantic > 0) {
                 emit({s: "好评", d: key}, 1);
@@ -878,7 +897,7 @@ exports.test = function (req, res) {
     FeedsModel.mapReduce(o, function (err, model, stats) {
 
         model.find().select("value")
-            //*.where('value').gt(10)*//*
+            /*//*.where('value').gt(10)*//**//*
             .exec(function (err, docs) {
                 var result = [];
                 for (var d in docs) {
@@ -887,7 +906,7 @@ exports.test = function (req, res) {
                 }
                 return res.json(result);
             });
-    });
+    });*/
     /*  var o = {};
 
      o.map = function () {
