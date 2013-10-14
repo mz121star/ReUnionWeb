@@ -116,7 +116,7 @@ exports.dateRange = function (start, end) {
     var size=endDate.getDate()-startDate.getDate();
     for (var i = 0; i <=size; i++) {
         var d=moment(startDate).add('days',i).format("YYYY-MM-DD");
-        result.push(new Date(d).getMonth()+"/"+new Date(d).getDate());
+        result.push(new Date(d).getMonth()+1+"/"+new Date(d).getDate());
     }
     return result;
 }
