@@ -80,6 +80,7 @@ module.exports = function (app) {
      * Alert
      */
     app.get('/api/alert',alert.list);
+    app.get('/api/alert/:id',alert.getById);
     app.post('/api/alert',alert.save);
 
 

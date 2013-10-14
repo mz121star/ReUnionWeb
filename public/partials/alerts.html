@@ -4,10 +4,60 @@
         Add New Alert
     </button>
 
+    <div id="css_table" class="table">
+        <div class="css_thead">
+            <div class="css_td css_th w50 "></div>
+            <div class="css_td css_th w50">No.</div>
+            <div class="css_td css_th w150" >Title</div>
+            <div class="css_td css_th w100">Keywords</div>
+            <div class="css_td css_th w200">MailTo</div>
+            <div class="css_td css_th w100">SMSTo</div>
+            <div class="css_td css_th w150">DataRange</div>
+            <div class="css_td css_th">Action</div>
+        </div>
+        <div ng-repeat="alert in alerts"  showdetail>
+        <div  class="css_tr"  >
+            <div class="css_td w50" data-id="{{alert._id}}" data-queryover="0"  toggletable><a class="text-icon"   href="javascript:;">+</a> </div>
+            <div class="css_td w50">{{ $index+1 }}</div>
+            <div class="css_td w150">{{alert.Name }}</div>
+            <div class="css_td w100">{{alert.Keyword }}</div>
+            <div class="css_td w200">{{alert.MailTo }}</div>
+            <div class="css_td w100">{{alert.SMSTo }} </div>
+            <div class="css_td w150">{{alert.AlertStartTime |date }}-{{alert.AlertEndTime |date }}</div>
+            <div class="css_td"> <button class="btn btn-primary" >Edit</button></div>
+         </div>
+        <div class="css_inline_table">
+            <table class="feedTable" class="table">
+                <thead>
+                <tr>
+                    <th>N0.</th>
+                    <th sortable>Title</th>
+                    <th>Description</th>
+                    <th>Source</th>
+                    <th>Url</th>
 
+                </tr>
+                </thead>
+                <tbody>
+                <tr  ng-repeat="feed in feedContent"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+                    <td>{{ $index+1 }}</td>
+                    <td>{{feed.Title| maxlen:20  }} </td>
+                    <td>{{feed.Content | maxlen:40  }} </td>
+                    <td>{{ feed.FromSite | maxlen:40}}</td>
+                    <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+<!--
     <table id="reportsTable" class="table">
         <thead>
         <tr>
+
             <th>No.</th>
             <th sortable>Title</th>
             <th>Keywords</th>
@@ -20,6 +70,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="alert in alerts" ng-click="showDetail(alert)" showdetail>
+
             <td>{{ $index+1 }}</td>
             <td>{{alert.Name }}</td>
             <td>{{alert.Keyword }}</td>
@@ -27,16 +78,12 @@
             <td>{{alert.SMSTo }} </td>
             <td>{{alert.AlertStartTime |date }}-{{alert.AlertEndTime |date }}</td>
             <td> <button class="btn btn-primary" >Edit</button></td>
-            <td>
-
-
-            </td>
 
 
         </tr>
 
         </tbody>
-    </table>
+    </table>-->
 </div>
 <div style="display: none" class="modal fade" id="saveReportModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel"

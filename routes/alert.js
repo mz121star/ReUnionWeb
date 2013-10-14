@@ -23,6 +23,28 @@ exports.list = function (req, res) {
         });
 
 };
+
+/***
+ * Get /alert/:id
+ * @param req
+ * @param res
+ */
+exports.getById = function (req, res) {
+
+    var reg = /^\/api\/alert\/(?:([^\/]+?))\/?$/;
+    var type=req.url.match(reg)[1];
+    if(type) type=decodeURI(type);
+    AlertModel.find({_id:type})
+        /*.limit(20)*/
+        /*.select('childs')*/
+        .exec(function (err, monitors) {
+            if(err){
+                return res.json(500,err);
+            }
+            return res.json(monitors);
+        });
+
+};
 /***
  * POST /subReport
  * {name:"topicName"}

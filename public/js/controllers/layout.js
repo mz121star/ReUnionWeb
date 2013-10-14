@@ -91,7 +91,10 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
                     $scope.selectedRow = item.index - 1;
             }
         })
-
+        $scope.show=true;
+        $scope.hiddenMenu=function(){
+            $scope.show=!$scope.show;
+        }
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;
