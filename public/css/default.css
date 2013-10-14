@@ -126,9 +126,19 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel {float:left;margin:20px 20px 0 0;width:450px;height:300px;}
 #maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
 #maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
-#maincontent .containercontent .chartpanel .content {float:left;width:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;}
+#maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;}
 #maincontent .containercontent .chartpanel .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
 
+#maincontent .containercontent .chartpanel .content .row {float:left;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
+#maincontent .containercontent .chartpanel .content .row .from {float:left;width:100%;color:#333;font-size:14px;font-weight:bold;}
+#maincontent .containercontent .chartpanel .content .row .from .logo {float:left;display:block;width:24px;height:24px;margin:0 3px;}
+#maincontent .containercontent .chartpanel .content .row .from .sina {background:url('./images/icon/sina.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .tencent {background:url('./images/icon/tencent.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .netease {background:url('./images/icon/netease.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .sohu {background:url('./images/icon/sohu.png') no-repeat;}
+#maincontent .containercontent .chartpanel .content .row .from .name {float:left;}
+#maincontent .containercontent .chartpanel .content .row .date {float:left;width:100%;color:#AAA;}
+#maincontent .containercontent .chartpanel .content .row .text {float:left;width:100%;color:#666;}
 
 
 #maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
@@ -238,12 +248,12 @@ caption {background:#eee;}
 .mainshow {left: 220px; }
 .mainhidden {left: 0px;}
 .resizable-icon {
-position: absolute;left: 0;top: 50%;
-width: 9px;height: 33px;
-border-top:1px solid #CCC;
-border-bottom:1px solid #CCC;
-background: url("../images/icon/toggle.png") no-repeat;
-z-index: 10;
+    position: absolute;left: 0;top: 50%;
+    width: 9px;height: 33px;
+    border-top:1px solid #CCC;
+    border-bottom:1px solid #CCC;
+    background: url("../images/icon/toggle.png") no-repeat;
+    z-index: 10;
 }
 
 
@@ -277,7 +287,7 @@ z-index: 10;
     clear: both;
     margin-left: 3px;
     left: 38px;
-   display: none;
+    display: none;
     background: silver;
     zoom: 1;
 }
