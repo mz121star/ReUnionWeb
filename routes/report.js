@@ -644,8 +644,8 @@ exports.SentimentAnalysisPost = function (req, res) {
                         for( d in badResult){
                             pl.bad.push(badResult[d].value) ;
                         }
-                        finalResult.push({name: "好评", value: pl.good, color: "#005bb1", line_width: 2});
-                        finalResult.push({name: "差评", value: pl.bad, color:"#b8c0c7", line_width: 2})
+                        finalResult.push({name: "好评", value: pl.good, color: "#4572a7", line_width: 2});
+                        finalResult.push({name: "差评", value: pl.bad, color:"#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/
@@ -859,8 +859,8 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
                         for( d in badResult){
                             pl.bad.push(badResult[d].value) ;
                         }
-                        finalResult.push({name: "好评", value: pl.good, color:"#005bb1", line_width: 2});
-                        finalResult.push({name: "差评", value: pl.bad, color: "#b8c0c7", line_width: 2})
+                        finalResult.push({name: "好评", value: pl.good, color:"#4572a7", line_width: 2});
+                        finalResult.push({name: "差评", value: pl.bad, color: "#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/

@@ -52,7 +52,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">预览</h4>
+                <h4 class="modal-title">Preview</h4>
             </div>
             <div class="modal-body">
 
@@ -86,7 +86,7 @@
                 <div class="editpanel">
 
                     <div class="content">
-                        <div class="left"><span class="title">报告类型</span></div>
+                        <div class="left"><span class="title">Report Type</span></div>
                         <div class="center">
 
                        <span class="item" ng-repeat="dt in report.dataType">
@@ -97,7 +97,7 @@
                     </div>
 
                     <div class="content">
-                        <div class="left"><span class="title">接收人</span></div>
+                        <div class="left"><span class="title">MailTo</span></div>
                         <div class="center">
                             <textarea ng-model="report.receiver">abc@pactera.com</textarea>
                         </div>
@@ -106,7 +106,7 @@
 
 
                     <div class="content">
-                        <div class="left"><span class="title">Topic选择</span></div>
+                        <div class="left"><span class="title">Topic</span></div>
                         <div class="center">
                             <span class="item" ng-repeat="topic in Topics">
                           <label> <input class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"

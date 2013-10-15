@@ -16,27 +16,27 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
         });
         var InitData = {
             dataType: [
-                {value: "日报"} ,
-                {value: "周报"},
-                {value: "月报"},
-                {value: "季报"},
-                {value: "年报"}
+                {value: "Daily"} ,
+                {value: "Weekly"},
+                {value: "Monthly"},
+                {value: "Quarterly"},
+                {value: "Annual"}
 
             ],
             receiver: "",
-            type: "日报"
+            type: "Daily"
         }
         $scope.report = {
             dataType: [
-                {value: "日报"} ,
-                {value: "周报"},
-                {value: "月报"},
-                {value: "季报"},
-                {value: "年报"}
+                {value: "Daily"} ,
+                {value: "Weekly"},
+                {value: "Monthly"},
+                {value: "Quarterly"},
+                {value: "Annual"}
 
             ],
-            receiver: "miaozhuang.net",
-            type: "日报"
+            receiver: "@pactera.com",
+            type: "Daily"
 
         };
 

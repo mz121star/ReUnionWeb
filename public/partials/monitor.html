@@ -119,11 +119,34 @@
             <div class="modal-body">
 
                 <!--  Topic Name: <input type="text" ng-model="topicName" required="不能为空">
- -->             Name: <input type="text" ng-model="website.name" >  <br>
-                 URL: <input type="text" ng-model="website.url" >
+ -->                <div class="editpanel">
+                <div class="content">
+                    <div class="left"><span class="title">Name</span></div>
+                    <div class="center">
+                        <input type="text" ng-model="website.name" >
+                    </div>
+                    <div class="right"></div>
+                </div>
+
+                <div class="content">
+                    <div class="left"><span class="title">URL </span></div>
+                    <div class="center">
+                        <input type="text" ng-model="website.url" >
+
+                    </div>
+                    <div class="right"></div>
+                    <div class="content">
+                        <div class="left"><span class="title">Topic </span></div>
+                        <div class="center">
+
                   <span class="item" ng-repeat="dt in SiteType.dataType">
                                <label><input type="radio" name="dataType" ng-value="dt.value" ng-model="SiteType.type">{{dt.value}}</label>
                          </span>
+
+                        </div>
+                        <div class="right"></div>
+
+                    </div>
                 <div ng-show="!!saveWarning" class="alert alert-success"> {{ saveWarning }}</div>
 
             </div>

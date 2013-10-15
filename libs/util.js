@@ -95,12 +95,12 @@ var randomRange=function(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
 var getColor =function(){
-    this.colors=["#005bb1","#005bb1","#005bb1"];
+    this.colors=["#4572a7","#aa4643","#89a54e",'#80699b'];
     this.index=1
 
 };
 getColor.prototype.getOne=function(){
-    var color= this.colors[this.index%3];
+    var color= this.colors[this.index%4];
     this.index++;
     console.log(color);
     return color;
