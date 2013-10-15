@@ -2,7 +2,7 @@
 
     <div class="panel">
         <div class="conditionspanel">
-            <div class="title"><span class="titlelabel">Analysis:{{source.brand}}（关键词表达式）</div>
+            <div class="title"><span class="titlelabel">Analysis:{{source.brand}}（关键词表达式）</span></div>
 
                 <form novalidate name="searchFeedForm">
 
@@ -54,38 +54,47 @@
                                     ng-disabled='searchFeedForm.$invalid'> Search Current Set</button>
                             </div>
                         </div>
-                    </div>
                 </form>
             </div>
         </div>
     </div>
-
-    <div class="panel">
-        <div   class="s-pk-mod" data-pkid="26">
-            <h5 class="pk-title"><span>Data Source Pie</span>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
-
-                <div class="s-title-bg"></div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv7'></div>
-            </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Date Source Bar</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
+            <div id='canvasDiv7'></div>
         </div>
     </div>
-
-    <div class="panel">
-        <div   class="s-pk-mod" data-pkid="26">
-            <h5 class="pk-title"><span>Sentiment Analysis</span>
-                <a href="#" onclick="return false;" class="s-mod-close-view pk-close" title="隐藏" hidefocus=""></a>
-
-                <div class="s-title-bg"></div>
-            </h5>
-            <div class="pk-content">
-                <div id='canvasDiv8'></div>
-            </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Top Keyword</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
+            <div id='canvasDiv8'></div>
         </div>
     </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Sentiment Analysis </span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
+            <div id='canvasDiv9'></div>
+        </div>
+    </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Sentiment Analysis Timeline</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
+            <div id='canvasDiv10'></div>
+        </div>
+    </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Date Source Pie</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
+            <div id='canvasDiv11'></div>
+        </div>
+    </div>
+    <div class="chartpanel">
+        <div class="title"><span class="titlelabel">Cloud Report</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+        <div class="content">
 
+            <canvas id='canvasDiv12'    width=450 height=300></canvas>
+        </div>
+    </div>
     </div>
 <div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
