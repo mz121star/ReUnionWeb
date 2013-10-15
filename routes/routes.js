@@ -14,6 +14,7 @@ var topic=require('./topic');
 var subscription=require('./subscription');
 var alert=require('./alert') ;
 var monitor=require('./monitor') ;
+var chart=require('./chart');
 var admintool=require('./admintool');
 module.exports = function (app) {
     /***
@@ -82,6 +83,12 @@ module.exports = function (app) {
     app.get('/api/alert',alert.list);
     app.get('/api/alert/:id',alert.getById);
     app.post('/api/alert',alert.save);
+    /***
+     * Chart
+     */
+    app.get('/api/chart',chart.list);
+    app.get('/api/chart/:id',chart.getById);
+    app.post('/api/chart',chart.save);
 
 
     /**********************************************************API*************************************************************************/

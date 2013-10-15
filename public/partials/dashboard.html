@@ -1,69 +1,91 @@
-
 <div class="panel">
         <span class="item">
-            <select class="inputdate"  ng-model="dataRange" >
-                <option value="7" selected="selected" >Last 7 Days</option>
+            <select class="inputdate" ng-model="dataRange">
+                <option value="7" selected="selected">Last 7 Days</option>
                 <option value="30">Last month</option>
             </select>
           <!--  {{searchDate.starttime}}-->
         </span>
-        <span class="item">Or from </span>
-        <span class="item"><input  bs-datepicker ng-model="dashboard.startDate" class="inputdate" type="text"></span>
-        <span class="item">to</span>
-        <span class="item"><input bs-datepicker ng-model="dashboard.endDate" class="inputdate" type="text"></span>
-        <span class="item"><button class="btn btn-primary" ng-click="search()">Search</button></span>
+    <span class="item">Or from </span>
+    <span class="item"><input bs-datepicker ng-model="dashboard.startDate" class="inputdate" type="text"></span>
+    <span class="item">to</span>
+    <span class="item"><input bs-datepicker ng-model="dashboard.endDate" class="inputdate" type="text"></span>
+    <span class="item"><button class="btn btn-primary" ng-click="search()">Search</button></span>
 
 </div>
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Date Source Bar Dynamic</span><span class="action"><a class="min"
+                                                                                                      href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
+        <div id='canvasDiv7'  ></div>
+    </div>
+</div>
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Date Source Bar</span><span class="action"><a class="min"
+                                                                                              href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Date Source Bar</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
-                <span class="loading"></span>
-                <div id='canvasDiv1'></div>
-            </div>
-        </div>
+        <div id='canvasDiv1' ></div>
+    </div>
+</div>
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Top Keyword</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
-                <span class="loading"></span>
-                <div id='canvasDiv2'></div>
-            </div>
-        </div>
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Top Keyword</span><span class="action"><a class="min" href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Sentiment Analysis  </span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
-                <span class="loading"></span>
-                <div id='canvasDiv3'></div>
-            </div>
-        </div>
+        <div id='canvasDiv2'></div>
+    </div>
+</div>
 
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Sentiment Analysis  </span><span class="action"><a class="min"
+                                                                                                   href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Sentiment Analysis Timeline</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
-                <span class="loading"></span>
-                <div id='canvasDiv4'></div>
-            </div>
-        </div>
+        <div id='canvasDiv3'></div>
+    </div>
+</div>
 
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Date Source Pie</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
-                <span class="loading"></span>
-                <div id='canvasDiv5'></div>
-            </div>
-        </div>
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Sentiment Analysis Timeline</span><span class="action"><a class="min"
+                                                                                                          href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
 
-        <div class="chartpanel">
-            <div class="title"><span class="titlelabel">Cloud Report</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-            <div class="content">
+        <div id='canvasDiv4'></div>
+    </div>
+</div>
 
-                <canvas id='canvasDiv6'    width=450 height=300></canvas>
-            </div>
-        </div>
+
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Date Source Pie</span><span class="action"><a class="min"
+                                                                                              href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <span class="loading"></span>
+
+        <div id='canvasDiv5'></div>
+    </div>
+</div>
+
+<div class="chartpanel">
+    <div class="title"><span class="titlelabel">Cloud Report</span><span class="action"><a class="min" href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+
+        <canvas id='canvasDiv6' width=450 height=300></canvas>
+    </div>
+</div>
 
 
 <div class="chartpanel">
@@ -72,27 +94,32 @@
         <div class="row">
             <div class="from"><span class="logo sina"></span><span class="name">Sina From: XXX</span></div>
             <div class="date">Posted on Oct 15, 2013 at 17:08 PM</div>
-            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧</div>
+            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧
+            </div>
         </div>
         <div class="row">
             <div class="from"><span class="logo sohu"></span><span class="name">Sohu From: XXX</span></div>
             <div class="date">Posted on Oct 15, 2013 at 17:08 PM</div>
-            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧</div>
+            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧
+            </div>
         </div>
         <div class="row">
             <div class="from"><span class="logo netease"></span><span class="name">163 From: XXX</span></div>
             <div class="date">Posted on Oct 15, 2013 at 17:08 PM</div>
-            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧</div>
+            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧
+            </div>
         </div>
         <div class="row">
             <div class="from"><span class="logo tencent"></span><span class="name">Tencent From: XXX</span></div>
             <div class="date">Posted on Oct 15, 2013 at 17:08 PM</div>
-            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧</div>
+            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧
+            </div>
         </div>
         <div class="row">
             <div class="from"><span class="logo sina"></span><span class="name">Sina From: XXX</span></div>
             <div class="date">Posted on Oct 15, 2013 at 17:08 PM</div>
-            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧</div>
+            <div class="text">哎呀呀~一碰上这种【一折】化妆品专场就无法自拔啊！！优惠大减价！雅诗兰黛、<span class="red">兰蔻小黑瓶</span>，猪油膏，神仙水...偏偏都是我超爱的东东！[太开心][给力]100%正品，30天无条件退换货！识货的妞们赶紧收了吧
+            </div>
         </div>
     </div>
 </div>.
