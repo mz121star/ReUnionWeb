@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAlert'], function (res, ichart, async, moment) {
+define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAlert', 'bootstrapTab'], function (res, ichart, async, moment) {
 
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
