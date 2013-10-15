@@ -308,7 +308,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             }, 3000)
                             callback(null, '6');
                         });
+                },
+                function(callback){
+                    $scope.tagcloud="partials/charts/tagcloud1.html";
+                    callback(null,"cloud");
                 }
+
             ]);
         }
         $scope.search = function () {
@@ -480,7 +485,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
          loadReport();
         deep2dBarChart();
 
-     $scope.tagcloud="partials/charts/tagcloud.html";
+
 
 
     }];
