@@ -4,7 +4,9 @@ var mongoose = require('mongoose'),
 var schema = new Schema({
     Name:String,
     Url:String,
-    Type:String
+    Type:String,
+    status:Number,
+    Comment:String
 
 }, {collection: 'Monitor'});
 

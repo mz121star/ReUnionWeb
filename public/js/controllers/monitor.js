@@ -33,6 +33,9 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
             $http.get('api/monitor/' + encodeURI("eCommerce")).success(function(d){
                 $scope.monitorShops=d
             })
+            $http.get('api/monitor/' + encodeURI("customer")).success(function(d){
+                $scope.monitorCustomer=d
+            })
         }
 
         LoadData();
@@ -41,7 +44,7 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
         });
         $scope.saveMonitor = function () {
-            var Data = {Name: $scope.website.name, Url: $scope.website.url, Type: $scope.SiteType.type};
+            var Data = {Name: $scope.website.name, Url: $scope.website.url, Comment: $scope.website.comment,status:0,Type:"customer"};
 
             $http.post("api/monitor", Data).success(function (d) {
                 LoadData();

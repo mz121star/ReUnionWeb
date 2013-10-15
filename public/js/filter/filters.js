@@ -57,4 +57,13 @@ define(['app'], function (app) {
                 return "Stop";
         };
     })
+    app.filter("statusChange", function () {
+        return function (input, text) {
+            if (input === 1)
+                return "Included";
+            if (input === 0)
+                return "Waiting for audit";
+        };
+    })
+
 });
