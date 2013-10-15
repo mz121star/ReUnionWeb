@@ -123,6 +123,7 @@ caption {background:#eee;}
 #maincontent .containercontent .panel {float:left;margin-bottom: 10px;padding: 0;width:100%;}
 #maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
 #maincontent .containercontent .chartpanel {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:450px;height:320px;}
+#maincontent .containercontent .chartpanel2 {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:750px;height:520px;}
 #maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
 #maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
 #maincontent .containercontent .chartpanel .title .tab {cursor:pointer;float:right;margin-left:10px;}
