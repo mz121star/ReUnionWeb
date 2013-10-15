@@ -144,6 +144,7 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel .content .row .hexun {background:url('../images/icon/hexun.png') no-repeat center;}
 #maincontent .containercontent .chartpanel .content .row .hc360 {background:url('../images/icon/hc360.png') no-repeat center;}
 #maincontent .containercontent .chartpanel .content .row .askci {background:url('../images/icon/askci.png') no-repeat center;}
+#maincontent .containercontent .chartpanel .content .row .kimiss {background:url('../images/icon/kimiss.png') no-repeat center;}
 
 #maincontent .containercontent .chartpanel .content .row .date {float:left;width:100%;color:#AAA;}
 #maincontent .containercontent .chartpanel .content .row .text {float:left;width:100%;color:#666;}
