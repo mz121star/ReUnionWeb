@@ -31,6 +31,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             coordinate: {
                                 scale: [
                                     {
@@ -64,6 +66,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             coordinate: {
                                 scale: [
                                     {
@@ -102,6 +106,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             showpercent: true,
                             radius: 140,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             sub_option: {
                                 label: {
                                     background_color: null,
@@ -176,6 +182,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 label: false
                             },
                             showpercent: true,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             percent: true,//标志为百分比堆积图
                             width: 450,
                             height: 300,
@@ -231,6 +239,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             tip: {
                                 enable: true,
                                 shadow: true
