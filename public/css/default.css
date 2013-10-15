@@ -114,19 +114,19 @@ caption {background:#eee;}
 #maincontent {position:absolute;top:58px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
 
 
-#maincontent .containercontent {float:left;width:95%;margin:20px 0 0 20px;padding: 0;}
+#maincontent .containercontent {float:left;width:100%;margin:20px 0 0 20px;padding: 0;padding-bottom: 50px;}
 
 #maincontent .containercontent .containercrumbs {float:left;width:100%;padding: 0;}
 #maincontent .containercontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
 
 #maincontent .containercontent .inputdate {float:left;width:158px;height:24px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
-#maincontent .containercontent .panel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
+#maincontent .containercontent .panel {float:left;margin-bottom: 10px;padding: 0;width:100%;}
 #maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
 
-#maincontent .containercontent .chartpanel {float:left;margin:40px 20px 0 0;width:450px;height:300px;}
+#maincontent .containercontent .chartpanel {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:450px;height:300px;}
 #maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
 #maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
-#maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;}
+#maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;border-bottom: 1px solid #b8c0c7;}
 #maincontent .containercontent .chartpanel .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
 
 #maincontent .containercontent .chartpanel .content .row {float:right;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
@@ -146,7 +146,7 @@ caption {background:#eee;}
 #maincontent .containercontent .conditionspanel .title .titlelabel {float:left;margin-left:0px;font-size:12px;color:#333333;font-weight: bold;vertical-align:middle;}
 #maincontent .containercontent .conditionspanel .content {float:left;width:100%;background:#eff6ff;border-bottom:2px solid #FFF;}
 #maincontent .containercontent .conditionspanel .content .cell {float:left;margin: 10px;}
-#maincontent .containercontent .conditionspanel .content .item {float:left;width:80px;height:20px;line-height:20px;}
+#maincontent .containercontent .conditionspanel .content .item {float:left;height:20px;margin:0 5px;line-height:20px;}
 #maincontent .containercontent .conditionspanel .content .item .checkbox {float:left;margin-right:5px;}
 #maincontent .containercontent .conditionspanel .content .size1 {width:120px;}
 #maincontent .containercontent .conditionspanel .content .size5 {}
