@@ -5,6 +5,7 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
     var MonitorController = ['$scope', '$rootScope', 'FeedService', '$http', '$timeout', function ($scope, $rootScope, FeedService, $http, $timeout) {
         $rootScope.menuUrl = "partials/leftmenu/monitorMenu.html";
         $rootScope.title = "Monitor - " + res.title;
+        $rootScope.show=true;
         /*    $("select, input").uniform();*/
         $scope.SiteType = {
             dataType: [

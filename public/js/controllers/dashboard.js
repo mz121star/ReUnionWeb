@@ -11,7 +11,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             endtime: "2013-08-31"
         }
 
-
+        $rootScope.show=false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1 ) {
                 $scope.searchDate.endtime = new Date();

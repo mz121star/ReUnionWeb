@@ -5,6 +5,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
     var AnalysisController=['$scope','$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
         $rootScope.menuUrl="";
         $rootScope.title ="Analysis - "+ res.title;
+        $rootScope.show=false;
         $scope.source = {
             brand: "兰蔻品牌"
         };
