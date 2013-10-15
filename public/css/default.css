@@ -213,6 +213,11 @@ caption {background:#eee;}
 #maincontent .containercontent .table tbody tr.bg2 {background:#FBEDE3;}
 #maincontent .containercontent .table tbody tr.bg3 {background:#FDEBF9;}
 
+#maincontent .containercontent .table .openlist {background:url('../images/icon/arrow_bottom.png') no-repeat 0 0 ;}
+#maincontent .containercontent .table .closelist {background:url('../images/icon/arrow_right.png') no-repeat 0 0 ;}
+
+
+
 #maincontent .containercontent .pageturning {float:left;width:100%;margin:20px 0 0 0;}
 #maincontent .containercontent .pageturning a.btn {cursor:pointer;float:left;padding:3px 8px;margin-right: 8px;background:#DDD;color:#333;}
 #maincontent .containercontent .pageturning a.btn:hover {background:#368EE0;color:#FFF;}
