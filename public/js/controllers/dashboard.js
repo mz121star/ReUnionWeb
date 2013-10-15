@@ -323,7 +323,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                     color : '#6d869f'
                 },
                 footnote : {
-                    text : 'ichartjs.com',
+                    text : 'Power by Reunion',
                     color : '#909090',
                     fontsize : 11,
                     padding : '0 38'
