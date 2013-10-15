@@ -1,25 +1,48 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html dir="ltr">
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<link rel="shortcut icon" href="./images/icon/reunion-r.png" type="image/x-icon" media="screen"/>
-	<title>{{title}}</title>
+	<title>ReUnion Demo v2 Report</title>
 <style>
 html {font-size:100.01%;}
 body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 #container {position:absolute;top:0;left:50%;margin-left:-400px;width:800px;background:#FFF;}
-#container .header {float:left;width:100%;height:60px;line-height:60px;margin-bottom:20px;background:#003A83 url("{{abs_path}}/images/bg/top-bg.png") right;border-bottom:3px solid #D61027;color:#FFFFFF;}
-#container .header .logo {float:left;display:block;width:90px;height:33px;margin:13px 20px;background:url('{{abs_path}}/images/bg/reunion-logo-top.png') no-repeat;}
+#container .header {float:left;width:100%;height:60px;line-height:60px;margin-bottom:20px;background:#003A83 url("http://210.83.216.71:7080/images/bg/top-bg.png") right;border-bottom:3px solid #D61027;color:#FFFFFF;}
+#container .header .logo {float:left;display:block;width:90px;height:33px;margin:13px 20px;background:url('http://210.83.216.71:7080/images/bg/reunion-logo-top.png') no-repeat;}
 #container .header .title {float:left;width:550px;text-align:center;font-size:28px;}
 #container .header .date {float:right;width:100px;height:50px;margin-top:5px;}
 #container .header .date .day {float:left;width:100px;height:35px;line-height:35px;font-size:42px;margin:0;padding:0;text-align:center;}
 #container .header .date .year {float:left;width:100px;height:15px;line-height:15px;font-size:12px;margin:0;padding:0;text-align:center;}
 #container .content .line {float:left;width:760px;margin:10px 20px 0 20px;}
-#container .content .title {font-weight:bold;font-size:16px;}
+#container .content .title {font-weight:bold;font-size:16px;border-bottom:1px dashed  #DDD;}
 #container .content .subtitle {background:#e0eeff;padding:5px 10px;width:740px;}
-#container .content .message {}
 #container .content .red {color:#D61027;font-weight:bold;margin-left:5px;}
+
+#container .content .message {float:right;width:750px;border-bottom:1px dashed #DDD;padding:5px 0;}
+#container .content .message .from {float:left;width:100%;color:#333;font-size:14px;font-weight:bold;}
+#container .content .message .from .name {float:left;}
+#container .content .message .logo {float:left;display:block;width:24px;height:24px;margin:0 3px;}
+#container .content .message .reunion {background:url('http://210.83.216.71:7080/images/icon/reunion-r.png') no-repeat ;}
+#container .content .message .sina {background:url('http://210.83.216.71:7080/images/icon/sina.png') no-repeat ;}
+#container .content .message .tencent {background:url('http://210.83.216.71:7080/images/icon/tencent.png') no-repeat ;}
+#container .content .message .netease {background:url('http://210.83.216.71:7080/images/icon/netease.png') no-repeat ;}
+#container .content .message .sohu {background:url('http://210.83.216.71:7080/images/icon/sohu.png') no-repeat ;}
+#container .content .message .yoka {background:url('http://210.83.216.71:7080/images/icon/yoka.png') no-repeat ;}
+#container .content .message .kankanews {background:url('http://210.83.216.71:7080/images/icon/kankanews.png') no-repeat ;}
+#container .content .message .efu {background:url('http://210.83.216.71:7080/images/icon/efu.png') no-repeat ;}
+#container .content .message .hexun {background:url('http://210.83.216.71:7080/images/icon/hexun.png') no-repeat ;}
+#container .content .message .hc360 {background:url('http://210.83.216.71:7080/images/icon/hc360.png') no-repeat ;}
+#container .content .message .askci {background:url('http://210.83.216.71:7080/images/icon/askci.png') no-repeat ;}
+#container .content .message .kimiss {background:url('http://210.83.216.71:7080/images/icon/kimiss.png') no-repeat ;}
+
+#container .content .message .date {float:left;width:100%;color:#AAA;}
+#container .content .message .text {float:left;width:100%;color:#666;}
+
+#container .content .chart {float:right;width:750px;border-bottom:1px dashed  #DDD;}
+#container .content .chart .title {float:left;width:720px;border:none;padding-left:30px;font-size:14px;color:#999;background:#FFF url('http://210.83.216.71:7080/images/icon/icon2.png') no-repeat 3px center;}
+#container .content .chart .image {float:left;width:100%;}
+
 
 #container .footer {float:left;width:760px;margin:20px 20px;padding:15px 0;border-top:2px solid #007DC9;}
 #container .footer .message {}
@@ -30,11 +53,11 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 </style>
 </head>
 <body>
-	
+
 	<div id="container">
 		<div class="header">
 			<div class="logo"></div>
-			<div class="title">兰蔻24小时监测报告</div>
+			<div class="title">Lancome 24Hours Monitor</div>
 			<div class="date">
 				<span class="day">09</span>
 				<span class="year">2013,10</span>
@@ -42,20 +65,106 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 		</div>
 		<div class="content">
 			<div class="line title">{{title}}</div>
-			<div class="line subtitle">微博<span class="red">Top5</span></div>
-			<div class="line msghead">每日大智慧消息20131008 - 股票基金 - 乐彩论坛 - bbs.17500.cn </div>
-			<div class="line msgcontetn">每日大智慧消息20131008 - 股票基金 - 乐彩论坛 - bbs.17500.cn </div>
+
+			<div class="line chart"><span class="title">Data Source Bar Dynamic</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart1.png"></span></div>
+			<div class="line chart"><span class="title">Data Source Pie</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart2.png"></span></div>
+			<div class="line chart"><span class="title">Sentiment Analysis</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart3.png"></span></div>
+			<div class="line chart"><span class="title">Sentiment Analysis Timeline</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart4.png"></span></div>
+			<div class="line chart"><span class="title">Keyword Cloud</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart5.png"></span></div>
+			<div class="line chart"><span class="title">Top Keyword</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart6.png"></span></div>
+
+			<div class="line subtitle">Mirco Blog<span class="red">Top5</span></div>
+			<div class="line message">
+				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 香香与灵灵</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 05:45 AM</div>
+				<div class="text">#COSMO美容大奖微博评鉴团#不用说，Lanc?me 精华肌底液（780元/30ml）绝对是“抗老精华＂，不仅质地细腻柔滑，而且是渗透到肌肤底的修护，一直都是Lanc?me 兰蔻精华肌底液搭配小黑眼部精华液一起试用，效果真的很棒@健步林中 @学雷的兔子 @梁钰恒 @手机用户3019766345 @林下清风至</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 西风美人</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 11:30 AM</div>
+				<div class="text">#毛毛播报电影新闻#――一句话新闻 http://t.cn/zjV8Pp1 （分享自@兰蔻Lancome）</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 廖小胖香港代购</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 15:23 PM</div>
+				<div class="text">##香港代购#秋天到啦，给你的皮肤喝点精华吧，台湾买到的，兰蔻小黑瓶50ML现货#兰蔻#</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 清茶恬心</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 19:58 PM</div>
+				<div class="text">【10款热销香水排名】一、香奈儿5号香水；二、Dior花漾甜心香水 三、Dior真我香水；四、雅顿绿茶香水 ；五、香奈儿机遇香；六、CK-one中性香水；七、香奈儿COCO小姐香水；八、安娜苏许愿精灵香水；九、兰蔻魔法奇迹香水；十、兰蔻璀璨红情香水。</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 美够美够</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 21:39 PM</div>
+				<div class="text">#美够美够#Lancome 兰蔻蜜妍滋养润肤身体乳 专门为干性肌肤设计 运用独家蜂王浆Royal Lipideum科技 帮助肌肤重回滋养水润状态保护肌肤不受外界天气季节变换导致的侵害、轻盈滋养肌肤 国内没有的商品，美国专柜售价 580，现在有折扣的喔，其他明星产品小黑瓶，BB霜，粉水等依旧代购！</div>
+			</div>
+
+			<div class="line subtitle">News Media<span class="red">Top5</span></div>
+			<div class="line message">
+				<div class="from"><span class="logo yoka"></span><span class="name">News From: Yoka</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 09:56 AM</div>
+				<div class="text">兰蔻SHOW限量彩妆系列by Alber</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo sohu"></span><span class="name">News From: Sohu Women</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 13:16 PM</div>
+				<div class="text">献礼中国女性 兰蔻立体塑颜系列全新上市</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo reunion"></span><span class="name">News From: Youth</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 15:09 PM</div>
+				<div class="text">聚美优品陷假货风波 被曝化妆品出自山寨专业地</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo hexun"></span><span class="name">News From: Hexun</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 15:32 PM</div>
+				<div class="text">酵素在中国日渐火爆 李逵李鬼难分真</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo hc360"></span><span class="name">News From: hc360</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 17:08 PM</div>
+				<div class="text">2013年奢侈品在华销售仍困难重重</div>
+			</div>
+
+
+			<div class="line subtitle">Forum<span class="red">Top5</span></div>
+			<div class="line message">
+				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 08:53 AM</div>
+				<div class="text">#COSMO美容大奖微博评鉴团#不用说，Lanc?me 精华肌底液（780元/30ml）绝对是“抗老精华＂，不仅质地细腻柔滑，而且是渗透到肌肤底的修护，一直都是Lanc?me 兰蔻精华肌底液搭配小黑眼部精华液一起试用，效果真的很棒@健步林中 @学雷的兔子 @梁钰恒 @手机用户3019766345 @林下清风至</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 10:18 AM</div>
+				<div class="text">#毛毛播报电影新闻#――一句话新闻 http://t.cn/zjV8Pp1 （分享自@兰蔻Lancome）</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 11:25 AM</div>
+				<div class="text">##香港代购#秋天到啦，给你的皮肤喝点精华吧，台湾买到的，兰蔻小黑瓶50ML现货#兰蔻#</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 11:53 AM</div>
+				<div class="text">【10款热销香水排名】一、香奈儿5号香水；二、Dior花漾甜心香水 三、Dior真我香水；四、雅顿绿茶香水 ；五、香奈儿机遇香；六、CK-one中性香水；七、香奈儿COCO小姐香水；八、安娜苏许愿精灵香水；九、兰蔻魔法奇迹香水；十、兰蔻璀璨红情香水。</div>
+			</div>
+			<div class="line message">
+				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
+				<div class="date">Posted on Oct 16, 2013 at 13:06 PM</div>
+				<div class="text">#美够美够#Lancome 兰蔻蜜妍滋养润肤身体乳 专门为干性肌肤设计 运用独家蜂王浆Royal Lipideum科技 帮助肌肤重回滋养水润状态保护肌肤不受外界天气季节变换导致的侵害、轻盈滋养肌肤 国内没有的商品，美国专柜售价 580，现在有折扣的喔，其他明星产品小黑瓶，BB霜，粉水等依旧代购！</div>
+			</div>
 		</div>
 		<div class="footer">
 			<div class="message">本邮件是根据您在文思海辉ReUnion监测服务中开启了关键词邮件订阅服务，用于提醒您最近24小时之内网络媒体报道情况与微博话题提及情况的监测趋势变更，如需关闭，请登录ReUnion进行设置。 </div>
 			<div class="splitline"></div>
 			<div class="copyright">&copy;2013 Pactera Group. All Rights Reserved.</div>
 		</div>
-		
+
 	</div>
-	
-	
-	
-	
+
+
+
+
 </body>
 </html>
