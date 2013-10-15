@@ -266,60 +266,53 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
 
             loadReport();
         }
-       // loadReport();
+
         //定义数据组
         var data1 = [
-            {name : 'Mirco Blog',value : 55.11,color : '#4572a7'},
-            {name : 'eCommerce ',value : 29.84,color : '#aa4643'},
+            {name : 'MircoBlog',value : 55.11,color : '#4572a7'},
+            {name : 'eCommerce',value : 29.84,color : '#aa4643'},
             {name : 'Forum',value : 24.88,color : '#89a54e'},
-            {name : 'News Media',value : 6.77,color : '#80699b'},
+            {name : 'NewsMedia',value : 6.77,color : '#80699b'}
 
         ];
         var data2 = [
-            {name : 'MISE 6.0',value : 10.80,color : '#4572a7'},
-            {name : 'MISE 7.0',value : 7.40,color : '#4572a7'},
-            {name : 'MISE 8.0',value : 33.06,color : '#4572a7'},
-            {name : 'MISE 9.0',value : 2.81,color : '#4572a7'}
+            {name : 'Sina',value : 10.80,color : '#4572a7'},
+            {name : 'QQ',value : 7.40,color : '#4572a7'},
+            {name : 'Sohu',value : 33.06,color : '#4572a7'},
+            {name : 'Twitter',value : 2.81,color : '#4572a7'}
         ];
         var data3 = [
-            {name : 'Firefox 2.0',value : 0.2,color : '#aa4643'},
-            {name : 'Firefox 3.0',value : 0.8,color : '#aa4643'},
-            {name : 'Firefox 3.5',value : 1.61,color : '#aa4643'},
-            {name : 'Firefox 3.6',value : 13.12,color : '#aa4643'},
-            {name : 'Firefox 4.0',value : 5.43,color : '#aa4643'}
+            {name : 'eBay DE',value : 0.2,color : '#aa4643'},
+            {name : 'JD',value : 0.8,color : '#aa4643'},
+            {name : 'Dangdang',value : 1.61,color : '#aa4643'}
+
         ];
         var data4 = [
-            {name : 'Chrome 5.0',value : 0.12,color : '#89a54e'},
-            {name : 'Chrome 6.0',value : 0.19,color : '#89a54e'},
-            {name : 'Chrome 7.0',value : 0.12,color : '#89a54e'},
-            {name : 'Chrome 8.0',value : 0.36,color : '#89a54e'},
-            {name : 'Chrome 9.0',value : 0.32,color : '#89a54e'},
-            {name : 'Chrome 10.0',value : 9.91,color : '#89a54e'},
-            {name : 'Chrome 11.0',value : 0.5,color : '#89a54e'},
-            {name : 'Chrome 12.0',value : 0.22,color : '#89a54e'}
+            {name : 'Kimmis',value : 0.12,color : '#89a54e'},
+            {name : 'Amazon DE',value : 0.19,color : '#89a54e'},
+            {name : 'Astyle JP',value : 0.12,color : '#89a54e'}
         ];
         var data5 = [
-            {name : 'Safari 5.0',value : 4.55,color : '#80699b'},
-            {name : 'Safari 4.0',value : 1.42,color : '#80699b'},
-            {name : 'Safari Win 5.0',value : 0.23,color : '#80699b'},
-            {name : 'Safari 4.1',value : 0.21,color : '#80699b'},
-            {name : 'Safari/Maxthon',value : 0.2,color : '#80699b'},
-            {name : 'Safari 3.1',value : 0.19,color : '#80699b'}
+            {name : '21CN',value : 4.55,color : '#80699b'},
+            {name : 'BBC',value : 1.42,color : '#80699b'}
+
         ];
 
 
         var data = {
             'All':data1,
-            'MISE':data2,
-            'Firefox':data3,
-            'Chrome':data4,
-            'Safari':data5
+            'MircoBlog':data2,
+            'eCommerce':data3,
+            'Forum':data4,
+            'NewsMedia':data5
 
         }
         var sub = false;
         function toChart(title,subtitle,d){
+
+
             var chart = new iChart.Column2D({
-                render : 'canvasDiv1',
+                render : 'canvasDiv7',
                 data : d,
                 title : {
                     text : title,
@@ -360,9 +353,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                     ' ',
                                     data[r.get('name')]);
                             else
-                                toChart(' ',
-                                    ' ',
-                                    data.All);
+                                toChart(' ',' ', data.All);
 
                         }
                     },
@@ -381,9 +372,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                     listeners:{
                         parseText:function(tip,name,value,text){
                             if(sub)
-                                return name+":"+(value/this.get('total') * 100).toFixed(2)+ "%<br/>点击返回总图";
+                                return name+":"+(value/this.get('total') * 100).toFixed(2)+ "%<br/>Click to Summary";
                             else
-                                return name+":"+(value/this.get('total') * 100).toFixed(2)+ "%<br/>点击进入"+name+"详情";
+                                return name+":"+(value/this.get('total') * 100).toFixed(2)+ "%<br/>Click to "+name+" detail";
                         }
                     }
                 },
@@ -431,11 +422,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
 
             chart.draw();
         }
-        $(function() {
-            toChart('',
-                '',
-                data.All);
-        });
+
+          toChart('', '',  data.All);
+           loadReport();
 
 
     }];
