@@ -11,14 +11,18 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             endtime: "2013-08-31"
         }
 
+        $scope.dashboard={
+            endDate:"",
+            startDate:moment().add("days",-30)
+        };
         $rootScope.show=false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1 ) {
-                $scope.searchDate.endtime = new Date();
-                $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
+                $scope.dashboard.endDate=$scope.searchDate.endtime = new Date();
+                $scope.dashboard.startDate=$scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
                 loadReport();
             }
-        })
+        });
         var loadReport = function () {
 
 
@@ -28,9 +32,24 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                         new iChart.Bar2D({
                             render: 'canvasDiv1',
                             data: d,
+                            align:'right',
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
+                            offsetx:5,
+                            footnote : {
+                                text : 'Power by Reunion',
+                                color : '#909090',
+                                fontsize : 10,
+                                padding : '0 38'
+                            },
+                            label : {
+                                fontsize:10,
+                                color : '#666666',
+                                paddingleft:'0'
+                            },
                             coordinate: {
                                 scale: [
                                     {
@@ -64,6 +83,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
+                            footnote : {
+                                text : 'Power by Reunion',
+                                color : '#909090',
+                                fontsize : 11,
+                                padding : '0 38'
+                            },
                             coordinate: {
                                 scale: [
                                     {
@@ -102,6 +129,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             showpercent: true,
                             radius: 140,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
+                            footnote : {
+                                text : 'Power by Reunion',
+                                color : '#909090',
+                                fontsize : 11,
+                                padding : '0 38'
+                            },
                             sub_option: {
                                 label: {
                                     background_color: null,
@@ -131,7 +166,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             callback(null, '3');
                         });
                 },
-                function (callback) {
+             /*   function (callback) {
                     $http.get('api/KeyWordCloud').success(function (d2) {
                         var canvas = document.getElementById('canvasDiv6');
                         var context = canvas.getContext('2d');
@@ -143,14 +178,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             context.fillText(v.name, Math.round(Math.random() *150), Math.round(Math.random() *200));
                             context.fillStyle = v.color;
                             v.value= Math.log(v.value) / (Math.log(100)-Math.log(1)) * 20 + 1
-                           /* if (v.value > 100)
+                           *//* if (v.value > 100)
                                 v.value = v.value / 3;
                             else if (v.value < 14)
                                 v.value = v.value;
                             else if (v.value > 30)
                                 v.value = v.value / 2;
                             if(v.value>40)
-                                v.value=40;*/
+                                v.value=40;*//*
 
                             context.font = v.value + "px  Helvetica,arial";
 
@@ -165,7 +200,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             }, 3000)
                             callback(null, '4');
                         });
-                },
+                },*/
                 function (callback) {
                     $http.post('/api/SentimentAnalysisColumnPost', $scope.searchDate).success(function (d) {
                         new iChart.ColumnStacked2D({
@@ -175,7 +210,15 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             sub_option: {
                                 label: false
                             },
+                            footnote : {
+                                text : 'Power by Reunion',
+                                color : '#909090',
+                                fontsize : 11,
+                                padding : '0 38'
+                            },
                             showpercent: true,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
                             percent: true,//标志为百分比堆积图
                             width: 450,
                             height: 300,
@@ -231,6 +274,14 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             width: 450,
                             height: 300,
                             border:false,
+                            animation : true,
+                            animation_duration:700,//700ms完成动画
+                            footnote : {
+                                text : 'Power by Reunion',
+                                color : '#909090',
+                                fontsize : 11,
+                                padding : '0 38'
+                            },
                             tip: {
                                 enable: true,
                                 shadow: true
@@ -257,7 +308,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             }, 3000)
                             callback(null, '6');
                         });
+                },
+                function(callback){
+                    $scope.tagcloud="partials/charts/tagcloud1.html";
+                    callback(null,"cloud");
                 }
+
             ]);
         }
         $scope.search = function () {
@@ -265,8 +321,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             $scope.searchDate.endtime = $scope.dashboard.endDate;
 
             loadReport();
-        }
+        } ;
 
+        var deep2dBarChart =function(){
         //定义数据组
         var data1 = [
             {name : 'MircoBlog',value : 55.11,color : '#4572a7'},
@@ -424,7 +481,11 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         }
 
           toChart('', '',  data.All);
-           loadReport();
+        };
+         loadReport();
+        deep2dBarChart();
+
+
 
 
     }];

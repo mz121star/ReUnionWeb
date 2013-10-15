@@ -48,8 +48,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
         });
 
         $scope.feeds = {
-            startTime: new Date("2010-01-12"),
-            endTime:  new Date("2013-11-12"),
+            startTime: new Date("2010-01-01"),
+            endTime:  new Date(),
             sourceTypeName: '',
             description: '' ,
             pageIndex:1
