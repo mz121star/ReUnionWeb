@@ -620,7 +620,7 @@ exports.SentimentAnalysisPost = function (req, res) {
                  *second
                  */
                 FeedsModel.aggregate(
-                    { $match: { PublishTimeTemp: { $gte: new Date("2013-08-01"), $lte: new Date("2013-08-31")}, Semantic: {$lt: 0} }},
+                    { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte:  new Date(endDate)}, Semantic: {$lt: 0} }},
                     { $group: { _id: "$PublishTimeTemp", value: { $sum: 1 }} },
                     { $project: {name: "$_id", value: 1 }},
                     { $sort: { name: 1 } },
@@ -835,7 +835,7 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
                  *second
                  */
                 FeedsModel.aggregate(
-                    { $match: { PublishTimeTemp: { $gte: new Date("2013-08-01"), $lte: new Date("2013-08-31")}, Semantic: {$lt: 0} }},
+                    { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte: new Date(endDate)}, Semantic: {$lt: 0} }},
                     { $group: { _id: "$PublishTimeTemp", value: { $sum: 1 }} },
                     { $project: {name: "$_id", value: 1 }},
                     { $sort: { name: 1 } },
