@@ -31,8 +31,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 new iChart.Bar2D({
                     render: 'canvasDiv7',
                     data: d,
-                    width: 450,
-                    height: 300,
+                    width: 750,
+                    height: 500,
                     border:false,
                     coordinate: {
                         scale: [
@@ -54,7 +54,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                     //callback(null, '1');
                 });
             $http.post('api/TopicKeywordReportPost', searchData).success(function (d2) {
@@ -62,8 +62,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     render: 'canvasDiv8',
                     data: d2,
 //                    title: '产品活动关键字',
-                    width: 450,
-                    height: 300,
+                    width: 750,
+                    height: 500,
                     border:false,
                     coordinate: {
                         scale: [
@@ -85,7 +85,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                    // callback(null, '2');
                 });
             $http.post('/api/SearchSourcePost', searchData).success(function (a) {
@@ -93,8 +93,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     render: 'canvasDiv11',
                     data: a,
                     //title: '搜索来源',
-                    width: 450,
-                    height: 300,
+                    width: 750,
+                    height: 500,
                     border:false,
                     legend: {
                         enable: true
@@ -126,7 +126,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                   //  callback(null, '3');
                 });
             $http.post('/api/SentimentAnalysisColumnPost', searchData).success(function (d) {
@@ -139,8 +139,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     },
                     showpercent: true,
                     percent: true,//标志为百分比堆积图
-                    width: 450,
-                    height: 300,
+                    width: 750,
+                    height: 500,
                     border:false,
                     decimalsnum: 1,
                     tip: {
@@ -178,7 +178,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                     //callback(null, '5');
                 });
             $http.get('api/KeyWordCloud').success(function (d2) {
@@ -211,7 +211,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                    // callback(null, '4');
                 });
             $http.post('api/SentimentAnalysisPost', searchData).success(function (d) {
@@ -221,8 +221,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     data: d.data,
                     labels: d.labels,
 //                    title: '情感分析时间轴曲线图  ',
-                    width: 450,
-                    height: 300,
+                    width: 750,
+                    height: 500,
                     border:false,
                     tip: {
                         enable: true,
@@ -247,10 +247,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     $scope.global.error = "内部数据错误";
                     $timeout(function () {
                         $scope.global.error = "";
-                    }, 3000)
+                    }, 5000)
                     //callback(null, '6');
                 });
         };
+        $scope.tagcloud = "partials/charts/tagcloud1.html";
         FeedService.querySourceType().then(function (d) {
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
         });

@@ -1,8 +1,5 @@
 <div class="panel">
-    <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click=""
-            data-target="#saveReportModal">
-        Add New Alert
-    </button>
+
 
     <table id="css_table" class="table">
         <thead>
@@ -18,7 +15,7 @@
         </thead>
         <tbody ng-repeat="alert in alerts" showdetail>
         <tr>
-            <td class=" w50" data-id="{{alert._id}}" data-queryover="0"  toggletable class="closelist">{{ $index+1 }} </td>
+            <td class=" w50 openlist" data-id="{{alert._id}}" data-queryover="0"  toggletable  >{{ $index+1 }} </td>
             <td class=" w150">{{alert.Name }}</td>
             <td class=" w100">{{alert.Keyword }}</td>
             <td class=" w200">{{alert.MailTo }}</td>

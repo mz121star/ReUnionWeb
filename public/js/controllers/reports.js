@@ -4,7 +4,9 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
 
     var ReportsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Reports - " + res.title;
-        $rootScope.show=false;
+        $rootScope.menuUrl = "partials/leftmenu/reportsMenu.html";
+
+        $rootScope.show=true;
         // $rootScope.title= res.title;
         $scope.source = {
             brand: "兰蔻"

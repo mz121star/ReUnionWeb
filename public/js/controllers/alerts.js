@@ -5,7 +5,9 @@ define([ 'i18n!resources/nls/res'], function (res) {
     var  AlertsController=['$scope','$rootScope','$http','$timeout',function($scope,$rootScope,$http,$timeout) {
         $rootScope.menuUrl="";
         $rootScope.title = "Alerts - "+ res.title;
-        $rootScope.show=false;
+        $rootScope.menuUrl = "partials/leftmenu/alertMenu.html";
+
+        $rootScope.show=true;
         $http.get('api/topic').success(function (d) {
 
             $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
