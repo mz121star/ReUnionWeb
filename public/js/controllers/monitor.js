@@ -9,28 +9,28 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
         /*    $("select, input").uniform();*/
         $scope.SiteType = {
             dataType: [
-                {value: "微博"} ,
-                {value: "搜索引擎"},
-                {value: "论坛"},
-                {value: "商城"}
+                {value: "Micro Bloging"} ,
+                {value: "News Media"},
+                {value: "Forum"},
+                {value: "eCommerce"}
 
             ],
 
-            type: "微博"
+            type: "Micro Bloging"
 
         };
 
         function LoadData(){
-            $http.get('api/monitor/' + encodeURI("微博")).success(function(d){
+            $http.get('api/monitor/' + encodeURI("Micro Bloging")).success(function(d){
                 $scope.monitorWeibo=d
             })
-            $http.get('api/monitor/' + encodeURI("论坛")).success(function(d){
+            $http.get('api/monitor/' + encodeURI("Forum")).success(function(d){
                 $scope.monitorForums=d
             })
-            $http.get('api/monitor/' + encodeURI("搜索引擎")).success(function(d){
+            $http.get('api/monitor/' + encodeURI("News Media")).success(function(d){
                 $scope.monitorSearchs=d
             })
-            $http.get('api/monitor/' + encodeURI("商城")).success(function(d){
+            $http.get('api/monitor/' + encodeURI("eCommerce")).success(function(d){
                 $scope.monitorShops=d
             })
         }
