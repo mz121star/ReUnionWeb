@@ -4,7 +4,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
 
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
-        $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
+        //$rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
         $scope.searchDate = {
             starttime: "2013-08-01",
