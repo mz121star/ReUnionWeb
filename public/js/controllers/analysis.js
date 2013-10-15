@@ -278,6 +278,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 $scope.searchFeedForm.$invalid = false;
             }
         });
+        $http.get("/api/chart").success(function(d){
+            $scope.charts=d;
+        })
     }];
     return AnalysisController;
 });
