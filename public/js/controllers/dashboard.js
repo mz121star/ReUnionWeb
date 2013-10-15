@@ -11,14 +11,18 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             endtime: "2013-08-31"
         }
 
+        $scope.dashboard={
+            endDate:"",
+            startDate:moment().add("days",-30)
+        };
         $rootScope.show=false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1 ) {
-                $scope.searchDate.endtime = new Date();
-                $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
+                $scope.dashboard.endDate=$scope.searchDate.endtime = new Date();
+                $scope.dashboard.startDate=$scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
                 loadReport();
             }
-        })
+        });
         var loadReport = function () {
 
 
@@ -312,7 +316,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             $scope.searchDate.endtime = $scope.dashboard.endDate;
 
             loadReport();
-        }
+        } ;
 
         var deep2dBarChart =function(){
         //定义数据组

@@ -2,7 +2,7 @@
 
     <div class="panel">
         <div class="conditionspanel">
-            <div class="title"><span class="titlelabel">Analysis:{{source.brand}}（关键词表达式）</span></div>
+            <div class="title"><span class="titlelabel">Analysis:{{source.brand}} </span></div>
 
                 <form novalidate name="searchFeedForm">
 
@@ -13,10 +13,11 @@
                                     <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
                                     <!--  </li>                                                                                 -->
 
-                                    <span class="item" ng-repeat="st in sourcetype">
-                                        <input class="checkbox" uniform type="checkbox" name="sourceType"
-                                                      ng-checked="st.checked" ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
-                                    </span>
+
+                                     <span class="item" ng-repeat="topic in Topics">
+                          <label> <input class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"
+                                         ng-model="topic.checked" value="{{topic.type}}"/>{{topic.type}}</label>
+                            </span>
                             </div>
                         </div>
 
@@ -35,13 +36,13 @@
                             <div class="cell size1">Date Range:</div>
                             <div class="cell size5">
                                  <span>
-                <select>
-                    <option>Last 7 Days</option>
-                    <option>Last month</option>
+                <select  ng-model="dataRange">
+                    <option value="7" selected=selected>Last 7 Days</option>
+                    <option value="30">Last month</option>
                 </select>
 
             </span>
-                             <span>  from <input type="text" ng-model="feeds.startTime" name="startTime" required=""> to <input type="text" ng-model="feeds.endTime"> </span>
+                             <span>  from <input bs-datepicker type="text" ng-model="feeds.startTime" name="startTime" required=""> to <input bs-datepicker type="text" ng-model="feeds.endTime"> </span>
                             </div>
                         </div>
                         <div class="content">

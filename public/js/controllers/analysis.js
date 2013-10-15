@@ -11,6 +11,10 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
         };
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
         $scope.professionalSites = ['CSDN', 'IDC'];
+        $http.get('api/topic').success(function (d) {
+
+            $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
+        });
         $scope.searchFeed = function () {
             //主业务
             var sts = Enumerable.From($scope.sourcetype)
@@ -251,11 +255,19 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
         });
         $scope.feeds = {
-            startTime: "2013-08-01",
-            endTime: '2013-08-30',
+            startTime: new Date("2013-08-01"),
+            endTime: new Date(),
             sourceTypeName: ''  ,
             description:''
         };
+        $scope.dataRange=7;
+        $scope.$watch("dataRange", function (v1, v2) {
+            if (v1 ) {
+                $scope.feeds.startTime=new Date();
+                $scope.feeds.startTime= moment(new Date()).add('days', -v1).calendar();
+                loadReport();
+            }
+        })
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
                 $scope.warning = "开始不能大于结束";
