@@ -140,14 +140,17 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                         context.font = " 50px  Helvetica,arial";
                         for (var i in d2) {
                             var v = d2[i];
-                            context.fillText(v.name, Math.round(Math.random() * 200), Math.round(Math.random() * 200));
+                            context.fillText(v.name, Math.round(Math.random() *150), Math.round(Math.random() *200));
                             context.fillStyle = v.color;
-                            if (v.value > 100)
+                            v.value= Math.log(v.value) / (Math.log(100)-Math.log(1)) * 20 + 1
+                           /* if (v.value > 100)
                                 v.value = v.value / 3;
                             else if (v.value < 14)
                                 v.value = v.value;
                             else if (v.value > 30)
                                 v.value = v.value / 2;
+                            if(v.value>40)
+                                v.value=40;*/
 
                             context.font = v.value + "px  Helvetica,arial";
 
