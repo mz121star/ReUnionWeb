@@ -38,17 +38,20 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             border: false,
                             animation: true,
                             animation_duration: 700,//700ms完成动画
-                            offsetx: 5,
+                            offsetx: -5,
                             footnote: {
                                 text: 'Power by Reunion',
                                 color: '#909090',
-                                fontsize: 10,
+                                fontsize: 11,
                                 padding: '0 38'
                             },
                             label: {
-                                fontsize: 10,
+                                fontsize: 11,
                                 color: '#666666',
-                                paddingleft: '0'
+                                paddingleft: '0',
+                                textAlign: 'left',
+                                textBaseline: 'middle',
+                                rotate: -45
                             },
                             coordinate: {
                                 scale: [
@@ -85,7 +88,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             border: false,
                             animation: true,
                             animation_duration: 700,//700ms完成动画
-                            offsetx: 6,
+                            offsetx: 26,
                             footnote: {
                                 text: 'Power by Reunion',
                                 color: '#909090',
@@ -93,9 +96,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 padding: '0 38'
                             },
                             label: {
-                                fontsize: 10,
+                                fontsize: 11,
                                 color: '#666666',
-                                paddingleft: '0'
+                                paddingleft: '0',
+                                textAlign: 'left',
+                                textBaseline: 'middle',
+                                rotate: -45
                             },
                             coordinate: {
                                 scale: [
@@ -131,7 +137,13 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             height: 300,
                             border: false,
                             legend: {
-                                enable: true
+                                enable: true,
+                                background_color: null,
+                                border: {
+                                    enable: false
+                                },
+                                offsetx: 19,//设置x轴偏移，满足位置需要
+                                offsety: -20//设置y轴偏移，满足位置需要
                             },
                             showpercent: true,
                             radius: 140,
@@ -213,6 +225,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             render: 'canvasDiv3',
                             data: d.data,
                             labels: d.labels,
+                            label: {
+                                fontsize: 8,
+                                textAlign: 'right',
+                                textBaseline: 'middle',
+                                rotate: -45
+                            },
                             sub_option: {
                                 label: false
                             },
@@ -276,6 +294,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             render: 'canvasDiv4',
                             data: d.data,
                             labels: d.labels,
+                            label: {
+                                fontsize: 8,
+                                textAlign: 'right',
+                                textBaseline: 'hanging',
+                                rotate: -45
+                            },
 //                    title: '情感分析时间轴曲线图  ',
                             width: 450,
                             height: 300,
@@ -303,6 +327,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             sub_option: {
                                 hollow_inside: false,//设置一个点的亮色在外环的效果
                                 point_size: 10
+                            },
+                            coordinate: {
+                                height: 210
                             }
                         }).draw();
                         callback(null, '6');
@@ -392,6 +419,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                         fontsize: 11,
                         padding: '0 38'
                     },
+                    border: false,
                     width: 450,
                     height: 300,
                     label: {
@@ -447,7 +475,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                     coordinate: {
                         background_color: null,
                         grid_color: '#c0c0c0',
-                        width: 660,
+                        width: 350,
+                        height: 230,
                         axis: {
                             color: '#c0d0e0',
                             width: [0, 0, 1, 0]
