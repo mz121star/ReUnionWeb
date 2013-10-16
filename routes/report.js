@@ -255,7 +255,7 @@ exports.SentimentAnalysisPost = function (req, res) {
                             pl.bad.push(badResult[d].value) ;
                         }
                         finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
-                        finalResult.push({name: "Negative", value: pl.bad, color:"#aa4643", line_width: 2})
+                        finalResult.push({name: "Bad", value: pl.bad, color:"#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/
@@ -338,7 +338,7 @@ exports.SentimentAnalysisColumn = function (req, res) {
 
                 }
                 finalResult.push({name: "Positive", value: pl.good, color: utils.randomColor(), line_width: 2});
-                finalResult.push({name: "Negative", value: pl.bad, color: utils.randomColor(), line_width: 2})
+                finalResult.push({name: "Bad", value: pl.bad, color: utils.randomColor(), line_width: 2})
                 //                    处理结束
                 return res.json(finalResult);
             });
@@ -480,6 +480,58 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
 //            });
 //    });
 };
+exports.SentimentAnalysisByFromTypeBarPost = function (req, res) {
+    var params = req.body;
+    var startDate = new Date(params.starttime) , endDate = new Date(params.endtime);
+    FeedsModel.aggregate(
+        { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte: new Date(endDate)}, Semantic: {$gt: 0} }},
+        { $group: { _id: "$FromType", value: { $sum: 1 }} },
+        { $project: {name: "$_id", value: 1 }},
+        { $sort: { name: 1 } },
+        function (err, docs) {
+            var goodResult = [],badResult=[],labels=[];
+            for (var d in docs) {
+                docs[d].color = utils.randomColor();
+                goodResult.push(docs[d].value);
+                labels.push(docs[d].name)
+            }
+                /***
+                 *second
+                 */
+                FeedsModel.aggregate(
+                    { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte: new Date(endDate)}, Semantic: {$lt: 0} }},
+                    { $group: { _id: "$FromType", value: { $sum: 1 }} },
+                    { $project: {name: "$_id", value: 1 }},
+                    { $sort: { name: 1 } },
+                    function (err, docs2) {
+
+                        for (var d2 in docs2) {
+                            docs2[d2].color = utils.randomColor();
+                            badResult.push(docs2[d2].value);
+                        }
+
+                        /**处理*/
+                      var finalResult = [];
+                      /*   var pl = {
+                            good: [],
+                            normal: [],
+                            bad: []
+                        }
+                        for( d in goodResult){
+                            pl.good.push(goodResult[d].value) ;
+                        }
+                        for( d in badResult){
+                            pl.bad.push(badResult[d].value) ;
+                        }*/
+                        finalResult.push({name: "Positive", value: goodResult, color:"#4572a7", line_width: 2});
+                        finalResult.push({name: "Negative", value: badResult, color: "#aa4643", line_width: 2})
+                        var result = {data: finalResult, labels: labels}
+                        return res.json(result);
+                        /*结束*/
+                    });
+
+        });
+};
 exports.keyWordCloud = function (req, res) {
 
     FeedsModel.aggregate(
@@ -537,45 +589,5 @@ exports.test = function (req, res) {
             return res.json(result);
             /*结束*/
         });
-
-    /*  var o = {};
-
-     o.map = function () {
-
-     var key = this.PublishTime.match(/\d*/
-    /*)[0] + this.PublishTime.match(/-(\d*)/)[1];
-     emit(key, 1);
-     }
-     o.reduce = function (k, vals) {
-     var total = 0;
-     for (var i in vals) {
-     total += vals[i];
-     }
-     return total;
-
-     };
-
-
-     o.finalize = function (k, reduced) {
-     return {name: k, value: reduced}
-     }
-
-     o.out = { replace: 'createdCollectionNameForResults' };
-     o.verbose = true;
-     FeedsModel.mapReduce(o, function (err, model, stats) {
-
-     model.find().select("value")
-     /*/
-    /*.where('value').gt(10)*/
-    /**/
-    /*
-     .exec(function (err, docs) {
-     var result = [];
-     for (var d in docs) {
-     docs[d].value.color = utils.randomColor();
-     result.push(docs[d].value);
-     }
-     return res.json(result);
-     });
-     });*/
 };
+

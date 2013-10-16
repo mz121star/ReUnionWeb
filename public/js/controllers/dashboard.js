@@ -7,8 +7,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
         $scope.searchDate = {
-            starttime: "2013-08-01",
-            endtime: "2013-08-31"
+            starttime: "09/20/2013",
+            endtime: "10/17/2013"
         }
 
         $scope.dashboard = {
@@ -18,8 +18,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $rootScope.show = false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1) {
-                $scope.dashboard.endDate = $scope.searchDate.endtime =  moment(new Date()).format("YYYY-MM-DD");
-                $scope.dashboard.startDate = $scope.searchDate.starttime = moment(new Date()).add('days', -v1).format("YYYY-MM-DD");
+                $scope.dashboard.endDate = $scope.searchDate.endtime =  moment(new Date()).format("MM/DD/YYYY");
+                $scope.dashboard.startDate = $scope.searchDate.starttime = moment(new Date()).add('days', -v1).format("MM/DD/YYYY");
                 loadReport();
             }
         });
@@ -222,64 +222,42 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                  });
                  },*/
                 function (callback) {
-                    $http.post('/api/SentimentAnalysisColumnPost', $scope.searchDate).success(function (d) {
-                        new iChart.ColumnStacked2D({
-                            render: 'canvasDiv3',
+                    $http.post('/api/SentimentAnalysisByFromTypeBarPost', $scope.searchDate).success(function (d) {
+
+                         new iChart.ColumnMulti2D({
+                            render : 'canvasDiv3',
                             data: d.data,
                             labels: d.labels,
-                            label : {
-                                fontsize:11,
-                                textAlign:'right',
-                                textBaseline:'middle',
-                                rotate:-45,
-                                color : '#666666'
+                            offsetx:14,
+                            footnote : ' ',
+                             width: 450,
+                             height: 300,
+                             border: false,
+                             animation: true,
+                             animation_duration: 700,//700ms完成动画
+                            background_color : '#ffffff',
+                            legend:{
+                                enable:true,
+                                background_color : null,
+                                border : {
+                                    enable : false
+                                }
                             },
-                            sub_option: {
-                                label: false
-                            },
-                            footnote: {
-                                text: 'Power by Reunion',
-                                color: '#909090',
-                                fontsize: 11,
-                                padding: '0 38'
-                            },
-                            showpercent: true,
-                            animation: true,
-                            animation_duration: 700,//700ms完成动画
-                            percent: true,//标志为百分比堆积图
-                            width: 450,
-                            height: 300,
-                            border: false,
-                            decimalsnum: 1,
-                            tip: {
-                                enable: true,
-                                shadow: true
-                            },
-                            legend: {
-                                enable: true,
-                                background_color: null,
-                                border: {
-                                    enable: false
-                                },
-                                offsetx: 19,//设置x轴偏移，满足位置需要
-                                offsety: -20//设置y轴偏移，满足位置需要
-                            },
-                            coordinate: {
-                                axis: {
-                                    color: '#c0d0e0',
-                                    width: 0
-                                },
-                                scale: [
-                                    {
-                                        position: 'left',
-                                        scale_enable: false,
-                                        start_scale: 0,
-                                        scale_space: 50,
-                                        label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                                    }
-                                ]
+
+                            coordinate:{
+                                background_color : '#f1f1f1',
+                                rotate: 20,
+                                scale:[{
+                                    position:'left',
+                                    start_scale:0,
+                                    end_scale:140,
+                                    rotate: 20,
+                                    scale_space:300
+                                }],
+                                width:400,
+                                height:300
                             }
-                        }).draw();
+                        }) .draw();
                         callback(null, '5');
                     }).error(function (data, status, headers, config) {
 

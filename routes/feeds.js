@@ -47,7 +47,7 @@ exports.list = function (req, res) {
                     return res.json(500, err);
                 }
                 FeedsModel.count(function(err,totalcount){
-                    FeedsModel.find({PublishTime:new Date()}).count(function (err, Todaycount){
+                    FeedsModel.find({CrawlerTime:{$gte: new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+ " 00:00:00")}}).count(function (err, Todaycount){
                         FeedsModel.find().distinct('FromSite',function(err,countsites){
                             return res.json({
                                 "feeds": feeds,

@@ -109,7 +109,7 @@ var getcolor=new getColor();
 exports.randomColor=function(){
    return getcolor.getOne() ;
 };
-
+/*
 exports.dateRange = function (start, end) {
     var result=[];
     var startDate = new Date(start), endDate = new Date(end);
@@ -119,8 +119,18 @@ exports.dateRange = function (start, end) {
         result.push(new Date(d).getMonth()+1+"/"+new Date(d).getDate());
     }
     return result;
-}
+}*/
 
+exports.dateRange = function (start, end) {
+    var result=[];
+    var startDate = moment(start), endDate = moment(end);
+    var diff=endDate.diff(startDate,"days") <=30?  endDate.diff(startDate,"days"):30;
+    for (var i = 0; i <diff; i++) {
+        var d= moment(start).add('days',i).format("MM/DD");
+        result.push(d);
+    }
+    return result;
+}
 /*
 exports.randomColor=function(){
 
