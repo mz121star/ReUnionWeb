@@ -91,7 +91,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                     "<td>{{Title}} </td>    " +
                     " <td class='w200' >{{ maxContent}} </td>   " +
                     "<td>{{ FromSite }}</td>                              " +
-                    "<td class='last'><a  >{{FromUrl}}</a></td>  " +
+                    "<td class='last'><a  >{{url}}</a></td>  " +
 
                     "</tr>                    " +
                     "{{/each}}" +
@@ -126,6 +126,12 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                                 Handlebars.registerHelper('rate', function () {
                                     if(this.Semantic===0) return "";
                                     var cls = this.Semantic >0 ? "positive" : "negative"
+
+                                    return cls
+                                });
+                                Handlebars.registerHelper('url', function () {
+
+                                    var cls = this.FromUrl.length>40 ? this.FromUrl.substring(0,39)+"..." : this.FromUrl
 
                                     return cls
                                 });

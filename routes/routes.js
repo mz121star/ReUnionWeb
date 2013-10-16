@@ -38,6 +38,7 @@ module.exports = function (app) {
      */
     app.post('/api/feeds', feeds.list);
     app.get('/api/feedsSourceType', feeds.sourcetype);
+    app.post('/api/getNewFeeds',feeds.getNewFeeds);
 
     /***
      * Report

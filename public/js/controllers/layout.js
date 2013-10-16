@@ -13,19 +13,19 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
 
 
-             $scope.info={
-                 TodayFeedsTotal:"" ,
-                 TotalFeeds  : "",
-                 TotalSite:""
-             }   ;
+        $scope.info = {
+            TodayFeedsTotal: "",
+            TotalFeeds: "",
+            TotalSite: ""
+        };
 
-        $http.post("/api/feeds").success(function(d){
-            $scope.info.TodayFeedsTotal= d.todaycount  ;
-            $scope.info.TotalFeeds  = d.totalcount;
-            $scope.info. TotalSite =d.countsites;
-        }) ;
+        $http.post("/api/feeds").success(function (d) {
+            $scope.info.TodayFeedsTotal = d.todaycount;
+            $scope.info.TotalFeeds = d.totalcount;
+            $scope.info.TotalSite = d.countsites;
+        });
         $scope.LoginInfo = function (user) {
-            $scope.UserName=user["name"];
+            $scope.UserName = user["name"];
         };
         $http.get('api/checklogin').success(function (user) {
             $scope.LoginInfo(user);
@@ -33,7 +33,7 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
         $scope.logout = function () {
             if ($window.confirm("Are you sure?")) {
                 $http.get('/logout').success(function (d) {
-                    $window.location="/login";
+                    $window.location = "/login";
                 });
             }
         }
@@ -87,8 +87,6 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
         };
 
 
-
-
         /***
          * 设置当前选项卡的颜色
          * @type {string}
@@ -103,9 +101,24 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
             }
         })
 
-        $scope.hiddenMenu=function(){
-            $scope.show=!$scope.show;
+        $scope.hiddenMenu = function () {
+            $scope.show = !$scope.show;
         }
+        //message
+        var inter = window.setInterval(function () {
+            $(".message").toggleClass("font20", "font20")
+        }, 1000)      ;
+        $scope.ntime=new Date();
+         window.setInterval(function () {
+           $http.post('/api/getNewFeeds',{time:$scope.ntime}).success(function(d){
+               $scope.newFeeds= d.data;
+               $scope.ntime= d.time;
+           })
+        }, 10000)
+        $(".message").on("click", function () {
+            clearInterval(inter);
+            $(".message").html("");
+        })
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;
@@ -124,22 +137,22 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
         /*  $("body").attr("style","background:url('themes/glowsimple/img/dots.png') center center fixed, url('"+imgs[i--]+"') center center no-repeat fixed;");*/
         /*
          };*/
-    /*    $scope.fullscreen = function () {
-            if (window.fullScreenApi.supportsFullScreen) {
-                setInterval(function () {
-                    if (!document.webkitIsFullScreen) {
-                        clearInterval();
-                        return;
-                    }
-                    var img = imgs[i++];
-                    $("#bg").attr("src", img);
-                    console.log("fullscreen picture" + img);
-                }, 2000);
-                window.fullScreenApi.requestFullScreen(document.getElementById('njblogbg'));
-            } else {
-                alert('就你这浏览器，基本就告别全屏功能了,赶紧卸载了吧！！！');
-            }
-        };*/
+        /*    $scope.fullscreen = function () {
+         if (window.fullScreenApi.supportsFullScreen) {
+         setInterval(function () {
+         if (!document.webkitIsFullScreen) {
+         clearInterval();
+         return;
+         }
+         var img = imgs[i++];
+         $("#bg").attr("src", img);
+         console.log("fullscreen picture" + img);
+         }, 2000);
+         window.fullScreenApi.requestFullScreen(document.getElementById('njblogbg'));
+         } else {
+         alert('就你这浏览器，基本就告别全屏功能了,赶紧卸载了吧！！！');
+         }
+         };*/
     });
 });
 /*

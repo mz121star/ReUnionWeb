@@ -1,7 +1,7 @@
 var FeedsModel = require("./../models").Feeds;
 var reunionCore = require("./../libs/reunionCore");
 exports.list = function (req, res) {
-    console.log(req.body.st);
+
     var sts = req.body.st, topicKeyword = req.body.keyword;
     var queryCondition = {};
     if (sts) {
@@ -66,6 +66,27 @@ exports.list = function (req, res) {
 
 
 };
+/***
+ * {time:new Date}
+ * @param req
+ * @param res
+ * Return {data:{},time:""}
+ */
+exports.getNewFeeds=function(req,res){
+     var params=req.body;
+     var searchTime=new Date(params.time)||new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+ " 00:00:00");
+    FeedsModel.find({CrawlerTime:{$gte: searchTime}})
+        .sort({CrawlerTime:"desc"})
+        .limit(10)
+        /*.select('childs')*/
+        .exec(function (err, feeds) {
+            if(err){
+                return res.json(500,err);
+            }
+            return res.json({data:feeds,time:feeds[0].CrawlerTime||new Date()});
+        });
+
+} ;
 exports.sourcetype = function (req, res) {
     reunionCore.GetSourceType(function (d) {
         return res.json(d);

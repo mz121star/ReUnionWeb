@@ -78,7 +78,7 @@ caption {background:#eee;}
 #header .userinfo {float:right;line-height:38px;padding:18px 15px;}
 #header .userinfo a {color:#FFFFFF;margin:0 3px;}
 #header .userinfo .user {float:left;}
-#header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:8px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
+#header .userinfo .message {float:left;display:block;margin-top:5px;text-align: center;color: #ff0000;font-weight:bold;font-size:14px;width:24px;height: 24px;line-height: 26px;background: url('../images/icon/message.png') no-repeat;}
 #header .userinfo .setting {float:left;display:block;margin-top:7px;width:24px;height: 24px;background: url('../images/icon/setting.png') no-repeat;}
 #header .userinfo .logout {float:left;display:block;margin-top:7px;width:24px;height: 24px;background: url('../images/icon/power.png') no-repeat;}
 
@@ -327,4 +327,10 @@ caption {background:#eee;}
 #maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #FFF}
 
  /***2013/10/17 new by miaozhuang */
-div{transition: all 0.5s ease-in;}
+div,.message { -moz-transition: all 0.5s ease-in;
+    -webkit-transition: all 0.5s ease-in;
+    -o-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;}
+
+#header .userinfo  .font8{font-size: 8px}
+#header .userinfo .font20{font-size:20px}

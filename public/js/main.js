@@ -21,6 +21,7 @@ require.config({
         bootstrapAlert:'../lib/bootstrap/js/alert',
         bootstrapButton:'../lib/bootstrap/js/button',
         bootstrapTab:'../lib/bootstrap/js/tab',
+        bootstrapTooltip:'../lib/bootstrap/js/tooltip',
       /*  jqueryuniform: '../lib/uniform/jquery.uniform.min',*/
         linqjs:'../lib/linq',
         'angular-strap':'../lib/angular-strap/angular-strap',

@@ -367,8 +367,10 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             loadReport();
         };
 
+       $(function(){
+           loadReport();
+       })
 
-        loadReport();
 
 
 
