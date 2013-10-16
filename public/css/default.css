@@ -113,12 +113,11 @@ caption {background:#eee;}
 
 #maincontent {position:absolute;top:58px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
 
+#maincontent .containercrumbs {float:left;width:100%;padding: 0;}
+#maincontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
+#maincontent .containercrumbs .info {float:left;font-size:13px;padding:10px 0 0 20px;margin:0;color:#999;}
 
 #maincontent .containercontent {float:left;width:95%;margin:20px 0 0 20px;padding: 0;padding-bottom: 50px;}
-
-#maincontent .containercontent .containercrumbs {float:left;width:100%;padding: 0;}
-#maincontent .containercontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}
-
 #maincontent .containercontent .inputdate {float:left;width:158px;height:24px;padding:0;border:1px solid #999;background: #FFF;margin:0 10px;}
 #maincontent .containercontent .panel {float:left;margin-bottom: 10px;padding: 0;width:100%;}
 #maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
