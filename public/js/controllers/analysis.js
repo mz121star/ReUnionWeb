@@ -5,7 +5,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
     var AnalysisController=['$scope','$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
         $rootScope.menuUrl="";
         $rootScope.title ="Analysis - "+ res.title;
-        $rootScope.show=false;
+        $rootScope.menuUrl="partials/leftmenu/analysisMenu.html";
+        $rootScope.show=true;
         $scope.source = {
             brand: "兰蔻品牌"
         };
@@ -18,6 +19,47 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
         $scope.feeds={
             startTime:new Date("2013-08-01") ,
             endTime:new Date()
+        }    ;
+        var getTopics = function (callback) {
+            $http.get('api/topic').success(function (d) {
+                $rootScope.Topics = d;
+                /*  Enumerable.From(d);*/
+                /* .Select("{name:$.Name}").ToArray();*/
+                if (callback) callback();
+            });
+        }
+        getTopics();
+        $rootScope.topicSelected = function (topic) {
+            $scope.keyword = topic.Keyword;
+            $scope.feeds.startTime = topic.SearchCondition.StartDate;
+            $scope.feeds.endTime = topic.SearchCondition.EndDate;
+            $scope.source.keywordExpression =topic.Keyword;
+            var sourceType = topic.SearchCondition.SourceType;
+
+            console.log($scope.sourcetype);
+            /*    for(var i in sourceType){
+             for(var k in $scope.sourcetype) {
+             $scope.sourcetype[k].checked=false;
+             if($scope.sourcetype[k].type===sourceType[i]){
+             $scope.sourcetype[k].checked=true;
+             }
+
+             }
+             }*/
+
+            for (var k in $scope.sourcetype) {
+                $scope.sourcetype[k].checked=false;
+                for (var i in sourceType) {
+                    if ($scope.sourcetype[k].type === sourceType[i]) {
+                        $scope.sourcetype[k].checked = true;
+                    }
+
+                }
+            }
+
+            $scope.sourcetype = $scope.sourcetype;
+            console.log($scope.sourcetype);
+            console.log(topic);
         }
        var localsearchFeed = function () {
             //主业务

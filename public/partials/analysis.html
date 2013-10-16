@@ -1,104 +1,107 @@
+<div class="panel">
+    <div class="conditionspanel">
+        <div class="title"><span class="titlelabel">Analysis:{{source.brand}} </span></div>
+
+        <form novalidate name="searchFeedForm">
+
+            <div class="content">
+                <div class="cell size1">Source Type:</div>
+                <div class="cell size5">
+                    <!--  <li ng-repeat="st in sourceType">                                                     -->
+                    <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
+                    <!--  </li>                                                                                 -->
 
 
-    <div class="panel">
-        <div class="conditionspanel">
-            <div class="title"><span class="titlelabel">Analysis:{{source.brand}} </span></div>
-
-                <form novalidate name="searchFeedForm">
-
-                        <div class="content">
-                            <div class="cell size1">Topic:</div>
-                            <div class="cell size5">
-                                    <!--  <li ng-repeat="st in sourceType">                                                     -->
-                                    <!--      <label><input type="checkbox" name="{{st}}"/>{{st}}</label>                       -->
-                                    <!--  </li>                                                                                 -->
+                                     <span class="item" ng-repeat="st in sourcetype">
+                   <label><input class="checkbox" uniform type="checkbox" name="sourceType" ng-checked="st.checked"
+                                 ng-model="st.checked" value="{{st.type}}"/>{{st.type}} </label>
+                </span>
+                </div>
+            </div>
 
 
-                                     <span class="item" ng-repeat="topic in Topics">
-                          <label> <input class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"
-                                         ng-model="topic.checked" value="{{topic.type}}"/>{{topic.type}}</label>
-                            </span>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <div class="cell size1"> Professional Sites:</div>
-                            <div class="cell size5">
-                                <ul>
-                                    <span class="item" ng-repeat="st in professionalSites">
-                                        <input class="checkbox" uniform type="checkbox" name="{{st}}"/>{{st}}
-                                    </span>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <div class="cell size1">Date Range:</div>
-                            <div class="cell size5">
+            <div class="content">
+                <div class="cell size1">Date Range:</div>
+                <div class="cell size5">
                                  <span>
-                <select  ng-model="dataRange">
+                <select ng-model="dataRange">
                     <option value="7" selected=selected>Last 7 Days</option>
                     <option value="30">Last month</option>
                 </select>
 
             </span>
-                             <span>  from <input bs-datepicker type="text" ng-model="feeds.startTime" name="startTime" required=""> to <input bs-datepicker type="text" ng-model="feeds.endTime"> </span>
-                            </div>
-                        </div>
-                        <div class="content">
-                            <div class="cell size1"></div>
-                            <div class="cell size5">
-                            <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
-
-                            <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>Search</button>
-                            <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal"
-                                    ng-disabled='searchFeedForm.$invalid'> Search Current Set</button>
-                            <button class="btn btn-primary " data-toggle="modal" data-target="#selectReportChart"  > Add New Chart</button>
-                            </div>
-                        </div>
-                </form>
+                    <span>  from <input bs-datepicker type="text" ng-model="feeds.startTime" name="startTime"
+                                        required=""> to <input bs-datepicker type="text"
+                                                               ng-model="feeds.endTime"> </span>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="chartpanel2">
-        <div class="title icon1" ><span class="titlelabel">Date Source Bar</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
-            <div id='canvasDiv7'></div>
-        </div>
-    </div>
-    <div class="chartpanel2 ">
-        <div class="title icon1"><span class="titlelabel">Top Keyword</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
-            <div id='canvasDiv8'></div>
-        </div>
-    </div>
-    <div class="chartpanel2">
-        <div class="title icon1"><span class="titlelabel">Sentiment Analysis </span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
-            <div id='canvasDiv9'></div>
-        </div>
-    </div>
-    <div class="chartpanel2">
-        <div class="title icon3"><span class="titlelabel">Sentiment Analysis Timeline</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
-            <div id='canvasDiv10'></div>
-        </div>
-    </div>
-    <div class="chartpanel2">
-        <div class="title icon2"><span class="titlelabel">Date Source Pie</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
-            <div id='canvasDiv11'></div>
-        </div>
-    </div>
- <!--   <div class="chartpanel2">
-        <div class="title"><span class="titlelabel">Cloud Report</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
-        <div class="content">
+            <div class="content">
+                <div class="cell size1"></div>
+                <div class="cell size5">
+                    <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
 
-            <iframe src="{{tagcloud}}" border=0 width="100%"     frameborder=no scrolling="no" height=100% ></iframe>
-        </div>
-    </div>-->
+                    <button class="btn btn-primary" ng-disabled='searchFeedForm.$invalid' ng-click='searchFeed()'>
+                        Search
+                    </button>
+                    <button class="btn btn-primary " data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                            ng-disabled='searchFeedForm.$invalid'> Search Current Set
+                    </button>
+
+                </div>
+            </div>
+        </form>
     </div>
-<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+</div>
+<div class="chartpanel2">
+    <div class="title icon1"><span class="titlelabel">Date Source Bar</span><span class="action"><a class="min"
+                                                                                                    href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <div id='canvasDiv7'></div>
+    </div>
+</div>
+<div class="chartpanel2 ">
+    <div class="title icon1"><span class="titlelabel">Top Keyword</span><span class="action"><a class="min"
+                                                                                                href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <div id='canvasDiv8'></div>
+    </div>
+</div>
+<div class="chartpanel2">
+    <div class="title icon1"><span class="titlelabel">Sentiment Analysis </span><span class="action"><a class="min"
+                                                                                                        href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <div id='canvasDiv9'></div>
+    </div>
+</div>
+<div class="chartpanel2">
+    <div class="title icon3"><span class="titlelabel">Sentiment Analysis Timeline</span><span class="action"><a
+            class="min" href="#"></a><a class="close" href="#"></a></span></div>
+    <div class="content">
+        <div id='canvasDiv10'></div>
+    </div>
+</div>
+<div class="chartpanel2">
+    <div class="title icon2"><span class="titlelabel">Date Source Pie</span><span class="action"><a class="min"
+                                                                                                    href="#"></a><a
+            class="close" href="#"></a></span></div>
+    <div class="content">
+        <div id='canvasDiv11'></div>
+    </div>
+</div>
+<!--   <div class="chartpanel2">
+       <div class="title"><span class="titlelabel">Cloud Report</span><span class="action"><a class="min" href="#"></a><a class="close" href="#"></a></span></div>
+       <div class="content">
+
+           <iframe src="{{tagcloud}}" border=0 width="100%"     frameborder=no scrolling="no" height=100% ></iframe>
+       </div>
+   </div>-->
+</div>
+<div class="modal fade" id="saveTopicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -112,31 +115,38 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save Topic</button>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>
 
-    <div style="display: none;" class="modal fade" id="selectReportChart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Save Tpoic</h4>
-                </div>
-                <div class="modal-body">
-                    <div style="float: left" ng-repeat="chart in charts">
+<div style="display: none;" class="modal fade" id="selectReportChart" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Save Tpoic</h4>
+            </div>
+            <div class="modal-body">
+                <div style="float: left" ng-repeat="chart in charts">
 
-                          <img src="files/{{chart.Thumbnail}}">  <p>{{chart.Name}}</p>
-                          <input type="button" class="btn btn-primary" value="add">
+                    <img src="files/{{chart.Thumbnail}}">
 
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <p>{{chart.Name}}</p>
+                    <input type="button" class="btn btn-primary" value="add">
 
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
+</div>
 </div>
 </div>

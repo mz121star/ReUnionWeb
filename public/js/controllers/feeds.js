@@ -89,6 +89,14 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             {name: "topic1"},
             {name: "topic2"}
         ]
+        var gettopicSelected = function (callback) {
+            $http.get('api/topic').success(function (d) {
+                $rootScope.Topics = d;
+                /*  Enumerable.From(d);*/
+                /* .Select("{name:$.Name}").ToArray();*/
+                if (callback) callback();
+            });
+        }
         var getTopics = function (callback) {
             $http.get('api/topic').success(function (d) {
                 $rootScope.Topics = d;

@@ -86,7 +86,7 @@
             <td>{{feed.Title| maxlen:20  }} </td>
             <td>{{feed.Content | maxlen:40  }} </td>
             <td>{{ feed.FromSite | maxlen:40}}</td>
-            <td class="last"><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+            <td class="last"><a ng-href="feed.FromUrl" >{{feed.FromUrl | maxlen:40}}</a></td>
 
         </tr>
 

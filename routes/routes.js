@@ -83,6 +83,7 @@ module.exports = function (app) {
     app.get('/api/alert',alert.list);
     app.get('/api/alert/:id',alert.getById);
     app.post('/api/alert',alert.save);
+    app.put('/api/alert/:id',alert.edit);
     /***
      * Chart
      */

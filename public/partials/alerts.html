@@ -21,7 +21,8 @@
             <td class=" w200">{{alert.MailTo }}</td>
             <td class=" w100">{{alert.SMSTo }} </td>
             <td class=" w150">{{alert.AlertStartTime |date }}-{{alert.AlertEndTime |date }}</td>
-            <td class="last"> <button class="btn btn-primary" >Edit</button></td>
+            <td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"
+                                      data-target="#saveReportModal">Edit</button></td>
         </tr>
         <tr class="subrow">
             <td colspan="7" class="subrowtd">
@@ -138,14 +139,23 @@
                             <div class="left"><span class="title">Topic</span></div>
                             <div class="center">
                             <span class="item"  ng-repeat="topic in Topics">
-                          <label> <input   class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"
+                              <label> <input   class="checkbox" type="checkbox" name="sourceType" ng-checked="topic.checked"
                                          ng-model="topic.checked" value="{{topic.type}}"/>{{topic.type}}</label>
                             </span>
 
                             </div>
                             <div class="right"></div>
                         </div>
+                        <div class="content">
+                            <div class="left"><span class="title">Semantic</span></div>
+                            <div class="center">
+                                 <span class="item"  > <label> <input   class="checkbox" type="checkbox" name="semantic"  value="1"/>Good</label></span>
+                                     <span class="item"  > <label> <input   class="checkbox" type="checkbox" name="semantic"  value="-1"/>Bad</label>    </span>
 
+
+                            </div>
+                            <div class="right"></div>
+                        </div>
                         <div class="content">
                             <div class="left"><span class="title">Time Range </span></div>
                             <div class="center">

@@ -1,6 +1,7 @@
 var AlertModel = require("./../models").Alert;
 var path = require('path');
 var fs = require('fs');
+var underscore = require('underscore');
 /*var Handlebars = require('handlebars');
 var nodemailer = require("nodemailer");
 var config = require('../config');*/
@@ -64,24 +65,27 @@ exports.save = function (req, res) {
 
 
 /***
- * Put /subReport
+ * Put /alert/:id {data}
  * @param req
  * @param res
  */
 exports.edit = function (req, res) {
-    //var report = new ReportModel(req.body);
-    var id = req.body._id;
-  /*  AlertModel.findById(id, function (err, report) {
-        report.Status = Math.abs(report.Status - 1);
-        report.save(function (err, data) {
-            if (err) {
-                return res.json(500, err);
+    var reg = /^\/api\/alert\/(?:([^\/]+?))\/?$/;
+    var id=req.url.match(reg)[1];
+    if(id) id=decodeURI(id);
+    AlertModel.findById(id,function(err, alert) {
+            if(err){
+                return res.json(500,err);
             }
+            alert=underscore.extend(alert,req.body);
+            alert.save(function (err, data) {
+                if (err) {
+                    return res.json(500, err);
+                }
 
-            res.json(data);
+                res.json(data);
+            })
         });
-
-    });*/
 
 }
 
