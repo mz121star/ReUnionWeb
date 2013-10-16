@@ -4,7 +4,7 @@
     <table id="css_table" class="table">
         <thead>
         <tr>
-            <td class="w50">No.</td>
+            <td class="w30">No.</td>
             <td class="w150">Title</td>
             <td class="w100">Keywords</td>
             <td class="w200">MailTo</td>
@@ -15,7 +15,7 @@
         </thead>
         <tbody ng-repeat="alert in alerts" showdetail>
         <tr>
-            <td class=" w50 openlist" data-id="{{alert._id}}" data-queryover="0"  toggletable  >{{ $index+1 }} </td>
+            <td class=" openlist" data-id="{{alert._id}}" data-queryover="0"  toggletable  >{{ $index+1 }} </td>
             <td class=" w150">{{alert.Name }}</td>
             <td class=" w100">{{alert.Keyword }}</td>
             <td class=" w200">{{alert.MailTo }}</td>
@@ -27,7 +27,7 @@
             <td colspan="7" class="subrowtd">
                 <table class="subtable">
                     <tr class="thead">
-                        <td>N0.</td>
+                        <td class="w30">N0.</td>
                         <td sortable>Title</td>
                         <td>Description</td>
                         <td>Source</td>

@@ -176,6 +176,7 @@ caption {background:#eee;}
 
 
 #maincontent .containercontent .table {float:left;margin:20px 0 0 0;padding: 0;width:100%;color:#333;}
+#maincontent .containercontent .table .w30 {width:30px;}
 #maincontent .containercontent .table .w50 {width:50px;}
 #maincontent .containercontent .table .w100 {width:100px;}
 #maincontent .containercontent .table .w150 {width:150px;}
@@ -205,15 +206,15 @@ caption {background:#eee;}
 
 #maincontent .containercontent .table tbody tr.subrow {padding:0;display: none;}
 #maincontent .containercontent .table tbody tr.subrow:hover {background:#FFF;}
-#maincontent .containercontent .table tbody tr.subrow .subrowtd {padding:0;padding-left:20px;border-right:none;}
+#maincontent .containercontent .table tbody tr.subrow .subrowtd {padding:0;border-right:none;}
 
-#maincontent .containercontent .table .subtable {width:100%;margin:0;padding:0;background:#EEE;border-left:1px solid #DDD;}
+#maincontent .containercontent .table .subtable {width:100%;margin:0;padding:0;background:#EEE;}
 #maincontent .containercontent .table .subtable .thead {margin:0;padding:0;background:#DDD;}
 #maincontent .containercontent .table .subtable .thead:hover {background:#DDD;}
 #maincontent .containercontent .table .subtable .thead td {border-bottom:1px solid #b8c0c7;font-weight:bold;color:#001931;}
 #maincontent .containercontent .table .subtable .tbody {margin:0;padding:0;}
 #maincontent .containercontent .table .subtable .tbody:hover {background:#EEE;}
-#maincontent .containercontent .table .subtable .tbody td {border-right:1px solid #DDD;border-bottom:1px dashed  #DDD;}
+#maincontent .containercontent .table .subtable .tbody td {border-bottom:1px dashed  #DDD;}
 
 
 #maincontent .containercontent .table .split_line {border-top:1px solid #CCC;margin-bottom:5px;margin-left:-5px;margin-right:-10px;padding:0;}
