@@ -46,10 +46,21 @@ exports.list = function (req, res) {
                 if (err) {
                     return res.json(500, err);
                 }
-                return res.json({
-                    "feeds": feeds,
-                    "count": count / 20 > 1 ? count / 20 : 1
-                });
+                FeedsModel.count(function(err,totalcount){
+                    FeedsModel.find({PublishTime:new Date()}).count(function (err, Todaycount){
+                        FeedsModel.find().distinct('FromSite',function(err,countsites){
+                            return res.json({
+                                "feeds": feeds,
+                                "count": count / 20 > 1 ? count / 20 : 1 ,
+                                "totalcount":totalcount,
+                                todaycount:Todaycount ,
+                                countsites:countsites.length
+                            });
+                        })
+
+                    })
+                })
+
             });
     })
 

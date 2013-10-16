@@ -13,6 +13,17 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
 
 
+             $scope.info={
+                 TodayFeedsTotal:"" ,
+                 TotalFeeds  : "",
+                 TotalSite:""
+             }   ;
+
+        $http.post("/api/feeds").success(function(d){
+            $scope.info.TodayFeedsTotal= d.todaycount  ;
+            $scope.info.TotalFeeds  = d.totalcount;
+            $scope.info. TotalSite =d.countsites;
+        }) ;
         $scope.LoginInfo = function (user) {
             $scope.UserName=user["name"];
         };

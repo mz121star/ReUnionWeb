@@ -125,6 +125,7 @@
 <div id="maincontent" ng-class="{mainshow:show,mainhidden:!show }">
     <div id="showMenu" ng-click="hiddenMenu()" ><div class="resizable-icon" id="widResize"></div></div>
     <div class="containercrumbs">
+       <div class="info">New Feeds Today:{{info.TodayFeedsTotal}}, Total Feeds:{{info.TotalFeeds}} From {{info.TotalSite}} Sites.</div>
         <!--  <span class="text">Dashboard Summary For Lancome</span>-->
         <!--<a ng-show="!!global.error" class="close" data-dismiss="alert" href="javascript:;" aria-hidden="true"> {{ global.error }}</a>-->
         <div ng-show="!!global.error" class="alert alert-danger alert-dismissable">
