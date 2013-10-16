@@ -27,57 +27,57 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
 
 
             async.series([
-                function (callback) {
-                    $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
-                        new iChart.Bar2D({
-                            render: 'canvasDiv1',
-                            data: d,
-                            align: 'right',
-                            width: 450,
-                            height: 300,
-                            border: false,
-                            animation: true,
-                            animation_duration: 700,//700ms完成动画
-                            offsetx: -5,
-                            footnote: {
-                                text: 'Power by Reunion',
-                                color: '#909090',
-                                fontsize: 11,
-                                padding: '0 38'
-                            },
-                            label: {
-                                fontsize: 11,
-                                color: '#666666',
-                                paddingleft: '0',
-                                textAlign: 'left',
-                                textBaseline: 'middle',
-                                rotate: 20,
-                                font:'微软雅黑'
-                            },
-                            coordinate: {
-                                scale: [
-                                    {
-                                        position: 'bottom',
-                                        listeners: {
-                                            parseText: function (t, x, y) {
-                                                return {text: t}
-                                            }
-                                        },
-                                        label: {color: '#254d70', fontsize: 11, fontweight: 600}
-                                    }
-                                ]
-                            }
-                        }).draw();
-                        callback(null, '1');
-                    }).error(function (data, status, headers, config) {
-
-                            $scope.global.error = "内部数据错误";
-                            $timeout(function () {
-                                $scope.global.error = "";
-                            }, 3000)
-                            callback(null, '1');
-                        });
-                },
+//                function (callback) {
+//                    $http.post('api/2DBarReprotPost', $scope.searchDate).success(function (d) {
+//                        new iChart.Bar2D({
+//                            render: 'canvasDiv1',
+//                            data: d,
+//                            align: 'right',
+//                            width: 450,
+//                            height: 300,
+//                            border: false,
+//                            animation: true,
+//                            animation_duration: 700,//700ms完成动画
+//                            offsetx: -5,
+//                            footnote: {
+//                                text: 'Power by Reunion',
+//                                color: '#909090',
+//                                fontsize: 11,
+//                                padding: '0 38'
+//                            },
+//                            label: {
+//                                fontsize: 11,
+//                                color: '#666666',
+//                                paddingleft: '0',
+//                                textAlign: 'left',
+//                                textBaseline: 'middle',
+//                                rotate: 20,
+//                                font:'微软雅黑'
+//                            },
+//                            coordinate: {
+//                                scale: [
+//                                    {
+//                                        position: 'bottom',
+//                                        listeners: {
+//                                            parseText: function (t, x, y) {
+//                                                return {text: t}
+//                                            }
+//                                        },
+//                                        label: {color: '#254d70', fontsize: 11, fontweight: 600}
+//                                    }
+//                                ]
+//                            }
+//                        }).draw();
+//                        callback(null, '1');
+//                    }).error(function (data, status, headers, config) {
+//
+//                            $scope.global.error = "内部数据错误";
+//                            $timeout(function () {
+//                                $scope.global.error = "";
+//                            }, 3000)
+//                            callback(null, '1');
+//                        });
+//                },
                 function (callback) {
                     $http.post('api/TopicKeywordReportPost', $scope.searchDate).success(function (d2) {
                         new iChart.Bar2D({
@@ -129,63 +129,63 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             callback(null, '2');
                         });
                 },
-                function (callback) {
-                    $http.post('/api/SearchSourcePost', $scope.searchDate).success(function (a) {
-                        new iChart.Pie2D({
-                            render: 'canvasDiv5',
-                            data: a,
-                            //title: '搜索来源',
-                            width: 450,
-                            height: 300,
-                            border: false,
-                            legend: {
-                                enable: true,
-                                background_color: null,
-                                border: {
-                                    enable: false
-                                },
-                                offsetx: 19,//设置x轴偏移，满足位置需要
-                                offsety: -20//设置y轴偏移，满足位置需要
-                            },
-                            showpercent: true,
-                            radius: 140,
-                            animation: true,
-                            animation_duration: 700,//700ms完成动画
-                            footnote: {
-                                text: 'Power by Reunion',
-                                color: '#909090',
-                                fontsize: 11,
-                                padding: '0 38'
-                            },
-                            sub_option: {
-                                label: {
-                                    background_color: null,
-                                    sign: false,//设置禁用label的小图标
-                                    padding: '0 4',
-                                    border: {
-                                        enable: false,
-                                        color: '#666666'
-                                    },
-                                    fontsize: 12,
-                                    fontweight: 600,
-                                    color: '#4572a7'
-                                },
-                                border: {
-                                    width: 2,
-                                    color: '#ffffff'
-                                }
-                            }
-                        }).draw();
-                        callback(null, '3');
-                    }).error(function (data, status, headers, config) {
-
-                            $scope.global.error = "内部数据错误";
-                            $timeout(function () {
-                                $scope.global.error = "";
-                            }, 3000)
-                            callback(null, '3');
-                        });
-                },
+//                function (callback) {
+//                    $http.post('/api/SearchSourcePost', $scope.searchDate).success(function (a) {
+//                        new iChart.Pie2D({
+//                            render: 'canvasDiv5',
+//                            data: a,
+//                            //title: '搜索来源',
+//                            width: 450,
+//                            height: 300,
+//                            border: false,
+//                            legend: {
+//                                enable: true,
+//                                background_color: null,
+//                                border: {
+//                                    enable: false
+//                                },
+//                                offsetx: 19,//设置x轴偏移，满足位置需要
+//                                offsety: -20//设置y轴偏移，满足位置需要
+//                            },
+//                            showpercent: true,
+//                            radius: 140,
+//                            animation: true,
+//                            animation_duration: 700,//700ms完成动画
+//                            footnote: {
+//                                text: 'Power by Reunion',
+//                                color: '#909090',
+//                                fontsize: 11,
+//                                padding: '0 38'
+//                            },
+//                            sub_option: {
+//                                label: {
+//                                    background_color: null,
+//                                    sign: false,//设置禁用label的小图标
+//                                    padding: '0 4',
+//                                    border: {
+//                                        enable: false,
+//                                        color: '#666666'
+//                                    },
+//                                    fontsize: 12,
+//                                    fontweight: 600,
+//                                    color: '#4572a7'
+//                                },
+//                                border: {
+//                                    width: 2,
+//                                    color: '#ffffff'
+//                                }
+//                            }
+//                        }).draw();
+//                        callback(null, '3');
+//                    }).error(function (data, status, headers, config) {
+//
+//                            $scope.global.error = "内部数据错误";
+//                            $timeout(function () {
+//                                $scope.global.error = "";
+//                            }, 3000)
+//                            callback(null, '3');
+//                        });
+//                },
                 /*   function (callback) {
                  $http.get('api/KeyWordCloud').success(function (d2) {
                  var canvas = document.getElementById('canvasDiv6');
@@ -305,7 +305,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 color : '#666666'
                             },
 //                    title: '情感分析时间轴曲线图  ',
-                            width: 450,
+                            width: 920,
                             height: 300,
                             border: false,
                             animation: true,
