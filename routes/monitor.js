@@ -1,5 +1,5 @@
 var MonitorModel = require("./../models").Monitor;
-
+var underscore = require('underscore');
 /***
  * Get /monitor
  * @param req
@@ -57,4 +57,31 @@ exports.save = function (req, res) {
         res.json(data);
     })
 }
+
+
+/***
+ * Put /api/monitor/:id {data}
+ * {name:"topicName"}
+ * @param req
+ * @param res
+ */
+exports.edit = function (req, res) {
+    var reg = /^\/api\/monitor\/(?:([^\/]+?))\/?$/;
+    var id=req.url.match(reg)[1];
+    if(id) id=decodeURI(id);
+    MonitorModel.findById(id,function(err, monitor) {
+        if(err){
+            return res.json(500,err);
+        }
+        monitor=underscore.extend(monitor,req.body);
+        monitor.save(function (err, data) {
+            if (err) {
+                return res.json(500, err);
+            }
+
+            res.json(data);
+        })
+    });
+}
+
 

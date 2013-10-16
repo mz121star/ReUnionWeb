@@ -77,6 +77,7 @@ module.exports = function (app) {
     app.get('/api/monitor',monitor.list);
     app.get('/api/monitor/:id',monitor.getlistbyType);
     app.post('/api/monitor',monitor.save);
+    app.put('/api/monitor/:id',monitor.edit);
     /***
      * Alert
      */

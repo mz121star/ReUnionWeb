@@ -254,8 +254,8 @@ exports.SentimentAnalysisPost = function (req, res) {
                         for( d in badResult){
                             pl.bad.push(badResult[d].value) ;
                         }
-                        finalResult.push({name: "Good", value: pl.good, color: "#4572a7", line_width: 2});
-                        finalResult.push({name: "Bad", value: pl.bad, color:"#aa4643", line_width: 2})
+                        finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
+                        finalResult.push({name: "Negative", value: pl.bad, color:"#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/
@@ -337,8 +337,8 @@ exports.SentimentAnalysisColumn = function (req, res) {
                     }
 
                 }
-                finalResult.push({name: "Good", value: pl.good, color: utils.randomColor(), line_width: 2});
-                finalResult.push({name: "Bad", value: pl.bad, color: utils.randomColor(), line_width: 2})
+                finalResult.push({name: "Positive", value: pl.good, color: utils.randomColor(), line_width: 2});
+                finalResult.push({name: "Negative", value: pl.bad, color: utils.randomColor(), line_width: 2})
                 //                    处理结束
                 return res.json(finalResult);
             });
@@ -386,8 +386,8 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
                         for( d in badResult){
                             pl.bad.push(badResult[d].value) ;
                         }
-                        finalResult.push({name: "Good", value: pl.good, color:"#4572a7", line_width: 2});
-                        finalResult.push({name: "Bad", value: pl.bad, color: "#aa4643", line_width: 2})
+                        finalResult.push({name: "Positive", value: pl.good, color:"#4572a7", line_width: 2});
+                        finalResult.push({name: "Negative", value: pl.bad, color: "#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/

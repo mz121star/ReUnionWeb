@@ -86,10 +86,10 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
 
                     "{{#each feeds}} " +
-                    " <tr class='tbody'>" +
+                    " <tr class='tbody {{rate}}'>" +
                     "<td> </td>         " +
-                    "<td>{{Title  }} </td>    " +
-                    " <td class='w200' >{{ maxContent   }} </td>   " +
+                    "<td>{{Title}} </td>    " +
+                    " <td class='w200' >{{ maxContent}} </td>   " +
                     "<td>{{ FromSite }}</td>                              " +
                     "<td class='last'><a  >{{FromUrl}}</a></td>  " +
 
@@ -122,6 +122,12 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                                     var len = this.Content.length > 50 ? 50 : this.Content.length
                                     return this.Content.substring(0, len - 1) + "...";
+                                });
+                                Handlebars.registerHelper('rate', function () {
+                                    if(this.Semantic===0) return "";
+                                    var cls = this.Semantic >0 ? "positive" : "negative"
+
+                                    return cls
                                 });
                                 attrs.queryover = "1"
                                 console.log($(elm).parent().next().children('.subrowtd')) ;

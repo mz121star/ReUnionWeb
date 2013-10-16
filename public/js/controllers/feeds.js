@@ -59,6 +59,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             $scope.modal.title = feed.Title;
             $scope.modal.source = feed.FromSite;
             $scope.modal.url = feed.FromUrl;
+            $scope.modal.author = feed.Author;
+            $scope.modal.publishtime = feed.PublishTime
             $scope.modal.content = feed.content || feed.Content;
 
         };

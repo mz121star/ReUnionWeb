@@ -301,6 +301,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
         };
         $scope.searchFeed =   localsearchFeed;
         //localsearchFeed();
+
         $scope.tagcloud = "partials/charts/tagcloud1.html";
         FeedService.querySourceType().then(function (d) {
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
@@ -317,6 +318,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 $scope.feeds.startTime=new Date();
                 $scope.feeds.startTime= moment(new Date()).add('days', -v1).calendar();
              /*   loadReport();*/
+            }
+        }) ;
+        $scope.$watch("analysisDetailUrl",function(v1,v2){
+            if(v1==="partials/charts/default-analysis.html"){
+                localsearchFeed();
             }
         })
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
