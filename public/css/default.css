@@ -122,11 +122,10 @@ caption {background:#eee;}
 #maincontent .containercontent .panel {float:left;margin-bottom: 10px;padding: 0;width:100%;}
 #maincontent .containercontent .panel .item {float:left;height: 24px;line-height: 24px;}
 #maincontent .containercontent .chartpanel {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:450px;height:320px;}
-#maincontent .containercontent .chartpanel2 {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:750px;height:520px;}
 #maincontent .containercontent .chartpanel .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
 #maincontent .containercontent .chartpanel .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
 #maincontent .containercontent .chartpanel .title .tab {cursor:pointer;float:right;margin-left:10px;}
-#maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-bottom: 0px solid #b8c0c7;border-top: 1px solid #b8c0c7;border-bottom: 1px solid #b8c0c7;}
+#maincontent .containercontent .chartpanel .content {float:left;width:100%;height:100%;border-top: 1px solid #b8c0c7;border-bottom: 0px solid #b8c0c7;}
 #maincontent .containercontent .chartpanel .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
 
 #maincontent .containercontent .chartpanel .content .row {float:right;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
@@ -149,6 +148,32 @@ caption {background:#eee;}
 #maincontent .containercontent .chartpanel .content .row .date {float:left;width:100%;color:#AAA;}
 #maincontent .containercontent .chartpanel .content .row .text {float:left;width:100%;color:#666;}
 
+#maincontent .containercontent .chartpanel2 {float:left;margin:0;margin-left:20px;margin-bottom:40px;width:750px;height:520px;}
+#maincontent .containercontent .chartpanel2 .title {float:left;width:100%;height:30px;line-height:30px;border-bottom: 1px solid #003d78;background:#FFF url('../images/icon/icon2.png') no-repeat 3px center;}
+#maincontent .containercontent .chartpanel2 .title .titlelabel {float:left;margin-left:30px;font-size:14px;font-weight:bold;color:#75777B;}
+#maincontent .containercontent .chartpanel2 .title .tab {cursor:pointer;float:right;margin-left:10px;}
+#maincontent .containercontent .chartpanel2 .content {float:left;width:100%;height:100%;border-top: 1px solid #b8c0c7;border-bottom: 0px solid #b8c0c7;}
+#maincontent .containercontent .chartpanel2 .content .loading {position: absolute; width:31px;height:31px;display: inline-block;margin-top:140px;margin-left:200px;background: url('../images/icon/waiting.gif') center no-repeat;}
+
+#maincontent .containercontent .chartpanel2 .content .row {float:right;width:100%;border-bottom:1px dashed #DDD;padding:5px 0;}
+#maincontent .containercontent .chartpanel2 .content .row .from {float:left;width:100%;color:#333;font-size:14px;font-weight:bold;}
+#maincontent .containercontent .chartpanel2 .content .row .from .name {float:left;}
+#maincontent .containercontent .chartpanel2 .content .row .logo {float:left;display:block;width:24px;height:24px;margin:0 3px;}
+#maincontent .containercontent .chartpanel2 .content .row .reunion {background:url('../images/icon/reunion-r.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .sina {background:url('../images/icon/sina.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .tencent {background:url('../images/icon/tencent.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .netease {background:url('../images/icon/netease.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .sohu {background:url('../images/icon/sohu.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .yoka {background:url('../images/icon/yoka.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .kankanews {background:url('../images/icon/kankanews.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .efu {background:url('../images/icon/efu.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .hexun {background:url('../images/icon/hexun.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .hc360 {background:url('../images/icon/hc360.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .askci {background:url('../images/icon/askci.png') no-repeat center;}
+#maincontent .containercontent .chartpanel2 .content .row .kimiss {background:url('../images/icon/kimiss.png') no-repeat center;}
+
+#maincontent .containercontent .chartpanel2 .content .row .date {float:left;width:100%;color:#AAA;}
+#maincontent .containercontent .chartpanel2 .content .row .text {float:left;width:100%;color:#666;}
 
 #maincontent .containercontent .conditionspanel {float:left;margin:20px 0 0 0;padding: 0;width:100%;}
 #maincontent .containercontent .conditionspanel .title {float:left;width:100%;height:30px;line-height:30px;background:#FFF;vertical-align:middle;}
