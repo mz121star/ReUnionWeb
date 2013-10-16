@@ -15,7 +15,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
 
             $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
         });
-        $scope.searchFeed = function () {
+        $scope.feeds={
+            startTime:new Date("2013-08-01") ,
+            endTime:new Date()
+        }
+       var localsearchFeed = function () {
             //主业务
             var sts = Enumerable.From($scope.sourcetype)
                 .Where(function (x) {
@@ -181,7 +185,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     }, 5000)
                     //callback(null, '5');
                 });
-            $http.get('api/KeyWordCloud').success(function (d2) {
+        /*    $http.get('api/KeyWordCloud').success(function (d2) {
                 var canvas = document.getElementById('canvasDiv12');
                 var context = canvas.getContext('2d');
                 context.fillStyle = "#ff0000";
@@ -192,14 +196,14 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     context.fillText(v.name, Math.round(Math.random() *150), Math.round(Math.random() *200));
                     context.fillStyle = v.color;
                     v.value= Math.log(v.value) / (Math.log(100)-Math.log(1)) * 20 + 1
-                    /* if (v.value > 100)
+                    *//* if (v.value > 100)
                      v.value = v.value / 3;
                      else if (v.value < 14)
                      v.value = v.value;
                      else if (v.value > 30)
                      v.value = v.value / 2;
                      if(v.value>40)
-                     v.value=40;*/
+                     v.value=40;*//*
 
                     context.font = v.value + "px  Helvetica,arial";
 
@@ -213,7 +217,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                         $scope.global.error = "";
                     }, 5000)
                    // callback(null, '4');
-                });
+                });*/
             $http.post('api/SentimentAnalysisPost', searchData).success(function (d) {
                 //搜索来源饼图
                 new iChart.LineBasic2D({
@@ -251,6 +255,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                     //callback(null, '6');
                 });
         };
+        $scope.searchFeed =   localsearchFeed;
+        localsearchFeed();
         $scope.tagcloud = "partials/charts/tagcloud1.html";
         FeedService.querySourceType().then(function (d) {
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
@@ -266,7 +272,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
             if (v1 ) {
                 $scope.feeds.startTime=new Date();
                 $scope.feeds.startTime= moment(new Date()).add('days', -v1).calendar();
-                loadReport();
+             /*   loadReport();*/
             }
         })
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
