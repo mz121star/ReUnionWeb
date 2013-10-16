@@ -68,6 +68,8 @@ require(['angular',
     'directives/compare',
     'filter/filters' ,
     'services/services',
+     'controllers/include/analysisInclude',
+    'controllers/leftmenu/index',
     'routes'/*,
     'detectbrowser'*/
 ], function (angular) {

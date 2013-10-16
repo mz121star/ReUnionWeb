@@ -6,6 +6,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
         $rootScope.menuUrl="";
         $rootScope.title ="Analysis - "+ res.title;
         $rootScope.menuUrl="partials/leftmenu/analysisMenu.html";
+        // $scope.analysisDetailUrl="partials/charts/default-analysis.html" ;
+
         $rootScope.show=true;
         $scope.source = {
             brand: "兰蔻品牌"
@@ -298,7 +300,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 });
         };
         $scope.searchFeed =   localsearchFeed;
-        localsearchFeed();
+        //localsearchFeed();
         $scope.tagcloud = "partials/charts/tagcloud1.html";
         FeedService.querySourceType().then(function (d) {
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
