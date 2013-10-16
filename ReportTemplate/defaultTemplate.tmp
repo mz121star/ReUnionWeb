@@ -40,9 +40,12 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 #container .content .message .text {float:left;width:100%;color:#666;}
 
 #container .content .chart {float:right;width:350px;height:280px;border-bottom:1px dashed  #DDD;}
-#container .content .chart .title {float:left;width:350px;border:none;padding-left:30px;font-size:14px;color:#999;background:#FFF url('http://210.83.216.71:7080/images/icon/icon2.png') no-repeat 3px center;}
+#container .content .chart .title {float:left;width:320px;border:none;padding-left:30px;font-size:14px;color:#75777B;}
 #container .content .chart .image {float:left;width:100%;}
-
+#container .content .chart .icon1 {background:#FFF url('http://210.83.216.71:7080/images/icon/icon2.png') no-repeat 3px center;}
+#container .content .chart .icon2 {background:#FFF url('http://210.83.216.71:7080/images/icon/icon5.png') no-repeat 3px center;}
+#container .content .chart .icon3 {background:#FFF url('http://210.83.216.71:7080/images/icon/icon4.png') no-repeat 3px center;}
+#container .content .chart .icon4 {background:#FFF url('http://210.83.216.71:7080/images/icon/icon6.png') no-repeat 3px center;}
 
 #container .footer {float:left;width:760px;margin:20px 20px;padding:15px 0;border-top:2px solid #007DC9;}
 #container .footer .message {}
@@ -67,27 +70,27 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 			<div class="line title">Lancome-China (兰蔻 中国)</div>
 			
 			<div class="line chart">
-				<span class="title">Data Source Bar Dynamic</span>
+				<span class="title icon1">Data Source Bar Dynamic</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart1.png" width="350" ></span>
 			</div>
 			<div class="line chart">
-				<span class="title">Data Source Pie</span>
+				<span class="title icon2">Data Source Pie</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart2.png" width="350"></span>
 			</div>
 			<div class="line chart">
-				<span class="title">Sentiment Analysis</span>
+				<span class="title icon1">Sentiment Analysis</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart3.png" width="350"></span>
 			</div>
 			<div class="line chart">
-				<span class="title">Sentiment Analysis Timeline</span>
+				<span class="title icon3">Sentiment Analysis Timeline</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart4.png" width="350"></span>
 			</div>
 			<div class="line chart">
-				<span class="title">Keyword Cloud</span>
+				<span class="title icon4">Keyword Cloud</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart5.png" width="350"></span>
 			</div>
 			<div class="line chart">
-				<span class="title">Top Keyword</span>
+				<span class="title icon1">Top Keyword</span>
 				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart6.png" width="350"></span>
 			</div>
 			
