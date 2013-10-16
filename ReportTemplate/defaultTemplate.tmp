@@ -39,8 +39,8 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 #container .content .message .date {float:left;width:100%;color:#AAA;}
 #container .content .message .text {float:left;width:100%;color:#666;}
 
-#container .content .chart {float:right;width:750px;border-bottom:1px dashed  #DDD;}
-#container .content .chart .title {float:left;width:720px;border:none;padding-left:30px;font-size:14px;color:#999;background:#FFF url('http://210.83.216.71:7080/images/icon/icon2.png') no-repeat 3px center;}
+#container .content .chart {float:right;width:350px;height:280px;border-bottom:1px dashed  #DDD;}
+#container .content .chart .title {float:left;width:350px;border:none;padding-left:30px;font-size:14px;color:#999;background:#FFF url('http://210.83.216.71:7080/images/icon/icon2.png') no-repeat 3px center;}
 #container .content .chart .image {float:left;width:100%;}
 
 
@@ -53,7 +53,7 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 </style>
 </head>
 <body>
-
+	
 	<div id="container">
 		<div class="header">
 			<div class="logo"></div>
@@ -64,15 +64,33 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 			</div>
 		</div>
 		<div class="content">
-			<div class="line title">{{title}}</div>
-
-			<div class="line chart"><span class="title">Data Source Bar Dynamic</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart1.png"></span></div>
-			<div class="line chart"><span class="title">Data Source Pie</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart2.png"></span></div>
-			<div class="line chart"><span class="title">Sentiment Analysis</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart3.png"></span></div>
-			<div class="line chart"><span class="title">Sentiment Analysis Timeline</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart4.png"></span></div>
-			<div class="line chart"><span class="title">Keyword Cloud</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart5.png"></span></div>
-			<div class="line chart"><span class="title">Top Keyword</span><span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart6.png"></span></div>
-
+			<div class="line title">Lancome-China (兰蔻 中国)</div>
+			
+			<div class="line chart">
+				<span class="title">Data Source Bar Dynamic</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart1.png" width="350" ></span>
+			</div>
+			<div class="line chart">
+				<span class="title">Data Source Pie</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart2.png" width="350"></span>
+			</div>
+			<div class="line chart">
+				<span class="title">Sentiment Analysis</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart3.png" width="350"></span>
+			</div>
+			<div class="line chart">
+				<span class="title">Sentiment Analysis Timeline</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart4.png" width="350"></span>
+			</div>
+			<div class="line chart">
+				<span class="title">Keyword Cloud</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart5.png" width="350"></span>
+			</div>
+			<div class="line chart">
+				<span class="title">Top Keyword</span>
+				<span class="image"><img src="http://210.83.216.71:7080/images/screenshots/chart6.png" width="350"></span>
+			</div>
+			
 			<div class="line subtitle">Mirco Blog<span class="red">Top5</span></div>
 			<div class="line message">
 				<div class="from"><span class="logo sina"></span><span class="name">Sina Weibo From: 香香与灵灵</span></div>
@@ -99,7 +117,7 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 				<div class="date">Posted on Oct 16, 2013 at 21:39 PM</div>
 				<div class="text">#美够美够#Lancome 兰蔻蜜妍滋养润肤身体乳 专门为干性肌肤设计 运用独家蜂王浆Royal Lipideum科技 帮助肌肤重回滋养水润状态保护肌肤不受外界天气季节变换导致的侵害、轻盈滋养肌肤 国内没有的商品，美国专柜售价 580，现在有折扣的喔，其他明星产品小黑瓶，BB霜，粉水等依旧代购！</div>
 			</div>
-
+			
 			<div class="line subtitle">News Media<span class="red">Top5</span></div>
 			<div class="line message">
 				<div class="from"><span class="logo yoka"></span><span class="name">News From: Yoka</span></div>
@@ -126,8 +144,8 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 				<div class="date">Posted on Oct 16, 2013 at 17:08 PM</div>
 				<div class="text">2013年奢侈品在华销售仍困难重重</div>
 			</div>
-
-
+			
+			
 			<div class="line subtitle">Forum<span class="red">Top5</span></div>
 			<div class="line message">
 				<div class="from"><span class="logo kimiss"></span><span class="name">Forum From: Kimiss</span></div>
@@ -160,11 +178,11 @@ body {font-size:75%;color:#222;background:#E5E5E5;font-family: Arial;}
 			<div class="splitline"></div>
 			<div class="copyright">&copy;2013 Pactera Group. All Rights Reserved.</div>
 		</div>
-
+		
 	</div>
-
-
-
-
+	
+	
+	
+	
 </body>
 </html>
