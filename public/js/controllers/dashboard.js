@@ -18,8 +18,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $rootScope.show = false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1) {
-                $scope.dashboard.endDate = $scope.searchDate.endtime = new Date();
-                $scope.dashboard.startDate = $scope.searchDate.starttime = moment(new Date()).add('days', -v1).calendar();
+                $scope.dashboard.endDate = $scope.searchDate.endtime =  moment(new Date()).format("YYYY-MM-DD");
+                $scope.dashboard.startDate = $scope.searchDate.starttime = moment(new Date()).add('days', -v1).format("YYYY-MM-DD");
                 loadReport();
             }
         });

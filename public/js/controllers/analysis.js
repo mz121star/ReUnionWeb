@@ -38,7 +38,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
             $scope.source.keywordExpression =topic.Keyword;
             var sourceType = topic.SearchCondition.SourceType;
 
-            console.log($scope.sourcetype);
+           /* console.log($scope.sourcetype);*/
             /*    for(var i in sourceType){
              for(var k in $scope.sourcetype) {
              $scope.sourcetype[k].checked=false;
@@ -60,8 +60,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
             }
 
             $scope.sourcetype = $scope.sourcetype;
-            console.log($scope.sourcetype);
-            console.log(topic);
+        /*    console.log($scope.sourcetype);
+            console.log(topic);*/
         }
        var localsearchFeed = function () {
             //主业务
@@ -72,9 +72,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs' 
                 .Select("$.type")
                 .ToArray();
             sts=sts.join('|')
-            console.log(sts);
+          /*  console.log(sts);*/
             var searchData={st:sts,starttime:$scope.feeds.startTime,endtime:$scope.feeds.endTime};
-            console.log(searchData);
+           /* console.log(searchData);*/
             $http.post('api/2DBarReprotPost', searchData).success(function (d) {
                 new iChart.Bar2D({
                     render: 'canvasDiv7',

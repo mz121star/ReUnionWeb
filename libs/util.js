@@ -102,7 +102,7 @@ var getColor =function(){
 getColor.prototype.getOne=function(){
     var color= this.colors[this.index%4];
     this.index++;
-    console.log(color);
+
     return color;
 }
 var getcolor=new getColor();

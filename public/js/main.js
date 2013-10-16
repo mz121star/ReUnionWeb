@@ -74,4 +74,5 @@ require(['angular',
     'detectbrowser'*/
 ], function (angular) {
     angular.bootstrap(document, ['app']);
+    console.log("Welcome visit Reunion System! ")
 });
