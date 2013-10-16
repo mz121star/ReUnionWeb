@@ -51,7 +51,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 paddingleft: '0',
                                 textAlign: 'left',
                                 textBaseline: 'middle',
-                                rotate: -45
+                                rotate: 20,
+                                font:'微软雅黑'
                             },
                             coordinate: {
                                 scale: [
@@ -97,11 +98,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             label: {
                                 fontsize: 11,
-                                color: '#666666',
+                                color: '#000',
                                 paddingleft: '0',
                                 textAlign: 'left',
                                 textBaseline: 'middle',
-                                rotate: -45
+                                rotate: 20,
+                                font:'微软雅黑'
                             },
                             coordinate: {
                                 scale: [

@@ -68,13 +68,35 @@ exports.TopicKeywordReportPost = function (req, res) {
         , { $limit: 10 }
         , { $project: {name: "$_id", value: 1 }}
         , function (err, docs) {
-            var result = [];
-            for (var d in docs) {
-                docs[d].color = utils.randomColor();
-                result.push(docs[d]);
+            var keywords = [];
+            /**
+             * map
+             * */
+            for (var i = 0; i < docs.length; i++) {
+                var obj = docs[i];
+                var names = obj.name.split(";")
+                names = underscore.uniq(names);
+                for (var k in names) {
+                    var keyword = names[k];
+                    keywords.push({key: keyword, value: obj.value})
+                }
             }
-            return res.json(result);
-            res.json(result); // [ { maxAge: 98 } ]
+            /**
+             * reduce
+             */
+            var result = {};
+            for (var i = 0; i < keywords.length; i++) {
+                var keyword = keywords[i];
+                result[keyword.key] = result[keyword.key] ? (result[keyword.key] + keyword.value) : keyword.value;
+            }
+
+            var finalResult = [];
+            var keys = underscore.keys(result);
+            var values = underscore.values(result);
+            for (var i = 0, len = keys.length > 10 ? 10 : keys.length; i < len; i++) {
+                finalResult.push({name: keys[i], value: values[i], color: utils.randomColor()})
+            }
+            res.json(finalResult); // [ { maxAge: 98 } ]
         });
 
 };
