@@ -98,7 +98,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             label: {
                                 fontsize: 11,
-                                color: '#000',
+                                color : '#666666',
                                 paddingleft: '0',
                                 textAlign: 'left',
                                 textBaseline: 'middle',
@@ -227,11 +227,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             render: 'canvasDiv3',
                             data: d.data,
                             labels: d.labels,
-                            label: {
-                                fontsize: 8,
-                                textAlign: 'right',
-                                textBaseline: 'middle',
-                                rotate: -45
+                            label : {
+                                fontsize:11,
+                                textAlign:'right',
+                                textBaseline:'middle',
+                                rotate:-45,
+                                color : '#666666'
                             },
                             sub_option: {
                                 label: false
@@ -300,7 +301,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 fontsize: 8,
                                 textAlign: 'right',
                                 textBaseline: 'hanging',
-                                rotate: -45
+                                rotate: -45 ,
+                                color : '#666666'
                             },
 //                    title: '情感分析时间轴曲线图  ',
                             width: 450,
