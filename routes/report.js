@@ -393,11 +393,11 @@ exports.SentimentAnalysisColumnPost = function (req, res) {
                             normal: [],
                             bad: []
                         }
-                        for( d in goodResult){
-                            pl.good.push(goodResult[d].value) ;
+                        for( var g in goodResult){
+                            pl.good.push(goodResult[g].value) ;
                         }
-                        for( d in badResult){
-                            pl.bad.push(badResult[d].value) ;
+                        for( var b in badResult){
+                            pl.bad.push(badResult[b].value) ;
                         }
                         finalResult.push({name: "Positive", value: pl.good, color:"#4572a7", line_width: 2});
                         finalResult.push({name: "Negative", value: pl.bad, color: "#aa4643", line_width: 2})
