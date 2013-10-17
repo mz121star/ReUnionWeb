@@ -256,14 +256,14 @@ exports.SentimentAnalysisPost = function (req, res) {
                                     normal: [],
                                     bad: []
                                 }
-                                for( d in goodResult){
-                                    pl.good.push(goodResult[d].value) ;
+                                for( var g in goodResult){
+                                    pl.good.push(goodResult[g].value) ;
                                 }
-                                for( d in badResult){
-                                    pl.bad.push(badResult[d].value) ;
+                                for( var b in badResult){
+                                    pl.bad.push(badResult[b].value) ;
                                 }
-                                for( d in badResult){
-                                    pl.normal.push(normalResult[d].value) ;
+                                for( var n in normalResult){
+                                    pl.normal.push(normalResult[n].value) ;
                                 }
                                 finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
                                 finalResult.push({name: "Neutral", value: pl.normal, color: "#959700", line_width: 2});
