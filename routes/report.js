@@ -225,7 +225,7 @@ exports.SentimentAnalysisPost = function (req, res) {
             for (var d in docs) {
                 docs[d].color = utils.randomColor();
                 goodResult.push(docs[d]);
-
+            }
                 /***
                  *second
                  */
@@ -255,12 +255,12 @@ exports.SentimentAnalysisPost = function (req, res) {
                             pl.bad.push(badResult[d].value) ;
                         }
                         finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
-                        finalResult.push({name: "Bad", value: pl.bad, color:"#aa4643", line_width: 2})
+                        finalResult.push({name: "Negative", value: pl.bad, color:"#aa4643", line_width: 2})
                         var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
                         return res.json(result);
                         /*结束*/
                     });
-            }
+
         });
 
 };
