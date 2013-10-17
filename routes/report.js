@@ -221,14 +221,11 @@ exports.SentimentAnalysisPost = function (req, res) {
         { $project: {name: "$_id", value: 1 }},
         { $sort: { name: 1 } },
         function (err, docs) {
-            var goodResult = [],badResult=[];
+            var goodResult = [],badResult=[],normalResult=[];
             for (var d in docs) {
                 docs[d].color = utils.randomColor();
                 goodResult.push(docs[d]);
             }
-                /***
-                 *second
-                 */
                 FeedsModel.aggregate(
                     { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte:  new Date(endDate)}, Semantic: {$lt: 0} }},
                     { $group: { _id: "$PublishTimeTemp", value: { $sum: 1 }} },
@@ -240,25 +237,41 @@ exports.SentimentAnalysisPost = function (req, res) {
                             docs2[d2].color = utils.randomColor();
                             badResult.push(docs2[d2]);
                         }
+                        FeedsModel.aggregate(
+                            { $match: { PublishTimeTemp: { $gte: new Date(startDate), $lte:  new Date(endDate)}, Semantic: 0 }},
+                            { $group: { _id: "$PublishTimeTemp", value: { $sum: 1 }} },
+                            { $project: {name: "$_id", value: 1 }},
+                            { $sort: { name: 1 } },
+                            function (err, docs3) {
 
-                        /**处理*/
-                        var finalResult = [];
-                        var pl = {
-                            good: [],
-                            normal: [],
-                            bad: []
-                        }
-                        for( d in goodResult){
-                            pl.good.push(goodResult[d].value) ;
-                        }
-                        for( d in badResult){
-                            pl.bad.push(badResult[d].value) ;
-                        }
-                        finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
-                        finalResult.push({name: "Negative", value: pl.bad, color:"#aa4643", line_width: 2})
-                        var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
-                        return res.json(result);
-                        /*结束*/
+                                for (var d3 in docs3) {
+                                    docs3[d3].color = utils.randomColor();
+                                    normalResult.push(docs3[d3]);
+                                }
+
+                                /**处理*/
+                                var finalResult = [];
+                                var pl = {
+                                    good: [],
+                                    normal: [],
+                                    bad: []
+                                }
+                                for( d in goodResult){
+                                    pl.good.push(goodResult[d].value) ;
+                                }
+                                for( d in badResult){
+                                    pl.bad.push(badResult[d].value) ;
+                                }
+                                for( d in badResult){
+                                    pl.normal.push(normalResult[d].value) ;
+                                }
+                                finalResult.push({name: "Positive", value: pl.good, color: "#4572a7", line_width: 2});
+                                finalResult.push({name: "Neutral", value: pl.normal, color: "#959700", line_width: 2});
+                                finalResult.push({name: "Negative", value: pl.bad, color:"#aa4643", line_width: 2})
+                                var result = {data: finalResult, labels: utils.dateRange(params.starttime,params.endtime)}
+                                return res.json(result);
+                                /*结束*/
+                            });
                     });
 
         });
