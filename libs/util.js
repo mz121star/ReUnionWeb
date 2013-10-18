@@ -125,7 +125,7 @@ exports.dateRange = function (start, end) {
     var result = [];
     var startDate = moment(start), endDate = moment(end);
     var diff = endDate.diff(startDate, "days") <= 30 ? endDate.diff(startDate, "days") : 30;
-    for (var i = 0; i < diff; i++) {
+    for (var i = 0; i <= diff; i++) {
         var d = moment(start).add('days', i).format("MM/DD");
         result.push(d);
     }
@@ -145,7 +145,7 @@ exports.getEndDate = function (start, end, max) {
     console.log(dd);
     var expectEnd = moment(startDate).add("days", max).format();
     console.log(expectEnd);
-    var rend = (dd <= max ? endDate : expectEnd);
+    var rend = (dd <= max ? endDate.format(): expectEnd);
 
     return rend;
 }
