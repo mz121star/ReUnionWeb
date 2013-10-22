@@ -38,8 +38,8 @@ app.configure(function () {
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('reunion web'));
-    app.use(express.cookieSession());
-    app.use(express.session());
+    app.use(express.cookieSession({cookie:{ path: '/', httpOnly: true, maxAge: null }}));
+   /* app.use(express.session());*/
     app.use(app.router);
    /* app.use(myErrorHandler);*/
 /*    app.use(function(err, req, res, next){
