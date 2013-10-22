@@ -13,7 +13,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
 
                 $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
             });
-        }
+        };
 
         getTopics();
 
@@ -48,14 +48,15 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     if (item.type === obj.Topics[i]) {
                         item.checked = true;
                     }
-                })
+                });
 
             }
-        }
+
+        };
         $scope.addAlertClick = function () {
             console.log("OKOK")
             $scope.editWindowTitle = "Add New Alert";
-        }
+        };
         $scope.addAlert = function () {
 
             $scope.saveTopicError = "";
@@ -129,7 +130,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     });
             }
         };
-        $scope.editWindowTitle = "Add New Alert"
+        $scope.editWindowTitle = "Add New Alert" ;
 
     }];
 

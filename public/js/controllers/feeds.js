@@ -4,10 +4,10 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
 
-        $rootScope.menuUrl="partials/leftmenu/feedsMenu.html";
+        $rootScope.menuUrl = "partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
-        $rootScope.show=true;
-        $scope.show=true;
+        $rootScope.show = true;
+        $scope.show = true;
         $scope.source = {
             keywordExpression: "兰蔻品牌"
         };
@@ -26,11 +26,11 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                 .ToArray();
             sts = sts.join('|')
             console.log(sts);
-            var searchData = {keyword: $scope.keyword,st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime,pageindex:$scope.feeds.pageIndex};
+            var searchData = {keyword: $scope.keyword, st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime, pageindex: $scope.feeds.pageIndex};
             console.log(searchData);
             $http.post("api/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
-                $scope.pages= d.count;
+                $scope.pages = d.count;
                 $scope.feedContent = Enumerable.From(d.feeds)
                     /* .Where(function (x) {
                      return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
@@ -49,10 +49,10 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
 
         $scope.feeds = {
             startTime: new Date("2010-01-01"),
-            endTime:  new Date(),
+            endTime: new Date(),
             sourceTypeName: '',
-            description: '' ,
-            pageIndex:1
+            description: '',
+            pageIndex: 1
         };
 
         $scope.showDetail = function (feed) {
@@ -71,7 +71,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
         };
         $http.post("api/feeds").success(function (d) {
             $scope.feedContent = d.feeds;
-            $scope.pages= d.count;
+            $scope.pages = d.count;
         });
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
@@ -90,7 +90,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
         $rootScope.Topics = [
             {name: "topic1"},
             {name: "topic2"}
-        ]
+        ];
         var gettopicSelected = function (callback) {
             $http.get('api/topic').success(function (d) {
                 $rootScope.Topics = d;
@@ -98,7 +98,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                 /* .Select("{name:$.Name}").ToArray();*/
                 if (callback) callback();
             });
-        }
+        };
         var getTopics = function (callback) {
             $http.get('api/topic').success(function (d) {
                 $rootScope.Topics = d;
@@ -106,7 +106,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                 /* .Select("{name:$.Name}").ToArray();*/
                 if (callback) callback();
             });
-        }
+        };
         getTopics();
         $scope.saveTopic = function () {
             //load sourcetype
@@ -118,7 +118,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                 .ToArray();
             $http.post('api/topic', {
                 Name: $scope.topicName,
-                Keyword:$scope.keyword,
+                Keyword: $scope.keyword,
                 SearchCondition: {
                     SourceType: sts,
                     StartDate: new Date($scope.feeds.startTime),
@@ -135,13 +135,13 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                     })
 
                 });
-        }
+        };
 
         $rootScope.topicSelected = function (topic) {
             $scope.keyword = topic.Keyword;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
-            $scope.source.keywordExpression =topic.Keyword;
+            $scope.source.keywordExpression = topic.Keyword;
             var sourceType = topic.SearchCondition.SourceType;
 
             console.log($scope.sourcetype);
@@ -156,7 +156,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
              }*/
 
             for (var k in $scope.sourcetype) {
-                $scope.sourcetype[k].checked=false;
+                $scope.sourcetype[k].checked = false;
                 for (var i in sourceType) {
                     if ($scope.sourcetype[k].type === sourceType[i]) {
                         $scope.sourcetype[k].checked = true;
@@ -168,13 +168,13 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             $scope.sourcetype = $scope.sourcetype;
             console.log($scope.sourcetype);
             console.log(topic);
-        }
+        };
 
 
-        $scope.PagerData=function(pageindex){
-            $scope.feeds.pageIndex=pageindex;
+        $scope.PagerData = function (pageindex) {
+            $scope.feeds.pageIndex = pageindex;
             $scope.searchFeed();
-        }
+        };
     }];
 
     return FeedsController;

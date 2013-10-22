@@ -1,6 +1,6 @@
 var FeedsModel = require("./../models").Feeds;
 var reunionCore = require("./../libs/reunionCore");
-exports.list = function (req, res) {
+exports.list = function (req, res,next) {
 
     var sts = req.body.st, topicKeyword = req.body.keyword;
     var queryCondition = {};
@@ -33,7 +33,9 @@ exports.list = function (req, res) {
     }
     var pageindex = req.body.pageindex ? req.body.pageindex * 20 - 20 : 0;
     FeedsModel.find(queryCondition).count(function (err, count) {
-
+        if(err){
+            return res.json(500, err);
+        }
         var query = FeedsModel.find(queryCondition)
         if (querykeyword.length > 0)
             query.and(querykeyword);
@@ -44,7 +46,7 @@ exports.list = function (req, res) {
             /*.select('childs')*/
             .exec(function (err, feeds) {
                 if (err) {
-                    return res.json(500, err);
+                       return res.json(500, err);
                 }
                 FeedsModel.count(function(err,totalcount){
                     FeedsModel.find({CrawlerTime:{$gte: new Date(new Date().getFullYear()+"-"+(new Date().getMonth()+1)+"-"+new Date().getDate()+ " 00:00:00")}}).count(function (err, Todaycount){
