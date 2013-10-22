@@ -9,7 +9,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $scope.searchDate = {
             starttime: "09/20/2013",
             endtime: "10/17/2013"
-        }
+        };
 
         $scope.dashboard = {
             endDate: "",
@@ -18,7 +18,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $rootScope.show = false;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1) {
-                $scope.dashboard.endDate = $scope.searchDate.endtime =  moment(new Date()).format("MM/DD/YYYY");
+                $scope.dashboard.endDate = $scope.searchDate.endtime = moment(new Date()).format("MM/DD/YYYY");
                 $scope.dashboard.startDate = $scope.searchDate.starttime = moment(new Date()).add('days', -v1).format("MM/DD/YYYY");
                 loadReport();
             }
@@ -48,12 +48,12 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             },
                             label: {
                                 fontsize: 11,
-                                color : '#666666',
+                                color: '#666666',
                                 paddingleft: '0',
                                 textAlign: 'left',
                                 textBaseline: 'middle',
                                 rotate: 20,
-                                font:'微软雅黑'
+                                font: '微软雅黑'
                             },
                             coordinate: {
                                 scale: [
@@ -83,40 +83,42 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                 function (callback) {
                     $http.post('/api/SentimentAnalysisByFromTypeBarPost', $scope.searchDate).success(function (d) {
 
-                         new iChart.ColumnMulti2D({
-                            render : 'canvasDiv3',
+                        new iChart.ColumnMulti2D({
+                            render: 'canvasDiv3',
                             data: d.data,
                             labels: d.labels,
-                            offsetx:14,
-                            footnote : ' ',
-                             width: 450,
-                             height: 300,
-                             border: false,
-                             animation: true,
-                             animation_duration: 700,//700ms完成动画
-                            background_color : '#ffffff',
-                            legend:{
-                                enable:true,
-                                background_color : null,
-                                border : {
-                                    enable : false
+                            offsetx: 14,
+                            footnote: ' ',
+                            width: 450,
+                            height: 300,
+                            border: false,
+                            animation: true,
+                            animation_duration: 700,//700ms完成动画
+                            background_color: '#ffffff',
+                            legend: {
+                                enable: true,
+                                background_color: null,
+                                border: {
+                                    enable: false
                                 }
                             },
 
-                            coordinate:{
-                                background_color : '#f1f1f1',
+                            coordinate: {
+                                background_color: '#f1f1f1',
                                 rotate: 20,
-                                scale:[{
-                                    position:'left',
-                                    start_scale:0,
-                                    end_scale:140,
-                                    rotate: 20,
-                                    scale_space:300
-                                }],
-                                width:400,
-                                height:300
+                                scale: [
+                                    {
+                                        position: 'left',
+                                        start_scale: 0,
+                                        end_scale: 140,
+                                        rotate: 20,
+                                        scale_space: 300
+                                    }
+                                ],
+                                width: 400,
+                                height: 300
                             }
-                        }) .draw();
+                        }).draw();
                         callback(null, '5');
                     }).error(function (data, status, headers, config) {
 
@@ -138,8 +140,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                                 fontsize: 8,
                                 textAlign: 'right',
                                 textBaseline: 'hanging',
-                                rotate: -45 ,
-                                color : '#666666'
+                                rotate: -45,
+                                color: '#666666'
                             },
 //                    title: '情感分析时间轴曲线图  ',
                             width: 920,
@@ -183,7 +185,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                             callback(null, '6');
                         });
                 },
-                function(callback){
+                function (callback) {
                     var deep2dBarChart = function () {
                         //定义数据组
                         var data1 = [
@@ -349,7 +351,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                         }
 
                         toChart('', '', data.All);
-                        callback(null,"deep")
+                        callback(null, "deep")
                     };
                     deep2dBarChart();
                 },
@@ -359,7 +361,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
                 }
 
             ]);
-        }
+        };
         $scope.search = function () {
             $scope.searchDate.starttime = $scope.dashboard.startDate;
             $scope.searchDate.endtime = $scope.dashboard.endDate;
@@ -367,11 +369,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
             loadReport();
         };
 
-       $(function(){
-           loadReport();
-       })
-
-
+        $(function () {
+            loadReport();
+        });
 
 
     }];

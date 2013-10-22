@@ -56,7 +56,7 @@ define(['app'], function (app) {
             if (input === 0)
                 return "Stop";
         };
-    }) ;
+    });
     app.filter("numToEnableTxt", function () {
         return function (input, text) {
             if (input === 1)
@@ -64,7 +64,7 @@ define(['app'], function (app) {
             if (input === 0)
                 return "Enable";
         };
-    }) ;
+    });
 
     app.filter("statusChange", function () {
         return function (input, text) {
@@ -73,6 +73,6 @@ define(['app'], function (app) {
             if (input === 0)
                 return "Waiting for audit";
         };
-    })
+    });
 
 });

@@ -12,12 +12,12 @@ define(['utils/lazy-directives'], function (lazyDirectives) {
 
     function setControllerProvider(value) {
         $controllerProvider = value;
-    }
+    };
 
     function setCompileProvider(value) {
         $compileProvider = value;
         lazyDirectives.setCompileProvider(value);
-    }
+    };
 
     function config(templateUrl, controllerName, directives) {
         if (!$controllerProvider) {
@@ -33,7 +33,7 @@ define(['utils/lazy-directives'], function (lazyDirectives) {
         };
         routeDefinition.controller = controllerName;
         routeDefinition.resolve = {
-            delay:function ($q, $rootScope) {
+            delay: function ($q, $rootScope) {
                 defer = $q.defer();
                 if (!html) {
                     var dependencies = [controllerName, "text!" + templateUrl];
@@ -59,15 +59,15 @@ define(['utils/lazy-directives'], function (lazyDirectives) {
                 }
                 return defer.promise;
             }
-        }
+        };
 
         return routeDefinition;
-    }
+    };
 
     return {
-        setControllerProvider:setControllerProvider,
-        setCompileProvider:setCompileProvider,
-        config:config
-    }
-})
+        setControllerProvider: setControllerProvider,
+        setCompileProvider: setCompileProvider,
+        config: config
+    };
+});
 

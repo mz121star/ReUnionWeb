@@ -3,7 +3,7 @@
 define(['../app', 'i18n!resources/nls/res'], function (app, res) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
-    return app.controller('LayoutController', function ($scope, $http, $location, $window) {
+    return app.controller('LayoutController', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
         /*      var i = 0,
          imgs = images.imageurls,
          randombg = function () {
@@ -36,7 +36,7 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
                     $window.location = "/login";
                 });
             }
-        }
+        };
         $scope.txt = {
             home: res.welcome,
             dashboard: "Dashboard",
@@ -99,26 +99,26 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
                 else
                     $scope.selectedRow = item.index - 1;
             }
-        })
+        });
 
         $scope.hiddenMenu = function () {
             $scope.show = !$scope.show;
-        }
+        };
         //message
         var inter = window.setInterval(function () {
             $(".message").toggleClass("font20", "font20")
-        }, 1000)      ;
-        $scope.ntime=new Date();
-         window.setInterval(function () {
-           $http.post('/api/getNewFeeds',{time:$scope.ntime}).success(function(d){
-               $scope.newFeeds= d.data;
-               $scope.ntime= d.time;
-           })
-        }, 10000)
+        }, 1000);
+        $scope.ntime = new Date();
+        window.setInterval(function () {
+            $http.post('/api/getNewFeeds', {time: $scope.ntime}).success(function (d) {
+                $scope.newFeeds = d.data;
+                $scope.ntime = d.time;
+            })
+        }, 10000);
         $(".message").on("click", function () {
             clearInterval(inter);
             $(".message").html("");
-        })
+        });
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;
@@ -153,39 +153,5 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
          alert('就你这浏览器，基本就告别全屏功能了,赶紧卸载了吧！！！');
          }
          };*/
-    });
+    }]);
 });
-/*
- define([ 'i18n!resources/nls/res'], function (res) {
- var LayoutController=['$scope','$http','$window', function ($scope, $http, $window) {
- $http.get('/checklogin').success(function (user) {
- $scope.resetLogin(user);
- });
- $scope.txt={
- home:res.welcome
- }
- $scope.resetLogin = function (user) {
- if (user.name) {
- $scope.login = {
- url:'logout',
- name:res.logout
- };
-
- $scope.signup = {
- url:'',
- name:'welcome:' + user.name
- };
- } else {
- $scope.login = {
- url:'login',
- name:res.login
- };
- $scope.signup = {
- url:'signup',
- name:'SignUp'
- };
- }
- };
- } ];
- return LayoutController;
- });*/

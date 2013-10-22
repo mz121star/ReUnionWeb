@@ -1,12 +1,12 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
+define([ 'i18n!resources/nls/res', 'bootstrapButton'], function (res) {
 
     var ReportsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Reports - " + res.title;
         $rootScope.menuUrl = "partials/leftmenu/reportsMenu.html";
 
-        $rootScope.show=true;
+        $rootScope.show = true;
         // $rootScope.title= res.title;
         $scope.source = {
             brand: "兰蔻"
@@ -28,7 +28,7 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
             ],
             receiver: "",
             type: "Daily"
-        }
+        };
         $scope.report = {
             dataType: [
                 {value: "Daily"} ,
@@ -50,15 +50,15 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
         $scope.editWindowTitle = "Add New";
         $scope.addReport = function () {
             $scope.editWindowTitle = "Add New";
-            $scope.saveTopicError="";
+            $scope.saveTopicError = "";
             var sts = Enumerable.From($scope.Topics)
                 .Where(function (x) {
-                    return x.checked === true
+                    return x.checked === true;
                 })
                 .Select("$.type")
                 .ToArray();
-            if(sts.length===0){
-                $scope.saveTopicError="必须选择一个Topic";
+            if (sts.length === 0) {
+                $scope.saveTopicError = "必须选择一个Topic";
                 return false;
             }
             $http.post('api/subReport', {
@@ -95,24 +95,24 @@ define([ 'i18n!resources/nls/res','bootstrapButton'], function (res) {
                     });
                 });
         }
-        $scope.subPreview_URL="javascript:;" ;
-         $scope.showPreview=function(url){
-           $scope.subPreview_URL=  "api/subReportPreview/"+url;
+        $scope.subPreview_URL = "javascript:;";
+        $scope.showPreview = function (url) {
+            $scope.subPreview_URL = "api/subReportPreview/" + url;
 
-         }   ;
-        $scope.sendSubReport=function(report,event){
+        };
+        $scope.sendSubReport = function (report, event) {
 
             $(event.target).button("loading");
-            $http.get("api/sendPreviewMail/"+report._id).success(function(d){
-                $scope.sendSuccess="主题为"+(report.Name)+"的邮件发送成功" ;
+            $http.get("api/sendPreviewMail/" + report._id).success(function (d) {
+                $scope.sendSuccess = "主题为" + (report.Name) + "的邮件发送成功";
                 $timeout(function () {
-                    $scope.sendSuccess = ""
+                    $scope.sendSuccess = "";
                 }, 2000);
                 $(event.target).button("reset");
-            }).error(function(d){
-                    $scope.sendError="主题为"+(report.Name)+"的发送失败" ;
+            }).error(function (d) {
+                    $scope.sendError = "主题为" + (report.Name) + "的发送失败";
                     $(event.target).button("reset");
-                }) ;
+                });
         }
     }];
 

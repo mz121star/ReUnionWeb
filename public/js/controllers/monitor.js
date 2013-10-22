@@ -24,26 +24,26 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
             if (type === "Micro Bloging")
                 $http.get('api/monitor/' + encodeURI("Micro Bloging")).success(function (d) {
                     $scope.monitorWeibo = d
-                })
+                });
 
             if (type === "Forum")
                 $http.get('api/monitor/' + encodeURI("Forum")).success(function (d) {
                     $scope.monitorForums = d
-                })
+                });
 
             if (type === "News Media")
                 $http.get('api/monitor/' + encodeURI("News Media")).success(function (d) {
                     $scope.monitorSearchs = d
-                })
+                });
             if (type === "eCommerce")
                 $http.get('api/monitor/' + encodeURI("eCommerce")).success(function (d) {
                     $scope.monitorShops = d
-                })
+                });
             if (type === "customer")
                 $http.get('api/monitor/' + encodeURI("customer")).success(function (d) {
                     $scope.monitorCustomer = d
-                })
-            if(type===undefined){
+                });
+            if (type === undefined) {
                 LoadData("Micro Bloging");
                 LoadData("Forum");
                 LoadData("News Media");
@@ -52,7 +52,7 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
 
 
             }
-        }
+        };
 
         LoadData();
         FeedService.querySourceType().then(function (d) {
@@ -69,7 +69,7 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
                     $scope.saveWarning = "";
                 }, 1000)
             })
-        }
+        };
 
         $scope.changeStatus = function (obj) {
             $http.put('api/monitor/' + obj._id, {
@@ -78,7 +78,7 @@ define([ 'i18n!resources/nls/res', 'bootstrapTab'], function (res) {
             }).success(function (d) {
                     LoadData(obj.Type);
                 });
-        }
+        };
     }];
 
     return MonitorController;
