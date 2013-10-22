@@ -2,14 +2,15 @@
 <html lang="zh-CN" ng-controller="LayoutController">
 <head>
     <meta charset="utf-8">
-    <style>
+  <!--  <style>
         [ng-cloak] {
             display: none;
         }
-    </style>
+    </style>-->
+    <title ng-bind="title">Loading...</title>
    <!-- <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>-->
- <script data-main="js/main-built" src="lib/require/require.min.js"></script>
-    <title ng-bind="title"></title>
+    <script data-main="js/main-built" src="lib/require/require.min.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reunion">
     <meta name="author" content="Pactera">
@@ -27,7 +28,7 @@
 
     <!--production-->
     <link rel="stylesheet" href="css/reunion.css"/>
-    <link rel="stylesheet" href="css/sprites.css"/>
+    <!--<link rel="stylesheet" href="css/sprites.css"/>-->
 </head>
 <body class="ng-cloak" ng-cloak>
   <div id="header">
