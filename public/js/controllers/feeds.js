@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs'], function (res, excel) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal'], function (res, excel,Enumerable) {
 
     var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
 
@@ -12,8 +12,12 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             keywordExpression: "兰蔻品牌"
         };
 
-        $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
-
+        $scope.sourceType = [];
+        $http.get('api/feedsSourceType').success(function (d) {
+            console.log(d);
+            $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
+            console.log($scope.sourcetype);
+        });
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
@@ -24,28 +28,22 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
                 })
                 .Select("$.type")
                 .ToArray();
-            sts = sts.join('|')
+            sts = sts.join('|');
             console.log(sts);
             var searchData = {keyword: $scope.keyword, st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime, pageindex: $scope.feeds.pageIndex};
-            console.log(searchData);
+            /*            console.log(searchData);*/
             $http.post("api/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.pages = d.count;
-                $scope.feedContent = Enumerable.From(d.feeds)
-                    /* .Where(function (x) {
-                     return x.CrawlerTime > $scope.feeds.startTime && x.CrawlerTime < $scope.feeds.endTime && sts.indexOf(x.FromType) >= 0;
-                     })*/
-                    .ToArray();
-            })
+                $scope.feedContent = Enumerable.From(d.feeds) .ToArray();
+            });
 
         };
-//        $http.get('/kimiss').success(function (data) {
-//            $scope.kimiss = data;
-//        });
-        FeedService.querySourceType().then(function (d) {
-            // $scope.sourcetype = Enumerable.From(d).Distinct("$.FromType").Select("$.FromType").ToJSON();
+
+        /*FeedService.querySourceType().then(function (d) {
+
             $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
-        });
+        });*/
 
         $scope.feeds = {
             startTime: new Date("2010-01-01"),
@@ -144,16 +142,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             $scope.source.keywordExpression = topic.Keyword;
             var sourceType = topic.SearchCondition.SourceType;
 
-            console.log($scope.sourcetype);
-            /*    for(var i in sourceType){
-             for(var k in $scope.sourcetype) {
-             $scope.sourcetype[k].checked=false;
-             if($scope.sourcetype[k].type===sourceType[i]){
-             $scope.sourcetype[k].checked=true;
-             }
 
-             }
-             }*/
 
             for (var k in $scope.sourcetype) {
                 $scope.sourcetype[k].checked = false;
@@ -166,8 +155,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'bootstrapModal', 'linqjs']
             }
 
             $scope.sourcetype = $scope.sourcetype;
-            console.log($scope.sourcetype);
-            console.log(topic);
+            /* console.log($scope.sourcetype);
+             console.log(topic);*/
         };
 
 

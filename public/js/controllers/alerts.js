@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res'], function (res) {
+define([ 'i18n!resources/nls/res','linqjs'], function (res,Enumerable) {
 
     var AlertsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.menuUrl = "";
