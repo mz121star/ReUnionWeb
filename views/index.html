@@ -87,7 +87,7 @@
     <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="javascript:;"></a></div>
     <div ng-include="menuUrl" ng-controller="LeftMenuCtrl"  ></div>
    </div>
-  <div id="maincontent" ng-class="{mainshow:show,mainhidden:!show }">
+  <div id="maincontent" class="ng-cloak" ng-cloak ng-class="{mainshow:show,mainhidden:!show }">
     <div id="showMenu" ng-click="hiddenMenu()" ><div class="resizable-icon" id="widResize"></div></div>
     <div class="containercrumbs">
        <div class="info">New Feeds Today:{{info.TodayFeedsTotal}}, Total Feeds:{{info.TotalFeeds}} From {{info.TotalSite}} Sites.</div>
