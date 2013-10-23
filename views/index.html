@@ -8,6 +8,43 @@
         }
     </style>
     <title ng-bind="title">Loading...</title>
+    <script  src="lib/pace.min.js"></script>
+    <style>.pace {
+        -webkit-pointer-events: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+    }
+
+    .pace.pace-inactive .pace-progress {
+        display: none;
+    }
+
+    .pace .pace-progress {
+        position: fixed;
+        z-index: 2000;
+        top: 0;
+        right: 0;
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .pace .pace-progress:after {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: .5rem;
+        content: attr(data-progress-text);
+        font-family: "Helvetica Neue", sans-serif;
+        font-weight: 100;
+        font-size: 5rem;
+        line-height: 1;
+        text-align: right;
+        color: rgba(0, 0, 0, 0.19999999999999996);
+    }</style>
+    <link rel="stylesheet" href="css/reunion.css"/>
+    <!--<link rel="stylesheet" href="css/sprites.css"/>-->
    <!-- <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>-->
 
     <script data-main="js/main-built.min" src="lib/require/require.min.js"></script>
@@ -28,8 +65,7 @@
     <link href='css/default.css' rel='stylesheet' type='text/css'>-->
 
     <!--production-->
-    <link rel="stylesheet" href="css/reunion.css"/>
-    <!--<link rel="stylesheet" href="css/sprites.css"/>-->
+
 </head>
 <body class="ng-cloak" ng-cloak>
   <div id="header">
