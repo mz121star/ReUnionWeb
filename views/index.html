@@ -2,11 +2,11 @@
 <html lang="zh-CN" ng-controller="LayoutController">
 <head>
     <meta charset="utf-8">
-    <!--<style>
+    <style>
         [ng-cloak] {
             display: none;
         }
-    </style>-->
+    </style>
     <title ng-bind="title">Loading...</title>
     <script  src="lib/pace.min.js"></script>
     <style>.pace {
@@ -67,8 +67,8 @@
     <!--production-->
 
 </head>
-<body class="ng-cloak" ng-cloak>
-  <div id="header">
+<body  >
+  <div id="header" class="ng-cloak" ng-cloak>
     <div class="logo"><a href="javascript:;"></a></div>
     <div class="leftbarbtn"><a href="javascript:;"></a></div>
     <div class="nav">
@@ -83,7 +83,7 @@
         <a class="logout" ng-click="logout()" href="javascript:;"></a>
     </div>
 </div>
-<div id="leftbar">
+<div id="leftbar" class="ng-cloak" ng-cloak>
     <div class="searchbar"><input id="" name="" class="input" placeholder="Search"><a class="button" href="javascript:;"></a></div>
     <div ng-include="menuUrl" ng-controller="LeftMenuCtrl"  ></div>
    </div>
