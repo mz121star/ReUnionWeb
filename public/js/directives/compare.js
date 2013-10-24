@@ -41,11 +41,11 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             link: function (scope, elm, attrs, ctrl) {
                 $(elm).css('cursor', 'pointer')
 
-                $(elm).on("click", function () {
+             /*   $(elm).on("click", function () {
                     alert('准备排序')
                     console.log(attrs);
                     console.log(scope);
-                })
+                })*/
             }
         };
     });
