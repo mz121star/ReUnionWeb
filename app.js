@@ -31,11 +31,13 @@ var myErrorHandler=function( req, res, next){
 };
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
+
     app.set('views', __dirname + '/views');
+    app.use(express.compress());
     app.set('view engine', 'html');
     app.use(express.favicon());
     app.use(express.logger('dev'));
-    app.use(express.bodyParser());
+     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser('reunion web'));
     app.use(express.cookieSession({cookie:{ path: '/', httpOnly: true, maxAge: null }}));

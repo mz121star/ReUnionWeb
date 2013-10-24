@@ -18445,7 +18445,10 @@ require(['angular',
     'routes'/*,
     'detectbrowser'*/
 ], function (angular) {
-    angular.bootstrap(document, ['app']);
+    angular.bootstrap(document, ['app',function($interpolateProvider){
+        $interpolateProvider.startSymbol('{{');
+        $interpolateProvider.endSymbol('}}');
+    }]);
     console.log("Welcome visit Reunion System! ") ;
 });
 
