@@ -69,6 +69,7 @@ app.all('/api/*', function(req,res,next){
     console.log("api")
     var s =req.session["user"] ;
     if(s){
+        res.set('Cache-Control','max-age:3600,private');
         next();
     }
     else{

@@ -85,6 +85,9 @@ exports.getNewFeeds=function(req,res){
             if(err){
                 return res.json(500,err);
             }
+            if(!!!feeds[0]){
+                return res.json(404,{});
+            }
             return res.json({data:feeds,time:feeds[0].CrawlerTime||new Date()});
         });
 
