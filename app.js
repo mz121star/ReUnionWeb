@@ -33,8 +33,9 @@ app.configure(function () {
     app.set('port', process.env.PORT || 3000);
 
     app.set('views', __dirname + '/views');
-    app.use(express.compress());
+
     app.set('view engine', 'html');
+    app.use(express.compress());
     app.use(express.favicon());
     app.use(express.logger('dev'));
      app.use(express.bodyParser());
@@ -42,6 +43,7 @@ app.configure(function () {
     app.use(express.cookieParser('reunion web'));
     app.use(express.cookieSession({cookie:{ path: '/', httpOnly: true, maxAge: null }}));
    /* app.use(express.session());*/
+
     app.use(app.router);
    /* app.use(myErrorHandler);*/
 /*    app.use(function(err, req, res, next){
@@ -58,23 +60,23 @@ app.configure(function () {
     /*  app.use(express.static(path.join(__dirname, 'resources')));
      app.use(express.static(path.join(__dirname, 'views/partials')));*/
 });
-app.all('/api', function(req,res,next){
 
+/*app.configure('development', function () {
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});*/
+
+app.all('/api/*', function(req,res,next){
+    console.log("api")
     var s =req.session["user"] ;
     if(s){
         next();
     }
     else{
-        return res.redirect('login');
+        return res.json(401,{error:"Unauthorized"});
 
     }
 
 });
-/*app.configure('development', function () {
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});*/
-
-
 routes(app);
 
 http.createServer(app).listen(app.get('port'), function () {
