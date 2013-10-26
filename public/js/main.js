@@ -4,7 +4,7 @@ require.config({
         jquery: '../lib/jquery/jquery-1.8.2.min',
       /*  bootstrap: '../lib/bootstrap/js/bootstrap',*/
         underscore: '../lib/underscore/underscore',
-        angular: '../lib/angular/angular',
+        angular: '../lib/angular/angular.min',
         angularResource: '../lib/angular/angular-resource',
         text: '../lib/require/text',
         i18n: '../lib/require/i18n',
@@ -64,7 +64,6 @@ require(['angular',
     'app',
     'jquery',
     'controllers/layout',
-/*    'controllers/leftmenu',*/
     'controllers/index',
     'directives/compare',
     'filter/filters' ,
@@ -74,6 +73,9 @@ require(['angular',
     'routes'/*,
     'detectbrowser'*/
 ], function (angular) {
-    angular.bootstrap(document, ['app']);
-    console.log("Welcome visit Reunion System! ")
+    angular.bootstrap(document, ['app',function($interpolateProvider){
+        $interpolateProvider.startSymbol('{{');
+        $interpolateProvider.endSymbol('}}');
+    }]);
+    console.log("Welcome visit Reunion System! ") ;
 });

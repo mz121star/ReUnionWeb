@@ -41,11 +41,11 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             link: function (scope, elm, attrs, ctrl) {
                 $(elm).css('cursor', 'pointer')
 
-                $(elm).on("click", function () {
+             /*   $(elm).on("click", function () {
                     alert('准备排序')
                     console.log(attrs);
                     console.log(scope);
-                })
+                })*/
             }
         };
     });
@@ -73,37 +73,37 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                 var temp =
                     "  <td colspan='8' class='subrowtd'>" +
-                    "<table class='subtable'>" +
+                        "<table class='subtable'>" +
 
-                    "<tr class='thead'>    " +
-                    "<th>N0.</th>    " +
-                    "<th sortable>Title</th>         " +
-                    "<th>Description</th>       " +
-                    "<th>Source</th>            " +
-                    "<th>Url</th>                      " +
+                        "<tr class='thead'>    " +
+                        "<th>N0.</th>    " +
+                        "<th sortable>Title</th>         " +
+                        "<th>Description</th>       " +
+                        "<th>Source</th>            " +
+                        "<th>Url</th>                      " +
 
-                    " </tr>    " +
+                        " </tr>    " +
 
 
-                    "{{#each feeds}} " +
-                    " <tr class='tbody {{rate}}'>" +
-                    "<td> </td>         " +
-                    "<td>{{Title}} </td>    " +
-                    " <td class='w200' >{{ maxContent}} </td>   " +
-                    "<td>{{ FromSite }}</td>                              " +
-                    "<td class='last'><a  >{{url}}</a></td>  " +
+                        "{{#each feeds}} " +
+                        " <tr class='tbody {{rate}}'>" +
+                        "<td> </td>         " +
+                        "<td>{{Title}} </td>    " +
+                        " <td class='w200' >{{ maxContent}} </td>   " +
+                        "<td>{{ FromSite }}</td>                              " +
+                        "<td class='last'><a  >{{url}}</a></td>  " +
 
-                    "</tr>                    " +
-                    "{{/each}}" +
+                        "</tr>                    " +
+                        "{{/each}}" +
 
-                    " </table></td>";
+                        " </table></td>";
 
                 $(elm).toggle(
                     function () {
-                        $(elm).attr("class","closelist");
+                        $(elm).attr("class", "closelist");
                     },
                     function () {
-                        $(elm).attr("class","openlist");
+                        $(elm).attr("class", "openlist");
                     }
 
                 );
@@ -124,20 +124,20 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                                     return this.Content.substring(0, len - 1) + "...";
                                 });
                                 Handlebars.registerHelper('rate', function () {
-                                    if(this.Semantic===0) return "";
-                                    var cls = this.Semantic >0 ? "positive" : "negative"
+                                    if (this.Semantic === 0) return "";
+                                    var cls = this.Semantic > 0 ? "positive" : "negative";
 
-                                    return cls
+                                    return cls;
                                 });
                                 Handlebars.registerHelper('url', function () {
 
-                                    var cls = this.FromUrl.length>40 ? this.FromUrl.substring(0,39)+"..." : this.FromUrl
+                                    var cls = this.FromUrl.length > 40 ? this.FromUrl.substring(0, 39) + "..." : this.FromUrl;
 
-                                    return cls
+                                    return cls;
                                 });
-                                attrs.queryover = "1"
-                                console.log($(elm).parent().next().children('.subrowtd')) ;
-                                $(elm).parent().next().html(template(data))
+                                attrs.queryover = "1";
+                                console.log($(elm).parent().next().children('.subrowtd'));
+                                $(elm).parent().next().html(template(data));
 
                             })
                         });
@@ -147,7 +147,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                 })
             }
         };
-    }])
+    }]);
 
     /*  app.directive('uniform', function () {
      require('jqueryuniform');

@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res'], function (res) {
+define([ 'i18n!resources/nls/res','linqjs'], function (res,Enumerable) {
 
     var AlertsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.menuUrl = "";
@@ -13,7 +13,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
 
                 $scope.Topics = Enumerable.From(d).Select("{type:$.Name,checked:false}").ToArray();
             });
-        }
+        };
 
         getTopics();
 
@@ -48,14 +48,15 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     if (item.type === obj.Topics[i]) {
                         item.checked = true;
                     }
-                })
+                });
 
             }
-        }
+
+        };
         $scope.addAlertClick = function () {
             console.log("OKOK")
             $scope.editWindowTitle = "Add New Alert";
-        }
+        };
         $scope.addAlert = function () {
 
             $scope.saveTopicError = "";
@@ -129,7 +130,7 @@ define([ 'i18n!resources/nls/res'], function (res) {
                     });
             }
         };
-        $scope.editWindowTitle = "Add New Alert"
+        $scope.editWindowTitle = "Add New Alert" ;
 
     }];
 

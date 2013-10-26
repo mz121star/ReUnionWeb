@@ -8,15 +8,15 @@ define(['../../app', 'i18n!resources/nls/res'], function (app, res) {
 
         $scope.Analysis = {
             toCustomerAnalysis: function () {
-                      $rootScope.analysisDetailUrl = "partials/charts/customer-analysis.html";
-            } ,
-            toBasicAnalysis:function(){
+                $rootScope.analysisDetailUrl = "partials/charts/customer-analysis.html";
+            },
+            toBasicAnalysis: function () {
                 $rootScope.analysisDetailUrl = "partials/charts/default-analysis.html";
-            } ,
-            toReoresentaticeArticles:function(){
+            },
+            toReoresentaticeArticles: function () {
                 $rootScope.analysisDetailUrl = "partials/charts/representativeArticles-analysis.html";
             }
-        }
+        };
 
     });
 });

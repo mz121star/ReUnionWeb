@@ -34,7 +34,7 @@ exports.list = function (req, res,next) {
     var pageindex = req.body.pageindex ? req.body.pageindex * 20 - 20 : 0;
     FeedsModel.find(queryCondition).count(function (err, count) {
         if(err){
-            next(err);
+            return res.json(500, err);
         }
         var query = FeedsModel.find(queryCondition)
         if (querykeyword.length > 0)
@@ -84,6 +84,9 @@ exports.getNewFeeds=function(req,res){
         .exec(function (err, feeds) {
             if(err){
                 return res.json(500,err);
+            }
+            if(!!!feeds[0]){
+                return res.json(404,{});
             }
             return res.json({data:feeds,time:feeds[0].CrawlerTime||new Date()});
         });

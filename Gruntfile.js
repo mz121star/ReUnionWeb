@@ -1,44 +1,55 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     // 配置
     grunt.initConfig({
-        pkg : grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('package.json'),
         requirejs: {
             compile: {
                 options: {
                     baseUrl: "public/js",
                     paths: {
                         jquery: '../lib/jquery/jquery-1.8.2.min',
+
                         underscore: '../lib/underscore/underscore',
-                        angular: '../lib/angular/angular',
+                        angular: '../lib/angular/angular.min',
                         angularResource: '../lib/angular/angular-resource',
                         text: '../lib/require/text',
                         i18n: '../lib/require/i18n',
-                        ichart: '../lib/ichart.1.2.src'  ,
-                        bootstrapModal:'../lib/bootstrap/js/modal',
-                        bootstrapAlert:'../lib/bootstrap/js/alert',
-                        bootstrapButton:'../lib/bootstrap/js/button',
-                        bootstrapTab:'../lib/bootstrap/js/tab',
-                        linqjs:'../lib/linq',
-                        'angular-strap':'../lib/angular-strap/angular-strap',
-                        'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
-                        "async":'../lib/async',
-                        "moment": "../lib/moment.min"
+
+                        ichart: '../lib/ichart.1.2.src',
+
+                        bootstrapModal: '../lib/bootstrap/js/modal',
+                        bootstrapAlert: '../lib/bootstrap/js/alert',
+                        bootstrapButton: '../lib/bootstrap/js/button',
+                        bootstrapTab: '../lib/bootstrap/js/tab',
+                        bootstrapTooltip: '../lib/bootstrap/js/tooltip',
+
+                        linqjs: '../lib/linq',
+                        'angular-strap': '../lib/angular-strap/angular-strap',
+                        'bootstrap-datepicker': '../lib/angular-strap/bootstrap-datepicker',
+                        "async": '../lib/async',
+                        "moment": "../lib/moment.min",
+                        "handlebars": "../lib/handlebars"
 
                     },
                     shim: {
-                        'angular': {deps: ['jquery'],'exports': 'angular'},
+                        'angular': {deps: ['jquery'], 'exports': 'angular'},
                         'angular-resource': {deps: ['angular']},
-                        'bootstrap-datepicker':  {deps: ['jquery']},
-                        'angular-strap':   {deps: ['angular','bootstrap-datepicker']},
+                        'bootstrap-datepicker': {deps: ['jquery']},
+                        'angular-strap': {deps: ['angular', 'bootstrap-datepicker']},
+                        'bootstrap': {deps: ['jquery']},
+
+                        'jqueryui': {deps: ['jquery']},
                         'underscore': {exports: '_'},
                         'bootstrapModal': {deps: ['jquery']},
                         'bootstrapAlert': {deps: ['jquery']},
                         'bootstrapButton': {deps: ['jquery']},
                         'bootstrapTab': {deps: ['jquery']}
+                        /*,
+                         'res':{exports:'res'}*/
 
                     },
 
-                    optimize:"none",
+                    optimize: "none",
                     name: "main",
                     out: "public/js/main-built.js"
 
@@ -51,23 +62,29 @@ module.exports = function(grunt) {
             combine: {
 
                 files: {
-                    'public/css/reunion.css': ['public/lib/bootstrap/css/bootstrap.css','public/lib/bootstrap/css/bootstrap-responsive.css','public/lib/angular-strap/bootstrap-datepicker.css','public/css/default.css']
+                    'public/css/reunion.css': ['public/lib/bootstrap/css/bootstrap.css', 'public/lib/bootstrap/css/bootstrap-responsive.css', 'public/lib/angular-strap/bootstrap-datepicker.css', 'public/css/default.css']
                 }
             }
         },
-        concat : {
-            domop : {
+        concat: {
+            domop: {
                 src: 'public/js/*.js',
                 dest: 'dest/reunion.js'
             }
         },
-        uglify : {
-            options : {
-                banner : '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        uglify: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'   ,
+                /*sourceMap: 'public/js/source-map.js' ,*/
+                mangle: false
+
             },
-            build : {
-                src : 'dest/reunion.js',
-                dest : 'dest/reunion.min.js'
+            build: {
+                /*src : 'dest/reunion.js',
+                 dest : 'dest/reunion.min.js'*/
+                src: 'public/js/main-built.js',
+                dest: 'public/js/main-built.min.js'
+
             }
         },
         nodeunit: {
@@ -79,6 +96,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
-    grunt.registerTask('default', ['requirejs','cssmin','concat', 'uglify']);
-    grunt.registerTask("test",['nodeunit']);
+    grunt.registerTask('default', ['requirejs', 'cssmin', 'concat', 'uglify']);
+    grunt.registerTask("test", ['nodeunit']);
 };
