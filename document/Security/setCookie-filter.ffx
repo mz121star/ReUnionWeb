@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SimpleFilter LastSave="2013-10-25T16:35:13.6027041+08:00" ExtensionVersion="2.4.1.2">
+  <Settings FiltersEnabled="true">
+    <slHosts>http://210.83.216.71:7080/;</slHosts>
+    <iFilterActions>3</iFilterActions>
+    <iResponseType>0</iResponseType>
+    <bHideSvcHost>false</bHideSvcHost>
+    <bHideNonIE>false</bHideNonIE>
+    <bBreakPost>false</bBreakPost>
+    <bBreakXHR>false</bBreakXHR>
+    <bBreakQueryString>false</bBreakQueryString>
+    <bRequestURLFilter>false</bRequestURLFilter>
+    <sRequestURLFilter />
+    <bHideRedirects>false</bHideRedirects>
+    <bHideSuccess>false</bHideSuccess>
+    <bHideNon2xx>false</bHideNon2xx>
+    <bHide304>false</bHide304>
+    <bHide401>false</bHide401>
+    <bUseMinSize>false</bUseMinSize>
+    <bUseMaxSize>false</bUseMaxSize>
+    <iMinSize>0</iMinSize>
+    <iMaxSize>1000</iMaxSize>
+    <bBlockScript>false</bBlockScript>
+    <bHeatMap>false</bHeatMap>
+    <bBlockImages>false</bBlockImages>
+    <bBlockFlash>false</bBlockFlash>
+    <bBlockCSS>false</bBlockCSS>
+    <iShowOnlyZone>0</iShowOnlyZone>
+    <bBreakContentType>false</bBreakContentType>
+    <sBreakContentType />
+    <bFlagRequestHeader>false</bFlagRequestHeader>
+    <sFlagRequestHeader />
+    <bDeleteRequestHeader>false</bDeleteRequestHeader>
+    <sDeleteRequestHeader />
+    <bSetRequestHeader>true</bSetRequestHeader>
+    <sSetRequestHeader>Cookie</sSetRequestHeader>
+    <sSetRequestHeaderValue>connect.sess=s%3Aj%3A%7B%22user%22%3A%7B%22name%22%3A%22admin%22%2C%22hash_password%22%3A%22ISMvKXpXpadDiUoOSoAfww%3D%3D%22%2C%22sex%22%3A21%2C%22email%22%3A%22zhuang.miao%40pactera.com%22%2C%22_id%22%3A%2252563653faf829c840000001%22%2C%22__v%22%3A0%7D%7D.8BwBzN%2Bin%2BJEazxEVwcrNuc1k8dTM2Bamvs9b%2BHL33M</sSetRequestHeaderValue>
+    <bFlagSetCookie>true</bFlagSetCookie>
+    <bFlagResponseHeader>false</bFlagResponseHeader>
+    <sFlagResponseHeader />
+    <bDeleteResponseHeader>false</bDeleteResponseHeader>
+    <sDeleteResponseHeader />
+    <bSetResponseHeader>true</bSetResponseHeader>
+    <sSetResponseHeader>Set-Cookie</sSetResponseHeader>
+    <sSetResponseHeaderValue>connect.sess=s%3Aj%3A%7B%22user%22%3A%7B%22name%22%3A%22admin%22%2C%22hash_password%22%3A%22ISMvKXpXpadDiUoOSoAfww%3D%3D%22%2C%22sex%22%3A21%2C%22email%22%3A%22zhuang.miao%40pactera.com%22%2C%22_id%22%3A%2252563653faf829c840000001%22%2C%22__v%22%3A0%7D%7D.8BwBzN%2Bin%2BJEazxEVwcrNuc1k8dTM2Bamvs9b%2BHL33M; Path=/; HttpOnly</sSetResponseHeaderValue>
+  </Settings>
+</SimpleFilter>
