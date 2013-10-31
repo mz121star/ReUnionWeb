@@ -10,8 +10,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $scope.distributionDiagram = "partials/widgets/geoChart/index.html";
         $scope. feedsStatistics = "partials/widgets/candlstickChart/index.html";
         $scope.searchDate = {
-            starttime: "09/20/2013",
-            endtime: "10/17/2013"
+            starttime: moment(new Date()).add('days', -30).format("MM/DD/YYYY"),
+            endtime: moment(new Date()).format("MM/DD/YYYY")
         };
 
         $scope.dashboard = {
