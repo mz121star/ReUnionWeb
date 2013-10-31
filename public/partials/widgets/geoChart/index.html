@@ -7,6 +7,7 @@
 <!--<script type='text/javascript' src='https://www.google.com/jsapi'></script>-->
 <script type='text/javascript' src='jsapi.js'></script>
 <script type='text/javascript' src='geodata.js'></script>
+<script src="../../../lib/jquery/jquery-1.8.2.min.js"></script>
 <script type='text/javascript'>
     var screenWidth = document.width;
     var screenHeigth = document.height;
@@ -19,21 +20,26 @@
     google.setOnLoadCallback(drawRegionsMap);
 
     function drawRegionsMap() {
-        var data = google.visualization.arrayToDataTable([
-            ['Country', 'Total'],
-            ['Germany', 60],
-            ['United States', 300],
-            ['Brazil', 10],
-            ['Canada', 50],
-            ['France', 180],
-            ['RU', 100],
-                ['CN',400]
-        ]);
 
-        var options = {};
-        var geochart = new google.visualization.GeoChart(
-                document.getElementById('chart_div'));
-        geochart.draw( data, {  height: mapHeight, backgroundColor: { fill:'transparent' }});
+        var data;
+        $.post("/api/feeds").success(function (d) {
+            var count = d.totalcount;
+            var data = google.visualization.arrayToDataTable([
+                ['Country', 'Total'],
+                ['Germany', count * 0.05],
+                ['United States', count * 0.15],
+                ['Brazil', count * 0.05],
+                ['Canada', count * 0.05],
+                ['France', count * 0.1],
+                ['RU', count * 0.2],
+                ['CN', count * 0.4]
+            ]);
+            var options = {};
+            var geochart = new google.visualization.GeoChart(
+                    document.getElementById('chart_div'));
+            geochart.draw(data, {  height: mapHeight, backgroundColor: { fill: 'transparent' }});
+        });
+
 
     }
     ;
