@@ -6,6 +6,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', '$location', function ($scope, $rootScope, $http, $timeout, $location) {
         $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
+
+        $scope.distributionDiagram = "partials/widgets/geoChart/index.html";
+        $scope. feedsStatistics = "partials/widgets/candlstickChart/index.html";
         $scope.searchDate = {
             starttime: "09/20/2013",
             endtime: "10/17/2013"
