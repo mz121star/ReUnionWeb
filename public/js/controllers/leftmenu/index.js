@@ -18,5 +18,7 @@ define(['../../app', 'i18n!resources/nls/res'], function (app, res) {
             }
         };
 
+
+
     });
 });

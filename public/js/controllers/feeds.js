@@ -1,8 +1,8 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal'], function (res, excel,Enumerable) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal'], function (res, excel, Enumerable) {
 
-    var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService' , function ($scope, $rootScope, $http, FeedService) {
+    var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' , function ($scope, $rootScope, $http, FeedService, $window) {
 
         $rootScope.menuUrl = "partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
@@ -21,6 +21,17 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
+        $rootScope.removeTopic = function (event,feed) {
+
+            if ($window.confirm("Are you sure delete the topic?")) {
+                $http.delete("/api/topic/" + feed._id).success(function (d) {
+                    console.log(d);
+                    gettopicSelected();
+
+                });
+            }
+           event.stopPropagation();
+        }
         $scope.searchFeed = function () {
             var sts = Enumerable.From($scope.sourcetype)
                 .Where(function (x) {
@@ -35,15 +46,15 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
             $http.post("api/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
                 $scope.pages = d.count;
-                $scope.feedContent = Enumerable.From(d.feeds) .ToArray();
+                $scope.feedContent = Enumerable.From(d.feeds).ToArray();
             });
 
         };
 
         /*FeedService.querySourceType().then(function (d) {
 
-            $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
-        });*/
+         $scope.sourcetype = Enumerable.From(d).Select("{type:$,checked:false}").ToArray();
+         });*/
 
         $scope.feeds = {
             startTime: new Date("2010-01-01"),
@@ -136,12 +147,12 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
         };
 
         $rootScope.topicSelected = function (topic) {
+
             $scope.keyword = topic.Keyword;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
             $scope.source.keywordExpression = topic.Keyword;
             var sourceType = topic.SearchCondition.SourceType;
-
 
 
             for (var k in $scope.sourcetype) {

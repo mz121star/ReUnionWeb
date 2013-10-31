@@ -36,3 +36,27 @@ exports.saveTopic = function (req, res) {
     })
 }
 
+/***
+ * delete /topic
+ * {name:"topicName"}
+ * @param req
+ * @param res
+ */
+exports.delete=function(req,res){
+    var reg = /^\/api\/topic\/(?:([^\/]+?))\/?$/;
+    var id=req.url.match(reg)[1];
+    if(id) id=decodeURI(id);
+    TopicModel.findById(id,function(err, topic) {
+        if(err){
+            return res.json(500,err);
+        }
+
+        topic.remove(function (err, data) {
+            if (err) {
+                return res.json(500, err);
+            }
+
+            res.json(data);
+        })
+    });
+}

@@ -62,7 +62,7 @@ module.exports = function (app) {
      */
     app.post('/api/topic', topic.saveTopic);
     app.get('/api/topic', topic.list);
-
+    app.delete('/api/topic/:id',topic.delete);
     /***
      * Reports-subscription report
      */
