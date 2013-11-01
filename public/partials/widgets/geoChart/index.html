@@ -25,19 +25,37 @@
         $.post("/api/feeds").success(function (d) {
             var count = d.totalcount;
             var data = google.visualization.arrayToDataTable([
-                ['Country', 'Total'],
-                ['Germany', count * 0.05],
-                ['United States', count * 0.15],
-                ['Brazil', count * 0.05],
-                ['Canada', count * 0.05],
-                ['France', count * 0.1],
-                ['RU', count * 0.2],
-                ['CN', count * 0.4]
+                ['City', 'Total'],
+                ['辽宁', count * 0.05],
+                ['广东', count * 0.15],
+                ['福建', count * 0.05],
+                ['安徽', count * 0.1],
+                ['云南', count * 0.2],
+                ['山西', count * 0.05],
+                ['陕西', count * 0.1],
+                ['上海', count * 0.2],
+                ['黑龙江', count * 0.05],
+                ['吉林', count * 0.1],
+                ['西藏', count * 0.2],
+                ['新疆', count * 0.2],
+                ['甘肃', count * 0.1],
+                ['四川', count * 0.2],
+
+                ['北京', count * 0.3]
             ]);
-            var options = {};
+            var options = {
+                region: 'CN' ,
+                displayMode: 'markers',
+                resolution :'provinces'   ,
+
+                tooltip:  {textStyle: {color: '#FF0000'}, showColorCode: true},
+                height: mapHeight,
+                colorAxis: {colors: ['yellow', 'red']} ,
+                backgroundColor: { fill: 'transparent' }
+            };
             var geochart = new google.visualization.GeoChart(
                     document.getElementById('chart_div'));
-            geochart.draw(data, {  height: mapHeight, backgroundColor: { fill: 'transparent' }});
+            geochart.draw(data, options);
         });
 
 
