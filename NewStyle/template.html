@@ -1,39 +1,20 @@
 
 <!doctype html>
-<html lang="en" ng-controller="LayoutController">
+<html>
 <head>
     <meta charset="utf-8">
-    <style>
-        [ng-cloak] {
-            display: none;
-        }
-    </style>
-    <title ng-bind="title">Reunion.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- Apple devices fullscreen -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <!-- Apple devices fullscreen -->
     <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-
-
-
-    <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
-
-    <!--<script data-main="js/main-built.min" src="lib/require/require.min.js"></script>-->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Reunion">
-    <meta name="author" content="Pactera">
-
-    <link rel="shortcut icon" href="images/icon/reunion-r.png">
-    <!--[if lt IE 9]>
-    <script type="text/javascript" charset="UTF-8" src="lib/html5shiv.js"></script>
-    <![endif]-->
+    <title>Reunion</title>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap.min.css">
-   <!-- <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Bootstrap responsive -->
+    <link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css">
     <!-- jQuery UI -->
     <link rel="stylesheet" href="assets/css/plugins/jquery-ui/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="assets/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css">
@@ -56,14 +37,14 @@
     <!-- slimScroll -->
     <script src="assets/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <!-- Bootstrap -->
-    <script src="lib/bootstrap3/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <!-- Form -->
     <script src="assets/js/plugins/form/jquery.form.min.js"></script>
 
     <!-- Theme framework -->
     <script src="assets/js/eakroko.min.js"></script>
     <!-- Theme scripts -->
-<!--    <script src="assets/js/application.min.js"></script>-->
+    <script src="assets/js/application.min.js"></script>
     <!-- Just for demonstration -->
     <script src="assets/js/demonstration.min.js"></script>
 
@@ -76,18 +57,19 @@
     </script>
     <![endif]-->
 
-
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/img/favicon.ico" />
     <!-- Apple devices Homescreen icon -->
     <link rel="apple-touch-icon-precomposed" href="assets/img/apple-touch-icon-precomposed.png" />
 
 </head>
 
 <body>
-<div class="navbar navbar-default navbar-static-top">
-<div class="container">
+<div id="navigation">
+<div class="container-fluid">
 <a href="#" id="brand">FLAT</a>
 <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
-<ul class='nav navbar-nav'>
+<ul class='main-nav'>
 <li>
     <a href="index.html">
         <span>Dashboard</span>
@@ -652,7 +634,7 @@
                 <a href="#"><i class="icon-remove"></i></a>
             </div>
         </div>
-        <div class="row">
+        <div class="row-fluid">
             <div class="span12">
                 <div class="box">
                     <div class="box-title">

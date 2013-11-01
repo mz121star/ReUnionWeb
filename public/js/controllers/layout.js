@@ -109,12 +109,12 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
             $(".message").toggleClass("font20", "font20")
         }, 1000);
         $scope.ntime = new Date();
-        window.setInterval(function () {
+     /*   window.setInterval(function () {
             $http.post('/api/getNewFeeds', {time: $scope.ntime}).success(function (d) {
                 $scope.newFeeds = d.data;
                 $scope.ntime = d.time;
             })
-        }, 10000);
+        }, 10000);*/
         $(".message").on("click", function () {
             clearInterval(inter);
             $(".message").html("");
