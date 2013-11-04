@@ -1,6 +1,10 @@
 <html>
 <head>
-
+             <style>
+                 #chart_div path {
+                    fill:#D6EE98
+                 }
+             </style>
 </head>
 <body>
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -40,17 +44,19 @@
                 ['新疆', count * 0.2],
                 ['甘肃', count * 0.1],
                 ['四川', count * 0.2],
-
                 ['北京', count * 0.3]
+
+
             ]);
             var options = {
-                region: 'CN' ,
-                displayMode: 'markers',
-                resolution :'provinces'   ,
-
-                tooltip:  {textStyle: {color: '#FF0000'}, showColorCode: true},
+                region: 'CN',
+                 displayMode: 'markers',
+                resolution: 'provinces',
+                backgroundColor : { fill:"#ace",stroke:"#ace",strokeWidth:1},
+                datalessRegionColor:"#E5E5E5"    ,
+                tooltip: {textStyle: {color: '#FF0000'}, showColorCode: true},
                 height: mapHeight,
-                colorAxis: {colors: ['yellow', 'red']} ,
+                colorAxis: {colors: ['yellow', 'red']},
                 backgroundColor: { fill: 'transparent' }
             };
             var geochart = new google.visualization.GeoChart(
