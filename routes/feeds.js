@@ -32,7 +32,9 @@ exports.list = function (req, res,next) {
         queryCondition.PublishTime = {$gte: new Date(req.body.starttime), $lte: new Date(req.body.endtime) };
     }
     var pageindex = req.body.pageindex ? req.body.pageindex * 20 - 20 : 0;
-    FeedsModel.find(queryCondition).count(function (err, count) {
+    var queryFeeds=FeedsModel.find(queryCondition);
+    if (querykeyword.length > 0) queryFeeds.and(querykeyword) ;
+    queryFeeds.count(function (err, count) {
         if(err){
             return res.json(500, err);
         }
