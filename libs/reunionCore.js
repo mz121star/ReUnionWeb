@@ -5,7 +5,7 @@ exports.GetSourceType = function (callback) {
         .find()
         /*.limit(20)*/
         .select('name')
-        .distinct('name',{}, function (err, feeds) {
+        .distinct('name',  function (err, feeds) {
             if(err){
                 return null;
             }
