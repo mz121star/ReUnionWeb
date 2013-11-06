@@ -45,7 +45,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
             /*            console.log(searchData);*/
             $http.post("api/feeds", searchData).success(function (d) {
                 console.log($scope.feeds.startTime);
-                $scope.pages = d.count;
+                console.log(d);
+                $scope.pages = d.count>20? 20:parseInt(d.count,10);
+                console.log( $scope.pages);
                 $scope.feedContent = Enumerable.From(d.feeds).ToArray();
             });
 
@@ -80,7 +82,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
         };
         $http.post("api/feeds").success(function (d) {
             $scope.feedContent = d.feeds;
-            $scope.pages = d.count;
+            $scope.pages = d.count>20? 20:parseInt(d.count,10);
         });
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {

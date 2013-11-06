@@ -42,7 +42,7 @@ exports.list = function (req, res,next) {
 
         query.sort({PublishTime: 'desc'})
             .skip(pageindex)
-            .limit(20)
+            .limit(50)
             /*.select('childs')*/
             .exec(function (err, feeds) {
                 if (err) {
@@ -53,7 +53,7 @@ exports.list = function (req, res,next) {
                         FeedsModel.find().distinct('FromSite',function(err,countsites){
                             return res.json({
                                 "feeds": feeds,
-                                "count": count / 20 > 1 ? count / 20 : 1 ,
+                                "count": count / 50 > 1 ? count / 50 : 1 ,
                                 "totalcount":totalcount,
                                 todaycount:Todaycount ,
                                 countsites:countsites.length
