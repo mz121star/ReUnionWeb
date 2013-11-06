@@ -17,6 +17,6 @@ var schema = new Schema({
     Sentiment:Number //-1, 0 ,1
 
 
-}, {collection: 'ResultData_Max_new_ENG'});
+}, {collection: 'ResultData_Max_new_ENG_ge'});
 
 mongoose.model('Feeds', schema);

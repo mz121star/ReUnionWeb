@@ -13,6 +13,6 @@ var schema = new Schema({
     OwnerId:String,
     CreateDate:Date,
     UpdateDate:Date
-}, {collection: 'Topic'});
+}, {collection: 'Topic_ge'});
 
 mongoose.model('Topic', schema);

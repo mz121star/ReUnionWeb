@@ -7,8 +7,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment', 'bootstrapAler
         $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
 
-        $scope.distributionDiagram = "partials/widgets/geoChart/index.html";
-        $scope. feedsStatistics = "partials/widgets/candlstickChart/index.html";
+        $scope.distributionDiagram = "widgets/geoChart/index.html";
+        $scope. feedsStatistics = "widgets/candlstickChart/index.html";
         $scope.searchDate = {
             starttime: moment(new Date()).add('days', -30).format("MM/DD/YYYY"),
             endtime: moment(new Date()).format("MM/DD/YYYY")
