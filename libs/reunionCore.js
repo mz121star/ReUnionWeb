@@ -1,11 +1,11 @@
-var FeedsModel = require("./../models").Feeds;
+var SourceTypeModel = require("./../models").SourceType;
 
 exports.GetSourceType = function (callback) {
-    FeedsModel
+    SourceTypeModel
         .find()
         /*.limit(20)*/
-        .select('FromType')
-        .distinct('FromType', function (err, feeds) {
+        .select('name')
+        .distinct('name', function (err, feeds) {
             if(err){
                 return null;
             }
