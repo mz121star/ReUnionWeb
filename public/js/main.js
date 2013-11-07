@@ -2,7 +2,7 @@ require.config({
 
     paths: {
         jquery: '../lib/jquery/jquery-1.8.2.min',
-      /*  bootstrap: '../lib/bootstrap/js/bootstrap',*/
+        bootstrap: '../lib/bootstrap3/js/bootstrap',
         underscore: '../lib/underscore/underscore',
         angular: '../lib/angular/angular.min',
         angularResource: '../lib/angular/angular-resource',
@@ -17,11 +17,11 @@ require.config({
         //res:'../resources/nls/res'
         ichart: '../lib/ichart.1.2.src'  ,
     /*    jqueryui:'../lib/jquery-ui-1.10.3.custom' ,*/
-        bootstrapModal:'../lib/bootstrap/js/modal',
+      /*  bootstrapModal:'../lib/bootstrap/js/modal',
         bootstrapAlert:'../lib/bootstrap/js/alert',
         bootstrapButton:'../lib/bootstrap/js/button',
         bootstrapTab:'../lib/bootstrap/js/tab',
-        bootstrapTooltip:'../lib/bootstrap/js/tooltip',
+        bootstrapTooltip:'../lib/bootstrap/js/tooltip',*/
       /*  jqueryuniform: '../lib/uniform/jquery.uniform.min',*/
         linqjs:'../lib/linq',
         'angular-strap':'../lib/angular-strap/angular-strap',
@@ -41,12 +41,12 @@ require.config({
         'jqueryui':{deps: ['jquery']},
 
 
-        'underscore': {exports: '_'},
+        'underscore': {exports: '_'}
      /*   'detectbrowser': {deps: ['modernizr']} ,*/
-        'bootstrapModal': {deps: ['jquery']},
+      /*  'bootstrapModal': {deps: ['jquery']},
         'bootstrapAlert': {deps: ['jquery']},
         'bootstrapButton': {deps: ['jquery']},
-        'bootstrapTab': {deps: ['jquery']}
+        'bootstrapTab': {deps: ['jquery']}*/
         /*,
          'res':{exports:'res'}*/
 
@@ -63,6 +63,7 @@ require.config({
 require(['angular',
     'app',
     'jquery',
+    'bootstrap',
     'controllers/layout',
     'controllers/index',
     'directives/compare',

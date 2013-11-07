@@ -113,7 +113,7 @@ caption {background:#eee;}
 #leftbar .search .button:hover {cursor:pointer;background:#003d78;border:1px solid #0062B8;border-bottom:1px solid #005199;}
 
 
-#maincontent {position:absolute;top:58px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
+#maincontent {position:absolute;top:55px;/*left:220px;*/right:0;min-height:900px;padding-bottom:50px;background: #FFF url('../images/bg/dw.png') no-repeat right bottom;}
 
 #maincontent .containercrumbs {float:left;width:100%;padding: 0;}
 #maincontent .containercrumbs .text {float:left;font-size:14px;font-weight:bold;}

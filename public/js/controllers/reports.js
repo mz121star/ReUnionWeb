@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', 'linqjs', 'bootstrapButton'], function (res,Enumerable) {
+define([ 'i18n!resources/nls/res', 'linqjs' ], function (res,Enumerable) {
 
     var ReportsController = ['$scope', '$rootScope', '$http', '$timeout', function ($scope, $rootScope, $http, $timeout) {
         $rootScope.title = "Reports - " + res.title;

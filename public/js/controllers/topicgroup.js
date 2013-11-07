@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal'], function (res, excel, Enumerable) {
+define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, excel, Enumerable) {
 
     var TopicGroupController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' , function ($scope, $rootScope, $http, FeedService, $window) {
 

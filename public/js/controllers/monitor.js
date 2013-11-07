@@ -1,6 +1,6 @@
 'use strict';
 
-define([ 'i18n!resources/nls/res','linqjs', 'bootstrapTab'], function (res,Enumerable) {
+define([ 'i18n!resources/nls/res','linqjs' ], function (res,Enumerable) {
 
     var MonitorController = ['$scope', '$rootScope', 'FeedService', '$http', '$timeout', function ($scope, $rootScope, FeedService, $http, $timeout) {
         $rootScope.menuUrl = "partials/leftmenu/monitorMenu.html";
