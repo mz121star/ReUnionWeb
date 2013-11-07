@@ -43,6 +43,7 @@ exports.list = function (req, res) {
  */
 exports.saveTopic = function (req, res) {
     var topic = new TopicModel(req.body);
+    topic.OwnerId= req.session.user._id ;
     topic.save(function(err,data){
         if(err){
             return res.json(500,err);

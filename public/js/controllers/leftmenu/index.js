@@ -19,8 +19,9 @@ define(['../../app', 'i18n!resources/nls/res'], function (app, res) {
         };
 
         $scope.Feeds = {
+            feedMenuSelectRow  :1,
             changeStyle: function (index) {
-               $scope.feedMenuSelectRow=index;
+               $scope.Feeds.feedMenuSelectRow=index;
             }
         }
 
