@@ -16,6 +16,7 @@ var alert = require('./alert');
 var monitor = require('./monitor');
 var chart = require('./chart');
 var admintool = require('./admintool');
+var topicgroup = require('./topicgroup');
 module.exports = function (app) {
     /***
      * Render Pages页面相关代码
@@ -41,6 +42,12 @@ module.exports = function (app) {
     app.post('/api/getNewFeeds',feeds.getNewFeeds);
 
     /***
+     * Group
+     */
+    app.get('/api/topicgroup', topicgroup.list);
+    app.post('/api/topicgroup',topicgroup.save);
+
+    /***
      * Report
      */
     app.get('/api/2DBarReprot', reports.list);
@@ -63,6 +70,8 @@ module.exports = function (app) {
     app.post('/api/topic', topic.saveTopic);
     app.get('/api/topic', topic.list);
     app.delete('/api/topic/:id',topic.delete);
+    app.get('/api/topic/:id',topic.getById);
+
     /***
      * Reports-subscription report
      */

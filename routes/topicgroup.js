@@ -1,4 +1,4 @@
-var TopicModel = require("./../models").Topic;
+var TopicGroupModel = require("./../models").TopicGroup;
 
 /***
  * Get /topic
@@ -6,13 +6,12 @@ var TopicModel = require("./../models").Topic;
  * @param res
  */
 exports.list = function (req, res) {
-
     var querstring = req.url;
     var groupid = querstring.match(/groupid=(\w+)/);
     if(groupid) groupid=new RegExp(groupid[1],"gmi");
 
     if (groupid) {
-        TopicModel.find({GroupId: groupid})
+        TopicGroupModel.find({GroupId: groupid})
             /*.limit(20)*/
             /*.select('childs')*/
             .exec(function (err, subs) {
@@ -23,7 +22,7 @@ exports.list = function (req, res) {
             });
     }
     else {
-        TopicModel.find()
+        TopicGroupModel.find()
             /*.limit(20)*/
             /*.select('childs')*/
             .exec(function (err, subs) {
@@ -34,6 +33,8 @@ exports.list = function (req, res) {
             });
     }
 
+
+
 };
 /***
  * POST /topic
@@ -41,8 +42,8 @@ exports.list = function (req, res) {
  * @param req
  * @param res
  */
-exports.saveTopic = function (req, res) {
-    var topic = new TopicModel(req.body);
+exports.save = function (req, res) {
+    var topic = new TopicGroupModel(req.body);
     topic.save(function(err,data){
         if(err){
             return res.json(500,err);
@@ -51,7 +52,6 @@ exports.saveTopic = function (req, res) {
         res.json(data);
     })
 }
-
 
 /***
  * delete /topic
@@ -77,25 +77,3 @@ exports.delete=function(req,res){
         })
     });
 }
-
-/***
- * Get /topic/:id
- * @param req
- * @param res
- */
-exports.getById = function (req, res) {
-
-    var reg = /^\/api\/topic\/(?:([^\/]+?))\/?$/;
-    var type=req.url.match(reg)[1];
-    if(type) type=decodeURI(type);
-    TopicModel.find({_id:type})
-        /*.limit(20)*/
-        /*.select('childs')*/
-        .exec(function (err, data) {
-            if(err){
-                return res.json(500,err);
-            }
-            return res.json(data);
-        });
-
-};

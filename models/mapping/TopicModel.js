@@ -12,7 +12,8 @@ var schema = new Schema({
     },
     OwnerId:String,
     CreateDate:Date,
-    UpdateDate:Date
+    UpdateDate:Date ,
+    GroupId:String
 }, {collection: 'Topic_ge'});
 
 mongoose.model('Topic', schema);

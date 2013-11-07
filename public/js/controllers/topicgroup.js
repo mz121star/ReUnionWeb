@@ -2,16 +2,13 @@
 
 define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal'], function (res, excel, Enumerable) {
 
-    var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' ,'$location', function ($scope, $rootScope, $http, FeedService, $window,$location) {
-
+    var TopicGroupController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' , function ($scope, $rootScope, $http, FeedService, $window) {
 
         $rootScope.menuUrl = "partials/leftmenu/feedsMenu.html";
-        $rootScope.title = "Feeds - " + res.title;
+        $rootScope.title = "Topic Group - " + res.title;
         $rootScope.show = true;
         $scope.show = true;
-        $scope.source = {
-            keywordExpression: "兰蔻品牌"
-        };
+
 
         $scope.sourceType = [];
         $http.get('api/feedsSourceType').success(function (d) {
@@ -51,7 +48,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
                     $scope.searchFeed();
                 }
                 else {
-                     $scope.feedContent = Enumerable.From(d.feeds).ToArray();
+                    $scope.feedContent = Enumerable.From(d.feeds).ToArray();
                 }
             });
 
@@ -99,9 +96,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
             }
         });
 
-        $scope.exportExcel = function (tname, excelname) {
-            excel(tname, excelname);
-        };
+
         $rootScope.Topics = [
             {name: "topic1"},
             {name: "topic2"}
@@ -139,6 +134,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
                     StartDate: new Date($scope.feeds.startTime),
                     EndDate: new Date($scope.feeds.endTime)
                 },
+                GroupId:$scope.topicGroupName ,
                 OwnerId: "admin",
                 CreateDate: Date.now(),
                 UpdateDate: Date.now()
@@ -146,73 +142,31 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
             }).success(function (d) {
                     getTopics(function () {
                         $scope.topicName = '';
-                        $scope.saveTopicWarning = "Save Topic Successfully"
+                        $scope.saveTopicWarning = "Save Topic Successfully" ;
+                        getTopicGroup();
                     })
 
                 });
         };
-
-        $rootScope.topicSelected = function (topic) {
-
-            $scope.keyword = topic.Keyword;
-            $scope.feeds.startTime = topic.SearchCondition.StartDate;
-            $scope.feeds.endTime = topic.SearchCondition.EndDate;
-            $scope.source.keywordExpression = topic.Keyword;
-            var sourceType = topic.SearchCondition.SourceType;
-
-
-            for (var k in $scope.sourcetype) {
-                $scope.sourcetype[k].checked = false;
-                for (var i in sourceType) {
-                    if ($scope.sourcetype[k].type === sourceType[i]) {
-                        $scope.sourcetype[k].checked = true;
-                    }
-
-                }
-            }
-
-            $scope.sourcetype = $scope.sourcetype;
-            /* console.log($scope.sourcetype);
-             console.log(topic);*/
+        var getTopicGroup = function () {
+            $http.get("api/topicgroup").success(function (d) {
+                $scope.groups = d;
+            });
         };
+        getTopicGroup();
+        $scope.saveTopicGroup = function () {
+            $http.post("api/topicgroup", {Name: $scope.topicGroupName, Description: $scope.topicGroupDescription}).success(function (d) {
+                $http.get("api/topicgroup").success(function (d) {
+                    getTopicGroup();
+                });
+            });
+        }
 
-
-        $scope.PagerData = function (pageindex) {
-            $scope.feeds.pageIndex = pageindex;
-            $scope.searchFeed();
-        };
-
-        /***
-         * 带querystring的页面，需要load的时候直接把topic填入
-         *
-         */
-        var topicid = $location.$$url.match(/topicid=(\w+)/);
-        if(topicid) topicid= topicid[1] ;
-        console.log(topicid);
-        $http.get('/api/topic/' + topicid).success(function (topic) {
-            topic=topic[0];
-            $scope.keyword = topic.Keyword;
-            $scope.feeds.startTime = topic.SearchCondition.StartDate;
-            $scope.feeds.endTime = topic.SearchCondition.EndDate;
-            $scope.source.keywordExpression = topic.Keyword;
-            var sourceType = topic.SearchCondition.SourceType;
-
-
-            for (var k in $scope.sourcetype) {
-                $scope.sourcetype[k].checked = false;
-                for (var i in sourceType) {
-                    if ($scope.sourcetype[k].type === sourceType[i]) {
-                        $scope.sourcetype[k].checked = true;
-                    }
-
-                }
-            }
-
-            $scope.sourcetype = $scope.sourcetype;
-            $scope.searchFeed();
-        }) ;
+        $scope.gotoFeeds = function (id) {
+                      console.log(id);
+        }
 
     }];
 
-    return FeedsController;
+    return TopicGroupController;
 });

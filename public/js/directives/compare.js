@@ -41,11 +41,11 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             link: function (scope, elm, attrs, ctrl) {
                 $(elm).css('cursor', 'pointer')
 
-             /*   $(elm).on("click", function () {
-                    alert('准备排序')
-                    console.log(attrs);
-                    console.log(scope);
-                })*/
+                /*   $(elm).on("click", function () {
+                 alert('准备排序')
+                 console.log(attrs);
+                 console.log(scope);
+                 })*/
             }
         };
     });
@@ -148,7 +148,87 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             }
         };
     }]);
+    app.directive('showtopictable', ['$http', function ($http) {
 
+        return {
+
+            link: function (scope, elm, attrs, ctrl) {
+
+                var temp =
+                    "  <td colspan='8' class='subrowtd'>" +
+                        "<table class='subtable'>" +
+
+                        "<tr class='thead'>    " +
+
+                        "<th >Name</th>         " +
+                        "<th >Keyword</th>         " +
+                        "<th >Source Type</th>         " +
+                        "<th >Action</th>         " +
+                        " </tr>    " +
+
+
+                        "{{#each topics}} " +
+                        " <tr class='tbody {{rate}}'>" +
+
+                        "<td>{{Name}} </td>    " +
+                        "<td>{{Keyword}} </td>    " +
+                        "<th >{{SourceTypeString}}</th>         " +
+                        "<th ><a class='btn btn-primary'   href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary' href='javascript:;'>Delete</a> </th>         " +
+                        "</tr>                    " +
+                        "{{/each}}" +
+
+                        " </table></td>";
+
+                $(elm).toggle(
+                    function () {
+                        $(elm).attr("class", "closelist");
+                    },
+                    function () {
+                        $(elm).attr("class", "openlist");
+                    }
+
+                );
+                $(elm).on("click", function () {
+
+                    console.log(attrs)
+                    if (attrs.queryover === "0") {
+                        $(elm).parent().next().html("<img src='images/icon/waiting.gif' />Loading...");
+                        $http.get('/api/topic?groupid=' + attrs.id).success(function (d) {
+                            var template = Handlebars.compile(temp);
+                            Handlebars.registerHelper('maxContent', function () {
+                                var len = this.Content.length > 50 ? 50 : this.Content.length;
+                                return this.Content.substring(0, len - 1) + "...";
+                            });
+                            Handlebars.registerHelper('rate', function () {
+                                if (this.Semantic === 0) return "";
+                                var cls = this.Semantic > 0 ? "positive" : "negative";
+                                return cls;
+                            });
+                            Handlebars.registerHelper('url', function () {
+                                var cls = this.FromUrl.length > 40 ? this.FromUrl.substring(0, 39) + "..." : this.FromUrl;
+                                return cls;
+                            });
+                            Handlebars.registerHelper('SourceTypeString', function () {
+                                console.log(this.SourceType) ;
+                                var cls = this.SearchCondition.SourceType.join(" | ");
+                                return cls;
+                            });
+
+                            attrs.queryover = "1";
+                            console.log($(elm).parent().next().children('.subrowtd'));
+                            var data={topics:d} ;
+                            var contenthtml = template(data);
+                            console.log(contenthtml);
+
+                            $(elm).parent().next().html(contenthtml);
+                        });
+                    }
+                    $(elm).parent().next().toggle();
+
+                })
+            }
+        };
+    }]);
     /*  app.directive('uniform', function () {
      require('jqueryuniform');
      return {
