@@ -1,6 +1,6 @@
 <div class="navlist">
-    <a class="button " href="#/feeds"><span>Overview</span><span class="close"></span></a>
-    <a class="button"  href="#/group"><span>Group</span><span class="close"></span></a>
+    <a class="button " ng-click="changeStyle(1)"  ng-class="{selected: 1==feedMenuSelectRow}" href="#/feeds"><span>Overview</span><span class="close"></span></a>
+    <a class="button" ng-click="changeStyle(2)" ng-class="{selected: 2==feedMenuSelectRow}"  href="#/group"><span>Group</span><span class="close"></span></a>
     <!-- <a class="button" href="javascript:;"><span>Topics</span><span class="open"></span></a>
    <a ng-click="topicSelected(topic,$index);Feeds.changeStyle($index)" class="button sub lefttree" ng-class="{selected: $index==feedSelectRow}"  href="javascript:;" ng-repeat="topic in Topics">
         <span>{{topic.Name}} <span ng-click="removeTopic($event,topic)"  class="right icon-remove "></span></span>

@@ -135,7 +135,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs', 'bootstrapModal']
                     EndDate: new Date($scope.feeds.endTime)
                 },
                 GroupId:$scope.topicGroupName ,
-                OwnerId: "admin",
+                OwnerId: "GE",
                 CreateDate: Date.now(),
                 UpdateDate: Date.now()
 
