@@ -151,7 +151,11 @@ define(['app', 'handlebars' ], function (app, handlebars) {
     app.directive('showtopictable', ['$http', function ($http) {
 
         return {
-
+            /*scope: {
+                delTopic:function(id){
+                    console.log(id);
+                }
+            },*/
             link: function (scope, elm, attrs, ctrl) {
 
                 var temp =
@@ -173,7 +177,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                         "<td>{{Name}} </td>    " +
                         "<td>{{Keyword}} </td>    " +
                         "<th >{{SourceTypeString}}</th>         " +
-                        "<th ><a class='btn btn-primary'   href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary' href='javascript:;'>Delete</a> </th>         " +
+                        "<th ><a class='btn btn-primary' href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary'  ng-click='delTopic({{_id}})'  href='javascript:;'>Delete</a> </th>         " +
                         "</tr>                    " +
                         "{{/each}}" +
 
@@ -209,14 +213,14 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                                 return cls;
                             });
                             Handlebars.registerHelper('SourceTypeString', function () {
-                                console.log(this.SourceType) ;
+                                console.log(this.SourceType);
                                 var cls = this.SearchCondition.SourceType.join(" | ");
                                 return cls;
                             });
 
                             attrs.queryover = "1";
                             console.log($(elm).parent().next().children('.subrowtd'));
-                            var data={topics:d} ;
+                            var data = {topics: d};
                             var contenthtml = template(data);
                             console.log(contenthtml);
 
