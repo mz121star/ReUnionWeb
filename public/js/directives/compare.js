@@ -160,7 +160,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                         "<tr class='thead'>    " +
 
-                        "<th >Name</th>         " +
+                        "<th >Topic Name</th>         " +
                         "<th >Keyword</th>         " +
                         "<th >Source Type</th>         " +
                         "<th >Action</th>         " +
