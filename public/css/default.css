@@ -353,10 +353,10 @@ caption {background:#eee;}
 #maincontent .containercontent .css_inline_table .feedTable  thead tr {background-color: #FFF}
 
  /***2013/10/17 new by miaozhuang */
-div,.message { -moz-transition: all 0.5s ease-in;
+/*div,.message { -moz-transition: all 0.5s ease-in;
     -webkit-transition: all 0.5s ease-in;
     -o-transition: all 0.5s ease-in;
-    transition: all 0.5s ease-in;}
+    transition: all 0.5s ease-in;}*/
 
 #header .userinfo  .font8{font-size: 8px}
 #header .userinfo .font20{font-size:20px}

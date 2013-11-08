@@ -1,0 +1,388 @@
+<!DOCTYPE html >
+<html lang="en" ng-controller="LayoutController">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Reunion</title>
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap.css"/>
+    <link rel='stylesheet' href='lib/angular-strap/bootstrap-datepicker.css'/>
+    <link rel='stylesheet' href='lib/font-awesome-4.0.3/css/font-awesome.min.css'/>
+    <link href='css/default.css' rel='stylesheet' type='text/css'>
+    <!-- Custom styles for this template -->
+    <link href="themes/default/css/template.css" rel="stylesheet">
+    <link href="themes/default/css/main.css" rel="stylesheet">
+
+
+    <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]>
+    <script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body ng-cloak class="ngclock" >
+<div id="navigation">
+    <div class="container">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-header">
+                <button type="button " class="navbar-toggle visible-xs" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                </button>
+                <a class="navbar-brand logo" href="#">Reunion</a>
+                <a class="toggle-nav" href="#">
+                    <span class="glyphicon glyphicon-align-justify hidden-xs" id="closeSet"></span>
+                </a>
+            </div>
+            <!-- navbar-header end -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav active">
+
+                    <li  ng-repeat="nav in navBars" ng-click="selectNav($index)"   ng-class="{active: $index==selectedRow}">
+                        <a ng-href="{{nav.url}}" ng-bind="nav.name">
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- navbar-collapse end -->
+            <div class="user" style="float:right;">
+                <div class="div">
+                    <li class="dropdown sett">
+                        <a href="#" class='dropdown-toggle nav-icon hidden-xs' data-toggle="dropdown"><i
+                                class="fa fa-envelope icon-message"></i><span
+                                class="label label-lightred icon-message-count">4</span></a>
+                        <ul class="dropdown-menu pull-right message-ul">
+                            <li>
+                                <a href="#">
+                                    <img src="assets/img/demo/user-1.jpg" alt="">
+
+                                    <div class="details">
+                                        <div class="name">Jane Doe</div>
+                                        <div class="message">
+                                            Lorem ipsum Commodo quis nisi ...
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="assets/img/demo/user-2.jpg" alt="">
+
+                                    <div class="details">
+                                        <div class="name">John Doedoe</div>
+                                        <div class="message">
+                                            Ut ad laboris est anim ut ...
+                                        </div>
+                                    </div>
+                                    <div class="count">
+                                        <i class="icon-comment"></i>
+                                        <span>3</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="assets/img/demo/user-3.jpg" alt="">
+
+                                    <div class="details">
+                                        <div class="name">Bob Doe</div>
+                                        <div class="message">
+                                            Excepteur Duis magna dolor!
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="components-messages.html" class='more-messages'>Go to Message center <i
+                                        class="fa fa-arrow-right"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="div">
+                    <li class="dropdown sett">
+                        <a href="#" class='dropdown-toggle nav-icon hidden-xs' data-toggle="dropdown"><i
+                                class="fa fa-cog"></i></a>
+                        <ul class="dropdown-menu pull-right theme-settings">
+                            <li>
+                                <span>Layout-width</span>
+
+                                <div class="version-toggle">
+                                    <a href="#" class='set-fixed'>Fixed</a>
+                                    <a href="#" class="active set-fluid">Fluid</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Topbar</span>
+
+                                <div class="topbar-toggle">
+                                    <a href="#" class='set-topbar-fixed'>Fixed</a>
+                                    <a href="#" class="active set-topbar-default">Default</a>
+                                </div>
+                            </li>
+                            <li>
+                                <span>Sidebar</span>
+
+                                <div class="sidebar-toggle">
+                                    <a href="#" class='set-sidebar-fixed'>Fixed</a>
+                                    <a href="#" class="active set-sidebar-default">Default</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="div">
+                    <li class='dropdown language-select'>
+                        <a href="#" class='dropdown-toggle hidden-xs' data-toggle="dropdown"><img
+                                src="assets/img/demo/flags/us.gif" alt=""><span>US</span></a>
+                        <ul class="dropdown-menu pull-right">
+                            <li>
+                                <a href="#"><img src="assets/img/demo/flags/br.gif" alt=""><span>Brasil</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="assets/img/demo/flags/de.gif" alt=""><span>Deutschland</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="assets/img/demo/flags/es.gif" alt=""><span>España</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><img src="assets/img/demo/flags/fr.gif" alt=""><span>France</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <div class="dropdown div">
+                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img
+                            src="assets/img/demo/user-avatar.jpg" alt=""></a>
+                    <ul class="dropdown-menu pull-right">
+                        <li>
+                            <a href="more-userprofile.html">Edit profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Account settings</a>
+                        </li>
+                        <li>
+                            <a href="more-login.html">Sign out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- navbar end -->
+    </div>
+    <!-- container end -->
+</div>
+<div class="container">
+    <div class="row">
+        <div id="left" class="hidden-xs">
+            <form action="search-results.html" method="GET" class=''>
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="Search here...">
+                    <span class="input-group-addon" style="cursor:pointer"> <i
+                            class="glyphicon glyphicon-search"></i></span>
+                </div>
+            </form>
+            <div class="subnav">
+                <div class="subnav-title">
+                    <a class='toggle-subnav' data-toggle="collapse" data-toggle="collapse" href="#subnav1"><i
+                            class="glyphicon glyphicon-chevron-down"></i><span>Content</span></a>
+                </div>
+                <ul class="subnav-menu collapse" id="subnav1">
+                    <li class='dropdown'>
+                        <a href="#" data-toggle="dropdown">Articles</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Action #1</a>
+                            </li>
+                            <li>
+                                <a href="#">Antoher Link</a>
+                            </li>
+                            <li class='dropdown-submenu'>
+                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">This is level 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Unlimited levels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Easy to use</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">News</a>
+                    </li>
+                    <li>
+                        <a href="#">Pages</a>
+                    </li>
+                    <li>
+                        <a href="#">Comments</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="subnav">
+                <div class="subnav-title">
+                    <a class='toggle-subnav' data-toggle="collapse" data-toggle="collapse" href="#subnav2"><i
+                            class="glyphicon glyphicon-chevron-down"></i><span>Plugins</span></a>
+                </div>
+                <ul class="subnav-menu collapse" id="subnav2">
+                    <li>
+                        <a href="#">Cache manager</a>
+                    </li>
+                    <li class='dropdown'>
+                        <a href="#" data-toggle="dropdown">Import manager</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Action #1</a>
+                            </li>
+                            <li>
+                                <a href="#">Antoher Link</a>
+                            </li>
+                            <li class='dropdown-submenu'>
+                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">This is level 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Unlimited levels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Easy to use</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Contact form generator</a>
+                    </li>
+                    <li>
+                        <a href="#">SEO optimization</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="subnav">
+                <div class="subnav-title">
+                    <a class='toggle-subnav' data-toggle="collapse" data-toggle="collapse" href="#subnav3"><i
+                            class="glyphicon glyphicon-chevron-down"></i><span>Settings</span></a>
+                </div>
+                <ul class="subnav-menu collapse" id="subnav3">
+                    <li>
+                        <a href="#">Theme settings</a>
+                    </li>
+                    <li class='dropdown'>
+                        <a href="#" data-toggle="dropdown">Page settings</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Action #1</a>
+                            </li>
+                            <li>
+                                <a href="#">Antoher Link</a>
+                            </li>
+                            <li class='dropdown-submenu'>
+                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>Go to level 3</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">This is level 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Unlimited levels</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Easy to use</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Security settings</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="subnav subnav-hidden">
+                <div class="subnav-title">
+                    <a class='toggle-subnav' data-toggle="collapse" data-toggle="collapse" href="#subnav4"><i
+                            class="glyphicon glyphicon-chevron-down"></i><span>Default hidden</span></a>
+                </div>
+                <ul class="subnav-menu collapse" id="subnav4">
+                    <li>
+                        <a href="#">Menu</a>
+                    </li>
+                    <li class='dropdown'>
+                        <a href="#" data-toggle="dropdown">With submenu</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#">Action #1</a>
+                            </li>
+                            <li>
+                                <a href="#">Antoher Link</a>
+                            </li>
+                            <li class='dropdown-submenu'>
+                                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>More stuff</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="#">This is level 3</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Easy to use</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Security settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <div id="content" class="container">
+                <div class="page-header">
+                    <div>
+                        <h1>Blank page</h1>
+                    </div>
+                </div>
+                <div>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li class="active">Data</li>
+                    </ol>
+                </div>
+                <div class="row main">
+                         <!-- /Content Start -->
+                    <div class="container page" ng-view=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->
+
+</body>
+</html>
+

@@ -11,7 +11,7 @@ exports.index = function (req, res) {
         res.redirect('login');
         return;
     }
-    var html = path.normalize(__dirname + '/../views/index.html');
+    var html = path.normalize(__dirname + '/../views/index_new.html');
     res.sendfile(html);
 
 };
