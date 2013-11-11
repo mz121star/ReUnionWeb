@@ -12,12 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="images/icon/reunion-r.png">
     <title>Reunion</title>
     <!-- Bootstrap css-->
     <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap.css"/>
     <link rel='stylesheet' href='lib/angular-strap/bootstrap-datepicker.css'/>
     <link rel='stylesheet' href='lib/font-awesome-4.0.3/css/font-awesome.min.css'/>
-    <link href='css/default.css' rel='stylesheet' type='text/css'>
+
+  <!--  <link href='css/default.css' rel='stylesheet' type='text/css'>-->
+
     <!-- Custom styles for this template -->
     <link href="themes/default/css/template.css" rel="stylesheet">
     <link href="themes/default/css/main.css" rel="stylesheet">
@@ -25,8 +28,7 @@
 
     <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]>
-    <script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -38,7 +40,7 @@
 <body ng-cloak class="ngclock" >
 <div id="navigation">
     <div class="container">
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-static-top">
             <div class="navbar-header">
                 <button type="button " class="navbar-toggle visible-xs" data-toggle="collapse"
                         data-target=".navbar-collapse">
@@ -65,7 +67,7 @@
             <div class="user" style="float:right;">
                 <div class="div">
                     <li class="dropdown sett">
-                        <a href="#" class='dropdown-toggle nav-icon hidden-xs' data-toggle="dropdown"><i
+                        <a href="#" class='dropdown-toggle nav-icon visible-lg visible-md' data-toggle="dropdown"><i
                                 class="fa fa-envelope icon-message"></i><span
                                 class="label label-lightred icon-message-count">4</span></a>
                         <ul class="dropdown-menu pull-right message-ul">
@@ -118,7 +120,7 @@
                 </div>
                 <div class="div">
                     <li class="dropdown sett">
-                        <a href="#" class='dropdown-toggle nav-icon hidden-xs' data-toggle="dropdown"><i
+                        <a href="#" class='dropdown-toggle nav-icon visible-lg visible-md' data-toggle="dropdown"><i
                                 class="fa fa-cog"></i></a>
                         <ul class="dropdown-menu pull-right theme-settings">
                             <li>
@@ -150,7 +152,7 @@
                 </div>
                 <div class="div">
                     <li class='dropdown language-select'>
-                        <a href="#" class='dropdown-toggle hidden-xs' data-toggle="dropdown"><img
+                        <a href="#" class='dropdown-toggle visible-lg visible-md' data-toggle="dropdown"><img
                                 src="assets/img/demo/flags/us.gif" alt=""><span>US</span></a>
                         <ul class="dropdown-menu pull-right">
                             <li>
@@ -362,7 +364,7 @@
         <div id="main">
             <div id="content" class="container">
                 <div class="page-header">
-                    <div>
+                    <div class="col-md-push-3">
                         <h1>Blank page</h1>
                     </div>
                 </div>

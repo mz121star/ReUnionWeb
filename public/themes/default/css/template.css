@@ -16,7 +16,6 @@ body {
  
     font-family: 'Open Sans',sans-serif;
     font-size: 13px !important;
-     padding-top: 50px;
 }
 
 #navigation {
@@ -29,7 +28,9 @@ body {
   text-align: center;
 }
 .navbar{
-background:#368EE0;
+    background:#368EE0;
+    margin-bottom:0px;
+    border:0;
 }
 .container .navbar-brand {
     color: #FFFFFF;
