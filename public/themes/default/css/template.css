@@ -17,7 +17,12 @@ body {
     font-family: 'Open Sans',sans-serif;
     font-size: 13px !important;
 }
-
+ul li{list-style-type: none}
+#main .page-header {
+    border: 0;
+    margin: 15px 0 15px 0;
+    padding: 0 3px;
+}
 #navigation {
     background: none repeat scroll 0 0 #368EE0;
     position: relative;

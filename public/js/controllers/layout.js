@@ -1,9 +1,9 @@
 'use strict';
 
-define(['../app', 'i18n!resources/nls/res'], function (app, res) {
+define(['../app', 'i18n!resources/nls/res','moment'], function (app, res,moment) {
     /* var bgimages=require("../../background/images").imageurls;*/
 
-    return app.controller('LayoutController', ['$scope', '$http', '$location', '$window', function ($scope, $http, $location, $window) {
+    return app.controller('LayoutController', ['$scope','$rootScope', '$http', '$location', '$window', function ($scope,$rootScope,$http, $location, $window) {
         /*      var i = 0,
          imgs = images.imageurls,
          randombg = function () {
@@ -13,6 +13,10 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
          m$.Image.preLoadImages(imgs.slice(0, 4));*/
 
 
+        $scope.reunion={
+            date:moment().format("YYYY-MM-DD"),
+            time:moment().format("dddd")
+        }
         $scope.info = {
             TodayFeedsTotal: "",
             TotalFeeds: "",
@@ -107,6 +111,7 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
         //message
         var inter = window.setInterval(function () {
             $(".message").toggleClass("font20", "font20")
+
         }, 1000);
         $scope.ntime = new Date();
      /*   window.setInterval(function () {
@@ -119,6 +124,8 @@ define(['../app', 'i18n!resources/nls/res'], function (app, res) {
             clearInterval(inter);
             $(".message").html("");
         });
+
+
 
         /*        $scope.nextimg = function () {
          i = i === imgs.length ? 0 : i;

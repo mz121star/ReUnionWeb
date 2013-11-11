@@ -14,6 +14,8 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
             endtime: moment(new Date()).format("MM/DD/YYYY")
         };
 
+
+
         $scope.dashboard = {
             endDate: "",
             startDate: moment().add("days", -30)
