@@ -160,6 +160,10 @@ background-color: #368ee0;
     top: 10px;
     width: 5px;
 }
+#left .subnav .subnav-menu>li>a:hover {
+    background: #ddd;
+    color: #222;
+}
 #left .subnav .subnav-menu > li > a {
     color: #555555;
     display: block;
