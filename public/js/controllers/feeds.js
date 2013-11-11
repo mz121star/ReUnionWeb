@@ -7,6 +7,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
 
         $rootScope.menuUrl = "partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
+      /*  $rootScope.pageTitle="Feeds Page";*/
         $rootScope.show = true;
         $scope.show = true;
         $scope.source = {

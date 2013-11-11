@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="images/icon/reunion-r.png">
-    <title>Reunion</title>
+    <title ng-bind="title"></title>
     <!-- Bootstrap css-->
     <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap.css"/>
     <link rel='stylesheet' href='lib/angular-strap/bootstrap-datepicker.css'/>
@@ -22,9 +22,7 @@
   <!--  <link href='css/default.css' rel='stylesheet' type='text/css'>-->
 
     <!-- Custom styles for this template -->
-    <link href="themes/default/css/template.css" rel="stylesheet">
-    <link href="themes/default/css/main.css" rel="stylesheet">
-
+    <link href="themes/default/default.css" rel="stylesheet">
 
     <script data-main="js/main" src="lib/require/require-2.1.0.js"></script>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
@@ -201,7 +199,8 @@
                             class="glyphicon glyphicon-search"></i></span>
                 </div>
             </form>
-            <div class="subnav">
+            <div ng-include="menuUrl" ng-controller="LeftMenuCtrl"></div>
+          <!--  <div class="subnav">
                 <div class="subnav-title">
                     <a class='toggle-subnav' data-toggle="collapse" data-toggle="collapse" href="#subnav1"><i
                             class="glyphicon glyphicon-chevron-down"></i><span>Content</span></a>
@@ -359,13 +358,13 @@
                         <a href="#">Security settings</a>
                     </li>
                 </ul>
-            </div>
+            </div>-->
         </div>
         <div id="main">
             <div id="content" class="container">
                 <div class="page-header">
                     <div class="col-md-push-3">
-                        <h1>Blank page</h1>
+                        <h1>{{pageTitle}}</h1>
                     </div>
                 </div>
                 <div>

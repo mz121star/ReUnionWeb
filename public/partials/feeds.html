@@ -69,39 +69,75 @@
           </tr>
       </table>-->
 
-    <table id="feedTable" class="table">
-        <thead>
-        <tr>
-            <th>N0.</th>
-            <th sortable ng-click="f='Title'; rev=!rev">Title</th>
-            <th sortable ng-click="f='Content'; rev=!rev">Description</th>
-            <th sortable ng-click="f='FromSite'; rev=!rev">Source</th>
-            <th>Author</th>
-            <th>Url</th>
+    <!--<table id="feedTable" class="table">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<th>N0.</th>-->
+            <!--<th sortable ng-click="f='Title'; rev=!rev">Title</th>-->
+            <!--<th sortable ng-click="f='Content'; rev=!rev">Description</th>-->
+            <!--<th sortable ng-click="f='FromSite'; rev=!rev">Source</th>-->
+            <!--<th>Author</th>-->
+            <!--<th>Url</th>-->
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr  ng-repeat="feed in feedContent | orderBy: f : rev"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
-            <td>{{ $index+1 }}</td>
-            <td>{{feed.Title| maxlen:20  }} </td>
-            <td>{{feed.Content | maxlen:40  }} </td>
-            <td>{{ feed.FromSite | maxlen:40}}</td>
-            <td>{{ feed.Author | maxlen:40}}</td>
-            <td class="last"><a ng-href="feed.FromUrl" >{{feed.FromUrl | maxlen:40}}</a></td>
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr  ng-repeat="feed in feedContent | orderBy: f : rev"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">-->
+            <!--<td>{{ $index+1 }}</td>-->
+            <!--<td>{{feed.Title| maxlen:20  }} </td>-->
+            <!--<td>{{feed.Content | maxlen:40  }} </td>-->
+            <!--<td>{{ feed.FromSite | maxlen:40}}</td>-->
+            <!--<td>{{ feed.Author | maxlen:40}}</td>-->
+            <!--<td class="last"><a ng-href="feed.FromUrl" >{{feed.FromUrl | maxlen:40}}</a></td>-->
 
-        </tr>
+        <!--</tr>-->
 
-        </tbody>
-    </table>
-    <ul class="pagination">
-        <li><a href="javascript:;">&laquo;</a></li>
-        <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages">
-            <a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a>
-        </li>
+        <!--</tbody>-->
+    <!--</table>-->
+    <div class="row">
+        <div class="col-xs-12">
+           <div class="box box-color box-bordered">
+               <div class="box-title">
+                   <h3>
+                       <i class="fa fa-table"></i>
 
-        <li><a href="javascript:;">&raquo;</a></li>
-    </ul>
+                   </h3>
+               </div>
+                <div class="box-content nopadding">
+                    <table class="table table-hover table-nomargin">
+                        <thead>
+                        <tr>
+                            <th>N0.</th>
+                            <th sortable ng-click="f='Title'; rev=!rev">Title</th>
+                            <th sortable ng-click="f='Content'; rev=!rev">Description</th>
+                            <th sortable ng-click="f='FromSite'; rev=!rev">Source</th>
+                            <th>Author</th>
+                            <th>Url</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr  ng-repeat="feed in feedContent | orderBy: f : rev"  showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+                            <td>{{ $index+1 }}</td>
+                            <td>{{feed.Title| maxlen:20  }} </td>
+                            <td>{{feed.Content | maxlen:40  }} </td>
+                            <td>{{ feed.FromSite | maxlen:40}}</td>
+                            <td>{{ feed.Author | maxlen:40}}</td>
+                            <td>{{ feed.FromUrl | maxlen:40}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                        <ul class="pagination">
+                            <li><a href="javascript:;">&laquo;</a></li>
+                            <li  ng-class="{active : $index==feeds.pageIndex-1}" ng-repeat="n in [] | PagerRange:pages">
+                                <a href="javascript:;" ng-click="PagerData(n+1)"  >{{n+1}}</a>
+                            </li>
+                            <li><a href="javascript:;">&raquo;</a></li>
+                        </ul>
+                </div>
+           </div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
