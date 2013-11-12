@@ -19,12 +19,22 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
         $scope.selectkimiss = function (row) {
             $scope.selectedRow = row;
         };
+        $rootScope.deleteTopic=function(id){
+            if ($window.confirm("Are you sure delete the topic?")) {
+                $http.delete("/api/topic/" + id).success(function (d) {
+                    console.log(d);
+                    getTopicGroup();
+
+                });
+            }
+
+        }
         $rootScope.removeTopic = function (event, feed) {
 
             if ($window.confirm("Are you sure delete the topic?")) {
                 $http.delete("/api/topic/" + feed._id).success(function (d) {
                     console.log(d);
-                    gettopicSelected();
+                    getTopicGroup();
 
                 });
             }
