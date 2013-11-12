@@ -1,23 +1,47 @@
+.w5-p{
+    width: 5%;
+}
+.w12-p{
+    width: 12%;
+}
+.w39-p{
+    width:39.5%
+}
+.w12-p{
+    width: 12%;
+}
+.w15-p{
+    width:15%
+}
+.w24-p{
+    width: 24.5%;
+}
 .nopadding {
     padding: 0 !important;
 }
+
 .box.box-bordered.box-color .box-title {
     border-color: #368EE0;
 }
+
 .box.box-bordered .box-title {
     border: 2px solid #DDDDDD;
 }
+
 .box.box-color .box-title {
     background: none repeat scroll 0 0 #368EE0;
 }
+
 .box .box-title {
     border-bottom: 1px solid #DDDDDD;
     margin-top: 20px;
     padding: 7px 0 35px 10px;
 }
+
 .box.box-color .box-title h3 {
     color: #FFFFFF;
 }
+
 .box .box-title h3 {
     color: #444444;
     float: left;
@@ -26,6 +50,7 @@
     line-height: 24px;
     margin: 3px 0;
 }
+
 .box .box-title h3 i {
     margin: 0 10px 0 5px;
 }
@@ -39,38 +64,100 @@
 .box.box-color .box-title .actions > a {
     color: #FFFFFF;
 }
+
 .box .box-title .actions .btn {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: #333333;
     padding: 5px 9px;
 }
+
 .box.box-bordered.box-color .box-content {
     border-color: #368EE0;
 }
+
 .box.box-bordered .box-content {
     border-image: none;
     border-right: 2px solid #DDDDDD;
     border-style: none solid solid;
     border-width: 0 2px 2px;
 }
+
 .box .box-content {
     background: none repeat scroll 0 0 #FFFFFF;
     padding: 20px;
 }
+
 .box.box-bordered .table {
     margin-bottom: 0;
 }
+
 .table tr th {
     background: none repeat scroll 0 0 #EEEEEE;
     vertical-align: middle;
 }
+
 .table tr th, .table tr td {
     border-top: 1px dotted #DDDDDD;
     padding: 10px;
+}
+
+.table tr td {
+    word-wrap: normal;
+    word-break: break-all;
+    table-layout: fixed;
+    border-left: 1px solid #DDDDDD
+}
+.keep-all th {
+    word-break: keep-all;
+    white-space:nowrap;
+}
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    vertical-align: middle;
 }
 .pagination {
     border-radius: 4px;
     display: inline-block;
     margin: 20px 0 15px 360px;
     padding-left: 0;
+}
+
+/*
+form
+*/
+.form-horizontal.form-bordered .form-group {
+    background: none repeat scroll 0 0 #F6F6F6;
+    border-bottom: 1px solid #DDDDDD;
+    margin: 0;
+    padding: 0;
+}
+
+.form-horizontal.form-bordered .form-group .control-label {
+    color: #555555;
+    margin: 0;
+    top: 10px;
+}
+
+.form-con {
+    padding: 10px;
+    border-left: 1px solid #DDDDDD
+}
+
+.form-horizontal .control-label {
+    text-align: left;
+    width: 140px;
+}
+
+.info {
+    top: 9px;
+}
+
+.form-text-middle {
+    padding: 10px
+}
+
+.td-border > td {
+    border-left: 1px solid #DDDDDD
+}
+.montor-th{
+
 }

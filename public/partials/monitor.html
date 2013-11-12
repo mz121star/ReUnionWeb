@@ -9,144 +9,191 @@
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade active in" id="weibo">
 
-        <table id="weiboTable" class="table">
-            <thead>
-            <tr>
-                <th class="w30">N0.</th>
-                <th sortable>Name</th>
-                <th>Url</th>
-                <th>Status</th>
-                <th>Action</th>
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="fa fa-table"></i>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="m in monitorWeibo">
-                <td>{{ $index+1 }}</td>
-                <td>{{m.Name}}</td>
-                <td>{{m.Url }}</td>
-                <td>{{m.status | statusChange }}</td>
-                <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
-                           value="{{ m.status |numToEnableTxt}}"></td>
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table id="weiboTable" class="table">
+                    <thead>
+                    <tr>
+                        <th class="w5-p">N0.</th>
+                        <th sortable class="w12-p">Name</th>
+                        <th class="w39-p">Url</th>
+                        <th class="w12-p">Status</th>
+                        <th>Action</th>
 
-            </tr>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="m in monitorWeibo">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{m.Name}}</td>
+                        <td>{{m.Url }}</td>
+                        <td>{{m.status | statusChange }}</td>
+                        <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
+                                   value="{{ m.status |numToEnableTxt}}"></td>
 
-            </tbody>
-        </table>
+                    </tr>
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade" id="shop">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="fa fa-table"></i>
 
-        <table id="shopTable" class="table">
-            <thead>
-            <tr>
-                <th class="w30">N0.</th>
-                <th sortable>Name</th>
-                <th>Url</th>
-                <th>Status</th>
-                <th>Action</th>
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table id="shopTable" class="table">
+                    <thead>
+                    <tr>
+                        <th class="w5-p">N0.</th>
+                        <th sortable class="w12-p">Name</th>
+                        <th class="w39-p">Url</th>
+                        <th class="w12-p">Status</th>
+                        <th>Action</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="m in monitorShops">
-                <td>{{ $index+1 }}</td>
-                <td>{{m.Name}}</td>
-                <td>{{m.Url }}</td>
-                <td>{{m.status | statusChange }}</td>
-                <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
-                           value="{{ m.status |numToEnableTxt}}"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="m in monitorShops">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{m.Name}}</td>
+                        <td>{{m.Url }}</td>
+                        <td>{{m.status | statusChange }}</td>
+                        <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
+                                   value="{{ m.status |numToEnableTxt}}"></td>
 
-            </tr>
+                    </tr>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade" id="forum">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="fa fa-table"></i>
 
-        <table id="forumTable" class="table">
-            <thead>
-            <tr>
-                <th class="w30">N0.</th>
-                <th sortable>Name</th>
-                <th>Url</th>
-                <th>Status</th>
-                <th>Action</th>
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table id="forumTable" class="table">
+                    <thead>
+                    <tr>
+                        <th class="w5-p">N0.</th>
+                        <th sortable class="w12-p">Name</th>
+                        <th class="w39-p">Url</th>
+                        <th class="w12-p">Status</th>
+                        <th>Action</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="m in monitorForums">
-                <td>{{ $index+1 }}</td>
-                <td>{{m.Name}}</td>
-                <td>{{m.Url }}</td>
-                <td>{{m.status | statusChange }}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="m in monitorForums">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{m.Name}}</td>
+                        <td>{{m.Url }}</td>
+                        <td>{{m.status | statusChange }}</td>
 
-                <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
-                           value="{{ m.status |numToEnableTxt}}"></td>
+                        <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
+                                   value="{{ m.status |numToEnableTxt}}"></td>
 
-            </tr>
+                    </tr>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
     <div class="tab-pane fade" id="se">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="fa fa-table"></i>
 
-        <table id="SETable" class="table">
-            <thead>
-            <tr>
-                <th class="w30">N0.</th>
-                <th sortable>Name</th>
-                <th>Url</th>
-                <th>Status</th>
-                <th>Action</th>
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table id="SETable" class="table">
+                    <thead>
+                    <tr>
+                        <th class="w5-p">N0.</th>
+                        <th sortable class="w12-p">Name</th>
+                        <th class="w39-p">Url</th>
+                        <th class="w12-p">Status</th>
+                        <th>Action</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="m in monitorSearchs">
-                <td>{{ $index+1 }}</td>
-                <td>{{m.Name}}</td>
-                <td>{{m.Url }}</td>
-                <td>{{m.status | statusChange }}</td>
-                <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
-                           value="{{ m.status |numToEnableTxt}}"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="m in monitorSearchs">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{m.Name}}</td>
+                        <td>{{m.Url }}</td>
+                        <td>{{m.status | statusChange }}</td>
+                        <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
+                                   value="{{ m.status |numToEnableTxt}}"></td>
 
-            </tr>
+                    </tr>
 
-            </tbody>
+                    </tbody>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="tab-pane fade" id="customer">
+        <div class="box box-color box-bordered">
+            <div class="box-title">
+                <h3>
+                    <i class="fa fa-table"></i>
 
-        <table id="CustomerTable" class="table">
-            <thead>
-            <tr>
-                <th class="w30">N0.</th>
-                <th sortable>Name</th>
-                <th>Url</th>
-                <th>Status</th>
-                <th>Action</th>
+                </h3>
+            </div>
+            <div class="box-content nopadding">
+                <table id="CustomerTable" class="table">
+                    <thead>
+                    <tr>
+                        <th class="w5-p">N0.</th>
+                        <th sortable class="w12-p">Name</th>
+                        <th class="w39-p">Url</th>
+                        <th class="w12-p">Status</th>
+                        <th>Action</th>
 
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="m in monitorCustomer">
-                <td>{{ $index+1 }}</td>
-                <td>{{m.Name}}</td>
-                <td>{{m.Url }}</td>
-                <td>{{m.status | statusChange }}</td>
-                <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
-                           value="{{ m.status |numToEnableTxt}}"></td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="m in monitorCustomer">
+                        <td>{{ $index+1 }}</td>
+                        <td>{{m.Name}}</td>
+                        <td>{{m.Url }}</td>
+                        <td>{{m.status | statusChange }}</td>
+                        <td><input type="button" ng-click="changeStatus(m)" class="btn btn-primary"
+                                   value="{{ m.status |numToEnableTxt}}"></td>
 
-            </tr>
+                    </tr>
 
-            </tbody>
+                    </tbody>
 
-            </tbody>
-        </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 

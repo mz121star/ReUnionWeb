@@ -1,109 +1,210 @@
 
 <div class="panel">
-    <form novalidate  name="searchFeedForm" >
-        <div class="conditionspanel">
-
-            <div class="content">
-                <div class="cell size1">Keyword:</div>
-                <div class="cell size5">
-                    <input type="text" ng-model="keyword" ><span class="glyphicon glyphicon-info-sign"></span>
-                </div>
-
-            </div>
-            <div class="content">
-                <div class="cell size1">Source Type:</div>
-                <div class="cell size5">
-
-                <span class="item" ng-repeat="st in sourcetype">
-                   <label><input  class="checkbox" uniform  type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}  </label>
-                </span>
-
-                </div>
-            </div>
-
-            <div class="content" ng-hide="true">
-                <div class="cell size1">Date Range:</div>
-                <div class="cell size5">
-
-                    <select>
-                        <option>Last 7 Days</option>
-                        <option>Last month</option>
-                    </select>
 
 
-                    TimeFrame: <span>
-                from
-               <!-- <input data-date-format="dd/mm/yyyy" bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">-->
-
-                    <input   bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">
-
-                to
-                <input    bs-datepicker type="text" ng-model="feeds.endTime" > </span>
-                    <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
-
-                </div>
-            </div>
-
-            <div class="content">
-                <div class="cell size1"></div>
-                <div class="cell size5">
-
-
-                    <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"
-                            ng-disabled='searchFeedForm.$invalid||!!!keyword'>Add Topic
-                    </button>
-                    <button   class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#addGroupModal" >Add Group </button>
-
-                </div>
-            </div>
-
+    <div class="box box-color box-bordered">
+        <div class="box-title">
+            <h3>
+                <i class="fa fa-table"></i>
+            </h3>
         </div>
-    </form>
+        <div class="box-content nopadding">
+            <form class="form-horizontal form-bordered " role="form" novalidate  name="searchFeedForm">
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Keyword:</label>
+                    <div class="col-sm-10 form-con">
+                        <input type="text" class="form-control col-md-3" ng-model="keyword"><span class="glyphicon glyphicon-info-sign info"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label">Source Type:</label>
+                    <div class="col-sm-10 form-con">
+                        <label class="checkbox-inline" ng-repeat="st in sourcetype">
+                            <input class="checkbox" uniform type="checkbox" name="sourceType" ng-checked="st.checked"
+                                   ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group form-inline">
+                    <label  class="col-sm-2 control-label">Date Range:</label>
+                    <div class="col-sm-10 form-con">
+                        <select class="form-control col-md-3">
+                            <option>Last 7 Days</option>
+                            <option>Last month</option>
+                        </select>
+                        <span class="pull-left form-text-middle">TimeFrame:&nbsp;&nbsp;&nbsp;&nbsp;from</span>
+                        <input bs-datepicker class="form-control col-md-3" type="text" ng-model="feeds.startTime" name="startTime" required="">
+                        <span class="pull-left form-text-middle">to</span>
+                        <input bs-datepicker class="form-control col-md-3" type="text" ng-model="feeds.endTime">
+                        <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label  class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10 form-con">
+                        <button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"
+                                ng-disabled='searchFeedForm.$invalid||!!!keyword'>Add Topic
+                        </button>
+                        <button   class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#addGroupModal" >Add Group </button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <!--<form novalidate  name="searchFeedForm" >-->
+        <!--<div class="conditionspanel">-->
+
+            <!--<div class="content">-->
+                <!--<div class="cell size1">Keyword:</div>-->
+                <!--<div class="cell size5">-->
+                    <!--<input type="text" ng-model="keyword" ><span class="glyphicon glyphicon-info-sign"></span>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="content">-->
+                <!--<div class="cell size1">Source Type:</div>-->
+                <!--<div class="cell size5">-->
+
+                <!--<span class="item" ng-repeat="st in sourcetype">-->
+                   <!--<label><input  class="checkbox" uniform  type="checkbox" name="sourceType" ng-checked="st.checked"  ng-model="st.checked" value="{{st.type}}"/>{{st.type}}  </label>-->
+                <!--</span>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="content" ng-hide="true">-->
+                <!--<div class="cell size1">Date Range:</div>-->
+                <!--<div class="cell size5">-->
+
+                    <!--<select>-->
+                        <!--<option>Last 7 Days</option>-->
+                        <!--<option>Last month</option>-->
+                    <!--</select>-->
+
+
+                    <!--TimeFrame: <span>-->
+                <!--from-->
+               <!--&lt;!&ndash; <input data-date-format="dd/mm/yyyy" bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">&ndash;&gt;-->
+
+                    <!--<input   bs-datepicker type="text"  ng-model="feeds.startTime" name="startTime"   required="">-->
+
+                <!--to-->
+                <!--<input    bs-datepicker type="text" ng-model="feeds.endTime" > </span>-->
+                    <!--<div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="content">-->
+                <!--<div class="cell size1"></div>-->
+                <!--<div class="cell size5">-->
+
+
+                    <!--<button title="Topic Not null" class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#saveTopicModal"-->
+                            <!--ng-disabled='searchFeedForm.$invalid||!!!keyword'>Add Topic-->
+                    <!--</button>-->
+                    <!--<button   class="btn btn-primary" data-toggle="modal" ng-click="" data-target="#addGroupModal" >Add Group </button>-->
+
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</form>-->
 </div>
 
 <div class="panel">
 
+    <div class="box box-color box-bordered">
+        <div class="box-title">
+            <h3>
+                <i class="fa fa-table"></i>
 
-    <table id="css_table" class="table">
-        <thead>
-        <tr>
-            <td class="w30">No.</td>
-            <td class="w150">Group Name</td>
-            <td class="w100">Description</td>
-            <td class="last">Action</td>
-        </tr>
-        </thead>
-        <tbody ng-repeat="group in groups" showdetail>
-        <tr>
-            <td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  >{{ $index+1 }} </td>
-            <td class=" w150">{{group.Name }}</td>
-            <td class=" w100">{{group.Description }}</td>
-            <td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"
-                                      data-target="#saveReportModal">Delete</button></td>
-        </tr>
-        <tr class="subrow">
-            <td colspan="7" class="subrowtd">
-               <!-- <table class="subtable">
-                    <tr class="thead">
-                        <td class="w30">N0.</td>
-                        <td sortable>Title</td>
-                        <td>Description</td>
-                        <td>Source</td>
-                        <td>Url</td>
-                    </tr>
-                    <tr class="tbody" ng-repeat="feed in feedContent" showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
-                        <td>{{ $index+1 }}</td>
-                        <td>{{feed.Title| maxlen:20  }} </td>
-                        <td>{{feed.Content | maxlen:40  }} </td>
-                        <td>{{ feed.FromSite | maxlen:40}}</td>
-                        <td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
-                    </tr>
-                </table>-->
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
+            </h3>
+        </div>
+        <div class="box-content nopadding">
+            <table id="css_table" class="table">
+                <thead>
+                <tr>
+                    <th class="w15-p">No.</th>
+                    <th class="w15-p">Group Name</th>
+                    <th class="w39-p">Description</th>
+                    <th class="last">Action</th>
+                </tr>
+                </thead>
+                <tbody ng-repeat="group in groups" showdetail>
+                <tr>
+                    <td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  >{{ $index+1 }} </td>
+                    <td class=" w150">{{group.Name }}</td>
+                    <td class=" w100">{{group.Description }}</td>
+                    <td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"
+                                              data-target="#saveReportModal">Delete</button></td>
+                </tr>
+                <tr class="subrow">
+                    <td colspan="7" class="subrowtd">
+                        <!-- <table class="subtable">
+                             <tr class="thead">
+                                 <td class="w30">N0.</td>
+                                 <td sortable>Title</td>
+                                 <td>Description</td>
+                                 <td>Source</td>
+                                 <td>Url</td>
+                             </tr>
+                             <tr class="tbody" ng-repeat="feed in feedContent" showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">
+                                 <td>{{ $index+1 }}</td>
+                                 <td>{{feed.Title| maxlen:20  }} </td>
+                                 <td>{{feed.Content | maxlen:40  }} </td>
+                                 <td>{{ feed.FromSite | maxlen:40}}</td>
+                                 <td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>
+                             </tr>
+                         </table>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--<table id="css_table" class="table">-->
+        <!--<thead>-->
+        <!--<tr>-->
+            <!--<td class="w30">No.</td>-->
+            <!--<td class="w150">Group Name</td>-->
+            <!--<td class="w100">Description</td>-->
+            <!--<td class="last">Action</td>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody ng-repeat="group in groups" showdetail>-->
+        <!--<tr>-->
+            <!--<td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  >{{ $index+1 }} </td>-->
+            <!--<td class=" w150">{{group.Name }}</td>-->
+            <!--<td class=" w100">{{group.Description }}</td>-->
+            <!--<td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"-->
+                                      <!--data-target="#saveReportModal">Delete</button></td>-->
+        <!--</tr>-->
+        <!--<tr class="subrow">-->
+            <!--<td colspan="7" class="subrowtd">-->
+               <!--&lt;!&ndash; <table class="subtable">-->
+                    <!--<tr class="thead">-->
+                        <!--<td class="w30">N0.</td>-->
+                        <!--<td sortable>Title</td>-->
+                        <!--<td>Description</td>-->
+                        <!--<td>Source</td>-->
+                        <!--<td>Url</td>-->
+                    <!--</tr>-->
+                    <!--<tr class="tbody" ng-repeat="feed in feedContent" showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">-->
+                        <!--<td>{{ $index+1 }}</td>-->
+                        <!--<td>{{feed.Title| maxlen:20  }} </td>-->
+                        <!--<td>{{feed.Content | maxlen:40  }} </td>-->
+                        <!--<td>{{ feed.FromSite | maxlen:40}}</td>-->
+                        <!--<td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>-->
+                    <!--</tr>-->
+                <!--</table>&ndash;&gt;-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
 </div>
 
 <div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

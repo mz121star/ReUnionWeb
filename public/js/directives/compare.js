@@ -73,25 +73,25 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                 var temp =
                     "  <td colspan='8' class='subrowtd'>" +
-                        "<table class='subtable'>" +
+                        "<table class='table  keep-all'>" +
 
                         "<tr class='thead'>    " +
-                        "<th>N0.</th>    " +
-                        "<th sortable>Title</th>         " +
-                        "<th>Description</th>       " +
-                        "<th>Source</th>            " +
+                        "<th class='w5-p'>N0.</th>    " +
+                        "<th sortable class='w12-p'>Title</th>         " +
+                        "<th class='w39-p'>Description</th>       " +
+                        "<th class='w12-p'>Source</th>            " +
                         "<th>Url</th>                      " +
 
                         " </tr>    " +
 
 
                         "{{#each feeds}} " +
-                        " <tr class='tbody {{rate}}'>" +
+                        " <tr class='tbody {{rate}} td-border'>" +
                         "<td> </td>         " +
                         "<td>{{Title}} </td>    " +
-                        " <td class='w200' >{{ maxContent}} </td>   " +
+                        "<td >{{ maxContent}} </td>   " +
                         "<td>{{ FromSite }}</td>                              " +
-                        "<td class='last'><a  >{{url}}</a></td>  " +
+                        "<td><a  >{{url}}</a></td>  " +
 
                         "</tr>                    " +
                         "{{/each}}" +
@@ -160,13 +160,13 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                 var temp =
                     "  <td colspan='8' class='subrowtd'>" +
-                        "<table class='subtable'>" +
+                        "<table class='table'>" +
 
                         "<tr class='thead'>    " +
 
-                        "<th >Topic Name</th>         " +
-                        "<th >Keyword</th>         " +
-                        "<th >Source Type</th>         " +
+                        "<th class='w15-p'>Topic Name</th>         " +
+                        "<th class='w15-p'>Keyword</th>         " +
+                        "<th class='w39-p'>Source Type</th>         " +
                         "<th >Action</th>         " +
                         " </tr>    " +
 

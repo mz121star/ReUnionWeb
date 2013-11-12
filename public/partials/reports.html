@@ -3,43 +3,51 @@
 
     <div ng-show="!!sendSuccess" class="alert alert-success"> {{ sendSuccess }}</div>
     <div ng-show="!!sendError" class="alert alert-error"> {{ sendError }}</div>
-    <table id="reportsTable" class="table">
-        <thead>
-        <tr>
-            <th class="w30">No.</th>
-            <th sortable>Title</th>
-            <th>Type</th>
-            <th>MailTo</th>
-            <th>Create Date</th>
-            <th>Action</th>
+
+    <div class="box box-color box-bordered">
+        <div class="box-title">
+            <h3>
+                <i class="fa fa-table"></i>
+
+            </h3>
+        </div>
+        <div class="box-content nopadding">
+            <table id="reportsTable" class="table">
+                <thead>
+                <tr>
+                    <th class="w30">No.</th>
+                    <th sortable>Title</th>
+                    <th>Type</th>
+                    <th>MailTo</th>
+                    <th>Create Date</th>
+                    <th>Action</th>
 
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="report in subReports" ng-click="showDetail(report)" showdetail>
-            <td>{{ $index+1 }}</td>
-            <td>{{report.Name }}</td>
-            <td>{{report.Type }}</td>
-            <td>{{report.Receiver }}</td>
-            <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
-            <td>
-                <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
-                <!--<button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">Preview </button>-->
-               <a class="button btn-primary"   href="api/subReportPreview/{{report._id}}" target="_blank">Preview</a>
-                <button class="btn btn-primary" data-loading-text="Sending..." ng-click="sendSubReport(report,$event)">Send
-                </button>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="report in subReports" ng-click="showDetail(report)" showdetail>
+                    <td>{{ $index+1 }}</td>
+                    <td>{{report.Name }}</td>
+                    <td>{{report.Type }}</td>
+                    <td>{{report.Receiver }}</td>
+                    <td>{{report.UpdateDate | date:'yyyy-MM-dd' }}</td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
+                        <!--<button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">Preview </button>-->
+                        <a class="button btn-primary"   href="api/subReportPreview/{{report._id}}" target="_blank">Preview</a>
+                        <button class="btn btn-primary" data-loading-text="Sending..." ng-click="sendSubReport(report,$event)">Send
+                        </button>
 
-                <button class="btn btn-primary" ng-click="editSubReport(report)">Edit</button>
-                <button class="btn btn-danger" ng-click="delSubReport(report)">Delete</button>
-                <!-- subReportPreview/{{report._id}}-->
-            </td>
-
-
-        </tr>
-
-        </tbody>
-    </table>
+                        <button class="btn btn-primary" ng-click="editSubReport(report)">Edit</button>
+                        <button class="btn btn-danger" ng-click="delSubReport(report)">Delete</button>
+                        <!-- subReportPreview/{{report._id}}-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 <div style="display: none;width: 900px;margin: -250px 0 0 -450px;" class="modal fade" id="subPreviewModal" tabindex="-1"
