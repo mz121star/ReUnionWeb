@@ -142,7 +142,7 @@
                 Group: <select  ng-model="topicGroupName">
                 <option ng-repeat="group in groups"  value="{{group._id}}">{{group.Name}}</option>
                 </select>
-                  11{{topicGroupName}}
+                   {{topicGroupName}}
                 <div ng-show="!!saveTopicWarning" class="alert alert-success"> {{ saveTopicWarning }}</div>
 
             </div>

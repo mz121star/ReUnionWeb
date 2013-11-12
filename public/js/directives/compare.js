@@ -148,7 +148,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             }
         };
     }]);
-    app.directive('showtopictable', ['$http', function ($http) {
+    app.directive('showtopictable', ['$http','$compile', function ($http,$compile) {
 
         return {
             /*scope: {
@@ -156,8 +156,12 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                     console.log(id);
                 }
             },*/
-            link: function (scope, elm, attrs, ctrl) {
 
+
+            link: function (scope, elm, attrs, ctrl) {
+                scope.delTopic=function(id){
+                    console.log(id);
+                }
                 var temp =
                     "  <td colspan='8' class='subrowtd'>" +
                         "<table class='subtable'>" +
@@ -177,7 +181,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                         "<td>{{Name}} </td>    " +
                         "<td>{{Keyword}} </td>    " +
                         "<th >{{SourceTypeString}}</th>         " +
-                        "<th ><a class='btn btn-primary' href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary'  ng-click='delTopic({{_id}})'  href='javascript:;'>Delete</a> </th>         " +
+                        "<th ><a class='btn btn-primary' href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary'    ng-click=\"deleteTopic('{{_id}}')\"  href='javascript:;'>Delete</a> </th>         " +
                         "</tr>                    " +
                         "{{/each}}" +
 
@@ -225,6 +229,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                             console.log(contenthtml);
 
                             $(elm).parent().next().html(contenthtml);
+                            $compile($(elm).parent().next().contents())(scope);
                         });
                     }
                     $(elm).parent().next().toggle();
