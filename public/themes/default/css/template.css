@@ -230,7 +230,8 @@ background-color: #368ee0;
     font-weight: 400;
     padding: 0 3px;
     position: absolute;
-    top: 5px;
+    top: 8px;
+    right: 3px;
 	background:red;
 }
 .language-select a {
@@ -276,3 +277,10 @@ background-color: #368ee0;
  font-size:16px;
  padding: 9px 10px 11px !important;
 }
+
+/**修复左边菜单背**/
+.fixed-bg{background: none repeat scroll 0 0 #EEEEEE; }
+
+/**隐藏左边栏**/
+.hiddenMenu #left{display: none !important;}
+.hiddenMenu #main{margin-left: 0px !important;}

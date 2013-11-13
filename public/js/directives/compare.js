@@ -1,4 +1,4 @@
-define(['app', 'handlebars' ], function (app, handlebars) {
+define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
     app.directive('compare', function () {
         return {
             require: 'ngModel',
@@ -64,7 +64,113 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             }
         };
     });
+    /* app.directive('prCheck',['$timeout', '$parse', function ($timeout, $parse) {
+     return {
+     compile: function (element, $attrs) {
+     var icheckOptions = {
+     checkboxClass: 'icheckbox_minimal-blue',
+     radioClass: 'iradio_minimal-blue',
+     increaseArea: '20%'
+     };
+     ngModelGetter = $parse($attrs['ngModel']);
+     return function($scope, element, $attrs, ctrl) {
+     return $timeout(function () {
+     var ngModelGetter, value;
 
+     value = $parse($attrs['ngValue'])($scope);
+
+
+     return $(element).iCheck(icheckOptions).on('ifChanged', function (event) {
+     if ($(element).attr('type') === 'checkbox' && $attrs['ngModel']) {
+     $scope.$apply(function () {
+     return ngModelGetter.assign($scope, event.target.checked);
+     });
+     }
+     if ($(element).attr('type') === 'radio' && $attrs['ngModel']) {
+     return $scope.$apply(function () {
+     return ngModelGetter.assign($scope, value);
+     });
+     }
+     });
+     var modelChanged = function (event) {
+     $scope.$apply(function () {
+     ngModelGetter.assign($scope, event.target.checked);
+     });
+     };
+     $scope.$watch(ngModelGetter, function (val) {
+     var action = val ? 'check' : 'uncheck';
+     element.iCheck(icheckOptions, action).on('ifChanged', modelChanged);
+     });
+     });
+
+     }
+     }
+     }
+     }]);*/
+    app.directive('prCheck', ['$timeout', '$parse', function ($timeout, $parse) {
+        return {
+            compile: function (element, $attrs) {
+                var icheckOptions = {
+                    checkboxClass: 'icheckbox_minimal-blue',
+                    radioClass: 'iradio_minimal-blue'
+                };
+
+                var modelAccessor = $parse($attrs['ngModel']);
+                return function ($scope, element, $attrs, controller) {
+
+                    var modelChanged = function (event) {
+                        $scope.$apply(function () {
+                            modelAccessor.assign($scope, event.target.checked);
+                        });
+                    };
+
+                    $scope.$watch(modelAccessor, function (val) {
+                        var action = val ? 'check' : 'uncheck';
+                        element.iCheck(icheckOptions, action).on('ifChanged', modelChanged);
+                    });
+                };
+            }
+        };
+    }]);
+    /* app.directive('prCheck', function () {
+     return {
+     restrict: 'A',
+     require: '?ngModel',
+     link: function ($scope, $element, $attrs, $ngModel) {
+     if (!$ngModel) {
+     return;
+     }
+     //using iCheck
+     $($element).iCheck({
+
+     cursor: true,
+     checkboxClass: 'icheckbox_minimal-blue',
+     radioClass: 'iradio_minimal-blue',
+     increaseArea: '20%'
+     }).on('ifClicked', function (event) {
+     if ($attrs.type == "checkbox") {
+     //checkbox, $ViewValue = true/false/undefined
+     $scope.$apply(function () {
+     $ngModel.$setViewValue(!($ngModel.$modelValue == undefined ? false : $ngModel.$modelValue));
+     });
+     } else {
+     // radio, $ViewValue = $attrs.value
+     $scope.$apply(function () {
+     $ngModel.$setViewValue($attrs.value);
+     });
+     }
+     });
+
+     $ngModel.$render = function () {
+     var value = $attrs.value;
+     $element[0].checked = (value == $ngModel.$viewValue);
+     };
+     $attrs.$observe('value', $ngModel.$render);
+
+
+     }
+     };
+     });*/
     app.directive('toggletable', ['$http', function ($http) {
 
         return {
@@ -148,20 +254,16 @@ define(['app', 'handlebars' ], function (app, handlebars) {
             }
         };
     }]);
-    app.directive('showtopictable', ['$http','$compile', function ($http,$compile) {
+    app.directive('showtopictable', ['$http', '$compile', function ($http, $compile) {
 
         return {
             /*scope: {
-                delTopic:function(id){
-                    console.log(id);
-                }
-            },*/
-
-
+             delTopic:function(id){
+             console.log(id);
+             }
+             },*/
             link: function (scope, elm, attrs, ctrl) {
-                scope.delTopic=function(id){
-                    console.log(id);
-                }
+
                 var temp =
                     "  <td colspan='8' class='subrowtd'>" +
                         "<table class='table'>" +
@@ -180,8 +282,8 @@ define(['app', 'handlebars' ], function (app, handlebars) {
 
                         "<td>{{Name}} </td>    " +
                         "<td>{{Keyword}} </td>    " +
-                        "<th >{{SourceTypeString}}</th>         " +
-                        "<th ><a class='btn btn-primary' href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary'    ng-click=\"deleteTopic('{{_id}}')\"  href='javascript:;'>Delete</a> </th>         " +
+                        "<td >{{SourceTypeString}}</td>         " +
+                        "<td ><a class='btn btn-primary' href='#/feeds/?topicid={{_id}}'>View</a> <a class='btn btn-primary'  ng-click='deleteTopic(\"{{_id}}\")'  href='javascript:;'>Delete</a> </td>         " +
                         "</tr>                    " +
                         "{{/each}}" +
 
@@ -226,7 +328,7 @@ define(['app', 'handlebars' ], function (app, handlebars) {
                             console.log($(elm).parent().next().children('.subrowtd'));
                             var data = {topics: d};
                             var contenthtml = template(data);
-                            console.log(contenthtml);
+
 
                             $(elm).parent().next().html(contenthtml);
                             $compile($(elm).parent().next().contents())(scope);
@@ -248,4 +350,5 @@ define(['app', 'handlebars' ], function (app, handlebars) {
      };
      });*/
 
-});
+})
+;

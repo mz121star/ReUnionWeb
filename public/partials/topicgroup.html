@@ -20,7 +20,7 @@
                     <label  class="col-sm-2 control-label">Source Type:</label>
                     <div class="col-sm-10 form-con">
                         <label class="checkbox-inline" ng-repeat="st in sourcetype">
-                            <input class="checkbox" uniform type="checkbox" name="sourceType" ng-checked="st.checked"
+                            <input class="checkbox" pr-check type="checkbox" name="sourceType" ng-checked="st.checked"
                                    ng-model="st.checked" value="{{st.type}}"/>{{st.type}}
                         </label>
                     </div>
@@ -128,7 +128,7 @@
             <table id="css_table" class="table">
                 <thead>
                 <tr>
-                    <th class="w15-p">No.</th>
+                    <th class="w15-p"> <i class="fa fa-plus-square"></i> </th>
                     <th class="w15-p">Group Name</th>
                     <th class="w39-p">Description</th>
                     <th class="last">Action</th>
@@ -136,7 +136,7 @@
                 </thead>
                 <tbody ng-repeat="group in groups" showdetail>
                 <tr>
-                    <td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  >{{ $index+1 }} </td>
+                    <td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  ><i class="fa fa-plus-square"></i> </td>
                     <td class=" w150">{{group.Name }}</td>
                     <td class=" w100">{{group.Description }}</td>
                     <td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"
@@ -215,8 +215,23 @@
                 <h4 class="modal-title">Add Group</h4>
             </div>
             <div class="modal-body">
-                Group  Name: <input type="text" ng-model="topicGroupName" >   <br>
-                Description: <textarea   ng-model="topicGroupDescription" ></textarea>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label  class="col-sm-3 col-xs-3 form-alert-contro-label ">GroupName:</label>
+                        <div class="col-sm-9 col-xs-9">
+                            <input type="text" class="form-control col-sm-9" ng-model="topicGroupName" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label  class="col-sm-3 col-xs-3 form-alert-contro-label ">Description:</label>
+                        <div class="col-sm-9 col-xs-9">
+                            <textarea   class="form-control col-sm-9" ng-model="topicGroupDescription" ></textarea>
+                        </div>
+                    </div>
+
+                </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

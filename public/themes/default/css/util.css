@@ -5,3 +5,31 @@
 .satgreen {
     background: #56af45;
 }
+
+.w5-p {
+    width: 5%;
+}
+
+.w12-p {
+    width: 12%;
+}
+
+.w39-p {
+    width: 39.5%
+}
+
+.w12-p {
+    width: 12%;
+}
+
+.w15-p {
+    width: 15%
+}
+
+.w24-p {
+    width: 24.5%;
+}
+
+.nopadding {
+    padding: 0 !important;
+}

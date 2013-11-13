@@ -28,7 +28,8 @@ require.config({
         'bootstrap-datepicker':'../lib/angular-strap/bootstrap-datepicker' ,
         "async":'../lib/async',
         "moment": "../lib/moment.min",
-        "handlebars":"../lib/handlebars"
+        "handlebars":"../lib/handlebars",
+        "icheck":"../lib/icheck/jquery.icheck"
 
     },
     shim: {
@@ -39,6 +40,7 @@ require.config({
         'bootstrap': {deps: ['jquery']},
         /*'mcustomscrollbar': {deps: ['jquery']},*/
         'jqueryui':{deps: ['jquery']},
+        'icheck': {deps: ['jquery']},
 
 
         'underscore': {exports: '_'}

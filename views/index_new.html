@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="lib/bootstrap3/css/bootstrap.css"/>
     <link rel='stylesheet' href='lib/angular-strap/bootstrap-datepicker.css'/>
     <link rel='stylesheet' href='lib/font-awesome-4.0.3/css/font-awesome.min.css'/>
-
+    <link rel='stylesheet' href='lib/icheck/skins/minimal/blue.css'/>
   <!--  <link href='css/default.css' rel='stylesheet' type='text/css'>-->
 
     <!-- Custom styles for this template -->
@@ -45,7 +45,7 @@
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </button>
                 <a class="navbar-brand logo" href="#">Reunion</a>
-                <a class="toggle-nav" href="#">
+                <a class="toggle-nav" href="javascript:;" ng-click="hiddenMenu()">
                     <span class="glyphicon glyphicon-align-justify hidden-xs" id="closeSet"></span>
                 </a>
             </div>
@@ -190,7 +190,7 @@
     <!-- container end -->
 </div>
 <div class="container">
-    <div class="row">
+    <div class="row fixed-bg" ng-class="{hiddenMenu:!show }">
         <div id="left" class="hidden-xs">
             <form action="search-results.html" method="GET" class=''>
                 <div class="input-group search">
