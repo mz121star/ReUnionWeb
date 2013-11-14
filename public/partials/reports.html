@@ -35,7 +35,7 @@
                     <td>
                         <button class="btn btn-primary" ng-click="changeSubStatus(report)">{{report.Status |numToTxt}}</button>
                         <!--<button class="btn btn-primary" data-toggle="modal" ng-click="showPreview(report._id)"  data-target="#subPreviewModal">Preview </button>-->
-                        <a class="button btn-primary"   href="api/subReportPreview/{{report._id}}" target="_blank">Preview</a>
+                        <a class="btn btn-primary"   href="api/subReportPreview/{{report._id}}" target="_blank">Preview</a>
                         <button class="btn btn-primary" data-loading-text="Sending..." ng-click="sendSubReport(report,$event)">Send
                         </button>
 

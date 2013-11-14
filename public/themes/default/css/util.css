@@ -5,7 +5,25 @@
 .satgreen {
     background: #56af45;
 }
-
+.blue {
+    background: #368ee0;
+}
+.green, .label-green {
+    background: #393;
+}
+.orange, .label-orange {
+    background: #f8a31f;
+}
+.stats{
+    padding: 0
+}
+.stats>li i {
+    font-size: 36px;
+    color: #fff;
+    float: left;
+    margin: 0;
+;
+}
 .w5-p {
     width: 5%;
 }
@@ -32,4 +50,8 @@
 
 .nopadding {
     padding: 0 !important;
+}
+.selected {
+    background: #ddd;
+    color: #222;
 }

@@ -20,7 +20,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
             endDate: "",
             startDate: moment().add("days", -30)
         };
-        $rootScope.show = false;
+         $rootScope.show = true;
         $scope.$watch("dataRange", function (v1, v2) {
             if (v1) {
                 $scope.dashboard.endDate = $scope.searchDate.endtime = moment(new Date()).format("MM/DD/YYYY");

@@ -2,12 +2,12 @@
 
 define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, excel, Enumerable) {
 
-    var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' ,'$location', function ($scope, $rootScope, $http, FeedService, $window,$location) {
+    var FeedsController = ['$scope', '$rootScope', '$http', 'FeedService', '$window' , '$location', function ($scope, $rootScope, $http, FeedService, $window, $location) {
 
 
         $rootScope.menuUrl = "partials/leftmenu/feedsMenu.html";
         $rootScope.title = "Feeds - " + res.title;
-      /*  $rootScope.pageTitle="Feeds Page";*/
+        /*  $rootScope.pageTitle="Feeds Page";*/
         $rootScope.show = true;
         $scope.show = true;
         $scope.source = {
@@ -43,7 +43,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
                 .ToArray();
             sts = sts.join('|');
             console.log(sts);
-            var searchData = {keyword: $scope.keyword, st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime, pageindex: $scope.feeds.pageIndex};
+            var searchData = {keyword: $scope.feeds.keyword, st: sts, starttime: $scope.feeds.startTime, endtime: $scope.feeds.endTime, pageindex: $scope.feeds.pageIndex};
             /*            console.log(searchData);*/
             $http.post("api/feeds", searchData).success(function (d) {
                 $scope.pages = d.count > 20 ? 20 : parseInt(d.count, 10);
@@ -52,7 +52,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
                     $scope.searchFeed();
                 }
                 else {
-                     $scope.feedContent = Enumerable.From(d.feeds).ToArray();
+                    $scope.feedContent = Enumerable.From(d.feeds).ToArray();
                 }
             });
 
@@ -68,7 +68,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
             endTime: new Date(),
             sourceTypeName: '',
             description: '',
-            pageIndex: 1
+            pageIndex: 1  ,
+            keyword:''
         };
 
         $scope.showDetail = function (feed) {
@@ -134,7 +135,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
                 .ToArray();
             $http.post('api/topic', {
                 Name: $scope.topicName,
-                Keyword: $scope.keyword,
+                Keyword: $scope.feeds.keyword,
                 SearchCondition: {
                     SourceType: sts,
                     StartDate: new Date($scope.feeds.startTime),
@@ -155,7 +156,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
 
         $rootScope.topicSelected = function (topic) {
 
-            $scope.keyword = topic.Keyword;
+            $scope.feeds.keyword = topic.Keyword;
             $scope.feeds.startTime = topic.SearchCondition.StartDate;
             $scope.feeds.endTime = topic.SearchCondition.EndDate;
             $scope.source.keywordExpression = topic.Keyword;
@@ -188,30 +189,32 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
          *
          */
         var topicid = $location.$$url.match(/topicid=(\w+)/);
-        if(topicid) topicid= topicid[1] ;
+        if (topicid) topicid = topicid[1];
         console.log(topicid);
-        $http.get('/api/topic/' + topicid).success(function (topic) {
-            topic=topic[0];
-            $scope.keyword = topic.Keyword;
-            $scope.feeds.startTime = topic.SearchCondition.StartDate;
-            $scope.feeds.endTime = topic.SearchCondition.EndDate;
-            $scope.source.keywordExpression = topic.Keyword;
-            var sourceType = topic.SearchCondition.SourceType;
+
+            $http.get('/api/topic/' + topicid).success(function (topic) {
+                topic = topic[0];
+                $scope.feeds.keyword = topic.Keyword;
+                $scope.feeds.startTime = topic.SearchCondition.StartDate;
+                $scope.feeds.endTime = topic.SearchCondition.EndDate;
+                $scope.source.keywordExpression = topic.Keyword;
+                var sourceType = topic.SearchCondition.SourceType;
 
 
-            for (var k in $scope.sourcetype) {
-                $scope.sourcetype[k].checked = false;
-                for (var i in sourceType) {
-                    if ($scope.sourcetype[k].type === sourceType[i]) {
-                        $scope.sourcetype[k].checked = true;
+                for (var k in $scope.sourcetype) {
+                    $scope.sourcetype[k].checked = false;
+                    for (var i in sourceType) {
+                        if ($scope.sourcetype[k].type === sourceType[i]) {
+                            $scope.sourcetype[k].checked = true;
+                        }
+
                     }
-
                 }
-            }
 
-            $scope.sourcetype = $scope.sourcetype;
-            $scope.searchFeed();
-        }) ;
+                $scope.sourcetype = $scope.sourcetype;
+                $scope.searchFeed();
+            });
+
 
     }];
 

@@ -132,6 +132,33 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
             }
         };
     }]);
+    app.directive('prBox', ['$compile',function ($compile) {
+        return {
+            scope: {
+               title: '=boxTitle',
+               class: '=boxClass',
+               icon:'=boxIcon'
+            },
+            restrict: 'E',
+            replace: true,
+            templateUrl: 'js/directives/prBoxTemplate.html',
+            transclude: true,
+            link : function(scope, element, attrs, ctrl) {
+                scope.showMe = true;
+
+                scope.toggle = function toggle() {
+                    scope.showMe = !scope.showMe;
+
+                }
+                scope.remove=function remove(){
+                    console.log("remove")
+                    $(element).remove();
+                }
+
+              /*  $compile($(element).contents())(scope);*/
+            }
+        };
+    }]);
     /* app.directive('prCheck', function () {
      return {
      restrict: 'A',

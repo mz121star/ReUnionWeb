@@ -44,7 +44,7 @@
                         data-target=".navbar-collapse">
                     <span class="glyphicon glyphicon-align-justify"></span>
                 </button>
-                <a class="navbar-brand logo" href="#">Reunion</a>
+                <a class="navbar-brand top-logo" href="#"></a>
                 <a class="toggle-nav" href="javascript:;" ng-click="hiddenMenu()">
                     <span class="glyphicon glyphicon-align-justify hidden-xs" id="closeSet"></span>
                 </a>
@@ -86,7 +86,7 @@
                                     <img src="assets/img/demo/user-2.jpg" alt="">
 
                                     <div class="details">
-                                        <div class="name">John Doedoe</div>
+                                        <div class="name">{{UserName}}</div>
                                         <div class="message">
                                             Ut ad laboris est anim ut ...
                                         </div>
@@ -169,17 +169,17 @@
                     </li>
                 </div>
                 <div class="dropdown div">
-                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img
+                    <a href="#" class='dropdown-toggle' data-toggle="dropdown">{{UserName}}<img
                             src="assets/img/demo/user-avatar.jpg" alt=""></a>
                     <ul class="dropdown-menu pull-right">
                         <li>
-                            <a href="more-userprofile.html">Edit profile</a>
+                            <a href="javascript:;">Edit profile</a>
                         </li>
                         <li>
-                            <a href="#">Account settings</a>
+                            <a href="javascript:;">Account settings</a>
                         </li>
                         <li>
-                            <a href="more-login.html">Sign out</a>
+                            <a  ng-click="logout()" href="javascript:;">Sign out</a>
                         </li>
                     </ul>
                 </div>
@@ -363,19 +363,38 @@
         <div id="main">
             <div id="content" class="container">
                 <div class="page-header container">
-                    <div class="pull-left col-md-push-3">
+                  <!--  <div class="pull-left col-md-push-3">
                         <h1>{{pageTitle}}</h1>
-                    </div>
+                    </div>-->
+                    <ul class="stats pull-left">
+                        <li class="blue">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <div class="details">
+                                <span class="big">{{info.TotalFeeds}}</span>
+                                <span>Total Feeds</span>
+
+                            </div>
+
+                        </li>
+                        <li class="green">
+                            <i class="fa fa-bell"></i>
+                            <div class="details">
+                                <span class="big">{{info.TodayFeedsTotal}}</span>
+                                <span>Today Feeds</span>
+                            </div>
+                        </li>
+                        <li class="orange">
+                            <i class="fa  fa-globe"></i>
+                            <div class="details">
+                                <span class="big">{{info.TotalSite}}</span>
+                                <span>From Sites</span>
+                            </div>
+                        </li>
+                    </ul>
                     <div class="pull-right" >
 
                         <ul class="stats">
-                            <li class="satgreen">
-                                <i class="fa fa-money"></i>
-                                <div class="details">
-                                    <span class="big">$-92,88</span>
-                                    <span>Balance</span>
-                                </div>
-                            </li>
+
                             <li class="lightred">
                                 <i class="fa fa-calendar"></i>
                                 <div class="details">
@@ -389,8 +408,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">Library</a></li>
-                        <li class="active">Data</li>
+                        <li class="active">{{title}}</li>
+
                     </ol>
                 </div>
                 <div class="row main">
@@ -398,11 +417,17 @@
                     <div class="container page" ng-view=""></div>
                 </div>
             </div>
+            <div class="footer">
+                <div class="copyright">©2013 Pactera US RDS-PDS RDS Octopus Team</div>
+                <div class="foot-logo">
+                    <a href="http://www.pactera.com"></a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- /container -->
 
+<!-- /container -->
 </body>
 </html>
 

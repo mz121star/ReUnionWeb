@@ -27,6 +27,7 @@ ul li{list-style-type: none}
     background: none repeat scroll 0 0 #368EE0;
     position: relative;
     z-index: 100;
+    border-bottom: 3px solid #B90400;
 }
 .starter-template {
   padding: 40px 15px;
@@ -45,7 +46,6 @@ ul li{list-style-type: none}
     padding-right: 63px;
 }
 .container .logo {
-	background: url("../../../../NewStyle/assets/img/logo.png") no-repeat scroll 10px 15px rgba(0, 0, 0, 0);
 	padding-left: 42px;
 }
 .container .toggle-nav {
@@ -192,7 +192,7 @@ background-color: #368ee0;
 	margin-left: 0;
 }
 #content {
-    min-height: 100%;
+    min-height: 900px;
     position: relative;
 }
 #navigation .user .dropdown > a {
@@ -284,3 +284,36 @@ background-color: #368ee0;
 /**隐藏左边栏**/
 .hiddenMenu #left{display: none !important;}
 .hiddenMenu #main{margin-left: 0px !important;}
+
+.top-logo {
+    background: url("/images/bg/reunion-logo-top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    float: left;
+    height: 33px;
+    margin: 7px 60px 10px 30px;
+    width: 90px;
+}
+.footer {
+    background: none repeat scroll 0 0 #368EE0;
+    color: #FFFFFF;
+    height: 30px;
+    left: 0;
+    position: absolute;
+    margin:20px 0 0;
+    width: 100%;
+    z-index: 100;
+}
+.footer .copyright {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    margin-right: 20px;
+}
+.foot-logo {
+    background: url("/images/bg/pactera.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    float: right;
+    height: 20px;
+    margin: 4px 12px;
+    width: 67px;
+}
