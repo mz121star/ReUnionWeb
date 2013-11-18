@@ -6,9 +6,10 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', '$location', function ($scope, $rootScope, $http, $timeout, $location) {
         $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
-
+        var sentimentAnalysisTimelineURL="widgets/sentimentAnalysisTimelineChart/index.html"
         $scope.distributionDiagram = "widgets/geoChart/index.html";
         $scope. feedsStatistics = "widgets/candlstickChart/index.html";
+        $scope.sentimentAnalysisTimeline  =sentimentAnalysisTimelineURL;
         $scope.searchDate = {
             starttime: moment(new Date()).add('days', -30).format("MM/DD/YYYY"),
             endtime: moment(new Date()).format("MM/DD/YYYY")
@@ -86,7 +87,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
                 },
 //
                 function (callback) {
-                    $http.post('/api/SentimentAnalysisByFromTypeBarPost', $scope.searchDate).success(function (d) {
+                    $http.post('api/SentimentAnalysisByFromTypeBarPost', $scope.searchDate).success(function (d) {
 
                         new iChart.ColumnMulti2D({
                             render: 'canvasDiv3',
@@ -135,7 +136,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
                         });
                 },
                 function (callback) {
-                    $http.post('api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
+                  /*  $http.post('api/SentimentAnalysisPost', $scope.searchDate).success(function (d) {
                         //搜索来源饼图
                         new iChart.LineBasic2D({
                             render: 'canvasDiv4',
@@ -188,7 +189,9 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
                                 $scope.global.error = "";
                             }, 3000)
                             callback(null, '6');
-                        });
+                        });*/
+                    $scope.sentimentAnalysisTimeline=  sentimentAnalysisTimelineURL+"?"+ decodeURIComponent( $.param( $scope.searchDate ) );
+                    callback(null,"sentiment")
                 },
                 function (callback) {
                     var deep2dBarChart = function () {

@@ -4,14 +4,7 @@
     <div ng-show="!!sendSuccess" class="alert alert-success"> {{ sendSuccess }}</div>
     <div ng-show="!!sendError" class="alert alert-error"> {{ sendError }}</div>
 
-    <div class="box box-color box-bordered">
-        <div class="box-title">
-            <h3>
-                <i class="fa fa-table"></i>
-
-            </h3>
-        </div>
-        <div class="box-content nopadding">
+    <pr-box>
             <table id="reportsTable" class="table">
                 <thead>
                 <tr>
@@ -46,7 +39,7 @@
                 </tr>
                 </tbody>
             </table>
-        </div>
+    </pr-box>
     </div>
 </div>
 

@@ -10,7 +10,8 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
 
         $rootScope.show = true;
         $scope.source = {
-            brand: "兰蔻品牌"
+            keywordExpression: ""
+
         };
         $scope.sourceType = ['News', 'Forum', 'eCommerce', 'Weibo', 'sohu'];
         $scope.professionalSites = ['CSDN', 'IDC'];
@@ -136,7 +137,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
                     }, 5000)
                     // callback(null, '2');
                 });
-            $http.post('/api/SearchSourcePost', searchData).success(function (a) {
+            $http.post('api/SearchSourcePost', searchData).success(function (a) {
                 new iChart.Pie2D({
                     render: 'canvasDiv11',
                     data: a,
@@ -177,7 +178,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
                     }, 5000)
                     //  callback(null, '3');
                 });
-            $http.post('/api/SentimentAnalysisColumnPost', searchData).success(function (d) {
+            $http.post('api/SentimentAnalysisColumnPost', searchData).success(function (d) {
                 new iChart.ColumnStacked2D({
                     render: 'canvasDiv9',
                     data: d.data,
@@ -327,6 +328,9 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
                 localsearchFeed();
             }
         })
+        $scope.searchFeedForm={
+            $invalid : true
+        }
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
                 $scope.warning = "开始不能大于结束";
@@ -337,7 +341,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
                 $scope.searchFeedForm.$invalid = false;
             }
         });
-        $http.get("/api/chart").success(function (d) {
+        $http.get("api/chart").success(function (d) {
             $scope.charts = d;
         });
     }];

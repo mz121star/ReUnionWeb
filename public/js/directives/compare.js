@@ -107,7 +107,7 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
      }
      }
      }]);*/
-    app.directive('prCheck', ['$timeout', '$parse', function ($timeout, $parse) {
+   /* app.directive('prCheck', ['$timeout', '$parse', function ($timeout, $parse) {
         return {
             compile: function (element, $attrs) {
                 var icheckOptions = {
@@ -131,8 +131,8 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
                 };
             }
         };
-    }]);
-    app.directive('prBox', ['$compile',function ($compile) {
+    }]);*/
+   /* app.directive('prBox', ['$compile',function ($compile) {
         return {
             scope: {
                title: '=boxTitle',
@@ -144,6 +144,7 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
             templateUrl: 'js/directives/prBoxTemplate.html',
             transclude: true,
             link : function(scope, element, attrs, ctrl) {
+
                 scope.showMe = true;
 
                 scope.toggle = function toggle() {
@@ -155,10 +156,10 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
                     $(element).remove();
                 }
 
-              /*  $compile($(element).contents())(scope);*/
+              *//*  $compile($(element).contents())(scope);*//*
             }
         };
-    }]);
+    }]);*/
     /* app.directive('prCheck', function () {
      return {
      restrict: 'A',
@@ -245,9 +246,9 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
                     console.log(attrs)
                     if (attrs.queryover === "0") {
                         $(elm).parent().next().html("<img src='images/icon/waiting.gif' />Loading...");
-                        $http.get('/api/alert/' + attrs.id).success(function (d) {
+                        $http.get('api/alert/' + attrs.id).success(function (d) {
 
-                            $http.post("/api/feeds", {keyword: d[0].Keyword}).success(function (data) {
+                            $http.post("api/feeds", {keyword: d[0].Keyword}).success(function (data) {
 
 
                                 var template = Handlebars.compile(temp);
@@ -330,7 +331,7 @@ define(['app', 'handlebars', 'icheck' ], function (app, handlebars, icheck) {
                     console.log(attrs)
                     if (attrs.queryover === "0") {
                         $(elm).parent().next().html("<img src='images/icon/waiting.gif' />Loading...");
-                        $http.get('/api/topic?groupid=' + attrs.id).success(function (d) {
+                        $http.get('api/topic?groupid=' + attrs.id).success(function (d) {
                             var template = Handlebars.compile(temp);
                             Handlebars.registerHelper('maxContent', function () {
                                 var len = this.Content.length > 50 ? 50 : this.Content.length;

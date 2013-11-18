@@ -23,7 +23,7 @@ define(['../app', 'i18n!resources/nls/res','moment'], function (app, res,moment)
             TotalSite: ""
         };
 
-        $http.post("/api/feeds").success(function (d) {
+        $http.post("api/feeds").success(function (d) {
             $scope.info.TodayFeedsTotal = d.todaycount;
             $scope.info.TotalFeeds = d.totalcount;
             $scope.info.TotalSite = d.countsites;

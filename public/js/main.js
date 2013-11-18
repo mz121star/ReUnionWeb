@@ -29,12 +29,14 @@ require.config({
         "async":'../lib/async',
         "moment": "../lib/moment.min",
         "handlebars":"../lib/handlebars",
-        "icheck":"../lib/icheck/jquery.icheck"
+        "icheck":"../lib/icheck/jquery.icheck" ,
+        "pr-angular":"../lib/pr-angular/pr-angular"
 
     },
     shim: {
         'angular': {deps: ['jquery'],'exports': 'angular'},
         'angular-resource': {deps: ['angular']},
+        'pr-angular' : {deps: ['angular']},
         'bootstrap-datepicker':  {deps: ['jquery']},
         'angular-strap':   {deps: ['angular','bootstrap-datepicker']},
         'bootstrap': {deps: ['jquery']},

@@ -1,5 +1,5 @@
 
-define(['angular','angular-strap'], function (angular ) {
+define(['angular','angular-strap','pr-angular'], function (angular ) {
 
-    return angular.module('app', ['$strap.directives']);
+    return angular.module('app', ['$strap.directives','$prAngular.directives']);
 });

@@ -1,11 +1,13 @@
 <div class="panel">
+    <div ng-show="!!warning" class="alert alert-warning"> {{ warning }}</div>
    <pr-box box-title="'Feeds List: '+source.keywordExpression">
+
         <form class="form-horizontal form-bordered " role="form" novalidate name="searchFeedForm">
             <div class="form-group">
-                <label class="col-sm-2 control-label">Keyword:</label>
+                <label class="col-sm-2 control-label" >Keyword:</label>
 
                 <div class="col-sm-10 form-con">
-                    <input type="text" class="form-control col-md-3" ng-model="feeds.keyword" />
+                    <input type="text" class="form-control col-md-3" required ng-model="feeds.keyword" />
                     <span class="glyphicon glyphicon-info-sign info"></span>
                 </div>
             </div>
@@ -34,8 +36,9 @@
                     <span class="pull-left form-text-middle">to</span>
                     <input bs-datepicker class="form-control col-md-3" type="text" ng-model="feeds.endTime">
 
-                    <div ng-show="searchFeedForm.$invalid" class="alert alert-warning"> {{ warning }}</div>
+
                 </div>
+
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label"></label>
@@ -59,7 +62,7 @@
 
 
     <pr-box>
-        <table class="table table-hover table-nomargin">
+        <table id="feedTable" class="table table-hover table-nomargin">
             <thead>
             <tr>
                 <th>N0.</th>

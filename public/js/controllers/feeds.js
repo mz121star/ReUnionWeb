@@ -26,7 +26,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
         $rootScope.removeTopic = function (event, feed) {
 
             if ($window.confirm("Are you sure delete the topic?")) {
-                $http.delete("/api/topic/" + feed._id).success(function (d) {
+                $http.delete("api/topic/" + feed._id).success(function (d) {
                     console.log(d);
                     gettopicSelected();
 
@@ -90,14 +90,17 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
             $scope.feedContent = d.feeds;
             $scope.pages = d.count > 20 ? 20 : parseInt(d.count, 10);
         });
+        $scope.searchFeedForm={
+            $invalid : true
+        }
         $scope.$watch('feeds.startTime+feeds.endTime', function (v1, v2) {
             if ($scope.feeds.startTime >= $scope.feeds.endTime) {
                 $scope.warning = "开始不能大于结束";
-                $scope.searchFeedForm.$invalid = true;
+                 $scope.searchFeedForm.$invalid = true;
             }
             else {
                 $scope.warning = ""
-                $scope.searchFeedForm.$invalid = false;
+               $scope.searchFeedForm.$invalid = false;
             }
         });
 
@@ -192,7 +195,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs'], function (res, e
         if (topicid) topicid = topicid[1];
         console.log(topicid);
 
-            $http.get('/api/topic/' + topicid).success(function (topic) {
+            $http.get('api/topic/' + topicid).success(function (topic) {
                 topic = topic[0];
                 $scope.feeds.keyword = topic.Keyword;
                 $scope.feeds.startTime = topic.SearchCondition.StartDate;

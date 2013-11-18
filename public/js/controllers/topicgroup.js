@@ -21,7 +21,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
         };
         $rootScope.deleteTopic=function(id){
             if ($window.confirm("Are you sure delete the topic?")) {
-                $http.delete("/api/topic/" + id).success(function (d) {
+                $http.delete("api/topic/" + id).success(function (d) {
                     console.log(d);
                     getTopicGroup();
 
@@ -32,7 +32,7 @@ define([ 'i18n!resources/nls/res', '../utils/excel', 'linqjs' ], function (res, 
         $rootScope.removeTopic = function (event, feed) {
 
             if ($window.confirm("Are you sure delete the topic?")) {
-                $http.delete("/api/topic/" + feed._id).success(function (d) {
+                $http.delete("api/topic/" + feed._id).success(function (d) {
                     console.log(d);
                     getTopicGroup();
 
