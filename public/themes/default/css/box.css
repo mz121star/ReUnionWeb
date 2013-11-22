@@ -13,7 +13,7 @@
 .box .box-title {
     border-bottom: 1px solid #DDDDDD;
     margin-top: 20px;
-    padding: 7px 0 35px 10px;
+    padding: 1px 0 30px 10px;;
 }
 
 .box.box-color .box-title h3 {
@@ -27,6 +27,7 @@
     font-weight: 400;
     line-height: 24px;
     margin: 3px 0;
+    font-size: 14px;
 }
 
 .box .box-title h3 i {

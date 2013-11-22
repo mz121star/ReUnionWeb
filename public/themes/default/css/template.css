@@ -24,7 +24,7 @@ ul li{list-style-type: none}
     padding: 0 3px;
 }
 #navigation {
-    background: none repeat scroll 0 0 #368EE0;
+    background: none repeat scroll 0 0 #004A8F;
     position: relative;
     z-index: 100;
     border-bottom: 3px solid #B90400;
@@ -34,7 +34,7 @@ ul li{list-style-type: none}
   text-align: center;
 }
 .navbar{
-    background:#368EE0;
+    background:#004A8F;
     margin-bottom:0px;
     border:0;
 }
@@ -57,7 +57,9 @@ ul li{list-style-type: none}
     text-decoration: none;
 }
 .navbar .navbar-nav > li > a {
+
     color: #FFFFFF;
+    font-size: 14px;
 }
 .navbar .navbar-nav .dropdown-menu > li > a {
     color: #FFFFFF;
