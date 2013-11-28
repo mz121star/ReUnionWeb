@@ -19,6 +19,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
         $scope.remove=function(id){
             console.log(id);
         }
+        $scope.myDashBoards=[]
         $scope.dashboard = {
             endDate: "",
             startDate: moment().add("days", -30)

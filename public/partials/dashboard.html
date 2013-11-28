@@ -30,6 +30,11 @@
 </div>
 -->
 <div class="row">
+    <pr-box ng-repeat="dashboard in myDashBoards" box-class="'col-md-12'" box-title="'Sentiment Analysis Timeline'" on-Closed="remove('Sentiment Analysis Timeline')" >
+        <iframe ng-src="{{sentimentAnalysisTimeline}}" border=0 width="100%"     frameborder=no scrolling="no" height=300 ></iframe>
+    </pr-box>
+
+ <!--
 <pr-box box-class="'col-md-12'" box-title="' Sentiment Analysis Timeline'" on-Closed="remove('Sentiment Analysis Timeline')" >
     <iframe ng-src="{{sentimentAnalysisTimeline}}" border=0 width="100%"     frameborder=no scrolling="no" height=300 ></iframe>
 </pr-box>
@@ -67,13 +72,13 @@
 <pr-box box-title="'Keyword Cloud'" box-class="'col-md-6'" >
     <iframe ng-src="{{tagcloud}}" border=0 width="100%"     frameborder=no scrolling="no" height="300px" ></iframe>
 </pr-box>
+-->
 
 
 
 
 
-
-<div class="box box-color box-bordered col-md-6" >
+<!--<div class="box box-color box-bordered col-md-6" >
     <div class="box-title">
         <h3>
             <i class="fa fa-table"></i>
@@ -160,7 +165,7 @@ overflow-x: hidden;">
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 </div>

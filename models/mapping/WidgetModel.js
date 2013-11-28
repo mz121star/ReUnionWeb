@@ -6,9 +6,19 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
     /***
-     * 根据Name查找widget，规则为 widgets/[Name]/index.html
+     * 主要用来匹配路径的，根据Name查找widget，规则为 widgets/[Name]/index.html
      */
     Name:String,
+    /***
+     * Dashboard 的标题
+     */
+    Title:String,
+
+    /***
+     * 插件的尺寸，6,12
+     */
+    Size:String,
+
     Description:String,
     /***
      * 可选字段
