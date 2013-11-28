@@ -11,5 +11,9 @@
 
 /***设置页面头部的日历小插件等***/
 @import "css/widget.css";
+
+    /***设置页面头部的日历小插件等***/
+@import "css/dashboard.css";
+
 /***help样式表***/
 @import "css/help.css";

@@ -24,26 +24,30 @@ ul li{list-style-type: none}
     padding: 0 3px;
 }
 #navigation {
-    background: none repeat scroll 0 0 #004A8F;
+    background: none repeat scroll 0 0 #B90400;
     position: relative;
     z-index: 100;
-    border-bottom: 3px solid #B90400;
+    padding-bottom: 3px;
+    bottom: 3px;
+    /*border-bottom: 3px solid #B90400;*/
+}
+.bgd-blue {
+    background: none repeat scroll 0 0 #00488B;
 }
 .starter-template {
   padding: 40px 15px;
   text-align: center;
 }
-.navbar{
-    background:#004A8F;
-    margin-bottom:0px;
-    border:0;
+.navbar {
+    background: #00488B;
+    margin-bottom: 0px;
+    border: 0;
 }
 .container .navbar-brand {
     color: #FFFFFF;
     float: left;
     font-size: 20px;
-    padding-bottom: 2px;
-    padding-right: 63px;
+    margin: 10px 90px 0 0px;
 }
 .container .logo {
 	padding-left: 42px;
@@ -53,11 +57,12 @@ ul li{list-style-type: none}
     display: block;
     float: left;
     font-size: 14px;
-    padding: 17px 5px 10px;
+    padding: 20px 5px 10px;
     text-decoration: none;
 }
 .navbar .navbar-nav > li > a {
-
+    padding-bottom: 12px;
+    padding-top: 18px;
     color: #FFFFFF;
     font-size: 14px;
 }
@@ -88,11 +93,14 @@ background-color: #368ee0;
     background: none repeat scroll 0 0 #FFFFFF;
     color: #2A2A2A;
     text-decoration: none;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    bottom: -3px;
 }
 .dropdown-menu {
 	border-radius: 0;
-    border-color: #368EE0;
-    border-top: 0 none #368EE0;
+    border-color: #00488B;
+    border-top: 0 none #00488B;
 	border: 2px solid #428BCA;
 	margin-top: 1px;
 }
@@ -288,15 +296,15 @@ background-color: #368ee0;
 .hiddenMenu #main{margin-left: 0px !important;}
 
 .top-logo {
-    background: url("/images/bg/reunion-logo-top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../images/bg/reunion-logo-top.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     display: block;
     float: left;
     height: 33px;
-    margin: 7px 90px 10px 0px;
+    margin: 7px 60px 10px 30px;
     width: 90px;
 }
 .footer {
-    background: none repeat scroll 0 0 #368EE0;
+    background: none repeat scroll 0 0 #00488B;
     color: #FFFFFF;
     height: 30px;
     left: 0;
@@ -312,7 +320,7 @@ background-color: #368ee0;
     margin-right: 20px;
 }
 .foot-logo {
-    background: url("/images/bg/pactera.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../images/bg/pactera.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
     display: block;
     float: right;
     height: 20px;

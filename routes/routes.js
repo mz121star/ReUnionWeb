@@ -17,6 +17,7 @@ var monitor = require('./monitor');
 var chart = require('./chart');
 var admintool = require('./admintool');
 var topicgroup = require('./topicgroup');
+var widget = require('./widget');
 module.exports = function (app) {
     /***
      * Render Pages页面相关代码
@@ -101,7 +102,12 @@ module.exports = function (app) {
     app.get('/api/chart', chart.list);
     app.get('/api/chart/:id', chart.getById);
     app.post('/api/chart', chart.save);
-
+    /***
+     * Widget
+     */
+    app.get('/api/widget', widget.list);
+    app.get('/api/widget/:id', widget.getById);
+    app.post('/api/widget', widget.save);
 
     /**********************************************************API*************************************************************************/
     app.get('/test', reports.test);

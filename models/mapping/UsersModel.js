@@ -15,7 +15,8 @@ var schema = new Schema({
     sex:Number,
     email:String,
     phone:String,
-    address:{city:String, street:String}
+    address:{city:String, street:String} ,
+    widgets:Array
 }, {collection: 'User'});
 
 schema.virtual("password").set(function (password) {

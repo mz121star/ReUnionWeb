@@ -14,7 +14,8 @@ angular.module('$prAngular.directives').directive('prBox',
         scope: {
             title: '=boxTitle',
             class: '=boxClass',
-            icon:'=boxIcon'
+            icon:'=boxIcon',
+            onClosed:'&'
         },
         restrict: 'E',
         replace: true,
@@ -29,6 +30,7 @@ angular.module('$prAngular.directives').directive('prBox',
 
             }
             scope.remove=function remove(){
+                scope.onClosed()
                 console.log("remove")
                 $(element).remove();
             }

@@ -30,17 +30,17 @@
 </div>
 -->
 <div class="row">
-<pr-box box-class="'col-md-12'" box-title="' Sentiment Analysis Timeline'" >
+<pr-box box-class="'col-md-12'" box-title="' Sentiment Analysis Timeline'" on-Closed="remove('Sentiment Analysis Timeline')" >
     <iframe ng-src="{{sentimentAnalysisTimeline}}" border=0 width="100%"     frameborder=no scrolling="no" height=300 ></iframe>
 </pr-box>
 
 
-<pr-box box-class="'col-md-12'" box-title="'  Distribution Diagram'"   >
+<pr-box box-class="'col-md-12'" box-title="'  Distribution Diagram'" on-Closed="remove('Distribution Diagram')"  >
     <iframe ng-src="{{distributionDiagram}}" border=0 width="100%"     frameborder=no scrolling="no" height=400 ></iframe>
 
     <div class=" ">
 
-        <div class="content">
+        <div class="">
 
             <iframe ng-src="{{feedsStatistics}}" border=0 width="100%"     frameborder=no scrolling="no" height=100% ></iframe>
 
@@ -85,13 +85,15 @@
         <div class="chartpanel chartpanelsize1" style="
     padding-left: 20px;
 ">
-            <div class="title icon5"><span class="titlelabel">Representative Articles</span>
+            <div class="title icon5">  </span>
                 <a class="tab"  href="#RA_news" data-toggle="tab">News</a>
                 <a class="tab"  href="#RA_weibo" data-toggle="tab">Blog</a>
                 <a class="tab"  href="#RA_forum" data-toggle="tab">Forum</a>
             </div>
             <div class="tab-content"  style="height: 300px;
-width: 450px;">
+width: 548px;
+overflow-y: scroll;
+overflow-x: hidden;">
                 <div id="RA_news" class="content tab-pane fade active in">
                     <div class="row"><a class="text" target="blank" href="http://www.kankanews.com/IClux/1353641549/2013-09-14/2725339.shtml"><span class="logo kankanews"></span>兰蔻心理测试:如何透过眼线判断出你今天的心情</a></div>
                     <div class="row"><a class="text" target="blank" href="http://www.yoka.com/brand/news/2013/0613816034.shtml"><span class="logo yoka"></span>兰蔻SHOW限量彩妆系列by Alber</a></div>
@@ -143,17 +145,17 @@ width: 450px;">
     <div class="box-content nopadding">
 
         <div class="chartpanel chartpanelsize1">
-            <div class="title icon2"><span class="titlelabel">User Classification</span>
+            <div class="title icon2"> </span>
                 <a class="tab"  href="#UC_forum" data-toggle="tab">Forum</a>
                 <a class="tab"  href="#UC_blog" data-toggle="tab">Blog</a>
 
             </div>
             <div class="tab-content"  style="height: 300px;width: 450px;overflow: hidden;">
                 <div id="UC_blog" class="content tab-pane fade active in">
-                    <div class="row"><img src="/images/screenshots/user_classification_weibo.png"></div>
+                    <div class="row"><img src="../images/screenshots/user_classification_weibo.png"></div>
                 </div>
                 <div id="UC_forum" class="content tab-pane fade  ">
-                    <div class="row"><img src="/images/screenshots/user_classification_forums.png"></div>
+                    <div class="row"><img src="../images/screenshots/user_classification_forums.png"></div>
                 </div>
             </div>
         </div>
