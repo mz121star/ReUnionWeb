@@ -31,7 +31,7 @@ module.exports = function (app) {
      * Users
      */
     app.post('/api/signup', user.create);
-
+    app.get('/api/mywidgets', user.getWidgets);
 
     app.get('/api/checklogin', index.getLoginUser);
 
@@ -112,4 +112,5 @@ module.exports = function (app) {
     /**********************************************************API*************************************************************************/
     app.get('/test', reports.test);
     app.post('/admintool', admintool.admintool);
+    app.get('/admin', admintool.admin);
 };

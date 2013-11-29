@@ -30,9 +30,9 @@
 </div>
 -->
 <div class="row">
-    <pr-box ng-repeat="dashboard in myDashBoards" box-class="'col-md-12'" box-title="'Sentiment Analysis Timeline'" on-Closed="remove('Sentiment Analysis Timeline')" >
-        <iframe ng-src="{{sentimentAnalysisTimeline}}" border=0 width="100%"     frameborder=no scrolling="no" height=300 ></iframe>
-    </pr-box>
+    <pr-box ng-repeat="dashboard in myDashBoards" box-class="dashboard.Size" box-title="dashboard.Title" on-Closed="remove(dashboard._id)" >
+        <iframe ng-src="widgets/{{dashboard.Name}}/index.html{{searchDataForChart}}" border=0 width="100%"     frameborder=no scrolling="no" height={{dashboard.Height||300}} ></iframe>
+ </pr-box>
 
  <!--
 <pr-box box-class="'col-md-12'" box-title="' Sentiment Analysis Timeline'" on-Closed="remove('Sentiment Analysis Timeline')" >

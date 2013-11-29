@@ -18,7 +18,13 @@ var schema = new Schema({
      * 插件的尺寸，6,12
      */
     Size:String,
-
+    /***
+     * 插件的高度，6,12
+     */
+    Height:String,
+    /***
+     * 插件的描述
+     */
     Description:String,
     /***
      * 可选字段
