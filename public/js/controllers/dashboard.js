@@ -4,7 +4,7 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
 
 
     var DashboardController = ['$scope', '$rootScope', '$http', '$timeout', '$location', '$window' , function ($scope, $rootScope, $http, $timeout, $location, $window) {
-        $rootScope.menuUrl = "partials/leftmenu/dashboardMenu.html";
+        $rootScope.menuUrl = "partials/leftmenu/DashBoardMenu.html";
         $rootScope.title = "Dashboard - " + res.title;
         var sentimentAnalysisTimelineURL = "widgets/sentimentAnalysisTimelineChart/index.html"
         $scope.distributionDiagram = "widgets/geoChart/index.html";
@@ -21,16 +21,26 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
          ************************************************************************************/
         $scope.searchDataForChart = "?" + decodeURIComponent($.param($scope.searchDate))
 
-            $http.get('api/mywidgets').success(function (u) {          //查找数据库中最新的用户信息
-                $http.get("api/widget?ids=" +u[0].widgets.join(",")).success(function (d) {
-                    $scope.myDashBoards = d;
+        $http.get('api/mywidgets').success(function (u) {          //查找数据库中最新的用户信息
+            $http.get("api/widget?ids=" + u[0].widgets.join(",")).success(function (d) {
+                $scope.myDashBoards = d;
 
-                });
             });
+        });
 
         $scope.remove = function (id) {
             console.log(id)
-        }
+
+            $http.post("api/removewidget", {widgetid: id}).success(function (d) {
+                console.log(d);
+                $http.get("api/widget?ids=" + d.widgets.join(",") || "1,2").success(function (data) {
+                    $scope.myDashBoards = data;
+
+                }).error(function () {
+                        $scope.myDashBoards = null;
+                    })
+            });
+        };
 
         /*    $scope.myDashBoards=[
          {Name:"geoChart",Height:"400",Size:"12",ChartTitle:"Distribution Diagram",Id:"sadasd12312312"} ,
@@ -66,6 +76,16 @@ define([ 'i18n!resources/nls/res', 'ichart' , 'async' , 'moment' ], function (re
         });
 
 
+        $rootScope.addWidget = function (id, event) {
+            console.log(id);
+            $http.post("api/addwidget", {widgetid: id}).success(function (d) {
+                console.log(d);
+                $http.get("api/widget?ids=" + d.widgets.join(",")).success(function (d) {
+                    $scope.myDashBoards = d;
+                    $(event.target).parent().parent().parent().remove()
+                });
+            })
+        }
     }];
 
     return DashboardController;

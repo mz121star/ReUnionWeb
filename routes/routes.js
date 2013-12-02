@@ -32,7 +32,8 @@ module.exports = function (app) {
      */
     app.post('/api/signup', user.create);
     app.get('/api/mywidgets', user.getWidgets);
-
+    app.post('/api/addwidget', user.addWidget);
+    app.post('/api/removewidget', user.removeWidget);
     app.get('/api/checklogin', index.getLoginUser);
 
     /***

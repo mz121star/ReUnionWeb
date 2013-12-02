@@ -5,7 +5,7 @@
 var UsersModel = require("./../models").Users;
 
 var path = require('path');
-
+var underscore = require('underscore');
 
 
 exports.create = function (req, res) {
@@ -60,6 +60,54 @@ exports.getWidgets=function(req,res){
             }
             return res.json(user);
         });
+}
+
+/***
+ * Post api/addwidget
+ * @param req
+ * @param res
+ */
+exports.addWidget=function(req,res){
+    var id= req.session["user"]._id
+    UsersModel.findById( id,function(err, user) {
+        if(err){
+            return res.json(500,err);
+        }
+        user.widgets.push(req.body.widgetid)
+
+        user.save(function (err, data) {
+            if (err) {
+                return res.json(500, err);
+            }
+
+            res.json({msg:"success",widgets:data.widgets});
+        })
+    });
+}
+
+/***
+ * Post api/removewidget
+ * @param req
+ * @param res
+ */
+exports.removeWidget=function(req,res){
+    var id= req.session["user"]._id
+    UsersModel.findById( id,function(err, user) {
+        if(err){
+            return res.json(500,err);
+        }
+        var wid=underscore.without(user.widgets,req.body.widgetid)
+        user.widgets=wid;
+
+
+        user.save(function (err, data) {
+            if (err) {
+                return res.json(500, err);
+            }
+
+            res.json({msg:"success",widgets:data.widgets});
+        })
+    });
 }
 exports.login = function (req, res) {
     UsersModel.findOne({name: req.body.name}, function (err, user) {

@@ -31,6 +31,10 @@ var schema = new Schema({
      */
     ThumbPicUrl:String,
     /***
+     * 报表价格
+     */
+    Price:Number,
+    /***
      * 可选字段，留以后使用
      */
     WidgetUrl:String,

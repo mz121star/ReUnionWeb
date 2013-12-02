@@ -11,12 +11,14 @@ var underscore = require('underscore');
  * @param res
  */
 exports.list = function (req, res) {
-
+     var isIds=false
     var querstring = req.url;
     var groupid = querstring.match(/ids=([\w|,]+)/);
+    if(querstring.indexOf("ids")>0) isIds=true;
     if(groupid)  groupid=  groupid[1].split(",")
 
-    if (groupid) {
+    if (groupid||isIds) {
+
         WidgetModel.find({_id: {$in:groupid}})
             /*.limit(20)*/
             /*.select('childs')*/
