@@ -3,7 +3,8 @@ var mongoose = require('mongoose'),
 
 var schema = new Schema({
     Name:String,
-    Description:String
+    Description:String,
+    OwnerId:String
 
 }, {collection: 'TopicGroup'});
 

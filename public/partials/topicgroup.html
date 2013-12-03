@@ -144,8 +144,7 @@
                 <td class=" w150">{{group.Name }}</td>
                 <td class=" w100">{{group.Description }}</td>
                 <td class="last">
-                    <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"
-                            data-target="#saveReportModal">Delete
+                    <button class="btn btn-primary"   ng-click="delGroup(group)" >Delete
                     </button>
                 </td>
             </tr>
@@ -173,45 +172,7 @@
         </table>
     </pr-box>
 </div>
-<!--<table id="css_table" class="table">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<td class="w30">No.</td>-->
-<!--<td class="w150">Group Name</td>-->
-<!--<td class="w100">Description</td>-->
-<!--<td class="last">Action</td>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody ng-repeat="group in groups" showdetail>-->
-<!--<tr>-->
-<!--<td class=" openlist" data-id="{{group._id}}" data-queryover="0"  showtopictable  >{{ $index+1 }} </td>-->
-<!--<td class=" w150">{{group.Name }}</td>-->
-<!--<td class=" w100">{{group.Description }}</td>-->
-<!--<td class="last"> <button class="btn btn-primary" data-toggle="modal" ng-click="editAlert(alert)"-->
-<!--data-target="#saveReportModal">Delete</button></td>-->
-<!--</tr>-->
-<!--<tr class="subrow">-->
-<!--<td colspan="7" class="subrowtd">-->
-<!--&lt;!&ndash; <table class="subtable">-->
-<!--<tr class="thead">-->
-<!--<td class="w30">N0.</td>-->
-<!--<td sortable>Title</td>-->
-<!--<td>Description</td>-->
-<!--<td>Source</td>-->
-<!--<td>Url</td>-->
-<!--</tr>-->
-<!--<tr class="tbody" ng-repeat="feed in feedContent" showdetail data-toggle="modal" ng-click="showDetail(feed)" data-target="#myModal">-->
-<!--<td>{{ $index+1 }}</td>-->
-<!--<td>{{feed.Title| maxlen:20  }} </td>-->
-<!--<td>{{feed.Content | maxlen:40  }} </td>-->
-<!--<td>{{ feed.FromSite | maxlen:40}}</td>-->
-<!--<td><a ng-href="feed.FromUrl">{{feed.FromUrl}}</a></td>-->
-<!--</tr>-->
-<!--</table>&ndash;&gt;-->
-<!--</td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
+
 </div>
 
 <div class="modal fade" id="addGroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"

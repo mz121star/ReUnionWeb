@@ -39,6 +39,7 @@ module.exports = function (app) {
     /***
      * Feeds
      */
+    app.get('/api/feedsinfo',feeds.feedsInfo) ;
     app.post('/api/feeds', feeds.list);
     app.get('/api/feedsSourceType', feeds.sourcetype);
     app.post('/api/getNewFeeds',feeds.getNewFeeds);
@@ -48,7 +49,7 @@ module.exports = function (app) {
      */
     app.get('/api/topicgroup', topicgroup.list);
     app.post('/api/topicgroup',topicgroup.save);
-
+    app.delete('/api/topicgroup/:id',topicgroup.delete);
     /***
      * Report
      */

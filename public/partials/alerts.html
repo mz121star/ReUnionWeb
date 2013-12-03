@@ -3,7 +3,7 @@
         <table id="css_table" class="table">
             <thead>
             <tr >
-                <th class="w5-p">No.</th>
+                <th class="w5-p"><i class="fa fa-plus-square"></i></th>
                 <th class="w12-p">Title</th>
                 <th class="w15-p">Keywords</th>
                 <th class="w24-p">MailTo</th>
@@ -14,7 +14,7 @@
             </thead>
             <tbody ng-repeat="alert in alerts" showdetail>
             <tr>
-                <td class=" openlist" data-id="{{alert._id}}" data-queryover="0"  toggletable  >{{ $index+1 }} </td>
+                <td class=" openlist" data-id="{{alert._id}}" data-queryover="0"  toggletable  ><i class="fa fa-plus-square"></i> </td>
                 <td class=" w150">{{alert.Name }}</td>
                 <td class=" w100">{{alert.Keyword }}</td>
                 <td class=" w200">{{alert.MailTo }}</td>

@@ -6,12 +6,13 @@ var TopicGroupModel = require("./../models").TopicGroup;
  * @param res
  */
 exports.list = function (req, res) {
+    var id= req.session["user"]._id
     var querstring = req.url;
     var groupid = querstring.match(/groupid=(\w+)/);
     if(groupid) groupid=new RegExp(groupid[1],"gmi");
 
     if (groupid) {
-        TopicGroupModel.find({GroupId: groupid})
+        TopicGroupModel.find({GroupId: groupid,OwnerId:id})
             /*.limit(20)*/
             /*.select('childs')*/
             .exec(function (err, subs) {
@@ -22,7 +23,7 @@ exports.list = function (req, res) {
             });
     }
     else {
-        TopicGroupModel.find()
+        TopicGroupModel.find({OwnerId:id})
             /*.limit(20)*/
             /*.select('childs')*/
             .exec(function (err, subs) {
@@ -43,7 +44,13 @@ exports.list = function (req, res) {
  * @param res
  */
 exports.save = function (req, res) {
+
     var topic = new TopicGroupModel(req.body);
+    /***
+     *为group添加用户
+     */
+    var id= req.session["user"]._id
+    topic.OwnerId=id;
     topic.save(function(err,data){
         if(err){
             return res.json(500,err);
@@ -54,21 +61,21 @@ exports.save = function (req, res) {
 }
 
 /***
- * delete /topic
+ * delete /topicgroup/:id
  * {name:"topicName"}
  * @param req
  * @param res
  */
 exports.delete=function(req,res){
-    var reg = /^\/api\/topic\/(?:([^\/]+?))\/?$/;
+    var reg = /^\/api\/topicgroup\/(?:([^\/]+?))\/?$/;
     var id=req.url.match(reg)[1];
     if(id) id=decodeURI(id);
-    TopicModel.findById(id,function(err, topic) {
+    TopicGroupModel.findById(id,function(err, group) {
         if(err){
             return res.json(500,err);
         }
 
-        topic.remove(function (err, data) {
+        group.remove(function (err, data) {
             if (err) {
                 return res.json(500, err);
             }
