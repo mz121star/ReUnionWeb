@@ -44,6 +44,7 @@ define(['../app', 'i18n!resources/nls/res','moment'], function (app, res,moment)
         $scope.txt = {
             home: res.welcome,
             dashboard: "Dashboard",
+            product: "Product",
             feeds: "Feeds",
             analysis: "Analysis",
             reports: "Reports",
@@ -53,12 +54,13 @@ define(['../app', 'i18n!resources/nls/res','moment'], function (app, res,moment)
         };
         $scope.navBars = [
             {name: $scope.txt.dashboard, url: "#/dashboard", index: 1},
-            {name: $scope.txt.feeds, url: "#/feeds", index: 2},
-            {name: $scope.txt.analysis, url: "#/analysis", index: 3},
-            {name: $scope.txt.reports, url: "#/reports", index: 4},
-            {name: $scope.txt.alerts, url: "#/alerts", index: 5},
-            {name: $scope.txt.monitor, url: "#/monitor", index: 6},
-            {name: $scope.txt.help, url: "#/help", index: 7}
+            {name: $scope.txt.product, url: "#/product", index: 2,isNew:true},
+            {name: $scope.txt.feeds, url: "#/feeds", index: 3},
+            {name: $scope.txt.analysis, url: "#/analysis", index: 4},
+            {name: $scope.txt.reports, url: "#/reports", index: 5},
+            {name: $scope.txt.alerts, url: "#/alerts", index: 6},
+            {name: $scope.txt.monitor, url: "#/monitor", index: 7},
+            {name: $scope.txt.help, url: "#/help", index: 8}
         ];
         $scope.selectNav = function (row) {
             $scope.selectedRow = row;

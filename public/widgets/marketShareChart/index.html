@@ -4,10 +4,10 @@
     <title></title>
 </head>
 <body>
-<select>
-    <option>Mobile</option>
-    <option>Printers</option>
-    <option>Notebooks</option>
+<select id="category">
+    <option selected value="PCs & Laptops>Laptops / Notebooks>All Laptops / Notebooks">Notebooks</option>
+    <option value="PCs & Laptops>Ultrabooks>All Ultrabooks">Ultrabook</option>
+
 </select>
 <div id='canvas'></div>
 <script src="../../lib/jquery/jquery-1.8.2.min.js"></script>
@@ -24,25 +24,22 @@
         $(window).resize(function () {
             Draw(data);
         });
-
-
-        var Draw = function (d) {
-            data = d;
-
-            var data = [
-                {name : 'Lenove',value : 52.5,color:'#4572a7'},
-                {name : 'HP',value : 34.3,color:'#aa4643'},
-                {name : 'SAMSUNG',value : 8.4,color:'#89a54e'},
-                {name : 'Microsoft',value : 3.6,color:'#80699b'},
-                {name : 'Other',value : 1.2,color:'#3d96ae'}
-            ];
+        var getRandomColor = function(){
+            return  '#' +
+                    (function(color){
+                        return (color +=  '0123456789abcdef'[Math.floor(Math.random()*16)])
+                                && (color.length == 6) ?  color : arguments.callee(color);
+                    })('');
+        }
+        var colors = ["#4572a7", "#aa4643", "#89a54e", '#80699b','#f8a31f'];
+        var Draw = function (d,title) {
 
 
             var chart = new iChart.Pie3D({
                 render : 'canvas',
-                data: data,
+                data: d,
                 title : {
-                    text : 'Mobile-Friendly Distribution',
+                    text : title,
                     height:40,
                     fontsize :10,
                     color : '#282828'
@@ -56,7 +53,7 @@
                 sub_option : {
                     mini_label_threshold_angle : 40,//迷你label的阀值,单位:角度
                     mini_label:{//迷你label配置项
-                        fontsize:20,
+                        fontsize:12,
                         fontweight:600,
                         color : '#ffffff'
                     },
@@ -127,11 +124,42 @@
 
             chart.draw();
         }
-        $.post('/api/SentimentAnalysisPost', search).success(function (d) {
-            //搜索来源饼图
-            Draw(d);
-        })
+        var getData=function(){
+            $.post('/api/MarketSharePost', search+"&category="+encodeURIComponent($("#category").val())).success(function (d) {
+                //搜索来源饼图
+                /***
+                 * 按数量进行排序
+                 */
+               d.sort(function(a,b){
+                    return a.value -b.value;
+                }).reverse()
+                var count= 0,other=0
+                /*取总数*/
+                for(var i= 0,len= d.length;i<len;i++){
+                    count+=parseFloat(d[i].value);
+                    if(i>4){
+                        other+=parseFloat(d[i].value);
+                    }
+                }
+                for(var i= 0,len= d.length;i<len;i++){
+                    d[i].value= (parseFloat(d[i].value)/count*100).toFixed(2)
+                    d[i].color=colors[i];
+                }
+                d= d.splice(0,5);
+                d.push({
+                    name:"other",
+                    value:(parseFloat(other/count*100)).toFixed(2),
+                    color:"#ace"
+                })
 
+                console.log(d);
+                Draw(d,$("#category").val());
+            })
+        }
+        getData();
+        $("#category").on("change",function(){
+            getData();
+        })
     })(window, jQuery)
 
 </script>

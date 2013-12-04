@@ -18,6 +18,7 @@ var chart = require('./chart');
 var admintool = require('./admintool');
 var topicgroup = require('./topicgroup');
 var widget = require('./widget');
+var product = require('./product');
 module.exports = function (app) {
     /***
      * Render Pages页面相关代码
@@ -67,6 +68,7 @@ module.exports = function (app) {
     app.post('/api/SentimentAnalysisColumnPost', reports.SentimentAnalysisColumnPost);
     app.post('/api/TopicKeywordReportPost', reports.TopicKeywordReportPost);
     app.post('/api/SentimentAnalysisByFromTypeBarPost', reports.SentimentAnalysisByFromTypeBarPost);
+    app.post('/api/MarketSharePost',reports.MarketSharePost)
     /***
      * Topics
      */
@@ -110,7 +112,13 @@ module.exports = function (app) {
     app.get('/api/widget', widget.list);
     app.get('/api/widget/:id', widget.getById);
     app.post('/api/widget', widget.save);
-
+    /***
+     * Product
+     */
+    app.post('/api/product', product.list);
+    app.get('/api/product/:id', product.getById);
+    app.get('/api/productcategory', product.getProductCategory);
+    app.get('/api/productbrand', product.getProductBrand);
     /**********************************************************API*************************************************************************/
     app.get('/test', reports.test);
     app.post('/admintool', admintool.admintool);

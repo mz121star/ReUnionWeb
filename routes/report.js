@@ -1,5 +1,6 @@
 var FeedsModel = require("./../models").Feeds;
 var TopicModel = require("./../models").Topic;
+var FeedsShopModel = require("./../models").FeedsShop;
 var utils = require("./../libs/util");
 var underscore = require("underscore");
 var moment = require('moment');
@@ -54,7 +55,7 @@ exports.TopicKeywordReport = function (req, res) {
 
     FeedsModel.aggregate(
         { $group: { _id: "$Keyword", value: { $sum: 1 }}}
-        , { $project: {name: "$_id", value: 1 }}
+        ,{ $project: {name: "$_id", value: 1 }}
         /* , { $project: { _id: 0, maxAge: 1 }}*/
         , function (err, docs) {
             var keywords = [];
@@ -584,6 +585,25 @@ exports.keyWordCloud = function (req, res) {
             res.json(finalResult); // [ { maxAge: 98 } ]
         });
 };
+exports.MarketSharePost = function (req, res) {
+    var params = req.body;
+    var startDate = new Date(params.starttime) , endDate = new Date(params.endtime),category=params.category;
+    FeedsShopModel.aggregate(
+        { $match: { /*PublishTime: { $gte: startDate, $lte: endDate} ,*/category:category}},
+        {  $group: { _id: "$Brand", value: { $sum: 1 }}}
+        , { $project: {name: "$_id", value: 1 }}
+        , function (err, docs) {
+            var result = [];
+            for (var d in docs) {
+                docs[d].color = utils.randomColor();
+                result.push(docs[d]);
+            }
+            return res.json(result);
+            res.json(result); // [ { maxAge: 98 } ]
+        });
+
+};
+
 exports.test = function (req, res) {
     FeedsModel.aggregate(
         { $match: { PublishTimeTemp: { $gte: new Date("2013-08-01"), $lte: new Date("2013-08-31")}, Semantic: {$lt: 0} }},
