@@ -5,8 +5,9 @@
 </head>
 <body>
 <select id="category">
-    <option selected value="PCs & Laptops>Laptops / Notebooks>All Laptops / Notebooks">Notebooks</option>
-    <option value="PCs & Laptops>Ultrabooks>All Ultrabooks">Ultrabook</option>
+    <option selected value="PCs & Laptops>Laptops / Notebooks>All Laptops / Notebooks">NoteBooks</option>
+    <option value="PCs & Laptops>Ultrabooks>All Ultrabooks">UltraBook</option>
+    <option value="Best Buy>Audio & MP3>iPod & MP3 Players">MP3 Players</option>
 
 </select>
 <div id='canvas'></div>
@@ -22,7 +23,7 @@
 
 
         $(window).resize(function () {
-            Draw(data);
+            Draw(data,$("#category").val());
         });
         var getRandomColor = function(){
             return  '#' +
@@ -42,7 +43,8 @@
                     text : title,
                     height:40,
                     fontsize :10,
-                    color : '#282828'
+                    color : '#282828'  ,
+                    padding : '0 38'
                 },
                 footnote : {
                     text : 'Power By Reunion',
@@ -76,6 +78,15 @@
                     listeners:{
                         parseText:function(d, t){
                             return d.get('value')+"%";//自定义label文本
+                        } ,
+                        /**
+                         * r:iChart.Rectangle2D对象
+                         * e:eventObject对象
+                         * m:额外参数
+                         */
+                        click:function(r,e,m){
+
+                            console.log(r.get('name')+' '+r.get('value')+ r.get('color'));
                         }
                     }
                 },
@@ -106,6 +117,7 @@
                 height: 300,
                 border: false,
                 animation: true,
+                background_color:'#fff',
                 animation_duration: 100,//700ms完成动画
                 radius:150
             });
@@ -123,6 +135,7 @@
             }));*/
 
             chart.draw();
+
         }
         var getData=function(){
             $.post('/api/MarketSharePost', search+"&category="+encodeURIComponent($("#category").val())).success(function (d) {
@@ -144,6 +157,7 @@
                 for(var i= 0,len= d.length;i<len;i++){
                     d[i].value= (parseFloat(d[i].value)/count*100).toFixed(2)
                     d[i].color=colors[i];
+
                 }
                 d= d.splice(0,5);
                 d.push({
@@ -153,6 +167,7 @@
                 })
 
                 console.log(d);
+                data=d;
                 Draw(d,$("#category").val());
             })
         }
