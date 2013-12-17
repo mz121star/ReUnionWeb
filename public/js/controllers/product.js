@@ -2,6 +2,7 @@
 define([ 'i18n!resources/nls/res'], function (res) {
     var ProductController = ["$scope", "$rootScope", "$http", "$location", function ($scope, $rootScope, $http, $location) {
         $rootScope.title = "Product - " + res.title;
+        $rootScope.menuUrl = "";
         $rootScope.show = true
         $scope.product = {
             category: "",

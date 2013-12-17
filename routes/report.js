@@ -5,30 +5,11 @@ var utils = require("./../libs/util");
 var underscore = require("underscore");
 var moment = require('moment');
 var events = require('events');
+var commonUtil=require('./tools/commonUtil')
 
 
-/*********************************************************************************************** **********************
- * 获取当前用户设定的关键字
- ********************************************************************************************************************/
-var getKeyWords = function (req) {
-    var emitter = new events.EventEmitter()
-    var id = req.session["user"]._id;
-    var _keywords = [];
-    TopicModel.find({OwnerId: id})
-        /*.limit(20)*/
-        /* .select('Keyword')*/
-        .exec(function (err, subs) {
-            for (var i = 0, len = subs.length; i < len; i++) {
-                if (subs[i].Keyword !== " ")
-                    _keywords.push(subs[i].Keyword.trim());
-            }
 
-            _keywords = _keywords.join("|");
-            var keywordsReg = new RegExp(_keywords, "gmi");
-            emitter.emit("success", keywordsReg);
-        });
-    return   emitter;
-}
+var getKeyWords=commonUtil.getKeyWords;
 /*********************************************************************************************** ************************
  * 获取当前用户设定的关键字
  ********************************************************************************************************************/

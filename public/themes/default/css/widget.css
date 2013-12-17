@@ -15,3 +15,24 @@
 .stats>li .details span { color: #fff; display: block; font-size: 12px }
 
 .stats>li .details span.big { font-size: 16px }
+
+#widget-nav li{
+    /*border-radius: 15px;
+    -webkit-border-radius:15px;
+    -moz-border-radius: 15px;*/
+    background-color: aliceblue;
+    cursor: pointer;
+    margin: 0 6px 3px 7px;
+    border-bottom: 1px solid #bbb;
+
+}
+#widget-nav img{
+    padding-left: 3px;
+}
+#widget-nav li .op i{
+    padding-top: 15px;
+    font-size: 25px;
+}
+#widget-nav li:hover{
+    background-color: #E8F0EF;
+}
