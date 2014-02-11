@@ -5,7 +5,7 @@ var commonUtil = require('./tools/commonUtil')
 
 var getKeyWords = commonUtil.getKeyWords;
 exports.list = function (req, res, next) {
-    getKeyWords(req).on("success", function (keywordReg) {
+/*    getKeyWords(req).on("success", function (keywordReg) {*/
         var sts = req.body.st, topicKeyword = req.body.keyword;
         var queryCondition = {};
         if (sts) {
@@ -32,9 +32,9 @@ exports.list = function (req, res, next) {
                 queryCondition.Content = topicKeywordRegex;
             }
         }
-        else {
+       /* else {
             queryCondition.Content = keywordReg;
-        }
+        }*/
         /*    if (req.body.starttime && req.body.endtime) {
          queryCondition.PublishTime = {$gte: new Date(req.body.starttime), $lte: new Date(req.body.endtime) };
          }*/
@@ -74,7 +74,7 @@ exports.list = function (req, res, next) {
 
                 });
         })
-    })
+ /*   })*/
 
 };
 

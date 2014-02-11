@@ -54,7 +54,7 @@ define(['../app', 'i18n!resources/nls/res','moment'], function (app, res,moment)
         };
         $scope.navBars = [
             {name: $scope.txt.dashboard, url: "#/dashboard", index: 1},
-            {name: $scope.txt.product, url: "#/product", index: 2,isNew:true},
+           /* {name: $scope.txt.product, url: "#/product", index: 2,isNew:true},*/
             {name: $scope.txt.feeds, url: "#/feeds", index: 3},
             {name: $scope.txt.analysis, url: "#/analysis", index: 4},
             {name: $scope.txt.reports, url: "#/reports", index: 5},
