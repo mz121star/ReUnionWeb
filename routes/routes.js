@@ -123,4 +123,5 @@ module.exports = function (app) {
     app.get('/test', reports.test);
     app.post('/admintool', admintool.admintool);
     app.get('/admin', admintool.admin);
+    app.post('/soap',admintool.soap);
 };

@@ -30,7 +30,7 @@ var myErrorHandler=function( req, res, next){
     next();
 };
 app.configure(function () {
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 3001);
 
     app.set('views', __dirname + '/views');
 
